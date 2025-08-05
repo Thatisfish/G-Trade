@@ -1,68 +1,141 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@charset "UTF-8";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root{
+    --nav:#EB6455;
+    --light:#f1f1f1;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* 重置所有標籤的樣式 */
+*{
+    box-sizing: border-box;/* 不累加內距及邊框 */
 }
-a:hover {
-  color: #535bf2;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
 }
-
+/* 重置字體 */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    font-family:/*英文*/ -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial,
+                /*中文*/ "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    margin: 0;
+    height: 100vh; /* 滿版畫面 */
+}
+/* 重置標題 */
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+}
+/* 重置列表 */
+ul,ol {
+    list-style: none;
+}
+/* 重置圖片 */
+img {
+    display: block;
+    width: 100%;
+}
+/* 重置連接 */
+a {
+    display: block;
+    color: #666;
+    text-decoration: none;
+}
+body{
+  background-color: var(--nav);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+main {
+	padding-top: 80px;
+    background-color: #e76257;
+}
+.hero-section {
+	position: relative;
+	background-color: #e76257;
+	width: 100%;
+	height: 1000px;
+	overflow: hidden;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* 上方標語圖檔 */
+.hero-text {
+    margin-top: 26px;
+	position: absolute;
+	left: 175px;
+	transform: none;
+	width: 854px;
+    height: 151px;
+	
+	z-index: 10;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.game-letters {
+	position: relative;
+	width: 100%;
+	height: 500px;
 }
+
+.game-letters img {
+	width: 400px;
+	height: auto;
+}
+
+.letter {
+	position: absolute;
+	width: 200px; /* 字母大小 */
+	transition: 0.3s;
+}
+.letter:hover {
+	transform: scale(1.1) rotate(0deg);
+	z-index: 10;
+}
+/* 每個字母個別設定位置、角度、層級 */
+.g {
+	top: 180px;
+	left: 45px;
+	z-index: 1;
+}
+.g:hover{
+    background-image: url(../IMAGES/G2.png);
+}
+
+.a {
+	top: 381px;
+	left: 480px;
+	z-index: 2;
+}
+
+.m {
+	top: 141px;
+	left: 925px;
+	z-index: 3;
+}
+
+.e {
+	top: 342px;
+	left: 1425px;
+	z-index: 4;
+}
+
+.hero-icon {
+	position: absolute;
+	width: 30px;
+	z-index: 20;
+}
+
+/* 各 icon 位置 */
+.icon-star { top: 50px; right: 80px; }
+.icon-cart { bottom: 40px; left: 100px; }

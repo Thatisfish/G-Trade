@@ -1,0 +1,76 @@
+.navigation {
+	background-color: rgba(255, 255, 255, 0); /* 完全透明 */
+	position: fixed; /* 固定在上方 */
+	top: 0;
+	width: 100%;
+	z-index: 999;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 20px;
+	height: 80px;
+}
+
+#topbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 85px; /* 如果你 logo 是 100px 就這樣設 */
+	background-color: rgba(255, 255, 255, 0);
+	z-index: 999;
+    border-bottom: solid 1px rgba(63, 63, 63, 0.7);
+}
+
+#topbar ul{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo img {
+    height: 85px;
+    /* 可依需求調整 */
+}
+
+.menu {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 100px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+.menu li a{
+    text-decoration: none;
+    color:var(--light);
+}
+
+.search-bar {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--light);
+    color:var(--light);
+    font-size: 16px;
+    padding: 8px 10px;
+    outline: none;
+    width: 200px;
+}
+.search-bar::placeholder {
+  color:var(--light); /* ← 這裡改 placeholder 顏色 */
+  opacity: 1;     /* ← 讓顏色完全顯示 */
+}
+
+#topbar .nav-icon a{
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+}
+
+#topbar .icon-search{background-image: url(../IMAGES/icon-search.svg);}
+#topbar .icon-Shopping_cart{background-image: url(../IMAGES/icon-Shopping_cart.svg);}
+#topbar .icon-login{background-image: url(../IMAGES/icon-login.svg);}
