@@ -1,0 +1,87 @@
+body{
+	background:
+        linear-gradient(rgba(237, 72, 64, 0.5), rgba(237, 72, 64, 0.5)),
+        url(../assets/homebg.svg);
+}
+
+main {
+	/* padding-top: 80px; */
+    /* background-color: #e76257; */
+}
+.hero-section {
+	position: relative;
+	/* background-color: #e76257; */
+	width: 100%;
+	height: 1000px;
+	overflow: hidden;
+}
+
+/* 上方標語圖檔 */
+.hero-text {
+    margin-top: 732px;
+	position: absolute;
+	left: 100px;
+	transform: none;
+	width: 854px;
+    height: 151px;
+	
+	z-index: 10;
+}
+
+.game-letters {
+	position: relative;
+	width: 100%;
+	height: 500px;
+}
+
+.game-letters img {
+	width: 400px;
+	height: auto;
+}
+
+.letter {
+	position: absolute;
+	width: 200px; /* 字母大小 */
+	transition: 0.3s;
+}
+.letter:hover {
+	transform: scale(1.1) rotate(0deg);
+	z-index: 10;
+}
+/* 每個字母個別設定位置、角度、層級 */
+.g {
+	top: 180px;
+	left: 45px;
+	z-index: 1;
+}
+.g:hover{
+    background-image: url(../IMAGES/G2.png);
+}
+
+.a {
+	top: 381px;
+	left: 480px;
+	z-index: 2;
+}
+
+.m {
+	top: 141px;
+	left: 925px;
+	z-index: 3;
+}
+
+.e {
+	top: 342px;
+	left: 1425px;
+	z-index: 4;
+}
+
+.hero-icon {
+	position: absolute;
+	width: 30px;
+	z-index: 20;
+}
+
+/* 各 icon 位置 */
+.icon-star { top: 50px; right: 80px; }
+.icon-cart { bottom: 40px; left: 100px; }
