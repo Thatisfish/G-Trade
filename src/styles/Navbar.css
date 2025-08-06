@@ -1,3 +1,4 @@
+
 .navigation {
 	background-color: rgba(255, 255, 255, 0); /* 完全透明 */
 	position: fixed; /* 固定在上方 */
@@ -6,6 +7,7 @@
 	z-index: 999;
 	display: flex;
 	align-items: center;
+	align-items: flex-end;
 	justify-content: space-between;
 	padding: 0 20px;
 	height: 80px;
@@ -71,6 +73,6 @@
     margin: 5px;
 }
 
-#topbar .icon-search{background-image: url(../IMAGES/icon-search.svg);}
-#topbar .icon-Shopping_cart{background-image: url(../IMAGES/icon-Shopping_cart.svg);}
-#topbar .icon-login{background-image: url(../IMAGES/icon-login.svg);}
+#topbar .icon-search{background-image: url(../assets/icon-search.svg);}
+#topbar .icon-Shopping_cart{background-image: url(../assets/icon-Shopping_cart.svg);}
+#topbar .icon-login{background-image: url(../assets/icon-login.svg);}

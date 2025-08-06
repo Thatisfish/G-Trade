@@ -18,7 +18,7 @@ export default function Header() {
                     <li><a href="">Xbox系列</a></li>
                 </ul>
                 <ul className="nav-icon">{/* icon */}
-                    <li><input type="text" placeholder="想找什麼?" className="search-bar" /></li>
+                    {/* <li><input type="text" placeholder="想找什麼?" className="search-bar" /></li> */}
                     <li><a className="icon-search" href="#"></a></li>
                     <li><a className="icon-Shopping_cart" href="#"></a></li>
                     <li><a className="icon-login" href="#"></a></li>
