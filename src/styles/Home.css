@@ -1,5 +1,5 @@
 main {
-	background: linear-gradient(to top, #ffffff40, #FF424273),
+	background: linear-gradient(to top, #ffffff20, #FF424273),
 		url(./assets/homebg.svg);
 	;
 }
@@ -41,9 +41,9 @@ main {
 
 .bp {
 	position: absolute;
-	top: 20px;
-	left: 50%;
-	width: 1500px;
+	top: 120px;
+	left: 49%;
+	width: 800px;
 	height: auto;
 	transform: translateX(-50%);
 	z-index: 6;
