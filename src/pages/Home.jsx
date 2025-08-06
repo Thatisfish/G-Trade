@@ -1,9 +1,10 @@
 import '../styles/Home.css'
-import G from '../assets/G.png'
-import A from '../assets/A.png'
-import M from '../assets/M.png'
-import E from '../assets/E.png'
-import Slogan from '../assets/slogan1.svg'
+import G from '../images/G.webp'
+import A from '../images/A.webp'
+import M from '../images/M.webp'
+import E from '../images/E.webp'
+import Slogan from '../images/slogan1.webp'
+import HPP from '../images/HomePageP.webp'
 export default function Home() {
     return (
         <main>
@@ -11,11 +12,16 @@ export default function Home() {
                 {/* （包含整段標語） */}
                 <img className="hero-text" src={Slogan} alt="slogan" />
                 {/* 文字圖檔 */}
-                <div className="game-letters">
-                    <img src={G} alt="G" className="letter g" />
-                    <img src={A} alt="A" className="letter a" />
-                    <img src={M} alt="M" className="letter m" />
-                    <img src={E} alt="E" className="letter e" />
+                <div>
+                    <div className="game-letters">
+                        <img src={G} alt="G" className="letter g" />
+                        <img src={A} alt="A" className="letter a" />
+                        <img src={M} alt="M" className="letter m" />
+                        <img src={E} alt="E" className="letter e" />
+                    </div>
+                        <div className='bp'>
+                            <img src={HPP} alt="P" className='hpb' />
+                        </div>
                 </div>
 
                 {/* 小 icon 裝飾 */}

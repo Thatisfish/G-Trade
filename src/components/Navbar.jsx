@@ -1,5 +1,5 @@
 import '../styles/Navbar.css'
-import Logo from '../assets/logo.png'
+import Logo from '../images/logo.png'
 export default function Header() {
     return (
         <header id="topbar">
@@ -22,6 +22,7 @@ export default function Header() {
                     <li><a className="icon-search" href="#"></a></li>
                     <li><a className="icon-Shopping_cart" href="#"></a></li>
                     <li><a className="icon-login" href="#"></a></li>
+                    <li><a className='icon-hamburger' href="#"></a></li>
                 </ul>
             </nav>
         </header>

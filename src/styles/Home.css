@@ -1,7 +1,9 @@
-
 main {
-	background:linear-gradient(to top,#fff, #FF4242),;
+	background: linear-gradient(to top, #ffffff40, #FF424273),
+		url(./assets/homebg.svg);
+	;
 }
+
 .hero-section {
 	position: relative;
 	/* background-color: #e76257; */
@@ -12,12 +14,12 @@ main {
 
 /* 上方標語圖檔 */
 .hero-text {
-    margin-top: 732px;
+	margin-top: 732px;
 	position: absolute;
 	left: 100px;
 	transform: none;
 	width: 854px;
-    height: 151px;
+	height: 151px;
 	z-index: 10;
 }
 
@@ -27,44 +29,62 @@ main {
 	height: 500px;
 }
 
-.game-letters img {
+.game-letters>img {
 	width: 400px;
 	height: auto;
 }
 
+.game-letters-wrapper {
+	position: relative;
+	/* 讓內部 absolute 定位參考這裡 */
+}
+
+.bp {
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	width: 1500px;
+	height: auto;
+	transform: translateX(-50%);
+	z-index: 6;
+	/* 確保在字母上面 */
+}
+
 .letter {
 	position: absolute;
-	width: 200px; /* 字母大小 */
+	width: 200px;
+	/* 字母大小 */
 	transition: 0.3s;
 }
+
 .letter:hover {
 	transform: scale(1.1) rotate(0deg);
 }
+
 /* 每個字母個別設定位置、角度、層級 */
 .g {
-	top: 180px;
-	left: 45px;
+	top: 130px;
+	left: 120px;
 	z-index: 1;
 }
-.g:hover{
-    background-image: url(../IMAGES/G2.png);
-}
+
+.g:hover {}
 
 .a {
-	top: 381px;
-	left: 480px;
+	top: 294px;
+	left: 442px;
 	z-index: 2;
 }
 
 .m {
-	top: 141px;
-	left: 925px;
+	top: 129px;
+	left: 1100px;
 	z-index: 3;
 }
 
 .e {
-	top: 342px;
-	left: 1425px;
+	top: 387px;
+	left: 1386px;
 	z-index: 4;
 }
 
@@ -75,5 +95,12 @@ main {
 }
 
 /* 各 icon 位置 */
-.icon-star { top: 50px; right: 80px; }
-.icon-cart { bottom: 40px; left: 100px; }
+.icon-star {
+	top: 50px;
+	right: 80px;
+}
+
+.icon-cart {
+	bottom: 40px;
+	left: 100px;
+}

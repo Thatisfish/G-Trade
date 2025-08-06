@@ -57,5 +57,5 @@ a {
 body{
 	background:
         linear-gradient(rgba(237, 72, 64, 0.5), rgba(237, 72, 64, 0.5)),
-        url(./assets/homebg.svg);
+        url(./images/homebg.webp);
 }
