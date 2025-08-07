@@ -34,6 +34,7 @@ export default function Home() {
             <div className='bridge-wrapper'>
                 <div className='bridge'>
                     <div className="circle"></div>
+                    
                     <div className='hot'>
                         <h3>近期熱搜</h3>
                         <div>
