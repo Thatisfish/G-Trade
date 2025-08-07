@@ -1,9 +1,10 @@
 main {
+	font-family: 'Poppins', 'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', sans-serif;
 	background: linear-gradient(to top, #ffffff20, #FF424273),
 		url(./assets/homebg.svg);
 	;
 }
-
+/*------------------------ 主要畫面 ------------------------*/
 .hero-section {
 	position: relative;
 	/* background-color: #e76257; */
@@ -41,7 +42,7 @@ main {
 
 .bp {
 	position: absolute;
-	top: 120px;
+	top: 200px;
 	left: 49%;
 	width: 800px;
 	height: auto;
@@ -103,4 +104,79 @@ main {
 .icon-cart {
 	bottom: 40px;
 	left: 100px;
+}
+
+/*------------------------ 銜接畫面 ------------------------*/
+	.bridge-wrapper{
+		position: relative;
+	}
+	.bridge {
+		display: flex;
+		justify-content: flex-start; /* 水平靠左 */
+		align-items: flex-start;     /* 垂直靠上 */
+		height: 598px;
+		position: relative;
+		background: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0%) 40%, rgba(0, 0, 0, 0%) 60%, rgba(255, 255, 255, 0.3) 100%), #020000;
+		overflow: hidden;
+		padding-left: 438px;
+		padding-top: 170px;
+	}
+
+	.circle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 1500px;
+		height: 1500px;
+		border-radius: 50%;
+		border: 20px solid white;
+		background: transparent;
+		z-index: 0;
+	}
+
+	.bridge .hot {
+		display: flex;
+		flex-direction: column;
+		color: var(--light);
+		z-index: 1; /* 確保文字在圓形之上 */
+	}
+
+	.bridge h3 {
+		text-decoration: none;
+		font-size: 36px;
+		font-weight: 500;
+	}
+
+	.bridge .hot p {
+		margin-top: 20px;
+		font-size: 24px;
+		font-weight: 300;
+	}
+	.Switch{
+		position: absolute;
+		width: 1050px;
+		height: 800px;
+		top: -60px;
+		right: 200px;
+		z-index: 999;
+	}
+
+/*------------------------ 最新上架 ------------------------*/
+.newup{
+	width: 100%;
+	height: 1100px;
+}
+
+/*------------------------ 安全宣導 ------------------------*/
+.infor-card{
+	width: 100%;
+	height: 1300px;
+	background-color: #cdb3ff;
+}
+
+/*------------------------ 最新消息 ------------------------*/
+.news{
+	width: 100%;
+	height: 1300px;
 }
