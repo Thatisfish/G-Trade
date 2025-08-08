@@ -1,4 +1,5 @@
 import '../styles/Home.css'
+import InforCard from '../components/Inforcard'
 import G from '../images/G.webp'
 import A from '../images/A.webp'
 import M from '../images/M.webp'
@@ -27,8 +28,8 @@ export default function Home() {
                 </div>
 
                 {/* 小 icon 裝飾 */}
-                <img className="hero-icon icon-star" src={icon_star} alt="" />
-                <img className="hero-icon icon-cart" src="icon-cart.png" alt="" />
+                {/* <img className="hero-icon icon-star" src={icon_star} alt="" />
+                <img className="hero-icon icon-cart" src="icon-cart.png" alt="" /> */}
                 {/* 其他裝飾圖 */}
             </div>
             <div className='bridge-wrapper'>
@@ -48,7 +49,9 @@ export default function Home() {
                 </div>
             </div>
             <div className='newup'>
-                
+                <h2 className="section-title">最新上架</h2>
+                <InforCard />
+                <button className="view-all-button">查看所有商品</button>
             </div>
             <div className='infor-card'>
 
