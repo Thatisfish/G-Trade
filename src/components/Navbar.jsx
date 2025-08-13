@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
+
 import '../styles/Navbar.css';
 import Logo from '../images/logo.png';
 
@@ -14,17 +16,17 @@ export default function Header() {
     return (
         <header id="topbar">
             <nav className={`navigation ${scrolled ? 'scrolled' : ''}`}>
-                <a href="./index.html">
+                <Link to="/">
                     <div className="logo">
                         <img src={Logo} alt="logo" />
                     </div>
-                </a>
+                </Link>
                 <ul className="menu">
-                    <li><a href="">最新消息</a></li>
-                    <li><a href="">熱門商品</a></li>
-                    <li><a href="">Switch</a></li>
-                    <li><a href="">PS系列</a></li>
-                    <li><a href="">Xbox系列</a></li>
+                    <li><Link to="/New_info">最新消息</Link></li>
+                    <li><Link to="/Hot_commodity">熱門商品</Link></li>
+                    <li><Link to="/Switch">Switch</Link></li>
+                    <li><Link to="/Ps">PS系列</Link></li>
+                    <li><Link to="/Xbox">Xbox系列</Link></li>
                 </ul>
                 <ul className="nav-icon">
                     <li><a className="icon-search" href="#"></a></li>

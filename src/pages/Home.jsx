@@ -57,7 +57,7 @@ export default function Home() {
 
             </div>
             <div className='news'>
-
+                    <h2 className="section-title">最新消息</h2>
             </div>
         </main>
     );
