@@ -57,7 +57,7 @@
 	color: var(--light);
 }
 
-.nav-icon{
+.nav-icon {
 	padding-bottom: 10px;
 }
 
@@ -71,14 +71,38 @@
 }
 
 #topbar .icon-search {
-	background-image: url(../images/icon-search.svg);
+	background-image: url(../images/icon/icon-search.svg);
 }
+
 #topbar .icon-Shopping_cart {
-	background-image: url(../images/icon-Shopping_cart.svg);
+	background-image: url(../images/icon/icon-Shopping_cart.svg);
 }
-#topbar .icon-login {
-	background-image: url(../images/icon-login.svg);
+
+#topbar .icon-member {
+	background-image: url(../images/icon/icon-member.svg);
 }
+
+#topbar .icon-bell {
+	background-image: url(../images/icon/icon_bell.svg);
+}
+
 #topbar .icon-hamburger {
-	background-image: url(../images/icon-hamburger.svg);
+	background-image: url(../images/icon/icon-hamburger.svg);
+}
+
+.shadow-img {
+	position: relative;
+	display: inline-block;
+}
+
+.shadow-img::after {
+	content: '';
+	position: absolute;
+	left: 10%;
+	bottom: 5px;
+	width: 80%;
+	height: 8px;
+	background: rgba(0, 0, 0, 0.3	);
+	filter: blur(6px);
+	border-radius: 50%;
 }

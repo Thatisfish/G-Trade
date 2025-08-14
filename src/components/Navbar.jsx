@@ -29,10 +29,21 @@ export default function Header() {
                     <li><Link to="/Xbox">Xbox系列</Link></li>
                 </ul>
                 <ul className="nav-icon">
-                    <li><a className="icon-search" href="#"></a></li>
-                    <li><a className="icon-Shopping_cart" href="#"></a></li>
-                    <li><a className="icon-login" href="#"></a></li>
-                    <li><a className="icon-hamburger" href="#"></a></li>
+                    <div class="shadow-img">
+                        <li><a className="icon-search" href="#"></a></li>
+                    </div>
+                    <div class="shadow-img">
+                        <li><a className="icon-Shopping_cart" href="#"></a></li>
+                    </div>
+                    <div class="shadow-img">
+                        <li><a className="icon-member" href="#"></a></li>
+                    </div>
+                    <div class="shadow-img">
+                        <li><a className="icon-bell" href="#"></a></li>
+                    </div>
+                    <div class="shadow-img">
+                        <li><a className="icon-hamburger" href="#"></a></li>
+                    </div>
                 </ul>
             </nav>
         </header>

@@ -1,4 +1,9 @@
-main {
+main{
+	background:
+        linear-gradient(rgba(237, 72, 64, 0.5), rgba(237, 72, 64, 0.5)),
+        url(../images/homebg.webp);
+}
+.bodd {
     font-family: 'Poppins', 'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', sans-serif;
     background: linear-gradient(to top, #ffffff20, #FF424273),
         url(./assets/homebg.svg);
