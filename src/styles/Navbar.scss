@@ -1,0 +1,121 @@
+.navigation {
+	background-color: rgba(255, 255, 255, 0);
+	font-weight: 500;
+	font-size: 18px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	padding: 0 20px;
+	height: 80px;
+}
+
+.navigation.scrolled {
+	background-color: #000;
+}
+
+#topbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 85px;
+	z-index: 999;
+}
+
+#topbar ul {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.logo img {
+	padding-top: 20px;
+	height: 100px;
+}
+
+.menu {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 100px;
+	list-style: none;
+	margin: 0;
+	padding-bottom: 15px;
+}
+
+.menu li a {
+	text-decoration: none;
+	color: var(--light);
+}
+
+.nav-icon {
+	padding-bottom: 10px;
+}
+
+#topbar .nav-icon a {
+	width: 35px;
+	height: 35px;
+	margin: 5px;
+}
+
+.shadow-img {
+	position: relative;
+	display: inline-block;
+}
+
+.shadow-img::after {
+	content: '';
+	position: absolute;
+	left: 10%;
+	bottom: 5px;
+	width: 80%;
+	height: 8px;
+	background: rgba(0, 0, 0, 0.25);
+	filter: blur(6px);
+	border-radius: 50%;
+	z-index: 998;
+}
+
+/* Light 主題 */
+.navigation.light #topbar {
+	background-color: rgba(255, 255, 255, 0);
+}
+.navigation.light .icon-search {
+	background-image: url('../images/icon/icon-search_light.svg');
+}
+.navigation.light .icon-Shopping_cart {
+	background-image: url('../images/icon/icon-Shopping_cart_light.svg');
+}
+.navigation.light .icon-member {
+	background-image: url('../images/icon/icon-member_light.svg');
+}
+.navigation.light .icon-bell {
+	background-image: url('../images/icon/icon_bell_light.svg');
+}
+.navigation.light .icon-hamburger {
+	background-image: url('../images/icon/icon-hamburger_light.svg');
+}
+
+/* Red 主題 */
+.navigation.red #topbar {
+	background-color: rgba(255, 255, 255, 0);
+}
+.navigation.red .icon-search {
+	background-image: url('../images/icon/icon-search_red.svg');
+}
+.navigation.red .icon-Shopping_cart {
+	background-image: url('../images/icon/icon-Shopping_cart_red.svg');
+}
+.navigation.red .icon-member {
+	background-image: url('../images/icon/icon-member_red.svg');
+}
+.navigation.red .icon-bell {
+	background-image: url('../images/icon/icon_bell_red.svg');
+}
+.navigation.red .icon-hamburger {
+	background-image: url('../images/icon/icon-hamburger_red.svg');
+}

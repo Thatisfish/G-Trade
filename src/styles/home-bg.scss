@@ -1,0 +1,24 @@
+html,
+body,
+#root {
+    height: 100%;
+}
+
+/* 讓背景能鋪滿 */
+
+.home-bg {
+    min-height: 100vh;
+    background:
+        /* 往上漸層 */
+        linear-gradient(to top, #ffffff20, #FF424273),
+        /* 半透明紅色遮罩 */
+        linear-gradient(rgba(237, 72, 64, 0.5), rgba(237, 72, 64, 0.5)),
+        /* 背景圖 */
+        url(../images/homebg.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.home-bg footer {
+  background-color: transparent; /* Home 頁 Footer 透明 */
+}

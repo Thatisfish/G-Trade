@@ -1,32 +1,37 @@
-import Navbar_Light from './components/Navbar-Light'
-import Footer_Light from './components/Footer_Light'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-import Home from './pages/Home'
-import New_info from './pages/New_info'
-import Hot_commodity from './pages/Hot_commodity'
-import Alltype from './pages/Alltype'
-import Register from './pages/Register'
-import Shopping_cart from './pages/Shopping_cart'
-import Collect from './pages/Collect'
+import Home from './pages/Home';
+import New_info from './pages/New_info';
+import Hot_commodity from './pages/Hot_commodity';
+import Alltype from './pages/Alltype';
+import Register from './pages/Register';
+import Shopping_cart from './pages/Shopping_cart';
+import Collect from './pages/Collect';
 
-function App() {
+export default function App() {
+  const { pathname } = useLocation();
+  const isHome = pathname === '/';
+  const theme = isHome ? 'light' : 'red'; // 主題控制
+
   return (
     <>
-      <Navbar_Light />
-      <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/New_info' element={<New_info/>}></Route>
-        <Route path='/Hot_commodity' element={<Hot_commodity/>}></Route>
-        <Route path='/Alltype' element={<Alltype/>}></Route>
-        <Route path='/Shopping_cart' element={<Shopping_cart/>}></Route>
-        <Route path='/Register' element={<Register/>}></Route>
-        <Route path='/Collect' element={<Collect/>}></Route>
-      </Routes>
-      {/* <Home /> */}
-      <Footer_Light />
-    </>
-  )
-}
+      <Navbar theme={theme} />
 
-export default App
+      <div className={isHome ? 'home-bg' : ''}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/New_info" element={<New_info />} />
+          <Route path="/Hot_commodity" element={<Hot_commodity />} />
+          <Route path="/Alltype" element={<Alltype />} />
+          <Route path="/Shopping_cart" element={<Shopping_cart />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/Collect" element={<Collect />} />
+        </Routes>
+
+        <Footer theme={theme} />
+      </div>
+    </>
+  );
+}

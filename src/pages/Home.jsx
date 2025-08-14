@@ -8,6 +8,7 @@ import icon_star from '../images/icon-star.svg'
 import Slogan from '../images/slogan1.webp'
 import HPP from '../images/HomePageP.webp'
 import Switch from '../images/switch.svg'
+
 export default function Home() {
     return (
         <main>

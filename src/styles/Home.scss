@@ -1,17 +1,8 @@
-main{
-	background:
-        linear-gradient(rgba(237, 72, 64, 0.5), rgba(237, 72, 64, 0.5)),
-        url(../images/homebg.webp);
-}
 .bodd {
     font-family: 'Poppins', 'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', sans-serif;
-    background: linear-gradient(to top, #ffffff20, #FF424273),
-        url(./assets/homebg.svg);
-    ;
 }
 
-
-
+html, body, #root { height: 100%; }
 /*------------------------ 主要畫面 ------------------------*/
 .hero-section {
     position: relative;
@@ -19,6 +10,20 @@ main{
     width: 100%;
     height: 1000px;
     overflow: hidden;
+}
+
+.home-bg {
+    min-height: 100vh;
+    background:
+        /* 第一層：往上漸層 */
+        linear-gradient(to top, #ffffff20, #FF424273),
+        /* 第二層：整體半透明紅色遮罩 */
+        linear-gradient(rgba(237, 72, 64, 0.5), rgba(237, 72, 64, 0.5)),
+        /* 第三層：背景圖片 */
+        url(../images/homebg.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* 上方標語圖檔 */
@@ -204,12 +209,12 @@ main{
     display: inline-block;
     padding: 10px 30px;
     border: 10px solid black;
-        margin-bottom: 24px;
+    margin-bottom: 24px;
     padding: 3px 0;
-    clip-path: polygon(0% 10px, 10px 10px, 10px 0%, 
-                        calc(100% - 10px) 0%, calc(100% - 10px) 10px, 100% 10px, 
-                        100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%, 
-                        10px 100%, 10px calc(100% - 10px), 0% calc(100% - 10px));
+    clip-path: polygon(0% 10px, 10px 10px, 10px 0%,
+            calc(100% - 10px) 0%, calc(100% - 10px) 10px, 100% 10px,
+            100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%,
+            10px 100%, 10px calc(100% - 10px), 0% calc(100% - 10px));
 }
 
 .view-all-button {
