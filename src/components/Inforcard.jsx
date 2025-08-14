@@ -1,4 +1,4 @@
-import '../styles/inforcard.css'
+import '../styles/inforcard.scss'
 import Card from '../components/Card'
 import DKB from '../images/Card_Image/DKB.webp'
 import DS2CE from '../images/Card_Image/DS2CE.webp'

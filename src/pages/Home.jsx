@@ -1,4 +1,4 @@
-import '../styles/Home.css'
+import '../styles/Home.scss'
 import InforCard from '../components/Inforcard'
 import G from '../images/G.webp'
 import A from '../images/A.webp'
