@@ -1,0 +1,18 @@
+.c_backDrop{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.c_loginBox{
+    background: url(../images/allbg.svg);
+    padding: 90px 65px;
+    border-radius: 20px;
+    position: relative;
+    max-width: 500px;
+    width: 90%;  // 小螢幕自動縮小
+}
