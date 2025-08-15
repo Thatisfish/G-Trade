@@ -1,22 +1,3 @@
-.navigation {
-	background-color: rgba(255, 255, 255, 0);
-	font-weight: 500;
-	font-size: 18px;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 999;
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
-	padding: 0 20px;
-	height: 80px;
-}
-
-.navigation.scrolled {
-	background-color: #000;
-}
-
 #topbar {
 	position: fixed;
 	top: 0;
@@ -24,11 +5,19 @@
 	width: 100%;
 	height: 85px;
 	z-index: 999;
-}
-
-#topbar ul {
-	display: flex;
-	justify-content: flex-end;
+	
+	ul{
+		display: flex;
+		justify-content: flex-end;
+	}
+	.nav-icon{
+		padding-bottom: 10px;
+		a{
+			width: 35px;
+			height: 35px;
+			margin: 5px;
+		}
+	}
 }
 
 .logo img {
@@ -47,75 +36,82 @@
 	padding-bottom: 15px;
 }
 
-.menu li a {
-	text-decoration: none;
-	color: var(--light);
-}
-
-.nav-icon {
-	padding-bottom: 10px;
-}
-
-#topbar .nav-icon a {
-	width: 35px;
-	height: 35px;
-	margin: 5px;
-}
 
 .shadow-img {
 	position: relative;
 	display: inline-block;
+	&::after{
+		content: '';
+		position: absolute;
+		left: 10%;
+		bottom: 5px;
+		width: 80%;
+		height: 8px;
+		background: rgba(0, 0, 0, 0.25);
+		filter: blur(6px);
+		border-radius: 50%;
+		z-index: 998;
+	}
 }
 
-.shadow-img::after {
-	content: '';
-	position: absolute;
-	left: 10%;
-	bottom: 5px;
-	width: 80%;
-	height: 8px;
-	background: rgba(0, 0, 0, 0.25);
-	filter: blur(6px);
-	border-radius: 50%;
-	z-index: 998;
-}
 
-/* Light 主題 */
-.navigation.light #topbar {
+.navigation {
+	/* 全局設定 */
 	background-color: rgba(255, 255, 255, 0);
-}
-.navigation.light .icon-search {
-	background-image: url('../images/icon/icon-search_light.svg');
-}
-.navigation.light .icon-Shopping_cart {
-	background-image: url('../images/icon/icon-Shopping_cart_light.svg');
-}
-.navigation.light .icon-member {
-	background-image: url('../images/icon/icon-member_light.svg');
-}
-.navigation.light .icon-bell {
-	background-image: url('../images/icon/icon_bell_light.svg');
-}
-.navigation.light .icon-hamburger {
-	background-image: url('../images/icon/icon-hamburger_light.svg');
+	font-weight: 500;
+	font-size: 18px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	padding: 0 20px;
+	height: 80px;
+	&.scrolled{
+		background-color: #000;
+	}
+	/* Light 主題 */
+	&.light {
+		.menu {
+			li {
+				a {
+					text-decoration: none;
+					color: var(--light);
+				}
+			}
+		}
+
+		// nav-bar icon
+		.icon-search {background-image: url('../images/icon/icon-search_light.svg');}
+		.icon-Shopping_cart {background-image: url('../images/icon/icon-Shopping_cart_light.svg');}
+		.icon-member {background-image: url('../images/icon/icon-member_light.svg');}
+		.icon-bell {background-image: url('../images/icon/icon_bell_light.svg');}
+		.icon-hamburger {background-image: url('../images/icon/icon-hamburger_light.svg');}
+	}
+
+	/* Red 主題 */
+	&.red {
+		.menu {
+			li {
+				a {
+					text-decoration: none;
+					color: var(--nav);
+				}
+			}
+		}
+
+		// nav-bar icon
+		.icon-search {background-image: url('../images/icon/icon-search_red.svg');}
+		.icon-Shopping_cart {background-image: url('../images/icon/icon-Shopping_cart_red.svg');}
+		.icon-member {background-image: url('../images/icon/icon-member_red.svg');}
+		.icon-bell {background-image: url('../images/icon/icon_bell_red.svg');}
+		.icon-hamburger {background-image: url('../images/icon/icon-hamburger_red.svg');}
+	}
 }
 
-/* Red 主題 */
-.navigation.red #topbar {
-	background-color: rgba(255, 255, 255, 0);
-}
-.navigation.red .icon-search {
-	background-image: url('../images/icon/icon-search_red.svg');
-}
-.navigation.red .icon-Shopping_cart {
-	background-image: url('../images/icon/icon-Shopping_cart_red.svg');
-}
-.navigation.red .icon-member {
-	background-image: url('../images/icon/icon-member_red.svg');
-}
-.navigation.red .icon-bell {
-	background-image: url('../images/icon/icon_bell_red.svg');
-}
-.navigation.red .icon-hamburger {
-	background-image: url('../images/icon/icon-hamburger_red.svg');
-}
+
+
+
+

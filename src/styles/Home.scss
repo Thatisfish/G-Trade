@@ -6,7 +6,6 @@ html, body, #root { height: 100%; }
 /*------------------------ 主要畫面 ------------------------*/
 .hero-section {
     position: relative;
-    /* background-color: #e76257; */
     width: 100%;
     height: 1000px;
     overflow: hidden;
@@ -247,4 +246,25 @@ html, body, #root { height: 100%; }
 .news {
     width: 100%;
     height: 1300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title-n {
+    display: flex;
+    
+    font-size: 28px;
+    font-weight: bold;
+    width: 330px;
+    background-color: white;
+    display: inline-block;
+    padding: 10px 30px;
+    border: 10px solid black;
+    margin-bottom: 24px;
+    padding: 3px 0;
+    clip-path: polygon(0% 10px, 10px 10px, 10px 0%,
+            calc(100% - 10px) 0%, calc(100% - 10px) 10px, 100% 10px,
+            100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%,
+            10px 100%, 10px calc(100% - 10px), 0% calc(100% - 10px));
 }
