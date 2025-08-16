@@ -1,0 +1,56 @@
+.c_inputOut {
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    // width: 420px;
+    // height: 56px;
+
+    .c_inputPlace {
+        display: flex;
+        align-items: center;
+        position: relative;
+        // justify-content: center;
+        border: 1px solid #ccc;
+        // width: 420px;
+        height: 56px;
+        // padding: 10px;
+        margin: 10px;
+
+
+        .c_inputIcon {
+            position: absolute;
+            margin-left: 35px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .c_inputBox {
+            display: flex;
+            text-align: center;
+            flex: 1;
+            height: 56px;
+            padding: 0 50px;
+            margin: 20px;
+            border-radius: 999px;
+            background-color: #FCFAFF;
+            border: #444;
+            box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
+            color: #333;
+            font-family: "Noto Sans TC", sans-serif;
+            font-size: 16px;
+
+            &:focus {
+                outline: solid 2px rgb(92, 92, 92)
+            }
+        }
+
+        .c_suffixIn {
+            position: absolute;
+            right: 45px;
+            // margin-left: auto;
+            // gap: 0.5em;
+        }
+    }
+
+}
