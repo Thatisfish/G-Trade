@@ -1,18 +1,151 @@
-.c_backDrop{
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+
+.c_backDrop {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 999;
-}
-.c_loginBox{
-    background: url(../images/allbg.svg);
-    padding: 90px 65px;
-    border-radius: 20px;
-    position: relative;
-    max-width: 500px;
-    width: 90%;  // 小螢幕自動縮小
+
+    .c_loginBox {
+        background: url(../images/allbg.svg);
+        padding: 80px 50px;
+        border-radius: 20px;
+        position: relative;
+        max-width: 500px;
+        width: 90%; // 小螢幕自動縮小
+        height: 600px;
+
+        @media (max-width:640px) {
+            padding: 50px 35px;
+
+        }
+
+        .c_close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        h2 {
+            font-size: 32px;
+            text-align: center;
+            color: #000;
+            font-family: "Noto Sans TC", sans-serif;
+            margin-bottom: 30px;
+        }
+
+        .c_loginForm {
+            display: grid;
+            text-align: center;
+            max-width: 400px;
+            height: 420px;
+
+            @media (max-width:640px) {
+                width: 100%;
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            input {
+                display: flex;
+                text-align: center;
+                height: 56px;
+                padding: 10px;
+                margin: 20px;
+                border-radius: 999px;
+                background-color: #FCFAFF;
+                border: #444;
+                box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
+                color: #333;
+                font-family: "Noto Sans TC", sans-serif;
+                font-size: 16px;
+
+                &:focus {
+                    outline: solid 2px rgb(92, 92, 92)
+                }
+
+                @media (max-width:640px) {
+                    margin: 10px 0 10px;
+                }
+
+            }
+
+            .c_rule {
+                color: #595959;
+                font-family: "Noto Sans TC", sans-serif;
+                font-size: 14px;
+                overflow-x: auto; // 防止橫向溢出
+                white-space: normal; // 允許正常換行
+                word-break: keep-all; // 英文不斷，中文必要時斷
+                width: 100%;
+                margin-top: 20px;
+
+                @media (max-width:640px) {
+                    margin: 10px 0 10px;
+                }
+
+                a {
+                    white-space: nowrap; // 保持連結完整不斷行
+                    display: inline-block; // 可設定 padding、hover 效果
+                    color: #1E39E6;
+                    max-width: 100%;
+                    overflow-wrap: break-word;
+                }
+            }
+
+            .c_btn-login {
+                cursor: pointer;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                margin: 10px 20px 20px;
+                border-radius: 999px;
+                background-color: #DE1A10;
+                border: solid 2px #A12424;
+                color: #FCFAFF;
+                font-size: 24px;
+                font-family: "Noto Sans TC", sans-serif;
+                font-weight: 600;
+                height: 56px;
+                transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
+
+                &:hover {
+                    box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+                }
+
+                &:active {
+                    background-color: #fff;
+                    color: #DE1A10;
+                }
+            }
+
+            .c_try {
+                display: flex;
+                justify-content: space-between;
+                margin: 0 20px 50px;
+                font-family: "Noto Sans TC", sans-serif;
+                font-size: 16px;
+
+                .c_join {
+                    overflow-x: auto;
+                    white-space: normal;
+                }
+
+                a {
+                    white-space: nowrap; // 保持連結完整不斷行
+                    display: inline-block;
+                    color: #1E39E6;
+                }
+            }
+        }
+
+
+
+    }
 }
