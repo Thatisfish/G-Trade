@@ -9,7 +9,7 @@
 ## 組員
 ### Achi
 -  0815-login彈窗_css待續
--  0816-login彈窗_完
+-  0816-login彈窗_完/register_待續
 ### Biki
 - 
 ### 玨
