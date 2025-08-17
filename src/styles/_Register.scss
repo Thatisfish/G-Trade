@@ -1,0 +1,83 @@
+.c_main {
+    display: flex;
+    justify-content: center;
+    margin: 80px 0;
+
+    .c_regWin {
+        display: grid;
+        justify-content: center;
+        text-align: center;
+        max-width: 950px;
+        width: 950px;
+        border-radius: 20px;
+        border: solid 1px #DEDADA;
+        background-color: #FCFAFF;
+        padding: 20px 0;
+
+        .c_regTitle {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 5px;
+            font-family: "Noto Sans TC", sans-serif;
+        }
+
+        .c_regContent {
+            display: grid;
+            justify-content: center;
+            padding: 0 60px;
+            width: 600px;
+
+            .c_ruleCheck {
+                margin: 20px 50px;
+                text-align: left;
+
+                .c_eighteen {
+                    color: #DE1A10;
+                }
+
+                a {
+                    color: #1E39E6;
+                    white-space: nowrap; // 保持連結完整不斷行
+                    display: inline-block; // 可設定 padding、hover 效果
+                }
+            }
+
+            .c_btn-register {
+                cursor: pointer;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                margin: 10px 30px 20px;
+                border-radius: 999px;
+                background-color: #DE1A10;
+                border: solid 2px #A12424;
+                color: #FCFAFF;
+                font-size: 24px;
+                font-family: "Noto Sans TC", sans-serif;
+                font-weight: 600;
+                height: 56px;
+                transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
+
+                &:hover {
+                    box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+                }
+
+                &:active {
+                    background-color: #fff;
+                    color: #DE1A10;
+                }
+            }
+
+            .c_regLogin {
+                display: flex;
+                justify-content: center;
+
+                a {
+                    color: #DE1A10;
+                    white-space: nowrap; // 保持連結完整不斷行
+                    display: inline-block; // 可設定 padding、hover 效果
+                }
+            }
+        }
+    }
+}

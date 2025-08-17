@@ -3,10 +3,13 @@ import c_password_icon from "../images/Regform_icon/c_password_icon.png"
 import c_email_icon from "../images/Regform_icon/c_email_icon.png"
 import c_phone_icon from "../images/Regform_icon/c_phone_icon.png"
 import c_check_icon from "../images/Regform_icon/c_check_icon.png"
+import c_line_icon from "../images/Regform_icon/c_line_icon.png"
+
 
 const Formdata = [
     {
         iconSrc: c_username_icon,
+        line: c_line_icon,
         type: "text",
         id: "c_regUser",
         placeholder: "請輸入使用者名稱",
@@ -23,6 +26,7 @@ const Formdata = [
     },
     {
         iconSrc: c_password_icon,
+        line: c_line_icon,
         type: "password",
         id: "c_regPassword",
         placeholder: "請輸入密碼",
@@ -37,6 +41,7 @@ const Formdata = [
     },
     {
         iconSrc: c_password_icon,
+        line: c_line_icon,
         type: "password",
         id: "c_regPassword_2",
         placeholder: "請再次輸入密碼",
@@ -45,12 +50,14 @@ const Formdata = [
     },
     {
         iconSrc: c_email_icon,
+        line: c_line_icon,
         type: "email",
         id: "c_regEmail",
         placeholder: "請輸入電子郵件信箱",
     },
     {
         iconSrc: c_phone_icon,
+        line: c_line_icon,
         type: "tel",
         id: "c_regPhone",
         placeholder: "請輸入手機號碼",
@@ -61,6 +68,7 @@ const Formdata = [
     },
     {
         iconSrc: c_check_icon,
+        line: c_line_icon,
         type: "text",
         id: "c_regCheck",
         placeholder: "請輸入驗證碼",

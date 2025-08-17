@@ -1,12 +1,13 @@
 import '../styles/_Regform.scss'
 
-const Regform = ({ iconSrc, type, id, placeholder, suffix, hint, pattern, minLength, maxLength }) => {
+const Regform = ({ iconSrc,line, type, id, placeholder, suffix, hint, pattern, minLength, maxLength }) => {
     return (
         <>
             <div className='c_inputOut'>
                 <div className='c_inputPlace'>
                     {/* 左邊icon */}
                     {iconSrc && <img src={iconSrc} className='c_inputIcon' alt={`${placeholder}圖示`} />}
+                    {line && <img src={line} className='c_line' />}
                     {/* 輸入欄位 */}
                     <input className='c_inputBox'
                         type={type}
