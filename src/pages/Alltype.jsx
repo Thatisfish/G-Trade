@@ -3,11 +3,12 @@ import Banner from '../images/banner_pokemon.avif'
 import Cards from '../components/Card.jsx'
 import Footer from '../components/Footer.jsx'
 import Nav from '../components/Navbar.jsx'
-
+// Navbar和footer我有套在最外層，先把這邊的註解掉了
 const Alltype = () => {
   return (
     <>
-      <Nav />
+    
+      {/* <Nav /> */}
       <div className='B_content'>
         <div className='B_banner'>
           <img src={Banner} alt="banner" />
@@ -36,7 +37,7 @@ const Alltype = () => {
 
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
