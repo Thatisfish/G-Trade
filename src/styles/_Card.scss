@@ -1,0 +1,11 @@
+* {
+    outline: 1px solid red;
+    display: flex;
+    justify-content: center;
+}
+
+.B_category {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
