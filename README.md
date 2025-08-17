@@ -10,6 +10,7 @@
 ### Achi
 -  0815-login彈窗_css待續
 -  0816-login彈窗_完/register_待續
+-  0817-register_完
 ### Biki
 - 
 ### 玨
