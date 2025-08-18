@@ -1,18 +1,19 @@
 .c_main {
     display: flex;
     justify-content: center;
-    margin: 80px 0;
+    margin-top: 80px;
 
     .c_regWin {
         display: grid;
         justify-content: center;
         text-align: center;
-        max-width: 950px;
-        width: 950px;
+        max-width: 800px;
+        width: 800px;
         border-radius: 20px;
         border: solid 1px #DEDADA;
         background-color: #FCFAFF;
         padding: 20px 0;
+        margin: 30px 0;
 
         .c_regTitle {
             font-size: 32px;
@@ -28,7 +29,7 @@
             width: 600px;
 
             .c_ruleCheck {
-                margin: 20px 50px;
+                margin: 10px 50px;
                 text-align: left;
 
                 .c_eighteen {
@@ -46,16 +47,17 @@
                 cursor: pointer;
                 justify-content: center;
                 align-items: center;
-                padding: 10px;
-                margin: 10px 30px 20px;
+                padding: 5px;
+                margin: 0 30px 5px;
                 border-radius: 999px;
                 background-color: #DE1A10;
                 border: solid 2px #A12424;
                 color: #FCFAFF;
-                font-size: 24px;
+                font-size: 20px;
                 font-family: "Noto Sans TC", sans-serif;
                 font-weight: 600;
-                height: 56px;
+                // height: 50px;
+                line-height: 30px;
                 transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
 
                 &:hover {

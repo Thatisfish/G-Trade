@@ -3,6 +3,7 @@
     display: grid;
     align-items: center;
     justify-content: center;
+    // width: 90%;
     // width: 420px;
     // height: 56px;
 
@@ -11,20 +12,22 @@
         align-items: center;
         position: relative;
         // border: 1px solid #ccc;
-        height: 56px;
+        height: 50px;
         margin: 10px;
+        width: 420px;
+        // width: 90%;
 
 
         .c_inputIcon {
             position: absolute;
-            margin-left: 35px;
+            margin-left: 20px;
             width: 24px;
             height: 24px;
         }
 
         .c_line {
             position: absolute;
-            margin-left: 65px;
+            margin-left: 50px;
             height: 28px;
             width: 2px;
         }
@@ -33,9 +36,9 @@
             display: flex;
             text-align: center;
             flex: 1;
-            height: 56px;
+            height: 48px;
             padding: 0 60px;
-            margin: 20px;
+            margin: 10px 0;
             border-radius: 999px;
             background-color: #FCFAFF;
             border: #444;
@@ -51,7 +54,7 @@
 
         .c_suffixIn {
             position: absolute;
-            right: 45px;
+            right: 25px;
             border: solid 0.5px #979797;
             border-radius: 5px;
             background-color: #FCFAFF;
