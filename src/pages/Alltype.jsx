@@ -1,13 +1,12 @@
 import '../styles/_Card.scss'
 import Banner from '../images/banner_pokemon.avif'
 import Cards from '../components/Card.jsx'
-import Footer from '../components/Footer.jsx'
-import Nav from '../components/Navbar.jsx'
-// Navbar和footer我有套在最外層，先把這邊的註解掉了
+
+
 const Alltype = () => {
   return (
     <>
-    
+
       {/* <Nav /> */}
       <div className='B_content'>
         <div className='B_banner'>
@@ -22,15 +21,15 @@ const Alltype = () => {
         </div>
 
         <div className='B_item'>
-          <Cards id=''/>
-          <Cards id=''/>
-          <Cards id=''/>
-          <Cards id=''/>
-          <Cards id=''/>
-          <Cards id=''/>
-          <Cards id=''/>
-          <Cards id=''/>
-          <Cards id=''/>
+          <Cards id='' />
+          <Cards id='' />
+          <Cards id='' />
+          <Cards id='' />
+          <Cards id='' />
+          <Cards id='' />
+          <Cards id='' />
+          <Cards id='' />
+          <Cards id='' />
         </div>
 
         <div>

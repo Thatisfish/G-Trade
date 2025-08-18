@@ -1,8 +1,14 @@
-import React from 'react'
-
+import Card from "../components/Card"
+import Sidebar from '../components/Sidebar'
+import '../styles/Collect.scss'
 const Collect = () => {
   return (
-    <div>Collect</div>
+    <main id='Y_Collect'>
+       
+       
+      <div>
+      </div>
+    </main>
   )
 }
 
