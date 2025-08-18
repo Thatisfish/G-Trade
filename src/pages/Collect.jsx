@@ -3,7 +3,7 @@ import Sidebar from '../components/Sidebar'
 import '../styles/Collect.scss'
 const Collect = () => {
   return (
-    <main id='Collect'>
+    <main id='Y_Collect'>
        
        
       <div>
