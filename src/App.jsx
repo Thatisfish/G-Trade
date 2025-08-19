@@ -9,6 +9,7 @@ import Alltype from './pages/Alltype';
 import Register from './pages/Register';
 import Shopping_cart from './pages/Shopping_cart';
 import Collect from './pages/Collect';
+import Real_name from './pages/Real_name';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/Shopping_cart" element={<Shopping_cart />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Collect" element={<Collect />} />
+          <Route path="/Real_name" element={<Real_name />} />
         </Routes>
 
         <Footer theme={theme} />

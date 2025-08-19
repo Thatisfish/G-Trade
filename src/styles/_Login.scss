@@ -35,7 +35,6 @@
             font-size: 32px;
             text-align: center;
             color: #000;
-            font-family: "Noto Sans TC", sans-serif;
             margin-bottom: 30px;
         }
 
@@ -63,7 +62,7 @@
                 border: #444;
                 box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
                 color: #333;
-                font-family: "Noto Sans TC", sans-serif;
+
                 font-size: 16px;
 
                 &:focus {
@@ -78,7 +77,6 @@
 
             .c_rule {
                 color: #595959;
-                font-family: "Noto Sans TC", sans-serif;
                 font-size: 14px;
                 overflow-x: auto; // 防止橫向溢出
                 white-space: normal; // 允許正常換行
@@ -110,7 +108,6 @@
                 border: solid 2px #A12424;
                 color: #FCFAFF;
                 font-size: 24px;
-                font-family: "Noto Sans TC", sans-serif;
                 font-weight: 600;
                 height: 56px;
                 transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
@@ -129,12 +126,15 @@
                 display: flex;
                 justify-content: space-between;
                 margin: 0 20px 50px;
-                font-family: "Noto Sans TC", sans-serif;
                 font-size: 16px;
 
                 .c_join {
                     overflow-x: auto;
                     white-space: normal;
+
+                    a {
+                        color: #DE1A10;
+                    }
                 }
 
                 a {

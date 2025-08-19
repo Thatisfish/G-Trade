@@ -1,0 +1,40 @@
+.c_realMain {
+    margin-top: 80px;
+
+
+    div {
+        display: grid;
+        justify-content: center;
+        // max-width: 800px;
+        // width: 800px;
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+
+        }
+
+        .c_realTop {
+            font-size: 16px;
+
+        }
+
+        input {
+            display: flex;
+            text-align: center;
+            flex: 1;
+            height: 48px;
+            padding: 0 60px;
+            margin: 10px 0;
+            border-radius: 999px;
+            background-color: #FCFAFF;
+            border: #444;
+            box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
+            color: #333;
+            font-size: 16px;
+
+            &:focus {
+                outline: solid 2px rgb(92, 92, 92)
+            }
+        }
+    }
+}
