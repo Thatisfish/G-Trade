@@ -8,6 +8,7 @@ const Collect = () => {
       <Sidebar/>
       <Card/>
       <Card/>
+      <Card/>
     
     
       <div>
