@@ -2,19 +2,40 @@ import React from 'react'
 
 import "../styles/_Sidebar.scss"
 
-const Sidebar = () => {
+const MENU = [
+  { key: "y_wishlist", label: "收藏清單", icon: "📌" },
+  { key: "y_orders", label: "我的訂單", icon: "🧾" },
+  { key: "y_coupons", label: "優惠券匣", icon: "🎟️" },
+  { key: "y_verify", label: "實名認證", icon: "🪪" },
+  { key: "y_support", label: "客服中心", icon: "💬" },
+];
+
+export default function Sidebar({ collapsed = false, activeKey, onSelect }) {
   return (
-    <aside className='sidebar'>
-        <ul>
-            <li>收藏清單</li>
-            <li>訂單管理</li>
-            <li>優惠劵夾</li>
-            <li>實名認證</li>
-            <li>客服中心</li>
-        </ul>
-
-    </aside>
-  )
+    <nav
+      className={`sidebar ${collapsed ? "is-collapsed" : ""}`}
+      aria-label="側邊選單"
+    >
+      <ul className="sidebar__list">
+        {MENU.map((item) => {
+          const isActive = activeKey === item.key;
+          return (
+            <li key={item.key}>
+              <button
+                type="button"
+                className={`sidebar__item ${isActive ? "is-active" : ""}`}
+                aria-current={isActive ? "page" : undefined}
+                onClick={() => onSelect?.(item.key)}
+              >
+                <span className="sidebar__icon" aria-hidden="true">
+                  {item.icon}
+                </span>
+                <span className="sidebar__label">{item.label}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
 }
-
-export default Sidebar
