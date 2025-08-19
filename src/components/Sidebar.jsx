@@ -1,41 +1,33 @@
-import React from 'react'
-
 import "../styles/_Sidebar.scss"
 
-const MENU = [
-  { key: "y_wishlist", label: "收藏清單", icon: "📌" },
-  { key: "y_orders", label: "我的訂單", icon: "🧾" },
-  { key: "y_coupons", label: "優惠券匣", icon: "🎟️" },
-  { key: "y_verify", label: "實名認證", icon: "🪪" },
-  { key: "y_support", label: "客服中心", icon: "💬" },
-];
 
-export default function Sidebar({ collapsed = false, activeKey, onSelect }) {
+const Sidebar = () => {
   return (
-    <nav
-      className={`sidebar ${collapsed ? "is-collapsed" : ""}`}
-      aria-label="側邊選單"
-    >
-      <ul className="sidebar__list">
-        {MENU.map((item) => {
-          const isActive = activeKey === item.key;
-          return (
-            <li key={item.key}>
-              <button
-                type="button"
-                className={`sidebar__item ${isActive ? "is-active" : ""}`}
-                aria-current={isActive ? "page" : undefined}
-                onClick={() => onSelect?.(item.key)}
-              >
-                <span className="sidebar__icon" aria-hidden="true">
-                  {item.icon}
-                </span>
-                <span className="sidebar__label">{item.label}</span>
-              </button>
-            </li>
-          );
-        })}
+    <aside className="sidebar">
+      <ul className="sidebar-menu">
+        <li className="active">
+          <span className="icon">📁</span>
+          收藏清單
+        </li>
+        <li>
+          <span className="icon">📦</span>
+          我的訂單
+        </li>
+        <li>
+          <span className="icon">🎟️</span>
+          優惠券匣
+        </li>
+        <li>
+          <span className="icon">✅</span>
+          實名認證
+        </li>
+        <li>
+          <span className="icon">💬</span>
+          客服中心
+        </li>
       </ul>
-    </nav>
+    </aside>
   );
-}
+};
+
+export default Sidebar;

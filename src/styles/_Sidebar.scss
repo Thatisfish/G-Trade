@@ -1,77 +1,47 @@
-// src/components/Sidebar/Sidebar.scss
-$sidebar-bg: #d33; // 主色：紅
-$sidebar-bg-hover: #c12;
-$sidebar-text: #fff;
-$sidebar-active-bg: rgba(255, 255, 255, 0.15);
-$sidebar-width: 240px;
-$sidebar-collapsed-width: 72px;
-$ease: 180ms ease;
 
 .sidebar {
   margin-top: 80px;
-  background: $sidebar-bg;
-  color: $sidebar-text;
-  width: $sidebar-width;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 8px 0;
-  transition: width $ease;
-}
+  margin-left: 100px;
+  width: 240px;
+  border-radius: 16px;
+  padding: 20px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-.sidebar.is-collapsed {
-  width: $sidebar-collapsed-width;
-}
+  // 🎨 背景：紅色漸層 + 圓點花紋
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.15) 20%, transparent 20%) 0 0 / 40px 40px,
+    linear-gradient(145deg, #e60023, #b5001b);
 
-.sidebar__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
-.sidebar__item {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-  transition: background $ease, color $ease;
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
 
-  &:hover {
-    background: $sidebar-bg-hover;
-  }
+      .icon {
+        font-size: 18px;
+      }
 
-  &.is-active {
-    background: $sidebar-active-bg;
-  }
-}
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
 
-.sidebar__icon {
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.sidebar__label {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-// 收合時只顯示圖示
-.sidebar.is-collapsed {
-  .sidebar__label {
-    display: none;
-  }
-  .sidebar__icon {
-    margin: 0 auto;
+      &.active {
+        background: #fff;
+        color: #000;
+      }
+    }
   }
 }
+
