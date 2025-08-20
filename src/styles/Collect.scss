@@ -1,21 +1,32 @@
-.Collect{
+.y_Collect {
+  display: flex;
+  justify-content: center;
+  margin: 80px 0;
+  gap: 100px;
+
+  .y_cardbox {
     margin-top: 80px;
-}
-#y_Collect {
+    width: 950px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
   .info-card {
-    width: 260px;   // 固定寬度
-    height: 340px;  // 固定高度
+    width: 260px; // 固定寬度
+    height: 340px; // 固定高度
+    margin-bottom: 10px;
     border-radius: 12px;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
 
     img {
       width: 100%;
-      height: 180px;        // 固定圖片高度
-      object-fit: cover;    // 保持比例裁切
+      height: 180px; // 固定圖片高度
+      object-fit: cover; // 保持比例裁切
     }
 
     .card-body {
