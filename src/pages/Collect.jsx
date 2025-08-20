@@ -58,46 +58,46 @@ const Collect = () => {
       size: 'small'
     },
     {
-        id: 6,
-        tag: '限時優惠',
-        category: '配件',
-        image: SWP2,
-        title: 'switch 手把 公司貨 九成新 可面交',
-        seller: 'fun31**56',
-        priceNow: '5000',
-        priceOld: '5500',
-        size: 'medium'
-      },
-      {
-          id: 7,
-          tag: '限時優惠',
-          image: SW2,
-          category: '主機',
-          title: '全新紅藍switch主機 附明星大亂鬥遊戲片全新紅藍switch主機 附明星大亂鬥遊戲片',
-          seller: 'fun31**56',
-          priceNow: '5000',
-          priceOld: '5500',
-          size: 'small'
-        },
-        {
-          id: 8,
-          tag: '全新上架',
-          category: '遊戲',
-          image: DS2CE,
-          title: '死亡擱淺典藏版',
-          seller: 'Ds2CE**250626',
-          priceNow: '1100',
-          size: 'medium'
-        },
-        {
-          id: 9,
-          image: DKB,
-          category: '遊戲',
-          title: '咚奇剛蕉力全開+咚奇剛amiibo',
-          seller: 'paly**56',
-          priceNow: '800',
-          size: 'small'
-        },
+      id: 6,
+      tag: '限時優惠',
+      category: '配件',
+      image: SWP2,
+      title: 'switch 手把 公司貨 九成新 可面交',
+      seller: 'fun31**56',
+      priceNow: '5000',
+      priceOld: '5500',
+      size: 'medium'
+    },
+    {
+      id: 7,
+      tag: '限時優惠',
+      image: SW2,
+      category: '主機',
+      title: '全新紅藍switch主機 附明星大亂鬥遊戲片全新紅藍switch主機 附明星大亂鬥遊戲片',
+      seller: 'fun31**56',
+      priceNow: '5000',
+      priceOld: '5500',
+      size: 'small'
+    },
+    {
+      id: 8,
+      tag: '全新上架',
+      category: '遊戲',
+      image: DS2CE,
+      title: '死亡擱淺典藏版',
+      seller: 'Ds2CE**250626',
+      priceNow: '1100',
+      size: 'medium'
+    },
+    {
+      id: 9,
+      image: DKB,
+      category: '遊戲',
+      title: '咚奇剛蕉力全開+咚奇剛amiibo',
+      seller: 'paly**56',
+      priceNow: '800',
+      size: 'small'
+    },
   ];
 
   return (
@@ -105,6 +105,18 @@ const Collect = () => {
     <main className="y_Collect">
       {/* 側邊欄 */}
       <Sidebar />
+
+      {/* 麵包屑導覽 */}
+      <div className='y_breadcrumb'>
+        <a href="/">首頁</a>
+        <span className="divider">›</span>
+        <a href="/member">會員中心</a>
+        <span className="divider">›</span>
+        <a href="/shop">購買中心</a>
+        <span className="divider">›</span>
+        <span className="current">收藏清單</span>
+
+      </div>
 
       {/* 商品清單 */}
       <div className="y_cardbox">
