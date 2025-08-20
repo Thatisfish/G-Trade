@@ -1,40 +1,149 @@
 .c_realMain {
     margin-top: 80px;
+    display: flex;
+    justify-content: center;
 
+    .c_realBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 800px;
+        width: 800px;
+        border-radius: 20px;
+        border: solid 1px #DEDADA;
+        background-color: #FCFAFF;
+        padding: 20px 0;
+        margin: 30px 0;
 
-    div {
-        display: grid;
-        justify-content: center;
-        // max-width: 800px;
-        // width: 800px;
-        h2 {
-            font-size: 20px;
-            font-weight: 600;
+        .c_realHead {
+            background-color: #FFE5E5;
+            margin: 20px 0;
+            width: 85%;
+            padding: 10px;
+            border-radius: 10px;
 
-        }
+            h2 {
+                font-size: 18px;
+                font-weight: 600;
+            }
 
-        .c_realTop {
-            font-size: 16px;
+            .c_realTop {
+                font-size: 16px;
 
-        }
-
-        input {
-            display: flex;
-            text-align: center;
-            flex: 1;
-            height: 48px;
-            padding: 0 60px;
-            margin: 10px 0;
-            border-radius: 999px;
-            background-color: #FCFAFF;
-            border: #444;
-            box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
-            color: #333;
-            font-size: 16px;
-
-            &:focus {
-                outline: solid 2px rgb(92, 92, 92)
             }
         }
+
+        .c_realAlert {
+            color: #DE1A10;
+            font-size: 14px;
+        }
+
+        .c_realForm {
+            display: grid;
+            justify-content: center;
+            width: 85%;
+
+            .c_realTopThree {
+                display: grid;
+
+                div {
+                    display: flex;
+                    align-items: center;
+                }
+
+                input {
+                    display: flex;
+                    text-align: center;
+                    flex: 1;
+                    height: 48px;
+                    // width: 100%;
+                    padding: 0 60px;
+                    margin: 10px 0;
+                    border-radius: 999px;
+                    background-color: #FCFAFF;
+                    border: #444;
+                    box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
+                    color: #333;
+                    font-size: 16px;
+
+                    &:focus {
+                        outline: solid 2px rgb(92, 92, 92)
+                    }
+                }
+            }
+
+            label {
+                width: 100px;
+                min-width: 100px;
+                text-align: right;
+                margin-right: 20px;
+            }
+
+            .c_realUpload {
+                display: flex;
+                margin: 10px;
+
+            }
+
+            .c_realOnly {
+                font-size: 14px;
+                font-weight: 700;
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .c_realCheck {
+                // width: 80%;
+                margin: 20px 50px 10px;
+
+                span {
+                    color: #595959;
+                    justify-content: center;
+                    font-size: 14px;
+
+                    .c_realEighteen {
+
+                        color: #DE1A10;
+                    }
+
+                    a {
+                        color: #1E39E6;
+                        white-space: nowrap; // 保持連結完整不斷行
+                        display: inline-block; // 可設定 padding、hover 效果
+                    }
+                }
+            }
+
+            .c_btn-realName {
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5px;
+                margin: 0 150px 5px;
+                // width: 420px;
+                border-radius: 999px;
+                background-color: #DE1A10;
+                border: solid 2px #A12424;
+                color: #FCFAFF;
+                font-size: 20px;
+                font-weight: 600;
+                // height: 50px;
+                line-height: 30px;
+                transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
+
+                &:hover {
+                    box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+                }
+
+                &:active {
+                    background-color: #fff;
+                    color: #DE1A10;
+                }
+            }
+        }
+
+
     }
 }

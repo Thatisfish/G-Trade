@@ -29,7 +29,7 @@ const Register = () => {
               ))
             }
             <div className='c_ruleCheck'>
-              <input type="checkbox" />
+              <input type="checkbox" required />
               <span>
                 我<span className='c_eighteen'>已年滿18歲</span>，且仔細閱讀並明瞭<a href="#">「服務條款」</a>、<a href="#">「免責聲明」</a>、<a href="#">「隱私權聲明」</a>等內容，同意相關規定並願遵守網站規則
               </span>
