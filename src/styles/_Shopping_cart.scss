@@ -1,7 +1,7 @@
-.cart-page {
+.J_cartPage {
   padding: 120px;
 
-  .cart-title {
+  .J_cartTitle {
     text-align: center;
     font-size: 25px;
     margin-bottom: 20px;
@@ -9,7 +9,7 @@
     color: #DE1A10;
   }
 
-  .cart-container {
+  .J_cartContainer {
     display: flex;
     gap: 5%;
     max-width: 75%;
@@ -17,7 +17,7 @@
   }
 
   /* 左側 */
-  .cart-left {
+  .J_cartLeft {
     flex: 2;
     display: flex;
     flex-direction: column;
@@ -25,18 +25,18 @@
   }
 
   /* 右側 */
-  .cart-right {
+  .J_cartRight {
     flex: 1;
   }
 
   /* 區塊通用樣式 */
-  .cart-section {
+  .J_cartSection {
     background: #fff;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
-    .section-title {
+    .J_sectionTitle {
       font-size: 16px;
       font-weight: bold;
       margin-bottom: 10px;
@@ -45,7 +45,7 @@
   }
 
   /* 商品清單 */
-  .cart-item {
+  .J_cartItem {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -60,27 +60,27 @@
       border-radius: 8px;
     }
 
-    .item-info {
+    .J_itemInfo {
       flex: 1;
 
-      .item-title {
+      .J_itemTitle {
         font-size: 14px;
         font-weight: 500;
         margin-bottom: 4px;
       }
 
-      .item-price {
+      .J_itemPrice {
         color: #e60023;
         font-size: 14px;
       }
     }
 
-    .item-qty {
+    .J_itemQty {
       margin-right: 10px;
       font-size: 14px;
     }
 
-    .delete-btn {
+    .J_deleteBtn {
       background: none;
       border: none;
       cursor: pointer;
@@ -94,13 +94,13 @@
   }
 
   /* 運送 & 付款 */
-  .shipping-options,
-  .payment-options {
+  .J_shippingOptions,
+  .J_paymentOptions {
     display: flex;
     flex-direction: column;
     gap: 10px;
 
-    .option-group {
+    .J_optionGroup {
       margin-bottom: 15px;
 
       h3 {
@@ -120,7 +120,7 @@
           margin-right: 5px;
         }
 
-        .price {
+        .J_price {
           color: #e60023;
           margin-left: 4px;
         }
@@ -128,7 +128,7 @@
     }
   }
 
-  .payment-options {
+  .J_paymentOptions {
     label {
       display: flex;
       align-items: center;
@@ -144,7 +144,7 @@
   }
 
   /* 備註 */
-  .notes {
+  .J_notes {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -171,7 +171,7 @@
   }
 
   /* 結帳摘要 */
-  .cart-summary {
+  .J_cartSummary {
     background: #fff;
     padding: 20px;
     border-radius: 12px;
@@ -184,13 +184,13 @@
       font-size: 14px;
     }
 
-    .total {
+    .J_total {
       font-weight: bold;
       font-size: 18px;
       color: #e60023;
     }
 
-    .checkout-btn {
+    .J_checkoutBtn {
       width: 100%;
       background: #e60023;
       color: white;

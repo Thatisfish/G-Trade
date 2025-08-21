@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PaymentOptions() {
   return (
-    <div className="payment-options">
+    <div className="J_paymentOptions">
       <label>
         <input type="radio" name="payment" value="credit" />
         <img src="https://img.icons8.com/color/48/000000/visa.png" alt="visa" />
