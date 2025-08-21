@@ -8,6 +8,7 @@ import icon_star from '../images/icon-star.svg'
 import Slogan from '../images/slogan1.webp'
 import HPP from '../images/HomePageP.webp'
 import Switch from '../images/switch.svg'
+import NewsCard from '../components/NewsCard'
 
 export default function Home() {
     return (
@@ -60,6 +61,9 @@ export default function Home() {
                 </div>
                 <div className='news'>
                     <h2 className="section-title-n">最新消息</h2>
+                    <div className='news-main'>
+                        <NewsCard/>
+                    </div>
                 </div>
             </div>
         </main>
