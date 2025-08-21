@@ -1,7 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../styles/_Real_name.scss"
+import UpLoadBox from '../components/UpLoadBox';
 
 const Real_name = () => {
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const [errMsg, setErrMsg] = useState('');
+  const picPreview = (file) => {
+    setErrMsg('');
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPreviewUrl(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const realErrMsg = (msg) => {
+    setPreviewUrl(null); //清除預覽
+    setErrMsg(msg);
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 阻止預設送出
+    if (!previewUrl) {
+      setErrMsg('請上傳有效的圖片檔案');
+      return;
+    }
+    if (errMsg) {
+      return;
+    }
+  }
   return (
     <>
       <main className='c_realMain'>
@@ -11,7 +37,7 @@ const Real_name = () => {
             <div className='c_realTop'>為了維護交易安全與防止不實帳號，我們將對用戶身分資訊進行實名驗證（如：身分證、健保卡等），確認使用者真實身分。無論您是買家還是賣家，都需要完成驗證，才能使用商品上架與交易等功能唷！</div>
           </header>
           <div className='c_realAlert'>*請輸入與身分證一致的資料</div>
-          <form action="" className='c_realForm'>
+          <form action="" className='c_realForm' onSubmit={handleSubmit}>
             <div className='c_realTopThree'>
               <div>
                 <label htmlFor="">姓名</label>
@@ -29,8 +55,12 @@ const Real_name = () => {
             <div className='c_realUpload'>
               <label htmlFor="">上傳證件圖檔</label>
               <div>
-                <input className='c_realFile' type="file" accept="image/jpeg, image/png" placeholder='身分證正面' required />
-                <input className='c_realFile' type="file" accept="image/jpeg, image/png" placeholder='身分證反面' required />
+                <UpLoadBox onPreview={picPreview} onError={realErrMsg} />
+                {errMsg && (<p>{errMsg}</p>)}
+                {previewUrl && (<img src={previewUrl} alt="預覽圖片" />)}
+                <UpLoadBox onPreview={picPreview} onError={realErrMsg} />
+                {errMsg && (<p>{errMsg}</p>)}
+                {previewUrl && (<img src={previewUrl} alt="預覽圖片" />)}
               </div>
             </div>
             <div className='c_realOnly'>*為保障您的個資安全，請於空白處註明「僅供遊玩人間市集確認身分使用」</div>
