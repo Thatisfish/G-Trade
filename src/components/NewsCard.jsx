@@ -1,41 +1,16 @@
-import React from 'react'
-import banner01 from '../images/banner01.webp'
-import banner02 from '../images/banner02.webp'
+// src/components/NewsCard.jsx
+import React from 'react';
 
-const arrNewsC = [
-    {
-        id: 1,
-        image: banner01,
-        title: '咚奇剛蕉力全開+咚奇剛amiibo',
-        content: 'paly**56',
-    },
-    {
-        id: 2,
-        image: banner02,
-        title: '咚奇剛蕉力全開+咚奇剛amiibo',
-        content: 'paly**56',
-    },
-    {
-        id: 3,
-        image: banner01,
-        title: '咚奇剛蕉力全開+咚奇剛amiibo',
-        content: 'paly**56',
-    },
-    {
-        id: 4,
-        image: banner02,
-        title: '咚奇剛蕉力全開+咚奇剛amiibo',
-        content: 'paly**56',
-    },
-]
+const NewsCard = ({ img, title, content, link = '#' }) => {
+	return (
+		<a href={link} className="news-card">
+			<img src={img} alt={title} />
+			<div className="newfont">
+				<h4>{title}</h4>
+				<p>{content}</p>
+			</div>
+		</a>
+	);
+};
 
-
-const NewsCard = () => {
-    return (
-        <div>
-            {arrNewsC}
-        </div>
-    )
-}
-
-export default NewsCard
+export default NewsCard;

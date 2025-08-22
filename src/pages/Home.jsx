@@ -8,7 +8,8 @@ import icon_star from '../images/icon-star.svg'
 import Slogan from '../images/slogan1.webp'
 import HPP from '../images/HomePageP.webp'
 import Switch from '../images/switch.svg'
-import NewsCardC from '../components/NewsCardC'
+import NewsCardC from '../components/NewsCard'
+import HomeNews from '../components/HomeNewsSection'
 
 export default function Home() {
     return (
@@ -56,13 +57,18 @@ export default function Home() {
                     <InforCard />
                     <button className="view-all-button">查看所有商品</button>
                 </div>
-                <div className='infor-card'>
+                <div className='special'>
+                    <div className='clippath'>
+                    {/* <p>二手商品也能安心購入</p> */}
+                        <div className='clippath2'>
 
+                        </div>
+                    </div>
                 </div>
                 <div className='news'>
                     <h2 className="section-title-n">最新消息</h2>
                     <div className='news-main'>
-                        <NewsCardC/>
+                        <HomeNews />
                     </div>
                 </div>
             </div>
