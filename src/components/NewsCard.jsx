@@ -1,15 +1,40 @@
 import React from 'react'
 import banner01 from '../images/banner01.webp'
 import banner02 from '../images/banner02.webp'
+
+const arrNewsC = [
+    {
+        id: 1,
+        image: banner01,
+        title: '咚奇剛蕉力全開+咚奇剛amiibo',
+        content: 'paly**56',
+    },
+    {
+        id: 2,
+        image: banner02,
+        title: '咚奇剛蕉力全開+咚奇剛amiibo',
+        content: 'paly**56',
+    },
+    {
+        id: 3,
+        image: banner01,
+        title: '咚奇剛蕉力全開+咚奇剛amiibo',
+        content: 'paly**56',
+    },
+    {
+        id: 4,
+        image: banner02,
+        title: '咚奇剛蕉力全開+咚奇剛amiibo',
+        content: 'paly**56',
+    },
+]
+
+
 const NewsCard = () => {
     return (
-        <a href="">
-            <img src={banner01} alt="" />
-            <div className='newfont'>
-                <h4>全館免運，安心入手不多花！</h4>
-                <p>限時活動開跑！於本平台購買任一商品，即享免運優惠，輕鬆下單、無負擔寄送到家！</p>
-            </div>
-        </a>
+        <div>
+            {arrNewsC}
+        </div>
     )
 }
 
