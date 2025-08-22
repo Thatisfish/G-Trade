@@ -10,6 +10,7 @@ import HPP from '../images/HomePageP.webp'
 import Switch from '../images/switch.svg'
 import NewsCardC from '../components/NewsCard'
 import HomeNews from '../components/HomeNewsSection'
+import hand from '../images/home/hand.webp'
 
 export default function Home() {
     return (
@@ -58,11 +59,22 @@ export default function Home() {
                     <button className="view-all-button">查看所有商品</button>
                 </div>
                 <div className='special'>
+                    <img src={hand} alt="" />
+                    <svg class="headline-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="200">
+                        <text x="280" y="100" font-size="48" font-weight="700"
+                            fill="none"
+                            stroke="#fff" stroke-width="10"
+                            stroke-linejoin="round" stroke-linecap="round">
+                            二手商品也能安心購入
+                        </text>
+                        <text x="280" y="100" font-size="48" font-weight="700"
+                            fill="#000">
+                            二手商品也能安心購入
+                        </text>
+                    </svg>
                     <div className='clippath'>
-                    {/* <p>二手商品也能安心購入</p> */}
-                        <div className='clippath2'>
-
-                        </div>
+                    </div>
+                    <div className='clippath2'>
                     </div>
                 </div>
                 <div className='news'>
