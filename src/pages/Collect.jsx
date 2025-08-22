@@ -105,24 +105,25 @@ const Collect = () => {
     <main className="y_Collect">
       {/* 側邊欄 */}
       <Sidebar />
+      <div>
+        {/* 麵包屑導覽 */}
+        <div className='y_breadcrumb'>
+          <a href="/">首頁</a>
+          <span className="divider">›</span>
+          <a href="/member">會員中心</a>
+          <span className="divider">›</span>
+          <a href="/shop">購買中心</a>
+          <span className="divider">›</span>
+          <span className="current">收藏清單</span>
+        </div>
 
-      {/* 麵包屑導覽 */}
-      <div className='y_breadcrumb'>
-        <a href="/">首頁</a>
-        <span className="divider">›</span>
-        <a href="/member">會員中心</a>
-        <span className="divider">›</span>
-        <a href="/shop">購買中心</a>
-        <span className="divider">›</span>
-        <span className="current">收藏清單</span>
+        {/* 商品清單 */}
+        <div className="y_cardbox">
+          {y_products.map((item) => (
+            <Card key={item.id} {...item} />
+          ))}
+        </div>
 
-      </div>
-
-      {/* 商品清單 */}
-      <div className="y_cardbox">
-        {y_products.map((item) => (
-          <Card key={item.id} {...item} />
-        ))}
       </div>
     </main>
   );
