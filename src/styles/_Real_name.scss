@@ -1,150 +1,210 @@
 .c_realMain {
-    margin-top: 80px;
+    margin: 80px 0;
     display: flex;
     justify-content: center;
+    gap: 100px;
 
-    .c_realBox {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 800px;
-        width: 800px;
-        border-radius: 20px;
-        border: solid 1px #DEDADA;
-        background-color: #FCFAFF;
-        padding: 20px 0;
-        margin: 30px 0;
+    .c_realOutside {
+        margin-top: 80px;
 
-        .c_realHead {
-            background-color: #FFE5E5;
-            margin: 20px 0;
-            width: 85%;
-            padding: 10px;
-            border-radius: 10px;
-
-            h2 {
-                font-size: 18px;
-                font-weight: 600;
-            }
-
-            .c_realTop {
-                font-size: 16px;
-
-            }
+        .y_breadcrumb {
+            display: flex;
+            margin-bottom: 20px;
         }
 
-        .c_realAlert {
-            color: #DE1A10;
-            font-size: 14px;
-        }
+        .c_realBox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 840px;
+            width: 840px;
+            border-radius: 20px;
+            border: solid 1px #DEDADA;
+            background-color: #FCFAFF;
+            padding: 20px 0;
+            
+            .c_realHead {
+                background-color: #FFE5E5;
+                margin: 20px 0;
+                width: 85%;
+                padding: 10px;
+                border-radius: 10px;
 
-        .c_realForm {
-            display: grid;
-            justify-content: center;
-            width: 85%;
-
-            .c_realTopThree {
-                display: grid;
-
-                div {
-                    display: flex;
-                    align-items: center;
+                h2 {
+                    font-size: 18px;
+                    font-weight: 600;
                 }
 
-                input {
+                .c_realTop {
+                    font-size: 16px;
+
+                }
+            }
+
+            .c_realAlert {
+                color: #DE1A10;
+                font-size: 14px;
+            }
+
+            .c_realForm {
+                display: grid;
+                justify-content: center;
+                width: 85%;
+
+                .c_realTopThree {
+                    display: grid;
+
+                    div {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    input {
+                        display: flex;
+                        text-align: center;
+                        justify-content: center;
+                        flex: 1;
+                        height: 48px;
+                        // width: 100%;
+                        padding: 0 60px;
+                        margin: 10px 0;
+                        border-radius: 999px;
+                        background-color: #FCFAFF;
+                        border: #444;
+                        box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
+                        color: #333;
+                        font-size: 16px;
+
+                        &:focus {
+                            outline: solid 2px rgb(92, 92, 92)
+                        }
+                    }
+                }
+
+                label {
+                    width: 100px;
+                    min-width: 100px;
+                    text-align: right;
+                    margin-right: 20px;
+                }
+
+                .c_realUpload {
                     display: flex;
                     text-align: center;
                     justify-content: center;
-                    flex: 1;
-                    height: 48px;
-                    // width: 100%;
-                    padding: 0 60px;
-                    margin: 10px 0;
-                    border-radius: 999px;
-                    background-color: #FCFAFF;
-                    border: #444;
-                    box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
-                    color: #333;
-                    font-size: 16px;
+                    margin-top: 10px;
 
-                    &:focus {
-                        outline: solid 2px rgb(92, 92, 92)
+                    .c_upLoadGroup {
+                        display: flex;
+                        gap: 20px;
+                    }
+
+                    .c_uploadCase {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+
+
+                        .c_upLoadFrame {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+                            border-radius: 8px;
+                            background-color: #FCFAFF;
+                            border: #444;
+                            box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
+                            height: 170px;
+                            width: 280px;
+                            padding: 5px;
+                            overflow: hidden;
+
+                            .c_realPreview {
+                                display: block;
+                                max-width: 98%;
+                                max-height: 98%;
+                                object-fit: cover;
+                                object-position: center;
+                                border-radius: 8px;
+                            }
+
+                            .c_upLoadInput {
+                                position: absolute;
+                                opacity: 0;
+                                width: 100%;
+                                height: 100%;
+                                cursor: pointer;
+                            }
+
+                        }
+
+                        .c_upLoadLabel {
+                            font-size: 16px;
+                            font-weight: 300;
+                        }
                     }
                 }
-            }
 
-            label {
-                width: 100px;
-                min-width: 100px;
-                text-align: right;
-                margin-right: 20px;
-            }
-
-            .c_realUpload {
-                display: flex;
-                margin: 10px;
-
-            }
-
-            .c_realOnly {
-                font-size: 14px;
-                font-weight: 700;
-                display: flex;
-                justify-content: center;
-                margin-top: 20px;
-            }
-
-            .c_realCheck {
-                // width: 80%;
-                margin: 20px 50px 10px;
-
-                span {
-                    color: #595959;
-                    justify-content: center;
+                .c_realOnly {
                     font-size: 14px;
+                    font-weight: 700;
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 20px;
+                }
 
-                    .c_realEighteen {
+                .c_realCheck {
+                    // width: 80%;
+                    margin: 20px 50px 10px;
 
+                    span {
+                        color: #595959;
+                        justify-content: center;
+                        font-size: 14px;
+
+                        .c_realEighteen {
+
+                            color: #DE1A10;
+                        }
+
+                        a {
+                            color: #1E39E6;
+                            white-space: nowrap; // 保持連結完整不斷行
+                            display: inline-block; // 可設定 padding、hover 效果
+                        }
+                    }
+                }
+
+                .c_btn-realName {
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 5px;
+                    margin: 0 150px 5px;
+                    // width: 420px;
+                    border-radius: 999px;
+                    background-color: #DE1A10;
+                    border: solid 2px #A12424;
+                    color: #FCFAFF;
+                    font-size: 20px;
+                    font-weight: 600;
+                    // height: 50px;
+                    line-height: 30px;
+                    transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
+
+                    &:hover {
+                        box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+                    }
+
+                    &:active {
+                        background-color: #fff;
                         color: #DE1A10;
                     }
-
-                    a {
-                        color: #1E39E6;
-                        white-space: nowrap; // 保持連結完整不斷行
-                        display: inline-block; // 可設定 padding、hover 效果
-                    }
                 }
             }
 
-            .c_btn-realName {
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 5px;
-                margin: 0 150px 5px;
-                // width: 420px;
-                border-radius: 999px;
-                background-color: #DE1A10;
-                border: solid 2px #A12424;
-                color: #FCFAFF;
-                font-size: 20px;
-                font-weight: 600;
-                // height: 50px;
-                line-height: 30px;
-                transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
-
-                &:hover {
-                    box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
-                }
-
-                &:active {
-                    background-color: #fff;
-                    color: #DE1A10;
-                }
-            }
         }
-
-
     }
 }
