@@ -20,7 +20,7 @@ const Sidebar = () => {
         <li>
           <NavLink to="/" className={({ isActive }) => isActive ? "active" : undefined}>
             <span className="icon">🎟️</span>
-            最新消息
+            優惠券匣
           </NavLink>
         </li>
         <li>

@@ -12,6 +12,7 @@ import Shopping_cart from './pages/Shopping_cart';
 import Collect from './pages/Collect';
 import Real_name from './pages/Real_name';
 import Package from './pages/Package';
+import ScrollToTop from './js/ScrollToTop';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -23,6 +24,7 @@ export default function App() {
       <Navbar theme={theme} />
 
       <div className={isHome ? "home-bg" : ""}>
+        <ScrollToTop/>
         <Routes>
           {/* 首頁 */}
           <Route path="/" element={<Home />} />
