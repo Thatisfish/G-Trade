@@ -14,7 +14,7 @@
 -  0819-realname_待續
 -  0820-realname_差上傳區
 -  0821-realname_調整中
--  0823-realname_95%/移除多餘元件/package-top區_放大鏡超連結
+-  0823-realname_95%/移除多餘元件/package-top+2區_放大鏡超連結
 ### Biki
 - 0823-實名制切版
 - 0817-類別總覽切版&樣式
