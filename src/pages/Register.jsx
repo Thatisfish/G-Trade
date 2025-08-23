@@ -8,14 +8,8 @@ import { useState } from 'react';
 
 const Register = () => {
   // Login彈窗
-  const [showLogin, setShowLogin] = useState(true);
   return (
     <>
-      {/* Login彈窗 */}
-      {showLogin && (
-        <Login onClose={() => setShowLogin(false)} />
-      )
-      }
       <main className='c_main'>
         <section className='c_regWin'>
           <header className='c_regTitle'>

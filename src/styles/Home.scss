@@ -44,7 +44,8 @@ body,
 .game-letters {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 1282px;
+    overflow: hidden;
 }
 
 .game-letters>img {

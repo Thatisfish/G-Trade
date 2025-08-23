@@ -1,7 +1,9 @@
 // App.jsx
-import { Route, Routes, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Login from "./components/Login"; // 你的 login 元件
 
 import Home from './pages/Home';
 import New_info from './pages/New_info';
@@ -17,19 +19,29 @@ import ScrollToTop from './js/ScrollToTop';
 export default function App() {
   const { pathname } = useLocation();
   const isHome = pathname === "/";
-  const theme = isHome ? "light" : "red"; // 主題控制
+  const theme = isHome ? "light" : "red";
+
+  const [showLogin, setShowLogin] = useState(false);
+  const navigate = useNavigate();
+
+  const openLogin = () => setShowLogin(true);
+  const closeLogin = () => setShowLogin(false);
+  const goRegister = () => {
+    setShowLogin(false);
+    navigate("/Register");
+  };
 
   return (
     <>
-      <Navbar theme={theme} />
+      <Navbar theme={theme} onOpenLogin={openLogin} />
 
       <div className={isHome ? "home-bg" : ""}>
-        <ScrollToTop/>
+        {showLogin && (
+          <Login onClose={closeLogin} onRegister={goRegister} />
+        )}
+        <ScrollToTop />
         <Routes>
-          {/* 首頁 */}
           <Route path="/" element={<Home />} />
-
-          {/* 其他頁面 */}
           <Route path="/New_info" element={<New_info />} />
           <Route path="/Hot_commodity" element={<Hot_commodity />} />
           <Route path="/Alltype" element={<Alltype />} />

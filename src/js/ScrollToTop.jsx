@@ -6,7 +6,7 @@ export default function ScrollToTop() {
 
     useEffect(() => {
         // 當路由變動時，自動捲到頂
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     }, [pathname]);
 
     return null; // 這個元件不渲染任何東西
