@@ -45,7 +45,7 @@ export default function Navbar({ theme }) {
 						<li><Link className="icon-bell" to="/Collect"></Link></li>
 					</div>
 					<div className="shadow-img">
-						<li><Link className="icon-hamburger" to="#"></Link></li>
+						<li><Link className="icon-hamburger" to="/RealN_Info"></Link></li>
 					</div>
 				</ul>
 			</nav>
