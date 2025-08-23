@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../styles/_Login.scss'
 
 const Login = ({ onClose }) => {
@@ -19,7 +20,9 @@ const Login = ({ onClose }) => {
                         <div className='c_rule'>繼續即表示你同意我們的<a href="#">《服務條款》</a>，<br />並確認你已了解<a href="#">《隱私權政策》</a></div>
                         <button className="c_btn-login" type="submit">登入</button>
                         <div className='c_try'>
-                            <div className='c_join'>加入我們！<a href="#">註冊</a></div>
+                            <div className="c_join">加入我們！
+                                <Link to="/Register" onClick={onClose}>註冊</Link>
+                            </div>
                             <div>
                                 <a className='c_forget' href="#">忘記密碼？</a>
                             </div>
@@ -35,22 +38,3 @@ export default Login
 
 
 
-
-/* 在某一頁按出會員登入畫面，但要點旁邊或x關閉的時候要放這段 */
-/* 直接放在 App.jsx（或 Layout / _app.js 這種全域容器） */
-// import { useState } from 'react';
-// import Login from './components/Login'; // 路徑依你專案結構調整
-
-// export default function App() {
-//   const [showLogin, setShowLogin] = useState(false);
-
-//   return (
-//     <>
-//       <button onClick={() => setShowLogin(true)}>開啟登入視窗</button>
-
-//       {showLogin && (
-//         <Login onClose={() => setShowLogin(false)} />
-//       )}
-//     </>
-//   );
-// }

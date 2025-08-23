@@ -5,17 +5,23 @@
 	width: 100%;
 	height: 85px;
 	z-index: 999;
-	
-	ul{
+
+	ul {
 		display: flex;
 		justify-content: flex-end;
 	}
-	.nav-icon{
-		padding-bottom: 10px;
-		a{
-			width: 35px;
-			height: 35px;
+
+	.nav-icon {
+		li {
 			margin: 5px;
+			a {
+				width: 40px;
+				height: 35px;
+			}
+			button {
+				width: 40px;
+				height: 40px;
+			}
 		}
 	}
 }
@@ -40,7 +46,8 @@
 .shadow-img {
 	position: relative;
 	display: inline-block;
-	&::after{
+
+	&::after {
 		content: '';
 		position: absolute;
 		left: 10%;
@@ -69,9 +76,11 @@
 	justify-content: space-between;
 	padding: 0 20px;
 	height: 80px;
-	&.scrolled{
+
+	&.scrolled {
 		background-color: #000;
 	}
+
 	/* Light 主題 */
 	&.light {
 		.menu {
@@ -84,11 +93,28 @@
 		}
 
 		// nav-bar icon
-		.icon-search {background-image: url('../images/icon/icon-search_light.svg');}
-		.icon-Shopping_cart {background-image: url('../images/icon/icon-Shopping_cart_light.svg');}
-		.icon-member {background-image: url('../images/icon/icon-member_light.svg');}
-		.icon-bell {background-image: url('../images/icon/icon_bell_light.svg');}
-		.icon-hamburger {background-image: url('../images/icon/icon-hamburger_light.svg');}
+		.icon-search {
+			background-image: url('../images/icon/icon-search_light.svg');
+		}
+
+		.icon-Shopping_cart {
+			background-image: url('../images/icon/icon-Shopping_cart_light.svg');
+		}
+
+		.icon-member {
+			all: unset; // 重置瀏覽器預設 button 樣式
+			cursor: pointer;
+			display: inline-block;
+			background: url('../images/icon/icon-member_light.svg') no-repeat center/contain;
+		}
+
+		.icon-bell {
+			background-image: url('../images/icon/icon_bell_light.svg');
+		}
+
+		.icon-hamburger {
+			background-image: url('../images/icon/icon-hamburger_light.svg');
+		}
 	}
 
 	/* Red 主題 */
@@ -103,15 +129,28 @@
 		}
 
 		// nav-bar icon
-		.icon-search {background-image: url('../images/icon/icon-search_red.svg');}
-		.icon-Shopping_cart {background-image: url('../images/icon/icon-Shopping_cart_red.svg');}
-		.icon-member {background-image: url('../images/icon/icon-member_red.svg');}
-		.icon-bell {background-image: url('../images/icon/icon_bell_red.svg');}
-		.icon-hamburger {background-image: url('../images/icon/icon-hamburger_red.svg');}
+		.icon-search {
+			background-image: url('../images/icon/icon-search_red.svg');
+		}
+
+		.icon-Shopping_cart {
+			background-image: url('../images/icon/icon-Shopping_cart_red.svg');
+		}
+
+		.icon-member {
+			all: unset; // 重置瀏覽器預設 button 樣式
+			cursor: pointer;
+			display: inline-block;
+			/* 保留原本 Link 時的 icon 設定，例如背景圖 */
+			background: url('../images/icon/icon-member_red.svg') no-repeat center/contain;
+		}
+
+		.icon-bell {
+			background-image: url('../images/icon/icon_bell_red.svg');
+		}
+
+		.icon-hamburger {
+			background-image: url('../images/icon/icon-hamburger_red.svg');
+		}
 	}
 }
-
-
-
-
-
