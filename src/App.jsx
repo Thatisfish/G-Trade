@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import Shopping_cart from './pages/Shopping_cart';
 import Collect from './pages/Collect';
 import Real_name from './pages/Real_name';
+import Package from './pages/Package';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/Collect" element={<Collect />} />
           <Route path="/Real_name" element={<Real_name />} />
+          <Route path='/Package' element={<Package />} />
         </Routes>
 
         <Footer theme={theme} />

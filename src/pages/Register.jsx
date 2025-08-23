@@ -22,7 +22,6 @@ const Register = () => {
             <h2>加入遊玩人間</h2>
           </header>
           <form className='c_regContent'>
-            {/* <input type="text" className="c_regUser" title="使用者名稱" placeholder="請輸入使用者名稱" required autoFocus /> */}
             {
               Formdata.map((field, index) => (
                 <Regform key={field.id || index}{...field} />

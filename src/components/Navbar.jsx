@@ -33,7 +33,7 @@ export default function Navbar({ theme }) {
 
 				<ul className="nav-icon">
 					<div className="shadow-img">
-						<li><Link className="icon-search" to="#"></Link></li>
+						<li><Link className="icon-search" to="/Package"></Link></li>
 					</div>
 					<div className="shadow-img">
 						<li><Link className="icon-Shopping_cart" to="/Shopping_cart"></Link></li>
