@@ -5,14 +5,14 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./components/Login"; // 你的 login 元件
 
-import Home from "./pages/Home";
-import New_info from "./pages/New_info";
-import Hot_commodity from "./pages/Hot_commodity";
-import Alltype from "./pages/Alltype";
-import Register from "./pages/Register";
-import Shopping_cart from "./pages/Shopping_cart";
-import Collect from "./pages/Collect";
-import Real_name from "./pages/Real_name";
+import Home from './pages/Home';
+import New_info from './pages/New_info';
+import Hot_commodity from './pages/Hot_commodity';
+import Alltype from './pages/Alltype';
+import Register from './pages/Register';
+import Shopping_cart from './pages/Shopping_cart';
+import Collect from './pages/Collect';
+import RealN_Info from './pages/RealN_Info';
 import Package from './pages/Package';
 import ScrollToTop from './js/ScrollToTop';
 
@@ -48,7 +48,7 @@ export default function App() {
           <Route path="/Shopping_cart" element={<Shopping_cart />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Collect" element={<Collect />} />
-          <Route path="/Real_name" element={<Real_name />} />
+          <Route path='/RealN_Info' element={<RealN_Info />} />
           <Route path='/Package' element={<Package />} />
         </Routes>
 

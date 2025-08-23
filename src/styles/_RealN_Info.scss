@@ -1,0 +1,126 @@
+// * {
+//     border: 1px solid red;
+// }
+
+.B_main {
+    margin: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .B_one {
+        width: 65%;
+        height: 100vh;
+    }
+
+    .B_RNtitle {
+        display: flex;
+        justify-content: space-between;
+
+
+        .B_RNtitle01 {
+            flex-direction: column;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            color: #333;
+
+            h2 {
+                font-size: 64px;
+                letter-spacing: .1em;
+
+                span {
+                    font-size: 48px;
+                }
+            }
+
+            small {
+                font-size: 24px;
+                width: 100%;
+            }
+        }
+
+        .B_p {
+            font-size: 28px;
+            margin-top: 90px;
+        }
+
+    }
+
+    .B_intro {
+        display: flex;
+        flex-direction: row;
+        margin-top: 180px;
+        gap: 122px;
+    }
+
+    .B_div {
+        margin-top: 50px;
+
+
+        .B_RNtitle_p1 {
+            width: 240px;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .B_div2 {
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+
+    }
+
+    .B_div2_div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .B_sp {
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+    }
+
+    .B_img1 {
+        width: 300px;
+        display: flex;
+        // flex-direction: row;
+    }
+
+    .B_img2 {
+        width: 220px;
+        height: 236px;
+    }
+
+    .B_two {
+        width: 65%;
+        height: 100vh;
+
+        .B_img3 {
+            width: 70px;
+            align-items: center;
+            margin-left: 45%;
+        }
+
+        .B_h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .B_why {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 150px);
+            gap: 100px;
+            max-width: 800px;
+            margin: 100px auto;
+
+        }
+        .B_img4{
+            width: 80px;
+        }
+    }
+}

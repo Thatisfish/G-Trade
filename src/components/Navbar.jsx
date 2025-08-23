@@ -42,7 +42,7 @@ export default function Navbar({ theme, onOpenLogin }) {
             />
           </li>
           <li className="shadow-img"><Link className="icon-bell" to="/Collect" /></li>
-          <li className="shadow-img"><Link className="icon-hamburger" to="#" /></li>
+          <li className="shadow-img"><Link className="icon-hamburger" to="/RealN_Info" /></li>
         </ul>
       </nav>
     </header>
