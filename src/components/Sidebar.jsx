@@ -1,40 +1,39 @@
-import { Link } from "react-router-dom";
-import "../styles/_Sidebar.scss"
-
+import { NavLink } from "react-router-dom";
+import "../styles/_Sidebar.scss";
 
 const Sidebar = () => {
   return (
     <aside className="sidebar">
       <ul className="sidebar-menu">
-        <li className="active">
-          <Link>
+        <li>
+          <NavLink to="/collect" className={({ isActive }) => isActive ? "active" : undefined}>
             <span className="icon">📁</span>
             收藏清單
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link>
+          <NavLink to="/Orders" className={({ isActive }) => isActive ? "active" : undefined}>
             <span className="icon">📦</span>
             我的訂單
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link>
+          <NavLink to="/" className={({ isActive }) => isActive ? "active" : undefined}>
             <span className="icon">🎟️</span>
-            優惠券匣
-          </Link>
+            最新消息
+          </NavLink>
         </li>
         <li>
-          <Link to="/Real_name">
+          <NavLink to="/Real_name" className={({ isActive }) => isActive ? "active" : undefined}>
             <span className="icon">✅</span>
             實名認證
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link>
+          <NavLink to="/support" className={({ isActive }) => isActive ? "active" : undefined}>
             <span className="icon">💬</span>
             客服中心
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </aside>
