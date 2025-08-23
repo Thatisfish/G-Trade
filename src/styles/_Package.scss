@@ -5,6 +5,8 @@
     align-items: center;
 
     .c_packTop {
+        // position: sticky;
+        // top: 0;
         width: 65%;
         height: 100vh;
 
@@ -55,4 +57,55 @@
         }
     }
 
+    .c_packPrepare {
+        width: 65%;
+        height: 100vh;
+        gap: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .c_packA {
+            font-size: 24px;
+            line-height: 150%;
+        }
+
+        .c_packOutBox {
+            display: flex;
+            gap: 80px;
+
+            .c_packBox {
+                // display: grid;
+                // align-items: center;
+                width: 400px;
+
+                .c_packTitle {
+                    font-size: 24px;
+                    line-height: 150%;
+                    padding: 10px;
+                    margin: 15px 15px 15px 0;
+                    clip-path: polygon(0% 10px, 10px 10px, 10px 0%,
+                            calc(100% - 10px) 0%, calc(100% - 10px) 10px, 100% 10px,
+                            100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%,
+                            10px 100%, 10px calc(100% - 10px), 0% calc(100% - 10px));
+                    border: #000 solid 10px;
+                    text-align: center;
+                }
+
+                .c_packDirections {
+                    font-size: 16px;
+                    font-weight: 300;
+                    line-height: 200%;
+                    margin: 20px 35px 20px 0;
+                }
+            }
+
+            img {
+                display: block;
+                max-height: 200px;
+                width: auto;
+            }
+
+        }
+    }
 }
