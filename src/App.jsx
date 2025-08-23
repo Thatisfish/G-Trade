@@ -3,14 +3,15 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-import Home from "./pages/Home";
-import New_info from "./pages/New_info";
-import Hot_commodity from "./pages/Hot_commodity";
-import Alltype from "./pages/Alltype";
-import Register from "./pages/Register";
-import Shopping_cart from "./pages/Shopping_cart";
-import Collect from "./pages/Collect";
-import Real_name from "./pages/Real_name";
+import Home from './pages/Home';
+import New_info from './pages/New_info';
+import Hot_commodity from './pages/Hot_commodity';
+import Alltype from './pages/Alltype';
+import Register from './pages/Register';
+import Shopping_cart from './pages/Shopping_cart';
+import Collect from './pages/Collect';
+import Real_name from './pages/Real_name';
+import Package from './pages/Package';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/Collect" element={<Collect />} />
           <Route path="/Real_name" element={<Real_name />} />
 
+          <Route path='/Package' element={<Package />} />
         </Routes>
 
         <Footer theme={theme} />

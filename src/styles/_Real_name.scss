@@ -22,7 +22,28 @@
             border: solid 1px #DEDADA;
             background-color: #FCFAFF;
             padding: 20px 0;
-            
+
+            .c_verifyBox {
+                display: grid;
+                text-align: center;
+                place-items: center; // img是行內元素grid配place-items置中
+
+                h2 {
+                    font-size: 32px;
+                    margin: 50px;
+                }
+
+                p {
+                    font-size: 24px;
+                    margin-bottom: 80px;
+                }
+
+                img {
+                    max-width: 60%;
+                     margin-bottom: 100px;
+                }
+            }
+
             .c_realHead {
                 background-color: #FFE5E5;
                 margin: 20px 0;

@@ -1,0 +1,58 @@
+.c_packMain {
+    margin: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .c_packTop {
+        width: 65%;
+        height: 100vh;
+
+        .c_packHead {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            color: #333;
+
+            .c_packMark {
+                display: grid;
+                text-align: center;
+
+                h2 {
+                    font-size: 64px;
+                    letter-spacing: .1em;
+
+                    span {
+                        font-size: 48px;
+                    }
+                }
+
+                small {
+                    font-size: 24px;
+                }
+            }
+
+            .c_packSlogan {
+                font-size: 28px;
+
+            }
+        }
+
+        .c_packPic {
+            margin-top: 200px;
+            display: flex;
+            align-items: center;
+            gap: 150px;
+
+            .c_packIntro {
+                width: 250px;
+                color: #222;
+            }
+
+            .c_package_twopeople {
+                width: 400px;
+            }
+        }
+    }
+
+}
