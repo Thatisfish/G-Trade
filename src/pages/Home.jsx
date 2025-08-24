@@ -1,4 +1,5 @@
 import '../styles/Home.scss'
+import { Link } from 'react-router-dom';
 import InforCard from '../components/Inforcard'
 import G from '../images/G.webp'
 import A from '../images/A.webp'
@@ -11,6 +12,11 @@ import Switch from '../images/switch.svg'
 import NewsCardC from '../components/NewsCard'
 import HomeNews from '../components/HomeNewsSection'
 import hand from '../images/home/hand.webp'
+import OuterFrame from '../components/OuterFrame'
+import special01 from '../images/home/special01.svg'
+import special02 from '../images/home/special02.svg'
+import special03 from '../images/home/special03.svg'
+import special04 from '../images/home/special04.svg'
 
 export default function Home() {
     return (
@@ -59,7 +65,7 @@ export default function Home() {
                     <button className="view-all-button">查看所有商品</button>
                 </div>
                 <div className='special'>
-                    <img src={hand} alt="" />
+                    <img className="hand" src={hand} alt="" />
                     <svg className="headline-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="200">
                         <text x="280" y="100" fontSize="48" fontWeight="700"
                             fill="none"
@@ -72,6 +78,17 @@ export default function Home() {
                             二手商品也能安心購入
                         </text>
                     </svg>
+                    <div className='OuterFrame OuterFrame1'>
+                        {/* <OuterFrame text="包裝宣導" /> */}
+                        <Link to="/Package"><img src={special01} alt="" /></Link>
+                        <Link to="/RealN_Info"><img src={special02} alt="" /></Link>
+                    </div>
+                    <div className='OuterFrame OuterFrame2'>
+                        {/* <OuterFrame text="包裝宣導" /> */}
+                        <Link to="/#"><img src={special03} alt="" /></Link>
+                        <Link to="/#"><img src={special04} alt="" /></Link>
+                    </div>
+
                     <div className='clippath'>
                     </div>
                     <div className='clippath2'>

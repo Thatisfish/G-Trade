@@ -244,18 +244,51 @@ body,
 
 /*------------------------ 平台特色 ------------------------*/
 .special {
-
     width: 100%;
     height: 950px;
     display: grid;
-    img{
+
+    .hand {
         margin-top: 270px;
         height: 600px;
         width: auto;
         z-index: 3;
     }
+
     >* {
         grid-area: 1/1;
+    }
+
+    .OuterFrame {
+        display: flex;
+        z-index: 3;
+        gap: 30px;
+        a {
+            width: 250px;
+            height: 250px;
+        }
+
+        &.OuterFrame1 {
+            margin: 180px 0 0 750px;
+            /* 把高度一路往內傳到真正內容層 */
+            // .c_packContainer,
+            // .c_packTilBox,
+            // .c_textOnly,
+            // .c_withIcon {
+            //     height: 100%;
+            // }
+            // /* 避免圖片把盒子撐開 */
+            // img {
+            //     max-height: 100%;
+            //     width: auto;
+            //     object-fit: contain;
+            //     display: block;
+            // }
+        }
+
+        &.OuterFrame2 {
+            margin: 450px 0 0 1030px;
+        }
     }
 
     .headline-svg {
