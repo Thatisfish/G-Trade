@@ -1,7 +1,7 @@
 import React from 'react'
 import "../styles/_OuterFrame.scss"
 
-const OuterFrame = ({ iconOne, iconTwo, text }) => {
+const OuterFrame = ({ iconOne, iconTwo, text, textClass }) => {
     const hasIcon = !!iconOne;
     return (
         <>
@@ -18,7 +18,7 @@ const OuterFrame = ({ iconOne, iconTwo, text }) => {
                         </>
                     ) : (
                         <div className='c_textOnly'>
-                            <p className='c_onlyTitle'>{text}</p>
+                            <p className={`c_onlyTitle ${textClass || ""}`}>{text}</p>
                         </div>
                     )
                     }
