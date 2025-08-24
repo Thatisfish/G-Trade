@@ -1,4 +1,5 @@
 import '../styles/_RealN_Info.scss'
+import OuterFrame from '../components/OuterFrame'
 import B_Img1 from '../images/RealName/realN_img1.avif'
 import B_Img2 from '../images/RealName/realN_img2.avif'
 import B_Img3 from '../images/RealName/realN_img3.avif'
@@ -7,6 +8,9 @@ import B_Img5 from '../images/RealName/realN_img5.avif'
 import B_Img6 from '../images/RealName/realN_img6.avif'
 import B_Img7 from '../images/RealName/realN_img7.avif'
 import B_Img8 from '../images/RealName/realN_img8.avif'
+import B_Img9 from '../images/RealName/realN_img9.webp'
+import B_Img10 from '../images/RealName/realN_img10.avif'
+import B_Img11 from '../images/RealName/realN_img11.webp'
 
 const RealN_Info = () => {
     return (
@@ -47,28 +51,46 @@ const RealN_Info = () => {
                     <img className='B_img3' src={B_Img4} alt="" />
                     <h2 className='B_h2'>為什麼要實名認證呢？</h2>
 
-                        <img className='B_img4' src={B_Img5} alt="" />
-                        <img className='B_img4' src={B_Img6} alt="" />
-                        <img className='B_img4' src={B_Img7} alt="" />
                     <div className="B_why">
-                        <div className="B_w"><h3>提升帳號安全性</h3></div>
-                        <div className="B_w"><h3>降低詐騙風險</h3></div>
-                        <div className="B_w"><h3>建立可信用戶群體</h3></div>
-                        <div className="B_w"><h3>減少網路騷擾和惡意評價</h3></div>
+                        <div className='B_why1'>
+                            <img className='B_img4' src={B_Img5} alt="" />
+                            <OuterFrame text="提升帳號安全性" />
+                        </div>
+                        <div className='B_why1'>
+                            <OuterFrame text="降低詐騙風險" />
+                            <img className='B_img5' src={B_Img6} alt="" />
+                        </div>
+                        <div className='B_why1'>
+                            <img className='B_img4' src={B_Img7} alt="" />
+                            <OuterFrame text="建立可信用戶群體" />
+                        </div>
+                        <div className='B_why1'>
+                            <OuterFrame text="減少網路騷擾和惡意評價" />
+                            <img className='B_img5' src={B_Img8} alt="" />
+                        </div>
                     </div>
 
-                    <p>確保每一筆交易背後，都是「真實玩家」!</p>
+                    <div className='B_div3'>
+                        <p className='B_p2'>確保每一筆交易背後，都是「真實玩家」!</p>
+                        <img className='B_img6' src={B_Img9} alt="" />
+                    </div>
                 </section>
 
                 <section className='B_three'>
-                    <h2>我需要準備什麼資料</h2>
+                    <div className='B_div4'>
+                        <img className='B_img7' src={B_Img10} alt="" />
+                        <h2 className='B_h2'>我需要準備什麼資料？</h2>
+                    </div>
                     <div className='B_how'>
-                        <p>只需要準備「身分證」！就可以完成遊玩人間的實名驗證囉！</p>
+                        <img className='B_img6' src={B_Img11} alt="" />
+                        <OuterFrame className='B_how_p' text="只需要準備「身分證」！就可以完成遊玩人間的實名驗證囉！" />
                     </div>
 
-                    <div>
-                        <img src='' alt='' />
-                        <img src='' alt='' />
+                    <div className='B_div5'>
+                        {/* <div className='B_img7'>
+                            <img className='B_img' src={B_Img} alt="" />
+                            <img className='B_img' src={B_Img} alt="" />
+                        </div> */}
                         <button className='RNbtn'>立即認證 </button>
                     </div>
                 </section>
