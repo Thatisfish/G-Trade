@@ -60,7 +60,7 @@
     .c_packPrepare {
         width: 65%;
         height: 100vh;
-        gap: 50px;
+        gap: 80px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -73,6 +73,7 @@
         .c_packOutBox {
             display: flex;
             gap: 80px;
+            align-items: center;
 
             .c_packBox {
                 // display: grid;

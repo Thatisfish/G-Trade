@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect, useRef, useState } from 'react'
 import "../styles/_Package.scss"
 import c_package_twopeople from "../images/Regform_icon/c_package_twopeople.png"
 import c_package_00 from "../images/Regform_icon/c_package_00.png"
@@ -17,9 +17,94 @@ import c_package_12 from "../images/Regform_icon/c_package_12.png"
 import c_package_13 from "../images/Regform_icon/c_package_13.png"
 import OuterFrame from '../components/OuterFrame'
 
+// 自訂Hook：取得前一個值
+function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+        ref.current = value;
+    }, [value]);
+    return ref.current;
+}
 
 const Package = () => {
+    const steps = [
+        {
+            image: c_package_5,
+            title: "️易碎品先包好，怕水的加強防護",
+            subtxt: "將易碎物品先用緩衝材包裹、固定好位置。如果商品怕水，這步驟也建議加上防水層（如塑膠袋、防水膜）。",
+        },
+        {
+            image: c_package_6,
+            title: "️易碎品先包好，怕水的加強防護",
+            subtxt: "將易碎物品先用緩衝材包裹、固定好位置。如果商品怕水，這步驟也建議加上防水層（如塑膠袋、防水膜）。",
+        },
+        {
+            image: c_package_7,
+            title: "填滿空隙，穩固更安心",
+            subtxt: "物品放入箱中後，請用緩衝材把空隙填滿，避免物品在運送途中晃動、碰撞。",
+        },
+        {
+            image: c_package_9,
+            title: "填滿空隙，穩固更安心",
+            subtxt: "物品放入箱中後，請用緩衝材把空隙填滿，避免物品在運送途中晃動、碰撞。",
+        },
+        {
+            image: c_package_10,
+            title: "填滿空隙，穩固更安心",
+            subtxt: "物品放入箱中後，請用緩衝材把空隙填滿，避免物品在運送途中晃動、碰撞。",
+        },
+        {
+            image: c_package_11,
+            title: "填滿空隙，穩固更安心",
+            subtxt: "物品放入箱中後，請用緩衝材把空隙填滿，避免物品在運送途中晃動、碰撞。",
+        },
+        {
+            image: c_package_12,
+            title: "封箱要確實，膠帶多貼幾條更牢靠",
+            subtxt: "建議使用「十字形」、「井字形」或「H字形」的方式封箱，確保所有開口都貼緊、封好。在搬運或多次轉運時，也比較不用擔心會鬆脫。",
+        },
+        {
+            image: c_package_13,
+            title: "外層防水再加一，雙重保護更安心",
+            subtxt: "如果寄送的東西怕水，建議外箱再加一層塑膠袋或其他防水包裝，應對不穩定的天氣或潮濕環境。",
+        }
+    ];
 
+    // 當前哪一個步驟
+    const [currentStepIndex, setCurrentStepIndex] = useState(0);
+    // 步驟的內容
+    const currentStep = steps[currentStepIndex];
+
+    // 前一個步驟的資料(用前面的Hook取得)
+    const preImage = usePrevious(currentStep.image);
+    const preTitle = usePrevious(currentStep.title);
+    const preSubtxt = usePrevious(currentStep.subtxt);
+
+    // 控制動畫狀態(是否有變? 初始狀態不觸發所以false)
+    const [isImageChange, setIsImageChange] = useState(false);
+    const [isTitleChange, setIsTitleChange] = useState(false);
+    const [isSubtxtChange, setIsSubtxtChange] = useState(false);
+
+    // 觸發動畫
+    useEffect(() => {
+        // 判斷前一個步驟 等於不等於 現在的狀態
+        const imageChange = preImage !== currentStep.image;
+        const titleChange = preTitle !== currentStep.title;
+        const subtxtChange = preSubtxt !== currentStep.subtxt;
+
+        // 改變的狀態存進state
+        setIsImageChange(imageChange);
+        setIsTitleChange(titleChange);
+        setIsSubtxtChange(subtxtChange);
+
+        const timer = setTimeout(() => {
+            setIsImageChange(false);
+            setIsTitleChange(false);
+            setIsSubtxtChange(false);
+        }, 500)
+        return () => clearTimeout(timer);
+        // 有變化就再執行一次
+    }, [currentStep.image, currentStep.title, currentStep.subtxt]);
 
     return (
         <>
@@ -57,7 +142,20 @@ const Package = () => {
                         <img src={c_package_4} alt="" />
                     </div>
                 </div>
-
+                <section className='c_packScroll'>
+                    <div className='c_packScene'>
+                        <div className='c_packLeft'></div>
+                        <div className={`c_packStepImg ${isImageChange ? "fade-in" : ""}`}>
+                            <img src={currentStep.image} alt="" />
+                        </div>
+                        <div className='c_packRight'>
+                            <div className='c_packText'>
+                                <OuterFrame text={currentStep.title} className={isTitleChange ? "fade-in" : ""} />
+                                <p className={`c_packSubtxt ${isSubtxtChange ? "fade-in" : ""}`}>{currentStep.subtxt}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
 
         </>
