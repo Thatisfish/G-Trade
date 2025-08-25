@@ -16,6 +16,7 @@
 -  0821-realname_調整中
 -  0823-realname_95%/移除多餘元件/package-top+2區_放大鏡超連結
 -  0824-package_紅黑外框元件/下半段進行中
+-  0825-realname_必填修正/package_80% (?
 ### Biki
 - 0825-實名制小調整
 - 0824-實名制切版
