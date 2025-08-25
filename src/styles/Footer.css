@@ -1,0 +1,71 @@
+@charset "UTF-8";
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 230px;
+  border-top: solid 1px rgba(63, 63, 63, 0.7);
+}
+.footer nav {
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.footer .sitemap-f {
+  font-size: 20px;
+  font-weight: bold;
+}
+.footer > div {
+  flex: 1;
+}
+.footer a {
+  text-decoration: none;
+}
+.footer .sitemap {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer .sitemap li {
+  width: 250px;
+  text-align: center;
+}
+.footer small {
+  margin-top: auto;
+  display: block;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Light 主題 */
+.footer.light {
+  background-color: transparent;
+  color: var(--light);
+}
+.footer.light a,
+.footer.light .sitemap-f {
+  color: var(--light);
+}
+.footer.light small {
+  background-color: #000;
+  color: var(--light);
+}
+
+/* Red 主題 */
+.footer.red {
+  background-color: transparent;
+  color: var(--nav);
+}
+.footer.red a {
+  color: var(--nav);
+  display: inline;
+}
+.footer.red small {
+  background-color: #000;
+  color: var(--nav);
+}/*# sourceMappingURL=Footer.css.map */

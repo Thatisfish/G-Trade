@@ -1,0 +1,466 @@
+@charset "UTF-8";
+.bodd {
+  font-family: "Poppins", "Noto Sans TC", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/*------------------------ 主要畫面 ------------------------*/
+.home-bg {
+  min-height: 100vh;
+  background: linear-gradient(rgba(237, 72, 64, 0.5), rgba(237, 72, 64, 0.5)), url(../images/homebg.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 1000px;
+  overflow: hidden;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.1254901961), rgba(255, 66, 66, 0.4509803922)), linear-gradient(rgba(237, 72, 64, 0.5), rgba(237, 72, 64, 0.5)), url(../images/homebg.webp);
+}
+
+/* 上方標語圖檔 */
+.hero-text {
+  margin-top: 732px;
+  position: absolute;
+  left: 100px;
+  transform: none;
+  width: 854px;
+  height: 151px;
+  z-index: 10;
+}
+
+.game-letters {
+  position: relative;
+  width: 100%;
+  height: 1282px;
+  overflow: hidden;
+}
+
+.game-letters > img {
+  width: 400px;
+  height: auto;
+}
+
+.game-letters-wrapper {
+  position: relative;
+  /* 讓內部 absolute 定位參考這裡 */
+}
+
+.bp {
+  position: absolute;
+  top: 200px;
+  left: 49%;
+  width: 800px;
+  height: auto;
+  transform: translateX(-50%);
+  z-index: 6;
+  /* 確保在字母上面 */
+}
+
+.letter {
+  position: absolute;
+  width: 200px;
+  /* 字母大小 */
+  transition: 0.3s;
+}
+
+.letter:hover {
+  transform: scale(1.1) rotate(0deg);
+}
+
+/* 每個字母個別設定位置、角度、層級 */
+.g {
+  top: 130px;
+  left: 120px;
+  z-index: 1;
+}
+
+.a {
+  top: 294px;
+  left: 442px;
+  z-index: 2;
+}
+
+.m {
+  top: 129px;
+  left: 1100px;
+  z-index: 3;
+}
+
+.e {
+  top: 387px;
+  left: 1386px;
+  z-index: 4;
+}
+
+.hero-icon {
+  position: absolute;
+  width: 30px;
+  z-index: 20;
+}
+
+/* 各 icon 位置 */
+.icon-star {
+  top: 50px;
+  right: 80px;
+}
+
+.icon-cart {
+  bottom: 40px;
+  left: 100px;
+}
+
+/*------------------------ 銜接畫面 ------------------------*/
+.bridge-wrapper {
+  position: relative;
+}
+
+.bridge {
+  display: flex;
+  justify-content: flex-start;
+  /* 水平靠左 */
+  align-items: flex-start;
+  /* 垂直靠上 */
+  height: 598px;
+  position: relative;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 60%, rgba(255, 255, 255, 0.3) 100%), #020000;
+  overflow: hidden;
+  padding-left: 438px;
+  padding-top: 170px;
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vw;
+  border-radius: 50%;
+  border: 1vw solid white;
+  background: transparent;
+  z-index: 0;
+}
+
+.bridge .hot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* ✅ 讓 h3 置中 */
+  color: var(--light);
+  z-index: 1;
+}
+
+.bridge h3 {
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hot-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* ✅ 讓下面 p 仍然靠左對齊 */
+  gap: 12px;
+  padding-left: 20px;
+  /* ✅ 向右內縮，看起來更像圖2 */
+}
+
+.hot-list p {
+  font-size: 24px;
+  font-weight: 300;
+  margin: 5px;
+}
+
+.Switch {
+  position: absolute;
+  width: 55vw;
+  height: 55vw;
+  top: -10vw;
+  right: 8vw;
+  z-index: 99;
+}
+
+/*------------------------ 最新上架 ------------------------*/
+.newup {
+  height: 1100px;
+  padding: 260px 0 30px;
+  /* 減少上下留白 */
+  text-align: center;
+  background: url("/images/bubble.svg");
+  background-size: cover;
+  overflow: visible;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  width: 330px;
+  background-color: white;
+  display: inline-block;
+  padding: 10px 30px;
+  border: 10px solid black;
+  margin-bottom: 24px;
+  padding: 3px 0;
+  clip-path: polygon(0% 10px, 10px 10px, 10px 0%, calc(100% - 10px) 0%, calc(100% - 10px) 10px, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 10px calc(100% - 10px), 0% calc(100% - 10px));
+}
+
+.view-all-button {
+  padding: 12px 30px;
+  margin-top: 40px;
+  font-size: 16px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #000;
+  transition: all 0.2s ease;
+}
+
+.view-all-button:hover {
+  background-color: #555;
+  transform: translateY(-2px);
+}
+
+/*------------------------ 平台特色 ------------------------*/
+.special {
+  width: 100%;
+  height: 950px;
+  display: grid;
+  /* 讓所有直接子層能重疊在同一格 */
+  /* --- 圖層順序 --- */
+  /* 手的圖：用 place-self(自我對齊) + transform(變形位移) 取代大面積 margin(邊距) */
+  /* 兩片斜切背景：使用 clip-path(剪裁路徑) 疊出卡片下的底色與邊框層次 */
+  /* SVG 大標：加 pointer-events(指標事件) 避免擋到下方連結 */
+  /* 兩組外框連結列（卡片區） */
+  /* --- RWD(響應式網頁設計) 斷點：視需要微調 --- */
+}
+.special > * {
+  grid-area: 1/1;
+}
+.special .clippath {
+  z-index: 1;
+}
+.special .clippath2 {
+  z-index: 2;
+}
+.special .hand,
+.special .headline-svg,
+.special .special-cards {
+  z-index: 3;
+}
+.special .hand {
+  height: 600px;
+  width: auto;
+  transform: translateY(270px);
+  /* 如果需要更細緻位置，改用 translate(X,Y) 微調 */
+}
+.special .clippath {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  clip-path: polygon(0 23%, 100% 0, 100% 77%, 0 100%);
+}
+.special .clippath2 {
+  /* 讓第二片比第一片略小，形成“邊框”視覺 */
+  width: calc(100% - 40px);
+  height: calc(100% - 80px);
+  background: rgba(255, 113, 113, 0.2666666667);
+  clip-path: polygon(0 25%, 100% 0, 100% 75%, 0 100%);
+  justify-self: start;
+  /* 對齊左側 */
+  align-self: center;
+  /* 垂直置中 */
+}
+.special .headline-svg {
+  margin: 30px 0 0 85px;
+  /* 整體位置 */
+  pointer-events: none;
+  /* 讓滑鼠點擊穿透到下面的 a(超連結) */
+}
+.special .headline-svg text {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 20px;
+  /* SVG 文字同樣支援 letter-spacing(字距) */
+}
+.special .special-cards {
+  place-self: center;
+  transform: translate(30%, -5%);
+  /* X(水平), Y(垂直) */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: clamp(16px, 2vw, 28px);
+  /* 指定卡片位置 */
+}
+.special .special-cards .c1 {
+  grid-area: 1/1;
+}
+.special .special-cards .c2 {
+  grid-area: 1/2;
+}
+.special .special-cards .c3 {
+  grid-area: 1/3;
+}
+.special .special-cards .c4 {
+  grid-area: 2/1;
+}
+.special .special-cards .c5 {
+  grid-area: 2/2;
+}
+.special .special-cards .c6 {
+  grid-area: 2/3;
+}
+.special .special-cards .card {
+  width: clamp(160px, 18vw, 240px);
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+}
+.special .special-cards .card img {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}
+.special .special-cards .empty {
+  /* 占位用，維持格子大小 */
+  width: clamp(160px, 18vw, 240px);
+  aspect-ratio: 1/1;
+}
+@media (max-width: 992px) {
+  .special {
+    height: 760px;
+    /* 把兩排卡片堆疊起來、集中畫面 */
+  }
+  .special .OuterFrame {
+    place-self: center center;
+    flex-wrap: wrap;
+  }
+  .special .OuterFrame a {
+    width: 200px;
+  }
+  .special .OuterFrame.OuterFrame1 {
+    transform: translate(0px, 120px);
+  }
+  .special .OuterFrame.OuterFrame2 {
+    transform: translate(0px, 260px);
+  }
+  .special .hand {
+    height: 460px;
+    transform: translateY(190px);
+  }
+  .special .headline-svg {
+    margin: 20px 0 0 24px;
+  }
+  .special .headline-svg text {
+    font-size: 36px;
+    letter-spacing: 12px;
+  }
+}
+@media (max-width: 576px) {
+  .special {
+    height: 720px;
+  }
+  .special .hand {
+    height: 380px;
+    transform: translateY(180px);
+  }
+  .special .OuterFrame a {
+    width: 160px;
+  }
+  .special .headline-svg {
+    margin-left: 16px;
+  }
+  .special .headline-svg text {
+    font-size: 30px;
+    letter-spacing: 8px;
+  }
+}
+
+/*------------------------ 最新消息 ------------------------*/
+.news {
+  width: 100%;
+  height: 1300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.section-title-n {
+  display: flex;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  width: 330px;
+  background-color: white;
+  display: inline-block;
+  padding: 10px 30px;
+  border: 10px solid black;
+  margin-bottom: 24px;
+  padding: 3px 0;
+  clip-path: polygon(0% 10px, 10px 10px, 10px 0%, calc(100% - 10px) 0%, calc(100% - 10px) 10px, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 10px calc(100% - 10px), 0% calc(100% - 10px));
+}
+
+.news-main {
+  width: 800px;
+  height: 1150px;
+  border: 10px solid;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.news-main a {
+  position: relative;
+  width: 700px;
+  height: 233px;
+  margin-top: 40px;
+  border-bottom: 2px solid;
+  display: flex;
+  color: #000;
+}
+.news-main a .newfont {
+  margin: 40px 0 0 45px;
+}
+.news-main a .newfont h4 {
+  font-weight: 700;
+  font-size: 24px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  /* 粗細 */
+  text-underline-offset: 5px;
+  /* 與文字距離 */
+}
+.news-main a .newfont p {
+  margin-top: 33px;
+  font-size: 20px;
+}
+.news-main a img {
+  height: 233px;
+  width: 233px;
+}
+.news-main a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 5px;
+  background: black;
+}/*# sourceMappingURL=Home.css.map */

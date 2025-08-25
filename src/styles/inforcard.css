@@ -1,0 +1,122 @@
+@charset "UTF-8";
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* ✅ 固定5欄 */
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px; /* ✅ 避免超寬 */
+  margin: 0 auto;
+}
+
+.info-card {
+  width: 270px;
+  height: 100%;
+  /* ✅ 高度由容器決定 */
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  /* ✅ 垂直排列內容 */
+}
+
+.info-card.large {
+  height: 450px;
+  /* width: auto; */
+  /* 標準高度 */
+}
+
+.info-card.medium {
+  height: 400px;
+  width: auto;
+  /* 稍矮 */
+}
+
+.info-card.small {
+  height: 350px;
+  width: auto;
+  /* 最矮 */
+}
+
+.info-card.large .info-img {
+  height: 50%;
+}
+
+.info-card.medium .info-img {
+  height: 50%;
+}
+
+.info-card.small .info-img,
+.info-card:not(.large):not(.medium) .info-img {
+  height: 50%; /* 可調整為適合你的小卡片 */
+}
+
+.info-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ff4d4f;
+  color: white;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.info-img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  /* ✅ 自動縮放維持比例 */
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* ✅ 填滿並裁切 */
+  border-bottom: 1px solid #eee;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.info-content {
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+/* 標題 */
+.info-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  word-break: break-word;
+  /* ✅ 避免爆版 */
+  line-height: 1.4;
+}
+
+.info-seller {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.info-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-now {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.price-old {
+  font-size: 14px;
+  color: #aaa;
+  text-decoration: line-through;
+}/*# sourceMappingURL=inforcard.css.map */
