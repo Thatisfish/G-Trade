@@ -14,10 +14,12 @@
 	.nav-icon {
 		li {
 			margin: 5px;
+
 			a {
 				width: 40px;
 				height: 35px;
 			}
+
 			button {
 				width: 40px;
 				height: 40px;
@@ -31,16 +33,7 @@
 	height: 100px;
 }
 
-.menu {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-	display: flex;
-	gap: 100px;
-	list-style: none;
-	margin: 0;
-	padding-bottom: 15px;
-}
+
 
 
 .shadow-img {
@@ -76,6 +69,14 @@
 	justify-content: space-between;
 	padding: 0 20px;
 	height: 80px;
+
+	.menu {
+		margin: 0 auto; // 讓 menu 自己往中間擠
+		display: flex;
+		gap: 100px;
+		list-style: none;
+		padding-bottom: 15px;
+	}
 
 	&.scrolled {
 		background-color: #000;

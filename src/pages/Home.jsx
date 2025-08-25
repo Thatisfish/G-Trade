@@ -78,15 +78,13 @@ export default function Home() {
                             二手商品也能安心購入
                         </text>
                     </svg>
-                    <div className='OuterFrame OuterFrame1'>
-                        {/* <OuterFrame text="包裝宣導" /> */}
-                        <Link to="/Package"><img src={special01} alt="" /></Link>
-                        <Link to="/RealN_Info"><img src={special02} alt="" /></Link>
-                    </div>
-                    <div className='OuterFrame OuterFrame2'>
-                        {/* <OuterFrame text="包裝宣導" /> */}
-                        <Link to="/#"><img src={special03} alt="" /></Link>
-                        <Link to="/#"><img src={special04} alt="" /></Link>
+                    <div className="special-cards">
+                        <Link to="/Package" className="card c1"><img src={special01} alt="包裝宣導" /></Link>
+                        <Link to="/RealN_Info" className="card c2"><img src={special02} alt="實名制" /></Link>
+                        <div className="empty c3"></div> {/* 右上空格 */}
+                        <div className="empty c4"></div> {/* 左下空格 */}
+                        <Link to="/#" className="card c5"><img src={special03} alt="第三方撥款" /></Link>
+                        <Link to="/#" className="card c6"><img src={special04} alt="商品狀態標示" /></Link>
                     </div>
 
                     <div className='clippath'>
