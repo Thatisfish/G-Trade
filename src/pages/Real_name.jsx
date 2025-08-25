@@ -78,7 +78,7 @@ const Real_name = () => {
               <img src={imgPreview} alt="預覽" className='c_realPreview' />
             ) : (<span className='c_plus'> <img src={c_plus} alt="上傳" /> </span>)
             }
-            <input type="file" className='c_upLoadInput' onChange={picOnChange} accept='image/*' />
+            <input type="file" className='c_upLoadInput' onChange={picOnChange} accept='image/*' required />
           </div>
           <div className='c_upLoadLabel'>{label}</div>
         </div>
