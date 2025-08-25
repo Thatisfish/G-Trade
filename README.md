@@ -25,7 +25,7 @@
 ### 玨
 - 0820-購物車_新增元件檔案在component、SCSS修正中
 - 0821-購物車_標籤整理、圖片更新、樣式
-- 0825-新增訂單結構、元件(OrderCard、ReviewCard)、訂單CSS，訂單進行中
+- 0825-新增訂單結構、元件(OrderCard、ReviewCard)、訂單CSS，訂單進行中、App檔案新增Route>Orders
 ### 淳
 - 
 ### Fish
