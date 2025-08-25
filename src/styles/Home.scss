@@ -66,6 +66,7 @@ body,
 
 .bp {
     position: absolute;
+    pointer-events: none;
     top: 200px;
     left: 49%;
     width: 800px;
@@ -304,10 +305,8 @@ body,
 
     /* SVG 大標：加 pointer-events(指標事件) 避免擋到下方連結 */
     .headline-svg {
-        margin: 30px 0 0 85px;
-        /* 整體位置 */
+        justify-self: center;
         pointer-events: none;
-        /* 讓滑鼠點擊穿透到下面的 a(超連結) */
 
         text {
             font-size: 48px;

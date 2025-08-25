@@ -66,15 +66,17 @@ export default function Home() {
                 </div>
                 <div className='special'>
                     <img className="hand" src={hand} alt="" />
-                    <svg className="headline-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="200">
-                        <text x="280" y="100" fontSize="48" fontWeight="700"
-                            fill="none"
-                            stroke="#fff" strokeWidth="10"
+                    <svg className="headline-svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 700 200"
+                        height="200"
+                        preserveAspectRatio="xMinYMid meet">
+                        <text x="0" y="100" fontSize="48" fontWeight="700"
+                            fill="none" stroke="#fff" strokeWidth="10"
                             strokeLinejoin="round" strokeLinecap="round">
                             二手商品也能安心購入
                         </text>
-                        <text x="280" y="100" fontSize="48" fontWeight="700"
-                            fill="#000">
+                        <text x="0" y="100" fontSize="48" fontWeight="700" fill="#000">
                             二手商品也能安心購入
                         </text>
                     </svg>
