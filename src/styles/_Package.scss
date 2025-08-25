@@ -6,8 +6,6 @@
     align-items: center;
 
     .c_packTop {
-        // position: sticky;
-        // top: 0;
         width: 65%;
         height: 100vh;
 
@@ -60,7 +58,7 @@
 
     .c_packPrepare {
         width: 65%;
-        height: 100vh;
+        height: 80vh;
         gap: 80px;
         display: flex;
         flex-direction: column;
@@ -95,6 +93,54 @@
                 width: auto;
             }
 
+        }
+    }
+
+
+    .c_packScroll {
+        height: 800vh;
+        position: relative;
+        width: 65%;
+
+        .c_packScene {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+
+            .c_packStepImg {
+                max-width: 350px;
+                height: auto;
+            }
+
+            .c_packText {
+                width: 400px;
+
+                .c_packSubtxt {
+                    display: grid;
+                    margin-top: 80px;
+                }
+            }
+
+        }
+    }
+
+    .fade-in {
+        animation: fadeSlide 0.5s ease-out forwards;
+    }
+
+    @keyframes fadeSlide {
+        from {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 }

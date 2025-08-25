@@ -106,6 +106,34 @@ const Package = () => {
         // 有變化就再執行一次
     }, [currentStep.image, currentStep.title, currentStep.subtxt]);
 
+    // 監聽滾動
+    useEffect(() => {
+        const handelScroll = () => {
+            // 抓包裝流程主要區塊，設為scrollEl
+            const scrollEl = document.querySelector(".c_packScroll");
+            // 找不到就跳出
+            if (!scrollEl) return;
+
+            // 取得scrollEl的位子資訊
+            const rect = scrollEl.getBoundingClientRect();
+            // 滾動的頁面高度
+            const scrollTop = window.scrollY;
+            // 頁面高度(設100vh)
+            const stepHeight = window.innerHeight;
+
+            // 進入c_packScroll，開始計算滾動/高度，判斷顯示哪一步
+            if (rect.top <= 0 && rect.bottom >= 0) {
+                const index = Math.floor(scrollTop / stepHeight);
+                // 避免超過陣列長度
+                setCurrentStepIndex(Math.min(index, steps.length - 1));
+            }
+        };
+        // 滾動時執行事件監聽
+        window.addEventListener("scroll", handelScroll);
+        // 清除監聽
+        return () => window.removeEventListener("scroll", handelScroll);
+    }, [])
+
     return (
         <>
             <main className='c_packMain'>
@@ -144,9 +172,10 @@ const Package = () => {
                 </div>
                 <section className='c_packScroll'>
                     <div className='c_packScene'>
-                        <div className='c_packLeft'></div>
-                        <div className={`c_packStepImg ${isImageChange ? "fade-in" : ""}`}>
-                            <img src={currentStep.image} alt="" />
+                        <div className='c_packLeft'>
+                            <div className={`c_packStepImg ${isImageChange ? "fade-in" : ""}`}>
+                                <img src={currentStep.image} alt="" />
+                            </div>
                         </div>
                         <div className='c_packRight'>
                             <div className='c_packText'>
