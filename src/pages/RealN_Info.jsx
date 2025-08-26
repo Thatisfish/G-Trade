@@ -11,6 +11,8 @@ import B_Img8 from '../images/RealName/realN_img8.avif'
 import B_Img9 from '../images/RealName/realN_img9.webp'
 import B_Img10 from '../images/RealName/realN_img10.avif'
 import B_Img11 from '../images/RealName/realN_img11.webp'
+import B_Img12 from '../images/RealName/realN_img12.avif'
+import B_Img13 from '../images/RealName/realN_img13.avif'
 
 const RealN_Info = () => {
     return (
@@ -87,8 +89,9 @@ const RealN_Info = () => {
                     </div>
 
                     <div className='B_div5'>
-                        <div className='B_img7'>
-                        
+                        <div className='B_divImg'>
+                        <img className='B_img7' src={B_Img12} alt="" />
+                        <img className='B_img7' src={B_Img13} alt="" />
                         </div>
                         <button className='RNbtn'>立即認證 </button>
                     </div>

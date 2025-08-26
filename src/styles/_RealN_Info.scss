@@ -180,25 +180,25 @@
             position: relative;
 
             .B_how_p {
-                font-size: 12px;
+                font-size: 20px;
             }
 
             .B_img6 {
                 position: absolute;
                 width: 54px;
                 bottom: 68px;
-                right: 650px;
+                right: 800px;
 
 
             }
         }
 
-        .B_div5{
+        .B_div5 {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 50px;
-            
+
             .RNbtn {
                 color: white;
                 display: inline-flex;
@@ -207,14 +207,23 @@
                 align-items: center;
                 gap: 10px;
                 cursor: pointer;
-                
+
                 border-radius: 99px;
                 border: 2px solid #A12424;
                 background: #DE1A10;
             }
 
-            .B_img7{
-                height: 500px;
+            .B_divImg {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+
+                .B_img7 {
+                    height: 270px;
+                    padding: 40px;
+                    margin: 20px;
+                }
+
             }
         }
     }
