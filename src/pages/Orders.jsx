@@ -4,24 +4,37 @@ import OrderCard from '../components/OrderCard'
 import ReviewCard from '../components/ReviewCard'
 import '../styles/_Orders.scss'
 
+// 圖片兩張
+import ordersImg from '../images/orderImg1.svg'
+import sellerImg from '../images/orderImg2.webp'
+
 const mockOrders = [
   {
     id: 'C2025080501',
-    shop: '@GAME_1318',
-    title: '附搖桿包+玻璃貼+TPU材質透明殼【Switch2主機 NS2主機】',
+    shop: '@GAME_1318的賣場',
+    title: '附硬殼包+玻璃貼+TPU材質透明殼【Switch2主機 NS2主機】',
     price: 999,
     date: '2025-08-05',
     status: '未出貨',
-    img: '/switch.png',
+    img: ordersImg,
+  },
+   {
+    id: 'C2025080501',
+    shop: '@GAME_1318',
+    title: '附硬殼包+玻璃貼+TPU材質透明殼【Switch2主機 NS2主機】',
+    price: 999,
+    date: '2025-08-05',
+    status: '未出貨',
+    img: ordersImg,
   },
   {
-    id: 'C2025080502',
+    id: 'C2025080501',
     shop: '@GAME_1318',
-    title: '附搖桿包+玻璃貼+TPU材質透明殼【Switch2主機 NS2主機】',
+    title: '附硬殼包+玻璃貼+TPU材質透明殼【Switch2主機 NS2主機】',
     price: 999,
     date: '2025-08-05',
     status: '已完成',
-    img: '/switch.png',
+    img: ordersImg,
   },
 ]
 
@@ -31,13 +44,13 @@ const Orders= () => {
   const [tab, setTab] = useState('訂單摘要')
 
   return (
-    <div className="layout">
+    <div className="J_layout">
       <Sidebar />
-      <main className="content">
-        <nav className="breadcrumbs">首頁  會員中心  購買中心  我的訂單</nav>{/* 待修改 */}
+      <main className="J_content">
+        <nav className="J_breadcrumbs">首頁  會員中心  購買中心  我的訂單</nav>{/* 待修改 */}
 
         {/* OrderTabs */}
-        <div className="ordertabs">
+        <div className="J_ordertabs">
           {tabs.map(t => (
             <button key={t} className={t === tab ? 'active' : ''} onClick={() => setTab(t)}>
               {t}
@@ -46,7 +59,7 @@ const Orders= () => {
         </div>
 
         {/* Orders */}
-        <div className="orders">
+        <div className="J_orders">
           {mockOrders.map(order => (
             <OrderCard key={order.id} {...order} />
           ))}
@@ -56,7 +69,7 @@ const Orders= () => {
         <ReviewCard />
 
         {/* Pagination */}
-        <div className="pagination">« ‹ 1 2 3 4 › »</div>
+        <div className="J_pagination">« ‹ 1 2 3 4 › »</div>
       </main>
     </div>
   )
