@@ -101,7 +101,7 @@ const Package = () => {
             setIsImageChange(false);
             setIsTitleChange(false);
             setIsSubtxtChange(false);
-        }, 500)
+        }, 700)
         return () => clearTimeout(timer);
         // 有變化就再執行一次
     }, [currentStep.image, currentStep.title, currentStep.subtxt]);
@@ -119,16 +119,20 @@ const Package = () => {
             // 滾動的頁面高度
             const scrollTop = window.scrollY;
             // 頁面高度(設100vh)
-            const stepHeight = window.innerHeight;
+            const stepHeight = window.innerHeight * 0.5;
             // 還沒進入c_packScroll，顯示第一張
             if (rect.top > 0) {
                 setCurrentStepIndex(0);
             }
             // 進入c_packScroll，開始計算滾動/高度，判斷顯示哪一步
             else if (rect.top <= 0 && rect.bottom >= 0) {
-                const index = Math.floor(scrollTop / stepHeight);
+                // scrollEl到頁面頂顛的距離
+                const scrollStart = scrollEl.offsetTop;
+                // 在這滾多少
+                const relativeScroll = scrollTop - scrollStart;
+                const index = Math.floor(relativeScroll / stepHeight);
                 // 避免超過陣列長度
-                setCurrentStepIndex(Math.min(index, steps.length - 1));
+                setCurrentStepIndex(Math.min(Math.max(index, 0), steps.length - 1));
             }
         };
         // 滾動時執行事件監聽
