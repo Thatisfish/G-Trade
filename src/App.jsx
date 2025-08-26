@@ -19,45 +19,47 @@ import ScrollToTop from './js/ScrollToTop';
 import Orders from './pages/Orders';
 
 export default function App() {
-  const { pathname } = useLocation();
-  const isHome = pathname === "/";
-  const theme = isHome ? "light" : "red";
+	const { pathname } = useLocation();
+	const isHome = pathname === "/";
+	const theme = isHome ? "light" : "red";
 
-  const [showLogin, setShowLogin] = useState(false);
-  const navigate = useNavigate();
+	const [showLogin, setShowLogin] = useState(false);
+	const navigate = useNavigate();
 
-  const openLogin = () => setShowLogin(true);
-  const closeLogin = () => setShowLogin(false);
-  const goRegister = () => {
-    setShowLogin(false);
-    navigate("/Register");
-  };
+	const openLogin = () => setShowLogin(true);
+	const closeLogin = () => setShowLogin(false);
+	const goRegister = () => {
+		setShowLogin(false);
+		navigate("/Register");
+	};
 
-  return (
-    <>
-      <Navbar theme={theme} onOpenLogin={openLogin} />
+	return (
+		<>
 
-      <div className={isHome ? "home-bg" : ""}>
-        {showLogin && (
-          <Login onClose={closeLogin} onRegister={goRegister} />
-        )}
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/New_info" element={<New_info />} />
-          <Route path="/Hot_commodity" element={<Hot_commodity />} />
-          <Route path="/Alltype" element={<Alltype />} />
-          <Route path="/Shopping_cart" element={<Shopping_cart />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/Collect" element={<Collect />} />
-          <Route path='/Real_name' element={<Real_name />} />
-          <Route path='/RealN_Info' element={<RealN_Info />} />
-          <Route path='/Package' element={<Package />} />
-          <Route path='/Orders' element={<Orders />} />
-        </Routes>
+			<Navbar theme={theme} onOpenLogin={openLogin} />
 
-        <Footer theme={theme} />
-      </div>
-    </>
-  );
+			<div className={isHome ? "home-bg" : ""}>
+				{!isHome && <div className="red-banner"></div>}
+				{showLogin && (
+					<Login onClose={closeLogin} onRegister={goRegister} />
+				)}
+				<ScrollToTop />
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/New_info" element={<New_info />} />
+					<Route path="/Hot_commodity" element={<Hot_commodity />} />
+					<Route path="/Alltype" element={<Alltype />} />
+					<Route path="/Shopping_cart" element={<Shopping_cart />} />
+					<Route path="/Register" element={<Register />} />
+					<Route path="/Collect" element={<Collect />} />
+					<Route path='/Real_name' element={<Real_name />} />
+					<Route path='/RealN_Info' element={<RealN_Info />} />
+					<Route path='/Package' element={<Package />} />
+					<Route path='/Orders' element={<Orders />} />
+				</Routes>
+
+				<Footer theme={theme} />
+			</div>
+		</>
+	);
 }

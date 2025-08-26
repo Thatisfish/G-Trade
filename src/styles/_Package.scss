@@ -1,146 +1,146 @@
 .c_packMain {
-    margin: 0 80px 0 80px;
-    padding-top: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	margin: 0 80px 0 80px;
+	padding-top: 80px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-    .c_packTop {
-        width: 65%;
-        height: 100vh;
+	.c_packTop {
+		width: 65%;
+		height: 100vh;
 
-        .c_packHead {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            color: #333;
+		.c_packHead {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			color: #333;
 
-            .c_packMark {
-                display: grid;
-                text-align: center;
+			.c_packMark {
+				display: grid;
+				text-align: center;
 
-                h2 {
-                    font-size: 64px;
-                    letter-spacing: .1em;
+				h2 {
+					font-size: 64px;
+					letter-spacing: .1em;
 
-                    span {
-                        font-size: 48px;
-                    }
-                }
+					span {
+						font-size: 48px;
+					}
+				}
 
-                small {
-                    font-size: 24px;
-                }
-            }
+				small {
+					font-size: 24px;
+				}
+			}
 
-            .c_packSlogan {
-                font-size: 28px;
+			.c_packSlogan {
+				font-size: 28px;
 
-            }
-        }
+			}
+		}
 
-        .c_packPic {
-            margin-top: 200px;
-            display: flex;
-            align-items: center;
-            gap: 150px;
+		.c_packPic {
+			margin-top: 200px;
+			display: flex;
+			align-items: center;
+			gap: 150px;
 
-            .c_packIntro {
-                width: 250px;
-                color: #222;
-            }
+			.c_packIntro {
+				width: 250px;
+				color: #222;
+			}
 
-            .c_package_twopeople {
-                width: 400px;
-            }
-        }
-    }
+			.c_package_twopeople {
+				width: 400px;
+			}
+		}
+	}
 
-    .c_packPrepare {
-        width: 65%;
-        height: 80vh;
-        gap: 80px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+	.c_packPrepare {
+		width: 65%;
+		height: 80vh;
+		gap: 80px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
 
-        .c_packA {
-            font-size: 24px;
-            line-height: 150%;
-        }
+		.c_packA {
+			font-size: 24px;
+			line-height: 150%;
+		}
 
-        .c_packOutBox {
-            display: flex;
-            gap: 80px;
-            align-items: center;
+		.c_packOutBox {
+			display: flex;
+			gap: 80px;
+			align-items: center;
 
-            .c_packBox {
-                // display: grid;
-                // align-items: center;
-                width: 400px;
+			.c_packBox {
+				// display: grid;
+				// align-items: center;
+				width: 400px;
 
-                .c_packDirections {
-                    font-size: 16px;
-                    font-weight: 300;
-                    line-height: 200%;
-                    margin: 20px 35px 20px 0;
-                }
-            }
+				.c_packDirections {
+					font-size: 16px;
+					font-weight: 300;
+					line-height: 200%;
+					margin: 20px 35px 20px 0;
+				}
+			}
 
-            img {
-                display: block;
-                max-height: 200px;
-                width: auto;
-            }
+			img {
+				display: block;
+				max-height: 200px;
+				width: auto;
+			}
 
-        }
-    }
+		}
+	}
 
 
-    .c_packScroll {
-        height: 800vh;
-        position: relative;
-        width: 65%;
+	.c_packScroll {
+		height: 800vh;
+		position: relative;
+		width: 65%;
 
-        .c_packScene {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 80px;
+		.c_packScene {
+			position: sticky;
+			top: 0;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 80px;
 
-            .c_packStepImg {
-                max-width: 350px;
-                height: auto;
-            }
+			.c_packStepImg {
+				max-width: 350px;
+				height: auto;
+			}
 
-            .c_packText {
-                width: 400px;
+			.c_packText {
+				width: 400px;
 
-                .c_packSubtxt {
-                    display: grid;
-                    margin-top: 80px;
-                }
-            }
+				.c_packSubtxt {
+					display: grid;
+					margin-top: 80px;
+				}
+			}
 
-        }
-    }
+		}
+	}
 
-    .fade-in {
-        animation: fadeSlide 0.5s ease-out forwards;
-    }
+	.fade-in {
+		animation: fadeSlide 0.5s ease-out forwards;
+	}
 
-    @keyframes fadeSlide {
-        from {
-            opacity: 0;
-            transform: translateY(12px);
-        }
+	@keyframes fadeSlide {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 }
