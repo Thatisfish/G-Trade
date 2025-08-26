@@ -1,116 +1,115 @@
 .J_layout {
-
-  margin-top: 80px;
-  display: flex;
-  min-height: 100vh;
+	padding-top: 80px;
+	display: flex;
+	min-height: 100vh;
 }
 
 
 /* Content */
 .J_content {
-  flex: 1;
-  padding: 1rem 2rem;
+	flex: 1;
+	padding: 1rem 2rem;
 }
 
 .J_breadcrumbs {
-  font-size: 14px;
-  margin-bottom: 1rem;
+	font-size: 14px;
+	margin-bottom: 1rem;
 }
 
 /* OrderTabs */
 .J_ordertabs {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
+	display: flex;
+	gap: 1rem;
+	margin: 1rem 0;
 
-  button {
-    padding: .5rem 1rem;
-    border: none;
-    border-bottom: 2px solid transparent;
-    background: none;
-    cursor: pointer;
-    font-weight: 600;
-  }
+	button {
+		padding: .5rem 1rem;
+		border: none;
+		border-bottom: 2px solid transparent;
+		background: none;
+		cursor: pointer;
+		font-weight: 600;
+	}
 
-  .active {
-    color: #d00;
-    border-color: #d00;
-  }
+	.active {
+		color: #d00;
+		border-color: #d00;
+	}
 }
 
 /* OrderCard */
 .J_ordercard {
-  display: flex;
-  gap: 1rem;
-  border: 1px solid #ddd;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  align-items: center;
+	display: flex;
+	gap: 1rem;
+	border: 1px solid #ddd;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	align-items: center;
 
-  img {
-    width: 100px;
-    height: auto;
-  }
+	img {
+		width: 100px;
+		height: auto;
+	}
 
-  .J_details {
-    flex: 1;
-  }
+	.J_details {
+		flex: 1;
+	}
 
-  .J_actions {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+	.J_actions {
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
 
-    button {
-      padding: .5rem 1rem;
-      border: none;
-      background: #d00;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-  }
+		button {
+			padding: .5rem 1rem;
+			border: none;
+			background: #d00;
+			color: #fff;
+			cursor: pointer;
+			border-radius: 4px;
+		}
+	}
 }
 
 /* ReviewCard */
 .J_reviewcard {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+	display: flex;
+	gap: 1rem;
+	margin-top: 2rem;
 
-  .J_avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
+	.J_avatar {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+	}
 
-  .J_reviewform {
-    flex: 1;
+	.J_reviewform {
+		flex: 1;
 
-    .J_stars {
-      margin-bottom: .5rem;
-    }
+		.J_stars {
+			margin-bottom: .5rem;
+		}
 
-    textarea {
-      width: 100%;
-      min-height: 60px;
-      margin-bottom: .5rem;
-    }
+		textarea {
+			width: 100%;
+			min-height: 60px;
+			margin-bottom: .5rem;
+		}
 
-    button {
-      padding: .5rem 1rem;
-      border: none;
-      background: #333;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-  }
+		button {
+			padding: .5rem 1rem;
+			border: none;
+			background: #333;
+			color: #fff;
+			cursor: pointer;
+			border-radius: 4px;
+		}
+	}
 }
 
 /* Pagination */
 .J_pagination {
-  margin: 2rem 0;
-  text-align: center;
-  font-weight: 600;
+	margin: 2rem 0;
+	text-align: center;
+	font-weight: 600;
 }
