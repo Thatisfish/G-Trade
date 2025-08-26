@@ -1,0 +1,59 @@
+// 變數方便全站配色統一管理
+$pagination-bg: #ffffff;         // 預設按鈕底色
+$pagination-border: #dcdcdc;     // 邊框顏色
+$pagination-text: #333333;       // 文字顏色
+$pagination-active-bg: #ff4b2b;  // 活動頁底色（範例用紅橘色，可換成設計色碼）
+$pagination-active-text: #ffffff; // 活動頁文字顏色
+$pagination-hover-bg: #ffe5dd;   // 滑過時底色
+$pagination-radius: 8px;         // 圓角大小
+$pagination-gap: 8px;            // 按鈕間距
+$pagination-font-size: 14px;     // 字型大小
+
+.y_pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $pagination-gap;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  width: 100%;        // ⬅️ 讓它佔滿一整列
+  text-align: center; // ⬅️ 保險用，避免父層影響
+
+  button {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    font-size: $pagination-font-size;
+    color: $pagination-text;
+    background-color: $pagination-bg;
+    border: 1px solid $pagination-border;
+    border-radius: $pagination-radius;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // 滑過效果
+    &:hover:not(:disabled):not(.active) {
+      background-color: $pagination-hover-bg;
+      border-color: $pagination-active-bg;
+      color: $pagination-active-bg;
+    }
+
+    // 當前頁
+    &.active {
+      background-color: $pagination-active-bg;
+      color: $pagination-active-text;
+      border-color: $pagination-active-bg;
+      font-weight: bold;
+    }
+
+    // 禁用狀態
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+}
