@@ -29,7 +29,7 @@
 - 0825-新增訂單結構、元件(OrderCard、ReviewCard)、訂單CSS，訂單進行中、App檔案新增Route>Orders
 - 0826-訂單頁面、CSS修改中，新增圖片*2在img資料夾
 ### 淳
-- 
+- 0826-蒐藏頁面新增分頁按鈕
 ### Fish
 - 0814-Navbar和Footer選單些微重構
 - 0823-Sidebar連結方式調整、切換頁面時會自動回到畫面最上方

@@ -1,11 +1,13 @@
 import '../styles/Collect.scss'
 import Card from "../components/Card"
 import Sidebar from '../components/Sidebar'
+import Pagination from '../components/Pagination'
 import DKB from '../images/Card_Image/DKB.webp'
 import DS2CE from '../images/Card_Image/DS2CE.webp'
 import SWP2 from '../images/Card_Image/switch_pro2.webp'
 import SW2 from '../images/Card_Image/switch2.webp'
 import SWB from '../images/Card_Image/item_switch01.avif'
+import { useState } from 'react'
 
 
 
@@ -100,6 +102,26 @@ const Collect = () => {
     },
   ];
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  const totalPages = Math.ceil(y_products.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentProducts = y_products.slice(startIndex, startIndex + itemsPerPage);
+
+  // const [products, setProducts] = useState(initiaProducts);
+  // const [selectedIds, setSelectedIds] = useState([]);
+
+  // const toggleSelect = (id) => {
+  //   setSelectedIds((prev) =>
+  //     prev.includes(id) ? preview.filter((x) => x !== id) : [...prev, id]
+  //   );
+  // };
+
+  // const handleUnfavorite = () => {
+  //   setProducts((prev) => prev.filter((item) =>!selectedIds.includes(item.id)));
+  //   setSelectedIds([]);
+  // };
+
   return (
 
     <main className="y_Collect">
@@ -117,12 +139,30 @@ const Collect = () => {
           <span className="current">收藏清單</span>
         </div>
 
+        {/* 操作按鈕 */}
+        {/* <div className="y_actions">
+          <button onClick={handleUnfavorite}
+          disabled={selectedIds.length === 0}
+          className="y_btn"
+          >
+          取消收藏
+          </button>
+
+        </div> */}
+
         {/* 商品清單 */}
         <div className="y_cardbox">
           {y_products.map((item) => (
             <Card key={item.id} {...item} />
           ))}
         </div>
+        
+        {/* 分頁 */}
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
 
       </div>
     </main>
