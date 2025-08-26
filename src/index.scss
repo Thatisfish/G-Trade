@@ -8,10 +8,20 @@ body,
 	overflow-x: clip;
 }
 
-// .red-banner {
-// 	background: var(--nav);
-// 	height: 30px;
-// }
+#topbar {
+	position: relative;
+}
+
+.red-banner {
+	position: absolute;
+	background: var(--nav);
+	height: 30px;
+	width: 100%;
+	margin-top: 80px;
+	z-index: -1;
+	clip-path: polygon(0 0, 100% 0, 100% 10%, 50% 10%, 48.5% 100%, 5% 100%, 3.5% 10%, 0 10%);
+	;
+}
 
 :root {
 	--nav: #DE1A10;
