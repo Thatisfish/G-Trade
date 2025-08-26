@@ -8,14 +8,13 @@ body,
 	overflow-x: clip;
 }
 
-.red-banner {
-	background: var(--nav);
-	height: 30px;
-
-}
+// .red-banner {
+// 	background: var(--nav);
+// 	height: 30px;
+// }
 
 :root {
-	// --nav: #DE1A10;
+	--nav: #DE1A10;
 	--light: #f1f1f1;
 	background: url(./images/allbg.webp);
 	background-size: cover;
