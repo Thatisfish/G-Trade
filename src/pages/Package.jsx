@@ -120,9 +120,12 @@ const Package = () => {
             const scrollTop = window.scrollY;
             // 頁面高度(設100vh)
             const stepHeight = window.innerHeight;
-
+            // 還沒進入c_packScroll，顯示第一張
+            if (rect.top > 0) {
+                setCurrentStepIndex(0);
+            }
             // 進入c_packScroll，開始計算滾動/高度，判斷顯示哪一步
-            if (rect.top <= 0 && rect.bottom >= 0) {
+            else if (rect.top <= 0 && rect.bottom >= 0) {
                 const index = Math.floor(scrollTop / stepHeight);
                 // 避免超過陣列長度
                 setCurrentStepIndex(Math.min(index, steps.length - 1));
