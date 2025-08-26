@@ -83,14 +83,13 @@ const RealN_Info = () => {
                     </div>
                     <div className='B_how'>
                         <img className='B_img6' src={B_Img11} alt="" />
-                        <OuterFrame className='B_how_p' text="只需要準備「身分證」！就可以完成遊玩人間的實名驗證囉！" />
+                        <OuterFrame textClass='B_how_p' text="只需要準備「身分證」！就可以完成遊玩人間的實名驗證囉！" />
                     </div>
 
                     <div className='B_div5'>
-                        {/* <div className='B_img7'>
-                            <img className='B_img' src={B_Img} alt="" />
-                            <img className='B_img' src={B_Img} alt="" />
-                        </div> */}
+                        <div className='B_img7'>
+                        
+                        </div>
                         <button className='RNbtn'>立即認證 </button>
                     </div>
                 </section>
