@@ -1,0 +1,207 @@
+.product {
+	padding: 130px clamp(80px, 7%, 110px);
+
+	.breadcrumb {
+		display: flex;
+		margin-bottom: 20px;
+	}
+}
+
+:where(button, input, select, textarea) {
+	font: inherit; // 同時繼承 font-family（字型）與 font-size（字級）
+}
+
+/*------------------------ 商品簡介 ------------------------*/
+.product__info {
+	height: 800px;
+	background-color: palegreen;
+}
+
+/*------------------------ 賣家資訊 ------------------------*/
+.product__seller {
+	height: 360px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.seller {
+		height: 250px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		gap: 70px;
+		padding: 0 clamp(10px, 7%, 90px);
+
+		&__profile {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding-left: 20px;
+
+			&>.seller__avatar {
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				object-fit: cover;
+			}
+
+			&>.seller__name {
+				margin-top: 8px;
+				font-size: 14px;
+				color: #555;
+			}
+		}
+
+		&__stats {
+			// 1x2 版面：上排兩欄（評分 / 地區），下排 1 欄（整列給 tags）
+			display: grid; // Grid（網格）
+			grid-template-columns: auto 1fr; // 上排兩欄
+			grid-template-rows: auto auto; // 兩列
+			grid-template-areas:
+				"rating location"
+				"tags    tags";
+			column-gap: 12px; // 欄距
+			row-gap: 8px; // 列距
+			margin-left: 8px;
+			min-width: 0; // 防止被內容撐破
+			padding-bottom: 25px;
+
+			// 上排左：評分
+			&>.seller__rating {
+				grid-area: rating; // 指派區塊（English 英文：area 區域）
+				font-size: 25px;
+				font-weight: 700;
+				color: #e63026;
+				display: flex;
+				align-items: center;
+				min-width: 0;
+
+				.seller__score {
+					padding-right: 10px;
+				}
+
+				img {
+					width: 25px;
+					height: 25px;
+				}
+
+				&>.seller__count {
+					margin-left: 6px;
+					font-size: 14px;
+					color: #666;
+					font-weight: 400;
+				}
+			}
+
+			// 上排右：地區
+			&>.seller__location {
+				grid-area: location;
+				align-self: center;
+				font-size: 14px;
+				color: #555;
+				white-space: nowrap; // 需要可自動換行就改成 normal
+				min-width: 0;
+			}
+
+			// 下排整欄：tags
+			&>.seller__tags {
+				grid-area: tags;
+				margin-top: 0; // 由 grid 的 row-gap 控制間距
+				display: flex;
+				gap: 12px;
+				align-items: center;
+				min-width: 0;
+
+				img {
+					width: auto;
+					height: 50px;
+					display: block;
+				}
+			}
+		}
+
+		&__desc {
+			padding-left: 20px;
+
+			flex: 1 1 0; // 保持可伸縮
+			min-width: 0; // 允許縮小，不把外層撐爆
+			font-size: 20px;
+			line-height: 1.7;
+			color: #444;
+			padding-bottom: 25px;
+			// ★讓文字自動換行、不溢出
+			white-space: normal;
+			overflow-wrap: anywhere; // 長字串必要時斷行
+			word-break: break-word; // 中文或長英文都能斷
+		}
+
+		&__actions {
+			display: flex;
+			gap: 12px;
+			white-space: nowrap;
+			padding-bottom: 25px;
+
+			.btn {
+				padding: 10px 18px;
+				border-radius: 20px;
+				border: none;
+				cursor: pointer;
+				font-weight: 600;
+				color: #fff;
+				background: linear-gradient(#555, #333);
+
+				&--follow {
+					border: 3px solid #4C4C4C;
+					border-radius: 999px;
+					background: linear-gradient(#B7B7B7, #858585, #595959, #4C4C4C);
+				}
+
+				&--chat {
+					border: 3px solid #4C4C4C;
+					border-radius: 999px;
+					background: linear-gradient(#B7B7B7, #858585, #595959, #4C4C4C);
+				}
+			}
+		}
+	}
+
+	.top_decorate {
+		position: absolute;
+		top: 0;
+		background: var(--nav);
+		height: 30px;
+		width: 100%;
+		clip-path: polygon(0 0, 100% 0, 100% 20%, 97% 20%, 95.5% 100%, 45% 100%, 43.5% 20%, 0 20%);
+		pointer-events: none;
+	}
+
+	.down_decorate {
+		position: absolute;
+		bottom: 0;
+		background: var(--nav);
+		height: 30px;
+		width: 100%;
+		clip-path: polygon(0 80%, 3% 80%, 4.5% 0%, 50% 0%, 51.5% 80%, 100% 80%, 100% 100%, 0 100%);
+		pointer-events: none;
+	}
+
+	/*------------------------ 商品詳細說明 ------------------------*/
+
+}
+
+.product__detail {
+	height: 400px;
+	background-color: lightgoldenrodyellow;
+}
+
+.product__qa {
+	height: 700px;
+	background-color: lightblue;
+}
+
+.product__recommend {
+	height: 600px;
+	background-color: lightcoral;
+}
