@@ -1,57 +1,109 @@
-import React from 'react'
 import '../styles/Reviewpage.scss'
-import avatar from'../images/orderImg2.webp'
+import Card from "../components/Card"
+import DKB from '../images/Card_Image/DKB.webp'
+import DS2CE from '../images/Card_Image/DS2CE.webp'
+import SWP2 from '../images/Card_Image/switch_pro2.webp'
+import SWB from '../images/Card_Image/item_switch01.avif'
 
 export default function Reviewpage() {
-  
+
+  const y_newproducts = [
+    {
+      id: 1,
+      image: DKB,
+      category: '遊戲',
+      title: '咚奇剛蕉力全開+咚奇剛amiibo',
+      seller: 'paly**56',
+      priceNow: '800',
+      size: 'small'
+    },
+    {
+      id: 2,
+      image: DS2CE,
+      category: '遊戲',
+      title: '惡靈古堡2 重製版',
+      seller: 'game**88',
+      priceNow: '1200',
+      size: 'small'
+    },
+    {
+      id: 3,
+      image: SWP2,
+      category: '配件',
+      title: 'Switch Pro 控制器',
+      seller: 'shop**11',
+      priceNow: '1800',
+      size: 'small'
+    },
+    {
+      id: 4,
+      image: SWB,
+      category: '配件',
+      title: 'Switch 保護殼組合',
+      seller: 'fun**01',
+      priceNow: '999',
+      size: 'small'
+    },
+  ]
+
   return (
     <div className="y_Reviewpage">
 
       {/* 個人資料區塊 */}
-      <section className="profile">
-        <img src={avatar} alt="avatar" className="avatar" />
-        <div className="info">
-          <h2>@GAME_1318</h2>
-          <div className="rating">4.8 ★★★★★</div>
-          <p className="description">
-            信譽良好，商品為本人持有，非代購非集運，請安心購買
-          </p>
-          <p className="tags">已認證　出貨迅速　快速回覆</p>
-          <div className="actions">
-            <button>追蹤</button>
-            <button>聯繫</button>
-          </div>
-        </div>
-      </section>
+      <div>
+
+      </div>
 
       {/* 最新商品區塊 */}
-      <section className="latest_products">
-        <h3>最新商品</h3>
-        <div className="product_list">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="product_card">
-              <div className="image_placeholder" />
-              <h4>商品名稱</h4>
-              <p>NT$ 550</p>
-              <button>查看商品</button>
-            </div>
+      <div className="latest_products">
+        <div className='section_header'>
+          <h3 className="section_title">最新商品</h3>
+          <button
+            className="view_more"
+            onClick={() => console.log('跳轉到商品列表')}
+          >
+            查看更多商品▶︎
+          </button>
+
+        </div>
+        <div className="y_newproducts">
+          {y_newproducts.map((item) => (
+            <Card
+              key={item.id}
+              title={item.title}
+              priceNow={item.priceNow}
+              seller={item.seller}
+              image={item.image}
+              category={item.category}
+              size={item.size}
+              onClick={() => console.log(`查看 ${item.title}`)}
+            />
           ))}
         </div>
-      </section>
+      </div>
 
       {/* 過去交易區塊 */}
-      <section className="past_transactions">
-        <h3>過去交易</h3>
+      <div className="past_transactions">
+        <div className='past_header'>
+          <h3 className="past_title">過去交易</h3>
+          <button
+            className="past_view_more"
+            onClick={() => console.log('跳轉到評價列表')}
+          >
+            查看更多評價▶︎
+          </button>
+        </div>
+
         {[1, 2, 3].map((i) => (
           <div key={i} className="transaction">
-            <p>2023.04.14 10:12 購買**商品**</p>
+            <p>2025.06.14 18:12:18 hell**38 商品與圖片相符...</p>
             <div className="rating_bar">
               <div className="bar" />
               <span>5.0 ★</span>
             </div>
           </div>
         ))}
-      </section>
+      </div>
 
     </div>
   );
