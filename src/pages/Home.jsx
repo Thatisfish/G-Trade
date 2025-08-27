@@ -95,7 +95,7 @@ export default function Home() {
 						</div>
 						<div className="empty c4"></div> {/* 左下空格 */}
 						<Link to="/#" className="card c5"><img src={special03} alt="第三方撥款" /></Link>
-						<Link to="/#" className="card c6"><img src={special04} alt="商品狀態標示" /></Link>
+						<Link to="/ListingGuideline" className="card c6"><img src={special04} alt="商品狀態標示" /></Link>
 					</div>
 					{/* 背景們 */}
 					<div className='clippath'>

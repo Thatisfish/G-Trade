@@ -17,6 +17,7 @@ import Package from './pages/Package';
 import Real_name from './pages/Real_name'
 import ScrollToTop from './js/ScrollToTop';
 import Orders from './pages/Orders';
+import ListingGuideline from './pages/ListingGuideline';
 
 export default function App() {
 	const { pathname } = useLocation();
@@ -55,7 +56,7 @@ export default function App() {
 					<Route path='/Real_name' element={<Real_name />} />
 					<Route path='/RealN_Info' element={<RealN_Info />} />
 					<Route path='/Package' element={<Package />} />
-					<Route path='/Orders' element={<Orders />} />
+					<Route path='/ListingGuideline' element={<ListingGuideline />} />
 				</Routes>
 
 				<Footer theme={theme} />
