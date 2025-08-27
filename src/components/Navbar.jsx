@@ -24,7 +24,7 @@ export default function Navbar({ theme, onOpenLogin }) {
 
 				<ul className="menu">
 					<li><Link to="/New_info">最新消息</Link></li>
-					<li><Link to="/Hot_commodity">熱門商品</Link></li>
+					<li><Link to="/ProductPage">熱門商品</Link></li>
 					<li><Link to="/Alltype">Switch</Link></li>
 					<li><Link to="/Alltype">PS系列</Link></li>
 					<li><Link to="/Alltype">Xbox系列</Link></li>
