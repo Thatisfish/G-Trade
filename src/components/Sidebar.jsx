@@ -30,7 +30,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/support" className={({ isActive }) => isActive ? "active" : undefined}>
+          <NavLink to="/Reviewpage" className={({ isActive }) => isActive ? "active" : undefined}>
             <span className="icon">💬</span>
             客服中心
           </NavLink>

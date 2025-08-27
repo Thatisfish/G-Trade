@@ -1,0 +1,58 @@
+.y_Reviewpage {
+    font-family: 'Noto Sans TC', sans-serif;
+    color: #333;
+
+    /* 限制整體寬度並置中 */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    .profile {
+        display: flex;
+
+        /* 區塊標題置中 */
+        h2,
+        h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+
+        }
+
+    }
+
+
+
+    /* 商品清單區塊 */
+    .product_list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* 水平置中 */
+        gap: 1rem;
+    }
+
+    .product_card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        width: 180px;
+        text-align: center;
+        border-radius: 6px;
+        background: #fff;
+
+    }
+
+    /* 過去交易紀錄 */
+    .transaction {
+        max-width: 600px;
+        width: 100%;
+        margin: 1rem auto;
+        background: #fafafa;
+        padding: 0.75rem;
+        border-radius: 4px;
+    }
+}
