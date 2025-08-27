@@ -1,12 +1,14 @@
 # 更新記錄
+## 專題網站網址（gh-pages）：https://thatisfish.github.io/reactNTUB/
+
 ## 俞老師
 - 0814：選單ok
-- 0824：gh-pages無法執行（404錯誤） 
+- 0827：請放上專題網址 
 
 ## 有問題或是有做了甚麼都幫我寫在自己的區域內
 ## 不知道怎麼寫可以參考我寫的內容
 - 一些注意事項
-- https://thatisfish.github.io/reactNTUB/
+- 
 ## 組員
 ### Achi
 -  0815-login彈窗_css待續
