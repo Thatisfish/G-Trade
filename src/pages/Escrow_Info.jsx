@@ -1,37 +1,59 @@
 import '../styles/_Escrow_Info.scss'
-import React from 'react'
+import OuterFrame from '../components/OuterFrame'
+import B_ESImg1 from '../images/EscrowInfo/Es_Img1.avif'
+import B_ESImg2 from '../images/EscrowInfo/Es_Img2.avif'
+import B_ESImg3 from '../images/EscrowInfo/Es_Img3.webp'
+import B_ESImg4 from '../images/EscrowInfo/Es_Img4.avif'
+import B_ESImg5 from '../images/EscrowInfo/Es_Img5.avif'
+import B_ESImg6 from '../images/EscrowInfo/Es_Img6.avif'
+import B_ESImg7 from '../images/EscrowInfo/Es_Img7.avif'
+import B_ESImg8 from '../images/EscrowInfo/Es_Img8.avif'
+import B_ESImg9 from '../images/EscrowInfo/Es_Img9.webp'
+import B_ESImg10 from '../images/EscrowInfo/Es_Img10.webp'
 
 const Escrow_Info = () => {
     return (
         <>
-            <main className='B_escrowMain'>
-                <section className='B_escrowOne'>
-                    <div className='B_EStitle'>
-                        <div className='B_EStitle01'>
-                            <h2>第三方<span>撥款</span> </h2>
+            <main className='B_EsMain'>
+                <section className="B_EsSec">
+                    <div className='B_EsTitle'>
+                        <div className='B_EsTitle01'>
+                            <h2>第三方<span>支付</span> </h2>
                             <small>Third-party payment</small>
                         </div>
 
-                        <p className='B_p'>確保雙方資金安全，避免詐騙或糾紛！</p>
+                        <p className='B_EsP'>確保雙方資金安全，避免詐騙或糾紛！</p>
                     </div>
+                    <div className='B_EsIntro'>
+                        <p>為了保障雙方權益，買家在平臺進行交易時，款項不會直接從買家流向賣家，而是先由獨立的第三方支付機構代為保管，確保買家收到商品無誤後，才將款項撥付給賣家，避免交易糾紛與詐騙風險。</p>
+                        <img className='B_EsImg1' src={B_ESImg1} alt="" />
+                    </div>
+                </section>
 
-                    <div className='B_esIntro'>
-                        <div className='B_div'>
-                            <p className='B_EStitle_p1'>為了保障雙方權益，買家在平臺進行交易時，款項不會直接從買家流向賣家，而是先由獨立的第三方支付機構代為保管，確保買家收到商品無誤後，才將款項撥付給賣家，避免交易糾紛與詐騙風險。</p>
-                            <br />
-                            <p className="B_EStitle_p1">所有款項經平臺保管與紀錄，可透過客服或平臺申訴流程，我們會中立協助處理。</p>
-                        </div>
-                        <div className='B_div2'>
-                            <img className='B_img1' src={B_Img1} alt="實名制圖片1" />
-                            <div className='B_div2_div'>
-                                <span className='B_sp'>降低詐騙風險</span>
-                                <img className='B_img2' src={B_Img2} alt="實名制圖片2" />
-                            </div>
-                            <div className='B_div2_div'>
-                                <span className='B_sp'>使用更多功能</span>
-                                <img className='B_img2' src={B_Img3} alt="實名制圖片3" />
-                            </div>
-                        </div>
+                <section className="B_EsSec2">
+                    <h2 className='B_EsH2'>關於第三方撥款</h2>
+                    <div className='B_EsItem'>
+                        <img className='B_EsImgF' src={B_ESImg2} alt="" />
+                        <OuterFrame textClass='B_EsF' text="買家下單並完成付款" />
+                        <img className='B_EsImgS' src={B_ESImg3} alt="" />
+                    </div>
+                    <img className='B_EsArrow1' src={B_ESImg9} alt='' />
+                    <div className='B_EsItem'>
+                        <img className='B_EsImg2' src={B_ESImg5} alt="" />
+                        <OuterFrame textClass='B_EsF' text="平台暫時保管款項" />
+                        <img className='B_EsImgF' src={B_ESImg4} alt="" />
+                    </div>
+                    <img className='B_EsArrow2' src={B_ESImg10} alt='' />
+                    <div className='B_EsItem'>
+                        <img className='B_EsImgF' src={B_ESImg6} alt="" />
+                        <OuterFrame textClass='B_EsF' text="買家確認收貨" />
+                        <img className='B_EsImgS' src={B_ESImg7} alt="" />
+                    </div>
+                    <img className='B_EsArrow3' src={B_ESImg9} alt='' />
+                    <div className='B_EsItem2'>
+                        <OuterFrame textClass='B_EsF' text="平台將款項撥付賣家" />
+                        <img className='B_EsImgS' src={B_ESImg8} alt="" />
+                        <p>※如遇商品爭議，可透過客服中心提出申訴 。</p>
                     </div>
                 </section>
             </main>

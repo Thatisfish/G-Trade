@@ -1,13 +1,25 @@
 .J_cartPage {
     padding: 120px;
 
+    // display: inline-flex;
+    // justify-content: center;
+    // align-items: flex-start;
+    // gap: 93px;
+
     .J_cartTitle {
-        text-align: center;
-        font-size: 25px;
-        margin-bottom: 20px;
-        font-weight: bold;
         color: #DE1A10;
+        font-family: "Noto Sans TC";
+        font-style: normal;
+        font-size: 25px;
+        line-height: 150%;
+
+        text-align: center;
+        margin-bottom: 20px;
+
+
+
     }
+
 
     .J_cartContainer {
         display: flex;
@@ -32,7 +44,7 @@
     /* 區塊通用樣式 */
     .J_cartSection {
         background: #fff;
-        padding: 20px;
+        padding: 30px;
         border-radius: 20px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
@@ -41,7 +53,7 @@
             width: 157px;
             height: 36px;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             gap: 17px;
             flex-shrink: 0;
         }
@@ -54,6 +66,39 @@
             color: #D5140B;
             display: inline-flex;
             align-items: center;
+            gap: 12px;
+        }
+
+        img {
+            width: 34px;
+            height: 40px;
+        }
+    }
+    .J_cartSection2 {
+        background: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        .J_cartSectionA {
+            display: flex;
+            width: 157px;
+            height: 36px;
+            justify-content: center;
+            align-items: center;
+            gap: 17px;
+            flex-shrink: 0;
+        }
+
+        .J_sectionTitle {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border: none;
+            color: #D5140B;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
         }
 
         img {
@@ -63,6 +108,7 @@
     }
 
     /* 商品清單 */
+
     .J_cartItem {
         display: flex;
         align-items: center;
@@ -71,11 +117,12 @@
         padding: 8px 0;
         border-bottom: 1px solid #eee;
 
+
+
         img {
             width: 60px;
             height: 60px;
             object-fit: cover;
-            border-radius: 8px;
         }
 
         .J_itemInfo {
@@ -105,23 +152,28 @@
             font-size: 18px;
             transition: transform 0.2s ease;
 
-            &:hover {
-                transform: scale(1.2);
-            }
+            // &:hover {
+            //     transform: scale(1.2);
+            // }
         }
+    }
+
+    .J_cartItem:last-child {
+        border-bottom: none;
     }
 
     /* 運送 & 付款 */
     .J_shippingOptions,
     .J_paymentOptions {
         display: flex;
+
         flex-direction: column;
         gap: 10px;
 
         .J_optionGroup {
             display: inline-flex;
-align-items: center;
-gap: 67px;
+            align-items: center;
+            gap: 67px;
             margin-bottom: 15px;
 
             h3 {
@@ -146,6 +198,8 @@ gap: 67px;
 
     .J_paymentOptions {
         display: flex;
+        flex-direction: row;
+        gap: 50px;
 
         label {
 
@@ -211,12 +265,13 @@ gap: 67px;
         p {
             display: flex;
             justify-content: space-between;
-            margin: 10px 0;
+            margin: 20px 0;
             font-size: 24px;
             color: #DE1A10;
 
             span {
                 font-weight: bold;
+
             }
         }
 
@@ -230,15 +285,30 @@ gap: 67px;
         }
 
         .J_checkoutBtn {
-            width: 77%;
             background: #DE1A10;
             color: white;
-            padding: 12px;
+            width: 77%;
+            font-size: 16px;
+
             border-color: #A12424;
             border-radius: 999px;
+
+            padding: 12px 10px;
+
             cursor: pointer;
-            font-size: 16px;
-            margin-top: 15px;
+
+            margin-top: 20px;
+
+            .J_checkoutContent {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .J_Checkout {
+                width: 85%;
+
+            }
 
         }
     }
