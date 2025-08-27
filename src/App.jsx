@@ -17,6 +17,9 @@ import Package from './pages/Package';
 import Real_name from './pages/Real_name'
 import ScrollToTop from './js/ScrollToTop';
 import Orders from './pages/Orders';
+import Reviewpage from './pages/Reviewpage';
+import ProductPage from './pages/ProductPage';
+import EscrowInfo from './pages/Escrow_Info';
 import ListingGuideline from './pages/ListingGuideline';
 
 export default function App() {
@@ -56,7 +59,9 @@ export default function App() {
 					<Route path='/Real_name' element={<Real_name />} />
 					<Route path='/RealN_Info' element={<RealN_Info />} />
 					<Route path='/Package' element={<Package />} />
-					<Route path='/ListingGuideline' element={<ListingGuideline />} />
+					<Route path='/Orders' element={<Orders />} />
+					<Route path='/Reviewpage' element={<Reviewpage />} />
+					<Route path='/ProductPage' element={<ProductPage />} />
 				</Routes>
 
 				<Footer theme={theme} />
