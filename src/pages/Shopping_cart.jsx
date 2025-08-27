@@ -60,19 +60,19 @@ function Shopping_cart() {
           </section>
 
           {/* 運送方式 */}
-          <section className="J_cartSection">
+          <section className="J_cartSection2">
             <h2 className="J_sectionTitle"><img src={cart} alt="" />運送方式</h2>
             <ShippingOptions />
           </section>
 
           {/* 付款方式 */}
-          <section className="J_cartSection">
+          <section className="J_cartSection2">
             <h2 className="J_sectionTitle"><img src={money} alt="" />付款方式</h2>
             <PaymentOptions />
           </section>
 
           {/* 備註 */}
-          <section className="J_cartSection">
+          <section className="J_cartSection2">
             <Notes />
           </section>
         </div>
