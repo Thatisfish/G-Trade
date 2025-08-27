@@ -18,7 +18,8 @@ import Real_name from './pages/Real_name'
 import ScrollToTop from './js/ScrollToTop';
 import Orders from './pages/Orders';
 import Reviewpage from './pages/Reviewpage';
-import ProductPage from './pages/ProductPage'
+import ProductPage from './pages/ProductPage';
+import EscrowInfo from './pages/Escrow_Info';
 
 export default function App() {
 	const { pathname } = useLocation();
@@ -60,6 +61,7 @@ export default function App() {
 					<Route path='/Orders' element={<Orders />} />
 					<Route path='/Reviewpage' element={<Reviewpage />} />
 					<Route path='/ProductPage' element={<ProductPage />} />
+					<Route path='/Escrow_Info' element={<EscrowInfo />} />
 				</Routes>
 
 				<Footer theme={theme} />
