@@ -1,5 +1,5 @@
 # 更新記錄
-## 專題網站網址（gh-pages）：https://thatisfish.github.io/reactNTUB/
+## 專題網站網址（gh-pages）：https://thatisfish.github.io/G-Trade/
 
 ## 俞老師
 - 0814：選單ok
