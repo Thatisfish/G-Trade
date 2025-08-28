@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "../styles/_ListingGuideline.scss"
 import c_list_1 from '../images/Regform_icon/c_list_1.png'
 import c_list_2 from '../images/Regform_icon/c_list_2.png'
@@ -13,6 +13,49 @@ import c_list_tree from '../images/Regform_icon/c_list_tree.png'
 import OuterFrame from '../components/OuterFrame'
 
 const ListingGuideline = () => {
+    const [dinoX, setDinoX] = useState(0)
+    const [isJump, setIsJump] = useState(false)
+    const dinoRef = useRef(null)
+    const obstacleRefs = useRef([])
+
+    const gameWidth = 600
+    const dinoWidth = 75
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setDinoX(prev => {
+                const next = prev + 5
+                if (next > gameWidth) {
+                    dinoRef.current.style.opacity = '0' // 隱藏恐龍
+                    setTimeout(() => {
+                        dinoRef.current.style.left = "0px" // 重設位置
+                        setIsJump(false)
+                        setDinoX(0)
+                        setTimeout(() => {
+                            dinoRef.current.style.opacity = '1' // 顯示恐龍
+                        }, 300)
+                    }, 1000)
+                    return 0
+                } return next
+            })
+            // 碰撞偵測
+            obstacleRefs.current.forEach(obstacle => {
+                if (!obstacle) return
+                const obstacleX = obstacle.offsetLeft
+                const obstacleWidth = obstacle.offsetWidth
+
+                if (
+                    dinoX + dinoWidth + 30 > obstacleX &&
+                    dinoX < obstacleX + obstacleWidth &&
+                    !isJump) {
+                    setIsJump(true)
+                    setTimeout(() => setIsJump(false), 1000)
+                }
+            })
+        }, 50)
+        return () => clearInterval(interval)
+    }, [dinoX, isJump])
+
     return (
         <>
             <main className='c_listMain'>
@@ -26,12 +69,28 @@ const ListingGuideline = () => {
                     </header>
                     <div className='c_listPic'>
                         <div className='c_listPicBox'>
-                            <img className='c_list_dinosaur' src={c_list_dinosaur} alt="" />
-                            <img className='c_list_tree' src={c_list_tree} alt="" />
-                            <img className='c_list_tree' src={c_list_tree} alt="" />
-                            <img className='c_list_1' src={c_list_1} alt="" />
+                            <img
+                                ref={dinoRef}
+                                className={`c_list_dinosaur ${isJump ? 'jump' : ""}`}
+                                src={c_list_dinosaur}
+                                alt="恐龍"
+                                style={{ left: `${dinoX}px` }}
+                            />
+                            {[150, 400].map((pos, index) => (
+                                <img
+                                    key={index}
+                                    ref={el => (obstacleRefs.current[index] = el)}
+                                    className='c_list_tree'
+                                    src={c_list_tree}
+                                    alt="障礙物"
+                                    style={{ left: `${pos}px` }}
+                                />
+                            ))}
                         </div>
-                        <p className='c_listIntro'>為了讓買賣雙方有更好的交易體驗，只要賣家符合本頁規範，平台便會加強商品推播！<br />不只買家在購物時能安心選購，賣家也更有機會將自己的商品銷售出去！</p>
+                        <div className='c_listB'>
+                            <img className='c_list_1' src={c_list_1} alt="" />
+                            <p className='c_listIntro'>為了讓買賣雙方有更好的交易體驗，只要賣家符合本頁規範，平台便會加強商品推播！<br />不只買家在購物時能安心選購，賣家也更有機會將自己的商品銷售出去！</p>
+                        </div>
                     </div>
                 </section>
                 <div className='c_listA'>
@@ -55,11 +114,11 @@ const ListingGuideline = () => {
                         <div className='c_listDirebox3'>
                             <p className='c_listTitle'><span className='c_listNum'>03</span><br />名稱精準　分類正確</p>
                             <div className='c_listRun'>
-                                <img className='c_list_dinosaur' src={c_list_dinosaur} alt="" />
-                                <img className='c_list_tree' src={c_list_tree} alt="" />
-                                <img className='c_list_tree' src={c_list_tree} alt="" />
-                                <img className='c_list_tree' src={c_list_tree} alt="" />
-                                <img className='c_list_tree' src={c_list_tree} alt="" />
+                                <img className='c_list_dinosaur2' src={c_list_dinosaur} alt="" />
+                                <img className='c_list_tree1' src={c_list_tree} alt="" />
+                                <img className='c_list_tree2' src={c_list_tree} alt="" />
+                                <img className='c_list_tree1' src={c_list_tree} alt="" />
+                                <img className='c_list_tree3' src={c_list_tree} alt="" />
                             </div>
                             <OuterFrame textClass="c_listTxt" text="不使用與商品無關的關鍵字，清楚描述商品內容、使用狀況、是否含原包裝...等情況；上架時選擇正確的分類與分級。" />
                         </div>

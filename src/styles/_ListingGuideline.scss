@@ -5,15 +5,6 @@
     flex-direction: column;
     align-items: center;
 
-    .c_list_dinosaur {
-        width: 80px;
-        height: auto;
-    }
-
-    .c_list_tree {
-        width: 50px;
-        height: auto;
-    }
 
     .c_listTop {
         width: 65%;
@@ -51,28 +42,68 @@
         .c_listPic {
             margin-top: 200px;
             display: flex;
-            align-items: center;
+            align-items: end;
             justify-content: end;
             position: relative;
             overflow: hidden;
-            gap: 100px;
+
+            &::after {
+                // border-bottom: #222 solid 1px;
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 80%;
+                height: 3px;
+                background: #444;
+            }
+
 
             .c_listPicBox {
-                display: flex;
-                align-items: flex-end;
                 position: relative;
-                gap: 120px;
+                width: 600px;
+                height: 200px;
+
+                // overflow: hidden;
+
+
+                .c_list_dinosaur {
+                    position: absolute;
+                    width: 80px;
+                    height: auto;
+                    bottom: 0;
+                    transition: left 0.05s linear, bottom 0.5s ease;
+
+                    &.jump {
+                        bottom: 80px;
+                    }
+                }
+
+                .c_list_tree {
+                    position: absolute;
+                    width: 50px;
+                    height: auto;
+                    bottom: 0px;
+                }
             }
 
-            .c_list_1 {
-                width: 200px;
-                height: auto;
-            }
+            .c_listB {
+                display: flex;
+                align-items: center;
+                justify-content: end;
 
-            .c_listIntro {
-                width: 250px;
-                color: #222;
-                font-size: 16px;
+                .c_list_1 {
+                    width: auto;
+                    height: 350px;
+                    margin-right: 50px;
+
+                }
+
+                .c_listIntro {
+                    width: 250px;
+                    color: #222;
+                    font-size: 16px;
+                }
             }
         }
     }
@@ -150,8 +181,29 @@
                 .c_listRun {
                     display: flex;
                     align-items: end;
+                    justify-content: center;
                     gap: 150px;
                     margin-top: 80px;
+
+                    .c_list_dinosaur2 {
+                        width: 60px;
+                        height: auto;
+                    }
+
+                    .c_list_tree1 {
+                        width: 40px;
+                        height: auto;
+                    }
+
+                    .c_list_tree2 {
+                        width: 30px;
+                        height: auto;
+                    }
+
+                    .c_list_tree3 {
+                        width: 70px;
+                        height: auto;
+                    }
                 }
             }
         }
