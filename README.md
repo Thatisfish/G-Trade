@@ -21,6 +21,7 @@
 -  0824-package_紅黑外框元件/下半段進行中
 -  0825-realname_必填修正/package_80% (?
 -  0826-package_90%偷工減料改頁面滾動少一點
+-  0828-C-list_恐龍動畫/package_padding
 ### Biki
 - 0826-實名制完成
 - 0825-實名制小調整
