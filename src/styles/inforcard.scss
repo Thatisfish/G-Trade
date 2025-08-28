@@ -1,12 +1,14 @@
 .container {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);  /* ✅ 固定5欄 */
+	grid-template-columns: repeat(5, 1fr);
+	/* ✅ 固定5欄 */
 	gap: 40px;
-	align-items: center;                    
+	align-items: center;
 	width: 100%;
-	max-width: 1400px;                     /* ✅ 避免超寬 */
-	margin: 0 auto	;
-	
+	max-width: 1400px;
+	/* ✅ 避免超寬 */
+	margin: 0 auto;
+
 }
 
 
@@ -42,6 +44,7 @@
 	width: auto;
 	/* 最矮 */
 }
+
 .info-card.large .info-img {
 	height: 50%;
 }
@@ -52,7 +55,8 @@
 
 .info-card.small .info-img,
 .info-card:not(.large):not(.medium) .info-img {
-	height: 50%; /* 可調整為適合你的小卡片 */
+	height: 50%;
+	/* 可調整為適合你的小卡片 */
 }
 
 .info-tag {
@@ -82,7 +86,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	align-items: flex-start;	
+	align-items: flex-start;
 	flex-grow: 1;
 }
 

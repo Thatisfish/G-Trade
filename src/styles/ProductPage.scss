@@ -191,17 +191,96 @@
 
 }
 
+/*------------------------ 商品詳細說明 ------------------------*/
 .product__detail {
-	height: 400px;
-	background-color: lightgoldenrodyellow;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 80px 0;
+
+	.detail {
+		background-color: #fff;
+		border: 5px solid #000; // 黑色外框
+		padding: 40px;
+		height: 70%;
+		width: 80%;
+		line-height: 1.6; // 行高讓文字比較好讀
+		min-height: 300px;
+
+		&_title {
+			font-size: 24px;
+			font-weight: 600;
+			margin-bottom: 30px; // 標題和內文間距
+		}
+
+		&_content {
+			padding: 0 30px;
+			font-size: 18px;
+			font-weight: 500;
+			color: #333;
+			white-space: pre-line; // 讓換行符號生效（對照你的內文有斷行）
+		}
+	}
 }
 
+/*------------------------ 問與答 ------------------------*/
 .product__qa {
 	height: 700px;
 	background-color: lightblue;
 }
 
+/*------------------------ 你可能有興趣的商品 ------------------------*/
 .product__recommend {
-	height: 600px;
-	background-color: lightcoral;
+	height: 700px;
+	display: flex;
+	justify-content: center;
+
+	.recommend {
+		margin-top: 100px;
+		border: 2px solid #9D9D9D;
+		height: 650px;
+		width: 1400px;
+		padding: 50px;
+		display: flex;
+		flex-direction: column;
+		background-color: #fff;
+		box-shadow: 10px 10px 11.2px rgba(0, 0, 0, 0.25);
+
+
+		&_title {
+			font-size: 28px;
+			font-weight: 500;
+			margin-bottom: 30px;
+		}
+
+		&_btn {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 40px 0;
+
+			.btn {
+				padding: 10px 18px;
+				border-radius: 20px;
+				border: none;
+				cursor: pointer;
+				font-weight: 600;
+				color: #fff;
+				background: linear-gradient(#B7B7B7, #858585, #595959, #4C4C4C);
+				border: 3px solid #4C4C4C;
+				border-radius: 999px;
+				width: 200px;
+			}
+		}
+
+
+		.container {
+			display: flex;
+
+			.info-card {
+				height: 400px;
+				width: 280px;
+			}
+		}
+	}
 }

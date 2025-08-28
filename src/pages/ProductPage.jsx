@@ -32,7 +32,7 @@ const ProductPage = () => {
 
 	return (
 		<div className="product">
-			{/* 麵包屑 */}
+			{/* V 麵包屑 */}
 			<div className="breadcrumb">
 				<a href="/">首頁</a>
 				<span>›</span>
@@ -46,13 +46,13 @@ const ProductPage = () => {
 			<section className="product__info section">
 				<ProductInfo {...product} />
 			</section>
-			{/* 賣家資訊 */}
+			{/* V 賣家資訊 */}
 			<aside className="product__seller section">
 				<div className="top_decorate"></div>
 				<SellerInfo {...product.seller} />
 				<div className="down_decorate"></div>
 			</aside>
-			{/* 商品詳細說明 */}
+			{/* V 商品詳細說明 */}
 			<section className="product__detail section">
 				<ProductDetail reviews={product.reviews} rating={5} reviewCount={1} />
 			</section>
@@ -60,7 +60,7 @@ const ProductPage = () => {
 			<section className="product__qa section">
 				<ProductQa qa={product.qa} />
 			</section>
-			{/* 你可能有興趣的商品 */}
+			{/* V 你可能有興趣的商品 */}
 			<section className="product__recommend section">
 				<ProductRecommend items={product.recommendations} />
 			</section>
