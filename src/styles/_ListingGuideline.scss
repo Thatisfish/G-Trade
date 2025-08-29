@@ -66,22 +66,50 @@
 
                 // overflow: hidden;
 
+                @keyframes dinoJump {
+                    0% {
+                        transform: translateY(0);
+                    }
+
+                    8% {
+                        transform: translateY(-60px);
+                    }
+
+                    30% {
+                        transform: translateY(-80px);
+                    }
+
+                    // 滯空最高點
+                    100% {
+                        transform: translateY(0);
+                    }
+                }
 
                 .c_list_dinosaur {
                     position: absolute;
-                    width: 80px;
+                    width: 70px;
                     height: auto;
                     bottom: 0;
-                    transition: left 0.05s linear, bottom 0.5s ease;
+                    transition: left 0.05s linear, bottom 0.5s ease, opacity 0.3s ease;
+                    opacity: 1;
+                    // visibility: visible;
+
+                    &.hidden{
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                        // transition-delay: 0.3s;
+                        // visibility: hidden;
+                    }
 
                     &.jump {
-                        bottom: 80px;
+                        // bottom: 80px;
+                        animation: dinoJump 2.2s ease-in-out;
                     }
                 }
 
                 .c_list_tree {
                     position: absolute;
-                    width: 50px;
+                    width: 40px;
                     height: auto;
                     bottom: 0px;
                 }
