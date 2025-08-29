@@ -9,34 +9,42 @@ import c_list_6 from '../images/Regform_icon/c_list_6.png'
 import c_list_7 from '../images/Regform_icon/c_list_7.png'
 import c_list_8 from '../images/Regform_icon/c_list_8.png'
 import c_list_dinosaur from '../images/Regform_icon/c_list_dinosaur.png'
+import c_list_dinosaur2 from '../images/Regform_icon/c_list_dinosaur2.png'
 import c_list_tree from '../images/Regform_icon/c_list_tree.png'
 import OuterFrame from '../components/OuterFrame'
 
 const ListingGuideline = () => {
     const [dinoX, setDinoX] = useState(0)
+    const [dinoFrame, setDinoFrame] = useState(0)
     const [isJump, setIsJump] = useState(false)
+    const [isHidden, setIsHidden] = useState(false)
     const dinoRef = useRef(null)
     const obstacleRefs = useRef([])
 
     const gameWidth = 600
-    const dinoWidth = 75
+    const dinoWidth = 60
 
     useEffect(() => {
         const interval = setInterval(() => {
+            // if (isHidden) return // 停止移動期間不更新
+            setDinoFrame(prevFrame => (prevFrame === 0 ? 1 : 0)) // 交換恐龍模式
             setDinoX(prev => {
-                const next = prev + 5
-                if (next > gameWidth) {
-                    dinoRef.current.style.opacity = '0' // 隱藏恐龍
+                const next = prev + 7
+                if (next > gameWidth  && !isHidden) {
+                    setIsHidden(true) // +hidden class
+                    setIsJump(false)
                     setTimeout(() => {
-                        dinoRef.current.style.left = "0px" // 重設位置
-                        setIsJump(false)
                         setDinoX(0)
+                        // dinoRef.current.style.left = "0px" // 重設位置
                         setTimeout(() => {
-                            dinoRef.current.style.opacity = '1' // 顯示恐龍
+                            setIsHidden(false) // 移除hidden->淡入
+                            setDinoX(0)
                         }, 300)
                     }, 1000)
-                    return 0
-                } return next
+                    return prev
+                }
+                if (isHidden) return prev
+                return next
             })
             // 碰撞偵測
             obstacleRefs.current.forEach(obstacle => {
@@ -45,16 +53,16 @@ const ListingGuideline = () => {
                 const obstacleWidth = obstacle.offsetWidth
 
                 if (
-                    dinoX + dinoWidth + 30 > obstacleX &&
+                    dinoX + dinoWidth + 10 > obstacleX &&
                     dinoX < obstacleX + obstacleWidth &&
                     !isJump) {
                     setIsJump(true)
-                    setTimeout(() => setIsJump(false), 1000)
+                    setTimeout(() => setIsJump(false), 2200)
                 }
             })
-        }, 50)
+        }, 100)
         return () => clearInterval(interval)
-    }, [dinoX, isJump])
+    }, [dinoX, isJump, isHidden])
 
     return (
         <>
@@ -71,8 +79,8 @@ const ListingGuideline = () => {
                         <div className='c_listPicBox'>
                             <img
                                 ref={dinoRef}
-                                className={`c_list_dinosaur ${isJump ? 'jump' : ""}`}
-                                src={c_list_dinosaur}
+                                className={`c_list_dinosaur ${isJump ? 'jump' : ""} ${isHidden ? 'hidden' : ''}`}
+                                src={dinoFrame === 0 ? c_list_dinosaur : c_list_dinosaur2}
                                 alt="恐龍"
                                 style={{ left: `${dinoX}px` }}
                             />
