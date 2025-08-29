@@ -31,8 +31,8 @@ const SellerInfo = () => {
 				</p>
 			</div>
 			<div className="seller__actions">
-				<button className="btn btn--follow">追蹤+</button>
-				<button className="btn btn--chat">聊聊</button>
+				<button className="btn">追蹤+</button>
+				<button className="btn">聊聊</button>
 			</div>
 		</div>
 

@@ -58,7 +58,9 @@ const ProductPage = () => {
 			</section>
 			{/* 問與答 */}
 			<section className="product__qa section">
+				<div className="top_decorate2"></div>
 				<ProductQa qa={product.qa} />
+				<div className="down_decorate2"></div>
 			</section>
 			{/* V 你可能有興趣的商品 */}
 			<section className="product__recommend section">
