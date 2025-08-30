@@ -147,7 +147,7 @@ const Alltype = () => {
 							aria-selected={active === tab}
 							onClick={() => setActive(tab)}
 						>
-							{tab}（{counts[tab]}）
+							{tab}({counts[tab]})
 						</button>
 					))}
 					{/* <button className='B_Categories' type='button'>主機 ()</button>
