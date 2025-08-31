@@ -94,7 +94,7 @@
                     opacity: 1;
                     // visibility: visible;
 
-                    &.hidden{
+                    &.hidden {
                         opacity: 0;
                         transition: opacity 0.3s ease;
                         // transition-delay: 0.3s;
@@ -148,6 +148,28 @@
             img {
                 height: 1250px;
                 width: auto;
+            }
+
+            span {
+                position: absolute;
+                width: 200px;
+                height: 6px;
+                background: #DEDADA;
+            }
+
+            .c_listLine1 {
+                left: -600%;
+                top: 5.5%;
+            }
+            .c_listLine2 {
+                left: 130%;
+                top: 54%;
+                width: 180px;
+            }
+            .c_listLine3 {
+                left: -530%;
+                top: 97%;
+                width: 175px;
             }
         }
 

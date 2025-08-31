@@ -35,7 +35,6 @@
 
 			.c_packSlogan {
 				font-size: 28px;
-
 			}
 		}
 
@@ -46,12 +45,14 @@
 			gap: 150px;
 
 			.c_packIntro {
+				min-width: 150px;
 				width: 250px;
 				color: #222;
 			}
 
 			.c_package_twopeople {
-				width: 400px;
+				max-width: 400px;
+				width: 100%;
 			}
 		}
 	}
@@ -75,8 +76,6 @@
 			align-items: center;
 
 			.c_packBox {
-				// display: grid;
-				// align-items: center;
 				width: 400px;
 
 				.c_packDirections {
@@ -92,7 +91,6 @@
 				max-height: 200px;
 				width: auto;
 			}
-
 		}
 	}
 
@@ -104,7 +102,6 @@
 
 		.c_packScene {
 			padding-top: -500px;
-
 			position: sticky;
 			top: 0;
 			height: 100vh;
@@ -115,18 +112,20 @@
 
 			.c_packStepImg {
 				max-width: 350px;
+				min-width: 250px;
 				height: auto;
 			}
 
 			.c_packText {
-				width: 400px;
+				width: 100%;
+				max-width: 400px;
+				min-width: 300px;
 
 				.c_packSubtxt {
 					display: grid;
 					margin-top: 80px;
 				}
 			}
-
 		}
 	}
 
@@ -143,6 +142,124 @@
 		to {
 			opacity: 1;
 			transform: translateY(0);
+		}
+	}
+}
+
+@media (max-width: 767px) {
+
+	/* 整體版面 */
+	.c_packMain {
+		margin: 0 20px;
+		padding-top: 130px;
+	}
+
+	/* 頂部區塊 */
+	.c_packTop {
+		width: 100%;
+		height: auto;
+
+		.c_packHead {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 10px;
+
+			.c_packMark {
+				h2 {
+					font-size: 36px;
+
+					span {
+						font-size: 24px;
+					}
+				}
+
+				small {
+					font-size: 16px;
+				}
+			}
+
+			.c_packSlogan {
+				font-size: 18px;
+			}
+		}
+
+		.c_packPic {
+			margin-top: 50px;
+			flex-direction: column;
+			gap: 30px;
+
+			.c_packIntro {
+				width: 100%;
+				text-align: center;
+				font-size: 14px;
+			}
+
+			.c_package_twopeople {
+				max-width: 250px;
+			}
+		}
+	}
+
+	/* 準備材料區塊 */
+	.c_packPrepare {
+		width: 100%;
+		height: auto;
+		gap: 40px;
+		margin-top: 200px;
+		margin-bottom: 1000px;
+
+		.c_packA {
+			font-size: 18px;
+			text-align: center;
+		}
+
+		.c_packOutBox {
+			flex-direction: column;
+			gap: 20px;
+			align-items: center;
+
+			.c_packBox {
+				width: 100%;
+				text-align: center;
+
+				.c_packDirections {
+					margin: 10px 0;
+				}
+			}
+
+			img {
+				max-height: 150px;
+			}
+		}
+	}
+
+	/* 滾動區塊 */
+	.c_packScroll {
+		width: 100%;
+		height: auto;
+
+		.c_packScene {
+			position: static;
+			height: auto;
+			flex-direction: column;
+			gap: 30px;
+			padding-top: 0;
+			flex-direction: column-reverse;
+
+			.c_packStepImg {
+				max-width: 250px;
+				min-width: auto;
+				margin: 0 auto;
+			}
+
+			.c_packText {
+				max-width: 100%;
+				text-align: center;
+
+				.c_packSubtxt {
+					margin-top: 20px;
+				}
+			}
 		}
 	}
 }

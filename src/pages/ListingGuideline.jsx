@@ -26,16 +26,14 @@ const ListingGuideline = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            // if (isHidden) return // 停止移動期間不更新
             setDinoFrame(prevFrame => (prevFrame === 0 ? 1 : 0)) // 交換恐龍模式
             setDinoX(prev => {
                 const next = prev + 7
-                if (next > gameWidth  && !isHidden) {
+                if (next > gameWidth && !isHidden) {
                     setIsHidden(true) // +hidden class
                     setIsJump(false)
                     setTimeout(() => {
                         setDinoX(0)
-                        // dinoRef.current.style.left = "0px" // 重設位置
                         setTimeout(() => {
                             setIsHidden(false) // 移除hidden->淡入
                             setDinoX(0)
@@ -104,10 +102,13 @@ const ListingGuideline = () => {
                 <div className='c_listA'>
                     <div className='c_list_2'>
                         <img src={c_list_2} alt="" />
+                        <span className='c_listLine1'></span>
+                        <span className='c_listLine2'></span>
+                        <span className='c_listLine3'></span>
                     </div>
                     <div className='c_listOutBox'>
                         <div className='c_listDirebox1'>
-                            <p className='c_listTitle'><span className='c_listNum'>01</span><br />放置帳號手寫字條</p>
+                            <p className='c_listTitle'><span className='c_listNum'>01</span><br />放置帳號手寫字條 </p>
                             <p className='c_lisrDirections'>請在商品旁放置手寫的帳號名稱字卡（使用紙張書寫賣場帳號），以驗證商品為本人持有。</p>
                             <img className='c_list_6' src={c_list_6} alt="" />
                         </div>

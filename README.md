@@ -23,6 +23,7 @@
 -  0826-package_90%偷工減料改頁面滾動少一點
 -  0828-C-list_恐龍動畫/package_padding
 -  0829-C-list_恐龍動畫完
+-  0831-C-list_補裝飾/package_rwd+紅黑框小調
 ### Biki
 - 0830-PS系列頁面完成、商品卡加入hover及點擊效果
 - 0826-實名制完成
