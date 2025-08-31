@@ -100,32 +100,119 @@ const Collect = () => {
       priceNow: '800',
       size: 'small'
     },
+    {
+      id: 10,
+      image: DKB,
+      category: '遊戲',
+      title: '咚奇剛蕉力全開+咚奇剛amiibo',
+      seller: 'paly**56',
+      priceNow: '800',
+      size: 'small'
+    },
+    {
+      id: 11,
+      image: DS2CE,
+      category: '遊戲',
+      title: '惡靈古堡2 重製版',
+      seller: 'game**88',
+      priceNow: '1200',
+      size: 'small'
+    },
+    {
+      id: 12,
+      image: SWP2,
+      category: '配件',
+      title: 'Switch Pro 控制器',
+      seller: 'shop**11',
+      priceNow: '1800',
+      size: 'small'
+    },
+    {
+      id: 13,
+      image: SW2,
+      category: '主機',
+      title: 'Nintendo Switch 主機 (新版)',
+      seller: 'sell**99',
+      priceNow: '7500',
+      size: 'large'
+    },
+    {
+      id: 14,
+      image: SWB,
+      category: '配件',
+      title: 'Switch 保護殼組合',
+      seller: 'fun**01',
+      priceNow: '999',
+      size: 'small'
+    },
+    {
+      id: 15,
+      tag: '限時優惠',
+      category: '配件',
+      image: SWP2,
+      title: 'switch 手把 公司貨 九成新 可面交',
+      seller: 'fun31**56',
+      priceNow: '5000',
+      priceOld: '5500',
+      size: 'medium'
+    },
+    {
+      id: 16,
+      tag: '限時優惠',
+      image: SW2,
+      category: '主機',
+      title: '全新紅藍switch主機 附明星大亂鬥遊戲片全新紅藍switch主機 附明星大亂鬥遊戲片',
+      seller: 'fun31**56',
+      priceNow: '5000',
+      priceOld: '5500',
+      size: 'small'
+    },
   ];
 
+  // 收藏清單 state
+  const [products, setProducts] = useState(y_products);
+  // 勾選的商品 id
+  const [selectedIds, setSelectedIds] = useState([]);
+  // 分頁
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
-  const totalPages = Math.ceil(y_products.length / itemsPerPage);
+  const itemsPerPage = 9;
+  const totalPages = Math.ceil(products.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentProducts = y_products.slice(startIndex, startIndex + itemsPerPage);
+  const currentProducts = products.slice(startIndex, startIndex + itemsPerPage);
 
-  // const [products, setProducts] = useState(initiaProducts);
-  // const [selectedIds, setSelectedIds] = useState([]);
+  // 動畫狀態
+  const [animating, setAnimating] = useState(false);
 
-  // const toggleSelect = (id) => {
-  //   setSelectedIds((prev) =>
-  //     prev.includes(id) ? preview.filter((x) => x !== id) : [...prev, id]
-  //   );
-  // };
+  // 勾選 / 取消勾選
+  const toggleSelect = (id) => {
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((sid) => sid !== id) : [...prev, id]
+    );
+  };
 
-  // const handleUnfavorite = () => {
-  //   setProducts((prev) => prev.filter((item) =>!selectedIds.includes(item.id)));
-  //   setSelectedIds([]);
-  // };
+  // 刪除選取的收藏
+  const handleRemoveSelected = () => {
+    if (selectedIds.length === 0) {
+      alert("請先選擇要刪除的商品");
+      return;
+    }
+    if (window.confirm(`確定要刪除 ${selectedIds.length} 個收藏嗎？`)) {
+      setProducts((prev) => prev.filter((item) => !selectedIds.includes(item.id)));
+      setSelectedIds([]);
+    }
+  };
+
+  // 換頁（帶動畫）
+  const handlePageChange = (page) => {
+    setAnimating(true); // slide-out
+    setTimeout(() => {
+      setCurrentPage(page);
+      setAnimating(false); // slide-in
+    }, 400); // 與 CSS transition 時間一致
+  };
 
   return (
-
     <main className="y_Collect">
-      {/* 側邊欄 */}
       <Sidebar />
       <div>
         {/* 麵包屑導覽 */}
@@ -139,34 +226,39 @@ const Collect = () => {
           <span className="current">收藏清單</span>
         </div>
 
-        {/* 操作按鈕 */}
-        {/* <div className="y_actions">
-          <button onClick={handleUnfavorite}
-          disabled={selectedIds.length === 0}
-          className="y_btn"
-          >
-          取消收藏
+        {/* 標題 + 批量刪除按鈕 */}
+        <div className="collect_header">
+          <h2>我的收藏</h2>
+          <button className="remove_all_btn" onClick={handleRemoveSelected}>
+            刪除選取
           </button>
-
-        </div> */}
+        </div>
 
         {/* 商品清單 */}
-        <div className="y_cardbox">
-          {y_products.map((item) => (
-            <Card key={item.id} {...item} />
+        <div className={`y_cardbox ${animating ? "slide-out" : "slide-in"}`}>
+          {currentProducts.map((item) => (
+            <div key={item.id} className="selectable_card">
+              <input
+                type="checkbox"
+                className="select_checkbox"
+                checked={selectedIds.includes(item.id)}
+                onChange={() => toggleSelect(item.id)}
+              />
+              <Card {...item} />
+            </div>
           ))}
         </div>
-        
+
         {/* 分頁 */}
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
-          onPageChange={setCurrentPage}
+          onPageChange={handlePageChange}
         />
-
       </div>
     </main>
   );
+
 };
 
 export default Collect;

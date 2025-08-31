@@ -10,13 +10,61 @@
     display: flex;
   }
 
-  .y_cardbox {
-    // margin-top: 120px;
-    width: 840px;
+  /* 收藏清單標題 + 刪除按鈕 */
+  .collect_header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .remove_all_btn {
+      background: #ff4d4f;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: #d9363e;
+      }
+    }
+  }
+
+  .y_cardbox {
+    max-width: 840px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
     gap: 30px;
     flex-wrap: wrap;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+
+    &.slide-in {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    &.slide-out {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+  /* 可選取的卡片 */
+  .selectable_card {
+    position: relative;
+
+    .select_checkbox {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 2;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
   }
 
 
