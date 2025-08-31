@@ -56,7 +56,7 @@ const ProductPage = () => {
 			<section className="product__detail section">
 				<ProductDetail reviews={product.reviews} rating={5} reviewCount={1} />
 			</section>
-			{/* 問與答 */}
+			{/* V 問與答 */}
 			<section className="product__qa section">
 				<div className="top_decorate2"></div>
 				<ProductQa qa={product.qa} />
