@@ -1,19 +1,29 @@
 import React from 'react'
 
+
 export default function OrderCard({ id, shop, title, price, date, status, img }) {
   return (
     <div className="J_ordercard">
+      <div>
+      <h2>{shop}</h2>
       <img src={img} alt={title} />
-      <div className="J_details">
-        <h4>{title}</h4>
-        <p>訂單號碼: {id}</p>
-        <p>日期: {date}</p>
-        <p>金額: ${price}</p>
-        <p>狀態: {status}</p>
       </div>
-      <div className="J_actions">
-        <button>確認收貨</button>
-        <button>給評價</button>
+
+      <div className="J_details">
+        
+        <div className='J_status'>
+        <p></p>
+        <p> {status}</p>
+        </div>
+        
+        <p> {id}</p>
+        
+        <div className='J_detailsflex'>
+        <h4>{title}</h4>
+        <p>結帳金額: ${price}</p>
+        </div>
+        
+        <p>下單日期: {date}</p>
       </div>
     </div>
   )

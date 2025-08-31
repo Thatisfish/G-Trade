@@ -9,15 +9,16 @@ import ordersImg from '../images/orderImg1.svg'
 import sellerImg from '../images/orderImg2.webp'
 
 const mockOrders = [
-  {
-    id: 'C2025080501',
-    shop: '@GAME_1318的賣場',
-    title: '附硬殼包+玻璃貼+TPU材質透明殼【Switch2主機 NS2主機】',
+    {
+    id: "C2025080501",
+        shop: '@GAME_1318的賣場',
+    title: "附硬殼包+玻璃貼+TPU材質透明殼【Switch2主機 NS2主機】",
+    date: "2025-08-05",
     price: 999,
-    date: '2025-08-05',
-    status: '未出貨',
+    status: "未出貨",
     img: ordersImg,
   },
+
    {
     id: 'C2025080501',
     shop: '@GAME_1318',
@@ -27,6 +28,7 @@ const mockOrders = [
     status: '未出貨',
     img: ordersImg,
   },
+
   {
     id: 'C2025080501',
     shop: '@GAME_1318',
@@ -47,7 +49,15 @@ const Orders= () => {
     <div className="J_layout">
       <Sidebar />
       <main className="J_content">
-        <nav className="J_breadcrumbs">首頁  會員中心  購買中心  我的訂單</nav>{/* 待修改 */}
+        <div className="J_breadcrumbs">
+          <a href="#">首頁</a>
+          <span className="divider">›</span>
+          <a href="#">會員中心</a>
+          <span className="divider">›</span>
+          <a href="#">購買中心</a>
+          <span className="divider">›</span>
+          <span className="current">收藏清單</span>
+          </div>
 
         {/* OrderTabs */}
         <div className="J_ordertabs">

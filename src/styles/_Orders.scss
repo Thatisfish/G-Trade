@@ -1,7 +1,11 @@
 .J_layout {
-	padding-top: 80px;
+	width: 60%;
+	padding-top: 160px;
 	display: flex;
 	min-height: 100vh;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 0 auto;
 }
 
 
@@ -12,8 +16,8 @@
 }
 
 .J_breadcrumbs {
-	font-size: 14px;
-	margin-bottom: 1rem;
+	margin: 80px 0 20px;
+	display: flex;
 }
 
 /* OrderTabs */
@@ -40,19 +44,32 @@
 /* OrderCard */
 .J_ordercard {
 	display: flex;
-	gap: 1rem;
-	border: 1px solid #ddd;
-	padding: 1rem;
-	margin-bottom: 1rem;
+	gap: 15px;
+	padding: 0 15px;
+	margin-bottom: 15px;
 	align-items: center;
+	border-bottom: #000 1px solid;
 
 	img {
-		width: 100px;
+		width: 170px;
 		height: auto;
 	}
 
 	.J_details {
 		flex: 1;
+
+		.J_status {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.J_detailsflex {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
 	}
 
 	.J_actions {
@@ -71,9 +88,14 @@
 	}
 }
 
+.J_ordercard:last-child {
+	border-bottom: none;
+}
+
 /* ReviewCard */
 .J_reviewcard {
 	display: flex;
+	flex-direction: column;
 	gap: 1rem;
 	margin-top: 2rem;
 
@@ -96,14 +118,92 @@
 			margin-bottom: .5rem;
 		}
 
-		button {
-			padding: .5rem 1rem;
-			border: none;
-			background: #333;
-			color: #fff;
-			cursor: pointer;
-			border-radius: 4px;
-		}
+		.J_checkoutBtn {
+            background: #DE1A10;
+            color: white;
+            width: 77%;
+            font-size: 16px;
+
+            border-color: #A12424;
+            border-radius: 999px;
+
+            padding: 12px 10px;
+
+            cursor: pointer;
+
+            margin-top: 20px;
+
+            .J_checkoutContent {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .J_Checkout {
+                width: 85%;
+
+            }
+
+        }
+	}
+	.J_reviewButton{
+		margin-left: auto;
+		display: flex;
+		gap: 25px;
+		.J_RB1 {
+            background: #DE1A10;
+            color: white;
+            width: 200px;
+            font-size: 16px;
+
+            border-color: #A12424;
+            border-radius: 999px;
+
+            padding: 12px 10px;
+
+            cursor: pointer;
+
+            margin-top: 20px;
+
+            .J_checkoutContent {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .J_Checkout {
+                width: 85%;
+
+            }
+
+        }
+		.J_RB2 {
+            background: #DE1A10;
+            color: white;
+            width: 200px;
+            font-size: 16px;
+
+            border-color: #A12424;
+            border-radius: 999px;
+
+            padding: 12px 10px;
+
+            cursor: pointer;
+
+            margin-top: 20px;
+
+            .J_checkoutContent {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .J_Checkout {
+                width: 85%;
+
+            }
+
+        }
 	}
 }
 
