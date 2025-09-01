@@ -1,5 +1,6 @@
 import '../styles/Reviewpage.scss'
 import Card from "../components/Card"
+import SellerInfo from '../components/product/SellerInfo'
 import DKB from '../images/Card_Image/DKB.webp'
 import DS2CE from '../images/Card_Image/DS2CE.webp'
 import SWP2 from '../images/Card_Image/switch_pro2.webp'
@@ -50,8 +51,11 @@ export default function Reviewpage() {
     <div className="y_Reviewpage">
 
       {/* 個人資料區塊 */}
-      <div>
-
+      <div className="y_product__seller">
+        <div className="y_section_header">
+          <h3 className="y_section_title">賣家資訊</h3>
+        </div>
+        <SellerInfo />
       </div>
 
       {/* 最新商品區塊 */}
