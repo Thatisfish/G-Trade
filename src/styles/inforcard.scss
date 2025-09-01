@@ -1,125 +1,130 @@
-.container {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	/* ✅ 固定5欄 */
-	gap: 40px;
-	align-items: center;
+.inforcard-wrap {
 	width: 100%;
 	max-width: 1400px;
-	/* ✅ 避免超寬 */
 	margin: 0 auto;
 
-}
+	.inforcard-swiper {
+		padding: 8px 4px;
+		cursor: grab;
 
+		&:active {
+			cursor: grabbing;
+		}
 
-.info-card {
-	width: 270px;
-	height: 100%;
-	/* ✅ 高度由容器決定 */
-	border-radius: 20px;
-	background-color: white;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-	overflow: hidden;
-	position: relative;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	/* ✅ 垂直排列內容 */
-}
+		.swiper-wrapper {
+			align-items: center;
+		}
 
-.info-card.large {
-	height: 450px;
-	/* width: auto; */
-	/* 標準高度 */
-}
+		.swiper-slide {
+			width: 270px !important;
+			display: flex;
+		}
+	}
 
-.info-card.medium {
-	height: 400px;
-	width: auto;
-	/* 稍矮 */
-}
+	// 讓連續自動輪播更平滑：線性時間函式(linear)
+	.inforcard-swiper--marquee {
+		.swiper-wrapper {
+			transition-timing-function: linear !important;
+		}
+	}
 
-.info-card.small {
-	height: 350px;
-	width: auto;
-	/* 最矮 */
-}
+	/* 你的卡片（保留原規則，轉巢狀） */
+	.info-card {
+		width: 100%;
+		height: 100%;
+		border-radius: 20px;
+		background-color: #fff;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+		overflow: hidden;
+		position: relative;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
 
-.info-card.large .info-img {
-	height: 50%;
-}
+		&.large {
+			height: 450px;
+		}
 
-.info-card.medium .info-img {
-	height: 50%;
-}
+		&.medium {
+			height: 400px;
+		}
 
-.info-card.small .info-img,
-.info-card:not(.large):not(.medium) .info-img {
-	height: 50%;
-	/* 可調整為適合你的小卡片 */
-}
+		&.small {
+			height: 350px;
+		}
 
-.info-tag {
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	background-color: #ff4d4f;
-	color: white;
-	font-size: 12px;
-	padding: 4px 10px;
-	border-radius: 12px;
-}
+		.info-tag {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			background-color: #ff4d4f;
+			color: #fff;
+			font-size: 12px;
+			padding: 4px 10px;
+			border-radius: 12px;
+		}
 
-.info-img {
-	width: 100%;
-	aspect-ratio: 3 / 2;
-	/* ✅ 自動縮放維持比例 */
-	object-fit: cover;
-	/* ✅ 填滿並裁切 */
-	border-bottom: 1px solid #eee;
-	border-top-left-radius: 20px;
-	border-top-right-radius: 20px;
-}
+		.info-img {
+			width: 100%;
+			aspect-ratio: 3 / 2;
+			object-fit: cover;
+			border-bottom: 1px solid #eee;
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
+		}
 
-.info-content {
-	padding: 10px 16px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: flex-start;
-	flex-grow: 1;
-}
+		&.large .info-img {
+			height: 50%;
+		}
 
-/* 標題 */
-.info-title {
-	font-size: 16px;
-	font-weight: bold;
-	margin: 10px 0 5px;
-	word-break: break-word;
-	/* ✅ 避免爆版 */
-	line-height: 1.4;
-}
+		&.medium .info-img {
+			height: 50%;
+		}
 
-.info-seller {
-	color: #888;
-	font-size: 14px;
-	margin-bottom: 10px;
-}
+		&.small .info-img,
+		&:not(.large):not(.medium) .info-img {
+			height: 50%;
+		}
 
-.info-price {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
+		.info-content {
+			padding: 10px 16px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-start;
+			flex-grow: 1;
 
-.price-now {
-	font-size: 18px;
-	font-weight: bold;
-	color: #000;
-}
+			.info-title {
+				font-size: 16px;
+				font-weight: bold;
+				margin: 10px 0 5px;
+				word-break: break-word;
+				line-height: 1.4;
+			}
 
-.price-old {
-	font-size: 14px;
-	color: #aaa;
-	text-decoration: line-through;
+			.info-seller {
+				color: #888;
+				font-size: 14px;
+				margin-bottom: 10px;
+			}
+
+			.info-price {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+
+				.price-now {
+					font-size: 18px;
+					font-weight: bold;
+					color: #000;
+				}
+
+				.price-old {
+					font-size: 14px;
+					color: #aaa;
+					text-decoration: line-through;
+				}
+			}
+		}
+	}
 }

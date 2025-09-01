@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import '../styles/Navbar.scss';
 import Logo from '../images/logo.png';
+import BellPopover from './Navbar/BellPopover'
 
 export default function Navbar({ theme, onOpenLogin }) {
 	const [scrolled, setScrolled] = useState(false);
@@ -41,7 +42,9 @@ export default function Navbar({ theme, onOpenLogin }) {
 							aria-label="會員登入"
 						/>
 					</li>
-					<li className="shadow-img"><Link className="icon-bell" to="/#" /></li>
+					<li className="shadow-img">
+						<BellPopover />  {/* ✅ 替代原本的 <Link className="icon-bell" /> */}
+					</li>
 					<li className="shadow-img"><Link className="icon-hamburger" to="/#" /></li>
 				</ul>
 			</nav>

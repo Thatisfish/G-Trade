@@ -9,13 +9,11 @@
 	height: 85px;
 	z-index: 999;
 
-	ul {
-		display: flex;
-		justify-content: flex-end;
-	}
 
 	.nav-icon {
 		margin: 0 5px 7px 0;
+		display: flex;
+		justify-content: flex-end;
 
 		li {
 			display: flex;
@@ -163,5 +161,139 @@
 		.icon-hamburger {
 			background-image: url('../images/icon/icon-hamburger_red.svg');
 		}
+	}
+}
+
+.bell {
+	position: relative;
+
+	.icon-bell {
+		position: relative;
+		all: unset; // 清掉預設 button/link 樣式
+		cursor: pointer;
+		display: inline-block;
+		width: 40px; // 保留你需要的大小
+		height: 40px;
+		background: url('../images/icon/icon_bell_red.svg') no-repeat center/contain;
+	}
+
+	&__panel {
+		position: absolute;
+		top: calc(100% + 10px);
+		right: 0;
+		width: 400px;
+		border-radius: 16px;
+		background: #fff;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+		opacity: 0;
+		transform: translateY(-6px) scale(0.98);
+		pointer-events: none;
+		transition: opacity .18s ease, transform .18s ease;
+
+		&.is-open {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+			pointer-events: auto;
+		}
+
+		&::before {
+			// 小角
+			content: "";
+			position: absolute;
+			top: -8px;
+			right: 18px;
+			width: 16px;
+			height: 16px;
+			background: #fff;
+			transform: rotate(45deg);
+			box-shadow: -3px -3px 10px rgba(0, 0, 0, 0.06);
+			z-index: 1; // 箭頭在第1層
+		}
+	}
+
+	&__panelHeader {
+		position: relative;
+		z-index: 2; // 紅條抬高到第2層 → 會蓋住箭頭
+		height: 44px;
+		background: #e63026;
+		border-radius: 10px 10px 0 0;
+		margin: 10px;
+		margin-bottom: 0;
+	}
+
+	&__list {
+		max-height: 300px;
+		overflow: auto;
+		padding: 10px;
+		margin: 0;
+		list-style: none;
+	}
+
+	&__item {
+		display: grid;
+		grid-template-columns: 16px 1fr auto;
+		align-items: center;
+		gap: 10px;
+		background: #fff;
+		border: 1px solid #e9e9e9;
+		border-radius: 10px;
+		padding: 12px 14px;
+		margin: 10px;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+
+		&.is-disabled {
+			background: #f1f1f1;
+			color: #b6b6b6;
+			border-color: #e0e0e0;
+
+			.bell__dot {
+				background: #cfcfcf;
+			}
+
+			.bell__date {
+				color: #bcbcbc;
+			}
+		}
+	}
+
+	&__dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: #e63026;
+		justify-self: center;
+	}
+
+	&__text {
+		font-size: 14px;
+		font-weight: 700;
+		color: #333;
+	}
+
+	&__date {
+		font-size: 12px;
+		color: #666;
+		white-space: nowrap;
+	}
+
+	&__badge {
+		position: absolute;
+		right: 4px;
+		height: 15px; // ← 高度 14
+		min-width: 15px; // ← 至少 14（1 位數時是圓）
+		padding: 0 4px; // ← 2 位數以上自動變膠囊，不會擠出來
+		border-radius: 9999px;
+		display: inline-flex; // ← 置中關鍵
+		align-items: center;
+		justify-content: center;
+		font-size: 10px; // ← 14px 高度下可讀的字級
+		font-weight: 700;
+		line-height: 14px; // 備援：即使非 flex 也垂直置中
+		white-space: nowrap; // 不換行，避免斷行
+		background: #e63026;
+		color: #fff;
+		box-shadow: 0 0 0 2px #fff; // 外白邊避免吃到底色
+		z-index: 1000;
+		pointer-events: none; // 不擋按鈕點擊
 	}
 }
