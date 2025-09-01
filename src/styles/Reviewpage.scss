@@ -376,3 +376,16 @@
         }
     }
 }
+.container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	/* ✅ 固定5欄 */
+	gap: 40px;
+	align-items: center;
+	width: 100%;
+	max-width: 1400px;
+	/* ✅ 避免超寬 */
+	margin: 0 auto;
+
+}
+

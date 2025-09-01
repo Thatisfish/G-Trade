@@ -29,41 +29,49 @@ function usePrevious(value) {
 const Package = () => {
     const steps = [
         {
+            id: 1,
             image: c_package_5,
             title: "️易碎品先包好，怕水的加強防護",
             subtxt: "將易碎物品先用緩衝材包裹、固定好位置。如果商品怕水，這步驟也建議加上防水層（如塑膠袋、防水膜）。",
         },
         {
+            id: 2,
             image: c_package_6,
             title: "️易碎品先包好，怕水的加強防護",
             subtxt: "將易碎物品先用緩衝材包裹、固定好位置。如果商品怕水，這步驟也建議加上防水層（如塑膠袋、防水膜）。",
         },
         {
+            id: 3,
             image: c_package_7,
             title: "填滿空隙，穩固更安心",
             subtxt: "物品放入箱中後，請用緩衝材把空隙填滿，避免物品在運送途中晃動、碰撞。",
         },
         {
+            id: 4,
             image: c_package_9,
             title: "填滿空隙，穩固更安心",
             subtxt: "物品放入箱中後，請用緩衝材把空隙填滿，避免物品在運送途中晃動、碰撞。",
         },
         {
+            id: 5,
             image: c_package_10,
             title: "填滿空隙，穩固更安心",
             subtxt: "物品放入箱中後，請用緩衝材把空隙填滿，避免物品在運送途中晃動、碰撞。",
         },
         {
+            id: 6,
             image: c_package_11,
             title: "填滿空隙，穩固更安心",
             subtxt: "物品放入箱中後，請用緩衝材把空隙填滿，避免物品在運送途中晃動、碰撞。",
         },
         {
+            id: 7,
             image: c_package_12,
             title: "封箱要確實，膠帶多貼幾條更牢靠",
             subtxt: "建議使用「十字形」、「井字形」或「H字形」的方式封箱，確保所有開口都貼緊、封好。在搬運或多次轉運時，也比較不用擔心會鬆脫。",
         },
         {
+            id: 8,
             image: c_package_13,
             title: "外層防水再加一，雙重保護更安心",
             subtxt: "如果寄送的東西怕水，建議外箱再加一層塑膠袋或其他防水包裝，應對不穩定的天氣或潮濕環境。",
@@ -192,7 +200,26 @@ const Package = () => {
                         </div>
                     </div>
                 </section>
-            </main>
+                <section className="c_packScrPhone">
+                    {steps.map((item, index) => {
+                        // 檢查之前是否出現過
+                        const isFirst = steps.findIndex((step) => step.title === item.title) === index;
+                        return (
+                            <div key={item.id} className="c_packStepItem">
+                                {isFirst && (
+                                    <div className="c_packPhText">
+                                        <OuterFrame text={item.title} />
+                                        <p className="c_packPhSub">{item.subtxt}</p>
+                                    </div>
+                                )}
+                                <div className="c_packPhImg">
+                                    <img src={item.image} alt="" />
+                                </div>
+                            </div>
+                        );
+                    })}
+                </section>
+            </main >
 
         </>
     )

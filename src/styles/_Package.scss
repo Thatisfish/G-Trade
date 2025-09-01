@@ -6,7 +6,7 @@
 	align-items: center;
 
 	.c_packTop {
-		width: 65%;
+		width: 65vw;
 		height: 100vh;
 
 		.c_packHead {
@@ -39,10 +39,10 @@
 		}
 
 		.c_packPic {
-			margin-top: 200px;
+			margin-top: 250px;
 			display: flex;
 			align-items: center;
-			gap: 150px;
+			gap: 180px;
 
 			.c_packIntro {
 				min-width: 150px;
@@ -52,15 +52,16 @@
 
 			.c_package_twopeople {
 				max-width: 400px;
+				min-width: 220px;
 				width: 100%;
 			}
 		}
 	}
 
 	.c_packPrepare {
-		width: 65%;
+		width: 65vw;
 		height: 80vh;
-		gap: 80px;
+		gap: 90px;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -72,8 +73,9 @@
 
 		.c_packOutBox {
 			display: flex;
-			gap: 80px;
+			// gap: 80px;
 			align-items: center;
+			justify-content: space-between;
 
 			.c_packBox {
 				width: 400px;
@@ -98,10 +100,10 @@
 	.c_packScroll {
 		height: 450vh;
 		position: relative;
-		width: 65%;
+		// width: 65vw;
 
 		.c_packScene {
-			padding-top: -500px;
+			// padding-top: -500px;
 			position: sticky;
 			top: 0;
 			height: 100vh;
@@ -143,6 +145,10 @@
 			opacity: 1;
 			transform: translateY(0);
 		}
+	}
+
+	.c_packScrPhone {
+		display: none;
 	}
 }
 
@@ -202,9 +208,6 @@
 
 	/* 準備材料區塊 */
 	.c_packPrepare {
-		width: 100%;
-		height: auto;
-		gap: 40px;
 		margin-top: 200px;
 		margin-bottom: 1000px;
 
@@ -215,50 +218,75 @@
 
 		.c_packOutBox {
 			flex-direction: column;
-			gap: 20px;
-			align-items: center;
+			justify-content: center;
 
-			.c_packBox {
-				width: 100%;
-				text-align: center;
-
-				.c_packDirections {
-					margin: 10px 0;
-				}
+			.c_packDirections {
+				margin: 30px 0;
 			}
 
 			img {
 				max-height: 150px;
+				margin: 20px;
 			}
 		}
 	}
 
 	/* 滾動區塊 */
 	.c_packScroll {
-		width: 100%;
-		height: auto;
+		display: none;
+		// width: 100%;
+		// height: auto;
 
-		.c_packScene {
-			position: static;
-			height: auto;
-			flex-direction: column;
-			gap: 30px;
-			padding-top: 0;
-			flex-direction: column-reverse;
+		// .c_packScene {
+		// 	position: static;
+		// 	height: auto;
+		// 	flex-direction: column;
+		// 	gap: 30px;
+		// 	padding-top: 0;
+		// 	flex-direction: column-reverse;
 
-			.c_packStepImg {
-				max-width: 250px;
-				min-width: auto;
-				margin: 0 auto;
-			}
+		// 	.c_packStepImg {
+		// 		max-width: 250px;
+		// 		min-width: auto;
+		// 		margin: 0 auto;
+		// 	}
 
-			.c_packText {
-				max-width: 100%;
-				text-align: center;
+		// 	.c_packText {
+		// 		max-width: 100%;
+		// 		text-align: center;
 
-				.c_packSubtxt {
-					margin-top: 20px;
+		// 		.c_packSubtxt {
+		// 			margin-top: 20px;
+		// 		}
+		// 	}
+		// }
+	}
+
+	.c_packMain {
+
+		.c_packScrPhone {
+			display: block;
+			margin-top: 200px;
+			margin-bottom: 80px;
+
+			.c_packStepItem {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 50px;
+				margin-bottom: 50px;
+
+				.c_packPhText {
+					display: grid;
+					max-width: 100%;
+					gap: 50px;
 				}
+
+				.c_packPhImg {
+					max-width: 60vw;
+					height: auto;
+				}
+
 			}
 		}
 	}
