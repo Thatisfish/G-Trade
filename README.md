@@ -24,6 +24,7 @@
 -  0828-C-list_恐龍動畫/package_padding
 -  0829-C-list_恐龍動畫完
 -  0831-C-list_補裝飾/package_rwd+紅黑框小調
+-  0901-C-package_rwd調整
 ### Biki
 - 0901-Xbox頁面完成
 - 0830-PS系列頁面完成、商品卡加入hover及點擊效果
