@@ -41,8 +41,8 @@ export default function Navbar({ theme, onOpenLogin }) {
 							aria-label="會員登入"
 						/>
 					</li>
-					<li className="shadow-img"><Link className="icon-bell" to="/Collect" /></li>
-					<li className="shadow-img"><Link className="icon-hamburger" to="/RealN_Info" /></li>
+					<li className="shadow-img"><Link className="icon-bell" to="/#" /></li>
+					<li className="shadow-img"><Link className="icon-hamburger" to="/#" /></li>
 				</ul>
 			</nav>
 		</header>
