@@ -10,6 +10,7 @@ import New_info from './pages/New_info';
 import Hot_commodity from './pages/Hot_commodity';
 import Alltype from './pages/Alltype';
 import Alltype_PS from './pages/Alltype_PS'
+import Alltype_Xbox from './pages/Alltype_Xbox';
 import Register from './pages/Register';
 import Shopping_cart from './pages/Shopping_cart';
 import Collect from './pages/Collect';
@@ -55,6 +56,7 @@ export default function App() {
 					<Route path="/Hot_commodity" element={<Hot_commodity />} />
 					<Route path="/Alltype" element={<Alltype />} />
 					<Route path='/Alltype_PS' element={<Alltype_PS />} />
+					<Route path='/Alltype_Xbox' element={<Alltype_Xbox />} />
 					<Route path="/Shopping_cart" element={<Shopping_cart />} />
 					<Route path="/Register" element={<Register />} />
 					<Route path="/Collect" element={<Collect />} />
