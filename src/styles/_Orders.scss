@@ -70,6 +70,75 @@
 			align-items: center;
 		}
 
+		.J_detailsflex2 {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.J_order-actions {
+				margin-left: auto;
+				display: flex;
+				gap: 25px;
+
+
+				.J_RB1 {
+					background: #DE1A10;
+					color: white;
+					width: 200px;
+					font-size: 16px;
+
+					border-color: #A12424;
+					border-radius: 999px;
+
+					padding: 12px 10px;
+
+					cursor: pointer;
+
+					margin-top: 20px;
+
+					.J_checkoutContent {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+
+					.J_Checkout {
+						width: 85%;
+
+					}
+
+				}
+
+				.J_RB2 {
+					background: #DE1A10;
+					color: white;
+					width: 200px;
+					font-size: 16px;
+
+					border-color: #A12424;
+					border-radius: 999px;
+
+					padding: 12px 10px;
+
+					cursor: pointer;
+
+					margin-top: 20px;
+
+					.J_checkoutContent {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+
+					.J_Checkout {
+						width: 85%;
+
+					}
+
+				}
+			}
+		}
+
 	}
 
 	.J_actions {
@@ -99,6 +168,44 @@
 	gap: 1rem;
 	margin-top: 2rem;
 
+	border: 1px solid #C8C8C8;
+	background: #FFF;
+	padding: 33px 53px;
+
+	.J_reviewSection {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 2rem; // 左右間距
+		// margin-left: auto;
+
+		.J_reviewCardContent {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 2rem; // 左右間距，可依需求調整
+		}
+
+		.J_reviewSeller {
+			min-width: 150px;
+			display: flex;
+			flex-direction: column;
+			align-items: center; // 讓圖片和文字都置中
+			justify-content: center;
+			text-align: center;
+
+			gap: 15px;
+		}
+
+		.J_reviewform {
+			flex: 1;
+			min-width: 300px;
+			max-width: 450px;
+		}
+
+	}
+
 	.J_avatar {
 		width: 50px;
 		height: 50px;
@@ -107,6 +214,12 @@
 
 	.J_reviewform {
 		flex: 1;
+		min-width: 350px; // 評價區寬度，可依需求調整
+		max-width: 450px;
+
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 
 		.J_stars {
 			margin-bottom: .5rem;
@@ -119,95 +232,57 @@
 		}
 
 		.J_checkoutBtn {
-            background: #DE1A10;
-            color: white;
-            width: 77%;
-            font-size: 16px;
+			background: #DE1A10;
+			color: white;
+			width: 77%;
+			font-size: 16px;
 
-            border-color: #A12424;
-            border-radius: 999px;
+			border-color: #A12424;
+			border-radius: 999px;
 
-            padding: 12px 10px;
+			padding: 12px 10px;
 
-            cursor: pointer;
+			cursor: pointer;
 
-            margin-top: 20px;
+			margin-top: 20px;
 
-            .J_checkoutContent {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+			.J_checkoutContent {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
 
-            .J_Checkout {
-                width: 85%;
+			.J_Checkout {
+				width: 85%;
 
-            }
+			}
 
-        }
+		}
 	}
-	.J_reviewButton{
-		margin-left: auto;
+
+	.J_reviweBtn {
 		display: flex;
-		gap: 25px;
-		.J_RB1 {
-            background: #DE1A10;
-            color: white;
-            width: 200px;
-            font-size: 16px;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
 
-            border-color: #A12424;
-            border-radius: 999px;
 
-            padding: 12px 10px;
-
-            cursor: pointer;
-
-            margin-top: 20px;
-
-            .J_checkoutContent {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .J_Checkout {
-                width: 85%;
-
-            }
-
-        }
-		.J_RB2 {
-            background: #DE1A10;
-            color: white;
-            width: 200px;
-            font-size: 16px;
-
-            border-color: #A12424;
-            border-radius: 999px;
-
-            padding: 12px 10px;
-
-            cursor: pointer;
-
-            margin-top: 20px;
-
-            .J_checkoutContent {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .J_Checkout {
-                width: 85%;
-
-            }
-
-        }
 	}
+
+	.J_reviweBtn button {
+		border-radius: 99px;
+		border: 2px solid #A12424;
+		background: #DE1A10;
+		color: #fff;
+		padding: 12px 32px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+
 }
 
-/* Pagination */
+
+// /* Pagination */
 .J_pagination {
 	margin: 2rem 0;
 	text-align: center;
