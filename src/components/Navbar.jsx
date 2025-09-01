@@ -28,7 +28,7 @@ export default function Navbar({ theme, onOpenLogin }) {
 					<li><Link to="/ProductPage">熱門商品</Link></li>
 					<li><Link to="/Alltype">Switch</Link></li>
 					<li><Link to="/Alltype_PS">PS系列</Link></li>
-					<li><Link to="/Alltype">Xbox系列</Link></li>
+					<li><Link to="/Alltype_Xbox">Xbox系列</Link></li>
 				</ul>
 
 				<ul className="nav-icon">

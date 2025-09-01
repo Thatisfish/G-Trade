@@ -1,113 +1,114 @@
-import '../styles/_Alltype_PS.scss'
+import '../styles/_Alltype_Xbox.scss'
 import { useMemo, useState } from 'react';
-import Banner from '../images/Alltype_PS/Alltype_PS_banner02.avif'
+import Banner from '../images/Alltype_Xbox/Alltype_Xbox_banner01.avif'
 import AllTypeCards from '../components/AllTypeCards.jsx'
-import item02 from '../images/Alltype_PS/Alltype_PS_item03.avif'
-import item03 from '../images/Alltype_PS/Alltype_PS_item02.avif'
-import item04 from '../images/Alltype_PS/Alltype_PS_item05.avif'
-import item05 from '../images/Alltype_PS/Alltype_PS_item06.avif'
-import item06 from '../images/Alltype_PS/Alltype_PS_item07.avif'
-import item07 from '../images/Alltype_PS/Alltype_PS_item08.avif'
-import item08 from '../images/Alltype_PS/Alltype_PS_item09.avif'
-import item09 from '../images/Alltype_PS/Alltype_PS_item04.avif'
-import item10 from '../images/Alltype_PS/Alltype_PS_item10.avif'
+import item11 from '../images/Alltype_Xbox/Alltype_Xbox_item01.avif'
+import item12 from '../images/Alltype_Xbox/Alltype_Xbox_item02.avif'
+import item13 from '../images/Alltype_Xbox/Alltype_Xbox_item03.avif'
+import item14 from '../images/Alltype_Xbox/Alltype_Xbox_item04.avif'
+import item15 from '../images/Alltype_Xbox/Alltype_Xbox_item05.avif'
+import item16 from '../images/Alltype_Xbox/Alltype_Xbox_item10.avif'
+import item17 from '../images/Alltype_Xbox/Alltype_Xbox_item06.avif'
+import item18 from '../images/Alltype_Xbox/Alltype_Xbox_item07.avif'
+import item19 from '../images/Alltype_Xbox/Alltype_Xbox_item09.avif'
 
 const arrCardinfor = [
     {
-        id: 2,
+        id: 11,
         tag: '全新上架',
         category: '遊戲',
-        image: item02,
-        title: "《Demon's Souls》重製版",
-        seller: 'Ds2CE**250626',
-        priceNow: '1100',
+        image: item11,
+        title: '《Halo Infinite》 中文版',
+        seller: 'halo117**000911',
+        priceNow: '790',
         size: 'medium'
     },
     {
-        id: 3,
+        id: 12,
         tag: '限時優惠',
         category: '主機',
-        image: item03,
-        title: 'PS4 Slim 500GB(二手良品)',
-        seller: 'psslim**723158',
-        priceNow: '4600',
+        image: item12,
+        title: 'Xbox Series X（1TB）含原廠手把',
+        seller: 'xseries**882712',
+        priceNow: '11900',
         size: 'large'
     },
     {
-        id: 4,
-        tag: '限時優惠',
-        category: '主機',
-        image: item04,
-        title: '九成新PS5附地平線西域禁地遊戲片',
-        seller: 'joelTLOU**188812',
-        priceNow: '13980',
-        size: 'small'
-    },
-    {
-        id: 5,
-        tag: '全新上架',
-        category: '配件',
-        image: item05,
-        title: '二手手把 DualShock 4(紅色)',
-        seller: 'redpad**914551',
+        id: 13,
+        tag: '',
+        category: '遊戲',
+        image: item13,
+        title: '極限競速 地平線5（Forza Horizon 5）',
+        seller: 'forzah5**991122',
         priceNow: '950',
         size: 'small'
     },
     {
-        id: 6,
+        id: 14,
         tag: '',
         category: '配件',
-        image: item06,
-        title: 'PS VR 全套組（含攝影機）',
-        seller: 'vrbox**330912',
-        priceNow: '3200',
-        size: 'large'
-    },
-    {
-        id: 7,
-        tag: '',
-        category: '遊戲',
-        image: item07,
-        title: '女神異聞錄 5 皇家版',
-        seller: 'p5r**008833',
-        priceNow: '880',
+        image: item14,
+        title: '二手 Xbox 無線控制器（碳黑）',
+        seller: 'xpad**553309',
+        priceNow: '780',
         size: 'small'
     },
     {
-        id: 8,
-        tag: '',
-        category: '主機',
-        image: item08,
-        title: '九成新 PlayStation 5 光碟版（全配）',
-        seller: 'ps5deal**992244',
-        priceNow: '13980',
-        size: 'large'
-    },
-    {
-        id: 9,
+        id: 15,
         tag: '',
         category: '配件',
-        image: item09,
-        title: '九成新PS4手把',
-        seller: 'charge**217600',
-        priceNow: '680',
+        image: item15,
+        title: 'Xbox 官方充電組 + 電池組',
+        seller: 'xcharge**340981',
+        priceNow: '550',
         size: 'small'
     },
     {
-        id: 10,
+        id: 16,
         tag: '',
         category: '遊戲',
-        image: item10,
-        title: '全新未拆封 戰神：諸神黃昏（中文版）',
-        seller: 'godkratos**554421',
-        priceNow: '990',
+        image: item16,
+        title: '惡靈古堡 4 重製版（Xbox版）',
+        seller: 're4x**778812',
+        priceNow: '980',
         size: 'medium'
+    },
+    {
+        id: 17,
+        tag: '全新上架',
+        category: '主機',
+        image: item17,
+        title: 'Xbox Series S 數位版主機',
+        seller: 'xss**245566',
+        priceNow: '7990',
+        size: 'large'
+    },
+    {
+        id: 18,
+        tag: '',
+        category: '配件',
+        image: item18,
+        title: 'Elite Series 2 專業手把（盒裝）',
+        seller: 'elite2**093232',
+        priceNow: '3450',
+        size: 'medium'
+    },
+    {
+        id: 19,
+        tag: '',
+        category: '遊戲',
+        image: item19,
+        title: '決勝時刻：現代戰爭II',
+        seller: 'codmw2**651019',
+        priceNow: '890',
+        size: 'small'
     }
+
 ];
 
 const TABS = ['全部', '主機', '遊戲', '配件'];
 
-const Alltype_PS = () => {
+const Alltype_Xbox = () => {
     const [active, setActive] = useState('全部');
     const counts = useMemo(() => {
         return arrCardinfor.reduce(
@@ -163,4 +164,4 @@ const Alltype_PS = () => {
     )
 }
 
-export default Alltype_PS
+export default Alltype_Xbox

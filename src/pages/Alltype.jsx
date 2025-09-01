@@ -4,7 +4,6 @@ import Banner from '../images/banner_pokemon.avif'
 import AllTypeCards from '../components/AllTypeCards.jsx'
 import DKB from '../images/Card_Image/DKB.webp'
 import DS2CE from '../images/Card_Image/DS2CE.webp'
-// import ps5_pro from '../images/Card_Image/ps5_pro.webp'
 import SWP2 from '../images/Card_Image/switch_pro2.webp'
 import SW2 from '../images/Card_Image/switch2.webp'
 import SWB from '../images/Card_Image/item_switch01.avif'
@@ -150,13 +149,10 @@ const Alltype = () => {
 							{tab}({counts[tab]})
 						</button>
 					))}
-					{/* <button className='B_Categories' type='button'>主機 ()</button>
-          <button className='B_Categories' type='button'>遊戲 ()</button>
-          <button className='B_Categories' type='button'>配件 ()</button> */}
 				</div>
 
 				<div className='B_item'>
-					{arrCardinfor.map(item => (
+					{filtered.map(item => (
 						<AllTypeCards key={item.id} {...item} />
 					))}
 				</div>
