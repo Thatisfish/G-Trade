@@ -15,6 +15,7 @@ import c_package_10 from "../images/Regform_icon/c_package_10.png"
 import c_package_11 from "../images/Regform_icon/c_package_11.png"
 import c_package_12 from "../images/Regform_icon/c_package_12.png"
 import c_package_13 from "../images/Regform_icon/c_package_13.png"
+import c_arrow from "../images/Regform_icon/c_arrow.png"
 import OuterFrame from '../components/OuterFrame'
 
 // 自訂Hook：取得前一個值
@@ -170,7 +171,7 @@ const Package = () => {
                     <p className='c_packA'>開始包裝前，請先準備好這些材料！</p>
                     <div className='c_packOutBox'>
                         <div className='c_packBox'>
-                            <OuterFrame text="堅固耐壓的紙箱" />
+                            <OuterFrame text="堅固耐壓的紙箱" textClass="c_packPhFrame"/>
                             <p className='c_packDirections'>請使用尺寸適中、結構完整的紙箱。如果是回收紙箱，務必確保其未受損，並清除上面的舊標籤與條碼，避免造成物流混淆。</p>
                         </div>
                         <img src={c_package_1} alt="" />
@@ -178,7 +179,7 @@ const Package = () => {
                     </div>
                     <div className='c_packOutBox'>
                         <div className='c_packBox'>
-                            <OuterFrame text="內部緩衝包材" />
+                            <OuterFrame text="內部緩衝包材" textClass="c_packPhFrame"/>
                             <p className='c_packDirections'>您可以使用報紙、氣泡布、保麗龍粒、泡棉或碎紙等作為內襯。重點是物品在箱內不能晃動，四周要有緩衝空間，保護物品不被擠壓損壞。<br />若是易碎品，請單獨仔細包裹，並在外箱明確標示「易碎品」。</p>
                         </div>
                         <img src={c_package_3} alt="" />
@@ -194,8 +195,11 @@ const Package = () => {
                         </div>
                         <div className='c_packRight'>
                             <div className='c_packText'>
-                                <OuterFrame text={currentStep.title} className={isTitleChange ? "fade-in" : ""} />
+                                <OuterFrame text={currentStep.title} className={isTitleChange ? "fade-in" : ""} textClass="c_packPhFrame" />
                                 <p className={`c_packSubtxt ${isSubtxtChange ? "fade-in" : ""}`}>{currentStep.subtxt}</p>
+                                <div className='c_packArrow'>
+                                    <img src={c_arrow} alt="" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -208,7 +212,7 @@ const Package = () => {
                             <div key={item.id} className="c_packStepItem">
                                 {isFirst && (
                                     <div className="c_packPhText">
-                                        <OuterFrame text={item.title} />
+                                        <OuterFrame text={item.title} textClass="c_packPhFrame"/>
                                         <p className="c_packPhSub">{item.subtxt}</p>
                                     </div>
                                 )}

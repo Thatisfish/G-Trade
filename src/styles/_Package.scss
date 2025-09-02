@@ -60,7 +60,7 @@
 
 	.c_packPrepare {
 		width: 65vw;
-		height: 80vh;
+		height: 70vh;
 		gap: 90px;
 		display: flex;
 		flex-direction: column;
@@ -102,6 +102,7 @@
 		position: relative;
 		// width: 65vw;
 
+
 		.c_packScene {
 			// padding-top: -500px;
 			position: sticky;
@@ -126,9 +127,35 @@
 				.c_packSubtxt {
 					display: grid;
 					margin-top: 80px;
+					font-weight: 300;
+				}
+
+				.c_packArrow {
+					width: 60px;
+					position: absolute;
+					pointer-events: none;
+					top: 70%;
+					left: 43.5%;
+					animation: arrow 2s ease-in-out;
+					animation-iteration-count: infinite;
+				}
+
+				@keyframes arrow {
+					0% {
+						transform: translateY(0);
+					}
+
+					50% {
+						transform: translateY(-30px);
+					}
+
+					100% {
+						transform: translateY(0px);
+					}
 				}
 			}
 		}
+
 	}
 
 	.fade-in {
@@ -152,123 +179,157 @@
 	}
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
 
 	/* 整體版面 */
 	.c_packMain {
 		margin: 0 20px;
 		padding-top: 130px;
-	}
 
-	/* 頂部區塊 */
-	.c_packTop {
-		width: 100%;
-		height: auto;
-
-		.c_packHead {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 10px;
-
-			.c_packMark {
-				h2 {
-					font-size: 36px;
-
-					span {
-						font-size: 24px;
-					}
-				}
-
-				small {
-					font-size: 16px;
-				}
-			}
-
-			.c_packSlogan {
-				font-size: 18px;
-			}
+		.c_packPhFrame {
+			font-size: 1.1rem;
 		}
 
-		.c_packPic {
-			margin-top: 50px;
-			flex-direction: column;
-			gap: 30px;
-
-			.c_packIntro {
-				width: 100%;
-				text-align: center;
-				font-size: 14px;
-			}
-
-			.c_package_twopeople {
-				max-width: 250px;
-			}
+		.c_packPhImg {
+			max-width: 30vw;
+			height: auto;
 		}
-	}
-
-	/* 準備材料區塊 */
-	.c_packPrepare {
-		margin-top: 200px;
-		margin-bottom: 1000px;
-
-		.c_packA {
-			font-size: 18px;
-			text-align: center;
-		}
-
-		.c_packOutBox {
-			flex-direction: column;
-			justify-content: center;
-
-			.c_packDirections {
-				margin: 30px 0;
-			}
-
-			img {
-				max-height: 150px;
-				margin: 20px;
-			}
-		}
-	}
-
-	/* 滾動區塊 */
-	.c_packScroll {
-		display: none;
-		// width: 100%;
-		// height: auto;
-
-		// .c_packScene {
-		// 	position: static;
-		// 	height: auto;
-		// 	flex-direction: column;
-		// 	gap: 30px;
-		// 	padding-top: 0;
-		// 	flex-direction: column-reverse;
-
-		// 	.c_packStepImg {
-		// 		max-width: 250px;
-		// 		min-width: auto;
-		// 		margin: 0 auto;
-		// 	}
-
-		// 	.c_packText {
-		// 		max-width: 100%;
-		// 		text-align: center;
-
-		// 		.c_packSubtxt {
-		// 			margin-top: 20px;
-		// 		}
-		// 	}
-		// }
-	}
-
-	.c_packMain {
 
 		.c_packScrPhone {
 			display: block;
-			margin-top: 200px;
+			margin-top: 80px;
 			margin-bottom: 80px;
+			// padding: 0 40px 80px;
+			width: 40vw;
 
+			.c_packStepItem {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 50px;
+				margin-bottom: 50px;
+
+				.c_packPhText {
+					display: grid;
+					max-width: 100%;
+					margin-top: 50px;
+					gap: 50px;
+				}
+
+				.c_packPhFrame {
+					font-size: 1.0rem;
+				}
+
+				.c_packPhSub {
+					font-weight: 300;
+				}
+			}
+		}
+
+		/* 頂部區塊 */
+		.c_packTop {
+			width: 80%;
+			height: auto;
+
+			.c_packHead {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+
+				.c_packMark {
+					h2 {
+						font-size: 48px;
+
+						span {
+							font-size: 36px;
+						}
+					}
+
+					small {
+						font-size: 18px;
+					}
+				}
+
+				.c_packSlogan {
+					font-size: 22px;
+					font-weight: 400;
+				}
+			}
+
+			.c_packPic {
+				margin-top: 100px;
+				flex-direction: column;
+				gap: 30px;
+
+				.c_packIntro {
+					width: 100%;
+					text-align: center;
+					font-size: 18px;
+					width: 60vw;
+				}
+
+				.c_package_twopeople {
+					margin-top: 100px;
+					max-width: 350px;
+				}
+			}
+		}
+
+		/* 準備材料區塊 */
+		.c_packPrepare {
+			margin-top: 180px;
+			margin-bottom: 630px;
+
+			.c_packA {
+				font-size: 18px;
+				text-align: center;
+				white-space: nowrap;
+			}
+
+			.c_packOutBox {
+				flex-direction: column;
+				justify-content: center;
+
+				.c_packDirections {
+					margin: 30px 0;
+				}
+
+				img {
+					max-height: 200px;
+					margin: 20px;
+				}
+			}
+		}
+
+		/* 滾動區塊 */
+		.c_packScroll {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 640px) {
+
+	/* 整體版面 */
+	.c_packMain {
+		margin: 0 20px;
+		padding-top: 130px;
+
+		.c_packPhFrame {
+			font-size: 1.1rem;
+		}
+
+		.c_packPhImg {
+			max-width: 50vw;
+			height: auto;
+		}
+
+		.c_packScrPhone {
+			display: block;
+			margin-top: 80px;
+			// margin-bottom: 80px;
+			padding: 0 40px 80px;
+			width: 70vw;
 			.c_packStepItem {
 				display: flex;
 				flex-direction: column;
@@ -282,12 +343,93 @@
 					gap: 50px;
 				}
 
-				.c_packPhImg {
-					max-width: 60vw;
-					height: auto;
+				.c_packPhFrame {
+					font-size: 1.0rem;
 				}
 
+				.c_packPhSub {
+					font-weight: 300;
+				}
 			}
 		}
+
+
+		/* 頂部區塊 */
+		.c_packTop {
+			width: 80%;
+			height: auto;
+
+			.c_packHead {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+
+				.c_packMark {
+					h2 {
+						font-size: 36px;
+
+						span {
+							font-size: 24px;
+						}
+					}
+
+					small {
+						font-size: 16px;
+					}
+				}
+
+				.c_packSlogan {
+					font-size: 18px;
+					font-weight: 400;
+				}
+			}
+
+			.c_packPic {
+				margin-top: 50px;
+				flex-direction: column;
+				gap: 30px;
+
+				.c_packIntro {
+					width: 100%;
+					text-align: center;
+					font-size: 14px;
+				}
+
+				.c_package_twopeople {
+					max-width: 250px;
+				}
+			}
+		}
+
+		/* 準備材料區塊 */
+		.c_packPrepare {
+			margin-top: 200px;
+			margin-bottom: 1000px;
+
+			.c_packA {
+				font-size: 18px;
+				text-align: center;
+				white-space: nowrap;
+			}
+
+			.c_packOutBox {
+				flex-direction: column;
+				justify-content: center;
+
+				.c_packBox {
+					padding: 0 50px;
+				}
+
+				.c_packDirections {
+					margin: 30px 0;
+				}
+
+				img {
+					max-height: 150px;
+					margin: 20px;
+				}
+			}
+		}
+
 	}
 }
