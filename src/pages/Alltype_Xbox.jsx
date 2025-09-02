@@ -11,7 +11,15 @@ import item16 from '../images/Alltype_Xbox/Alltype_Xbox_item10.avif'
 import item17 from '../images/Alltype_Xbox/Alltype_Xbox_item06.avif'
 import item18 from '../images/Alltype_Xbox/Alltype_Xbox_item07.avif'
 import item19 from '../images/Alltype_Xbox/Alltype_Xbox_item09.avif'
+import banner02 from '../images/Alltype_Xbox/Alltype_Xbox_banner04.avif'
+import banner03 from '../images/Alltype_Xbox/Alltype_Xbox_banner03.avif'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 const arrCardinfor = [
     {
         id: 11,
@@ -133,7 +141,31 @@ const Alltype_Xbox = () => {
             {/* <Nav /> */}
             <div className='B_content'>
                 <div className='B_banner'>
-                    <img className='B_ban' src={Banner} alt="banner" />
+                    <Swiper
+                        spaceBetween={30}
+                        centeredSlides={true}
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        navigation={true}
+                        modules={[Autoplay, Pagination, Navigation]}
+                        className="mySwiper"
+                    >
+                        <SwiperSlide>
+                            <img src={Banner} alt="" />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <img src={banner02} alt="" />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <img src={banner03} alt="" />
+                        </SwiperSlide>
+
+                    </Swiper>
                 </div>
 
                 <p className='B_name'>PS系列</p>

@@ -1,6 +1,6 @@
 import '../styles/_Alltype_PS.scss'
 import { useMemo, useState } from 'react';
-import Banner from '../images/Alltype_PS/Alltype_PS_banner02.avif'
+import Banner from '../images/Alltype_PS/Alltype_PS_banner01.webp'
 import AllTypeCards from '../components/AllTypeCards.jsx'
 import item02 from '../images/Alltype_PS/Alltype_PS_item03.avif'
 import item03 from '../images/Alltype_PS/Alltype_PS_item02.avif'
@@ -11,6 +11,15 @@ import item07 from '../images/Alltype_PS/Alltype_PS_item08.avif'
 import item08 from '../images/Alltype_PS/Alltype_PS_item09.avif'
 import item09 from '../images/Alltype_PS/Alltype_PS_item04.avif'
 import item10 from '../images/Alltype_PS/Alltype_PS_item10.avif'
+import banner02 from '../images/Alltype_PS/Alltype_PS_banner02.avif'
+import banner03 from '../images/Alltype_PS/Alltype_PS_banner03.avif'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const arrCardinfor = [
     {
@@ -132,7 +141,31 @@ const Alltype_PS = () => {
             {/* <Nav /> */}
             <div className='B_content'>
                 <div className='B_banner'>
-                    <img className='B_ban' src={Banner} alt="banner" />
+                    <Swiper
+                        spaceBetween={30}
+                        centeredSlides={true}
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        navigation={true}
+                        modules={[Autoplay, Pagination, Navigation]}
+                        className="mySwiper"
+                    >
+                        <SwiperSlide>
+                            <img src={Banner} alt="" />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <img src={banner02} alt="" />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <img src={banner03} alt="" />
+                        </SwiperSlide>
+
+                    </Swiper>
                 </div>
 
                 <p className='B_name'>PS系列</p>
