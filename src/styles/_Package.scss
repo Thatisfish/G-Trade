@@ -1,5 +1,5 @@
 .c_packMain {
-	margin: 0 80px 0 80px;
+	margin: 0 80px;
 	padding-top: 130px;
 	display: flex;
 	flex-direction: column;
@@ -79,6 +79,7 @@
 
 			.c_packBox {
 				width: 400px;
+				// width: 50vw;
 
 				.c_packDirections {
 					font-size: 16px;
@@ -155,7 +156,6 @@
 				}
 			}
 		}
-
 	}
 
 	.fade-in {
@@ -184,15 +184,9 @@
 	/* 整體版面 */
 	.c_packMain {
 		margin: 0 20px;
-		padding-top: 130px;
 
 		.c_packPhFrame {
 			font-size: 1.1rem;
-		}
-
-		.c_packPhImg {
-			max-width: 30vw;
-			height: auto;
 		}
 
 		.c_packScrPhone {
@@ -200,7 +194,7 @@
 			margin-top: 80px;
 			margin-bottom: 80px;
 			// padding: 0 40px 80px;
-			width: 40vw;
+			width: 50vw;
 
 			.c_packStepItem {
 				display: flex;
@@ -222,6 +216,11 @@
 
 				.c_packPhSub {
 					font-weight: 300;
+				}
+
+				.c_packPhImg {
+					max-width: 30vw;
+					height: auto;
 				}
 			}
 		}
@@ -277,8 +276,7 @@
 
 		/* 準備材料區塊 */
 		.c_packPrepare {
-			margin-top: 180px;
-			margin-bottom: 630px;
+			margin: 180px 0 600px;
 
 			.c_packA {
 				font-size: 18px;
@@ -290,8 +288,12 @@
 				flex-direction: column;
 				justify-content: center;
 
-				.c_packDirections {
-					margin: 30px 0;
+				.c_packBox {
+					width: 50vw;
+
+					.c_packDirections {
+						margin: 30px 0;
+					}
 				}
 
 				img {
@@ -312,43 +314,26 @@
 
 	/* 整體版面 */
 	.c_packMain {
-		margin: 0 20px;
-		padding-top: 130px;
-
-		.c_packPhFrame {
-			font-size: 1.1rem;
-		}
-
-		.c_packPhImg {
-			max-width: 50vw;
-			height: auto;
-		}
 
 		.c_packScrPhone {
-			display: block;
-			margin-top: 80px;
-			// margin-bottom: 80px;
-			padding: 0 40px 80px;
-			width: 70vw;
+			margin-top: 10px;
+			padding-bottom: 80px;
+			width: 60vw;
+
 			.c_packStepItem {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 50px;
-				margin-bottom: 50px;
+				.c_packPhFrame {
+					font-size: 1.0rem;
+					box-sizing: border-box;
+				}
+
+				.c_packPhImg {
+					max-width: 35vw;
+				}
 
 				.c_packPhText {
 					display: grid;
 					max-width: 100%;
 					gap: 50px;
-				}
-
-				.c_packPhFrame {
-					font-size: 1.0rem;
-				}
-
-				.c_packPhSub {
-					font-weight: 300;
 				}
 			}
 		}
@@ -356,14 +341,7 @@
 
 		/* 頂部區塊 */
 		.c_packTop {
-			width: 80%;
-			height: auto;
-
 			.c_packHead {
-				flex-direction: column;
-				align-items: flex-start;
-				gap: 10px;
-
 				.c_packMark {
 					h2 {
 						font-size: 36px;
@@ -380,44 +358,32 @@
 
 				.c_packSlogan {
 					font-size: 18px;
-					font-weight: 400;
 				}
 			}
 
 			.c_packPic {
 				margin-top: 50px;
-				flex-direction: column;
-				gap: 30px;
 
 				.c_packIntro {
-					width: 100%;
-					text-align: center;
 					font-size: 14px;
 				}
 
 				.c_package_twopeople {
-					max-width: 250px;
+					max-width: 60vw;
 				}
 			}
 		}
 
 		/* 準備材料區塊 */
 		.c_packPrepare {
-			margin-top: 200px;
-			margin-bottom: 1000px;
-
-			.c_packA {
-				font-size: 18px;
-				text-align: center;
-				white-space: nowrap;
-			}
+			margin: 200px 0 600px;
 
 			.c_packOutBox {
-				flex-direction: column;
-				justify-content: center;
-
 				.c_packBox {
-					padding: 0 50px;
+					padding: 0;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
 				}
 
 				.c_packDirections {
@@ -425,11 +391,10 @@
 				}
 
 				img {
-					max-height: 150px;
+					max-height: 30vw;
 					margin: 20px;
 				}
 			}
 		}
-
 	}
 }

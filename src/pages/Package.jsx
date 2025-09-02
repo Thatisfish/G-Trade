@@ -135,7 +135,7 @@ const Package = () => {
             }
             // 進入c_packScroll，開始計算滾動/高度，判斷顯示哪一步
             else if (rect.top <= 0 && rect.bottom >= 0) {
-                // scrollEl到頁面頂顛的距離
+                // scrollEl到頁面頂點的距離
                 const scrollStart = scrollEl.offsetTop;
                 // 在這滾多少
                 const relativeScroll = scrollTop - scrollStart;
@@ -171,7 +171,7 @@ const Package = () => {
                     <p className='c_packA'>開始包裝前，請先準備好這些材料！</p>
                     <div className='c_packOutBox'>
                         <div className='c_packBox'>
-                            <OuterFrame text="堅固耐壓的紙箱" textClass="c_packPhFrame"/>
+                            <OuterFrame text="堅固耐壓的紙箱" textClass="c_packPhFrame" />
                             <p className='c_packDirections'>請使用尺寸適中、結構完整的紙箱。如果是回收紙箱，務必確保其未受損，並清除上面的舊標籤與條碼，避免造成物流混淆。</p>
                         </div>
                         <img src={c_package_1} alt="" />
@@ -179,7 +179,7 @@ const Package = () => {
                     </div>
                     <div className='c_packOutBox'>
                         <div className='c_packBox'>
-                            <OuterFrame text="內部緩衝包材" textClass="c_packPhFrame"/>
+                            <OuterFrame text="內部緩衝包材" textClass="c_packPhFrame" />
                             <p className='c_packDirections'>您可以使用報紙、氣泡布、保麗龍粒、泡棉或碎紙等作為內襯。重點是物品在箱內不能晃動，四周要有緩衝空間，保護物品不被擠壓損壞。<br />若是易碎品，請單獨仔細包裹，並在外箱明確標示「易碎品」。</p>
                         </div>
                         <img src={c_package_3} alt="" />
@@ -197,22 +197,27 @@ const Package = () => {
                             <div className='c_packText'>
                                 <OuterFrame text={currentStep.title} className={isTitleChange ? "fade-in" : ""} textClass="c_packPhFrame" />
                                 <p className={`c_packSubtxt ${isSubtxtChange ? "fade-in" : ""}`}>{currentStep.subtxt}</p>
-                                <div className='c_packArrow'>
-                                    <img src={c_arrow} alt="" />
-                                </div>
+                                {/* 判斷是最後一張的時候箭頭消失 */}
+                                {currentStep.image !== c_package_13 && (
+                                    <div className='c_packArrow'>
+                                        <img src={c_arrow} alt="" />
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
                 </section>
                 <section className="c_packScrPhone">
                     {steps.map((item, index) => {
+                        // 排除特定圖片
+                        if (item.image === c_package_9 || item.image === c_package_10) return null;
                         // 檢查之前是否出現過
                         const isFirst = steps.findIndex((step) => step.title === item.title) === index;
                         return (
                             <div key={item.id} className="c_packStepItem">
                                 {isFirst && (
                                     <div className="c_packPhText">
-                                        <OuterFrame text={item.title} textClass="c_packPhFrame"/>
+                                        <OuterFrame text={item.title} textClass="c_packPhFrame" />
                                         <p className="c_packPhSub">{item.subtxt}</p>
                                     </div>
                                 )}

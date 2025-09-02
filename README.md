@@ -25,6 +25,7 @@
 -  0829-C-list_恐龍動畫完
 -  0831-C-list_補裝飾/package_rwd+紅黑框小調
 -  0901-C-package_rwd調整
+-  0902-C-pack_rwd/realname_water/其他改padding
 ### Biki
 - 0902-漢堡選單調整、分類頁換圖輪播
 - 0901-Xbox頁面完成、漢堡選單切版、樣式

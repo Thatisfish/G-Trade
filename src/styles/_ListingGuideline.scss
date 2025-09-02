@@ -1,5 +1,5 @@
 .c_listMain {
-    margin: 0 80px 100px 80px;
+    margin: 0 80px 100px;
     padding-top: 130px;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,8 @@
 
             .c_listPicBox {
                 position: relative;
-                width: 600px;
+                width: 100%;
+                max-width: 600px;
                 height: 200px;
 
                 // overflow: hidden;

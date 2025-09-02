@@ -75,7 +75,10 @@ const Real_name = () => {
         <div className='c_uploadCase'>
           <div className={`c_upLoadFrame ${imgPreview ? 'hasImgPreview' : ''}`}>
             {imgPreview ? (
-              <img src={imgPreview} alt="預覽" className='c_realPreview' />
+              <div className='c_upLoadPreBox'>
+                <img src={imgPreview} alt="預覽" className='c_realPreview' />
+                <div className='c_upLoadWater'>-僅供遊玩人間市集確認身分使用-</div>
+              </div>
             ) : (<span className='c_plus'> <img src={c_plus} alt="上傳" /> </span>)
             }
             <input type="file" className='c_upLoadInput' onChange={picOnChange} accept='image/*' required />
