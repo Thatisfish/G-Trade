@@ -1,6 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
-import gsap from 'gsap'
-import '../styles/inforcard.scss'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import '../styles/inforcard.scss'
 
 import Card from '../components/Card'
@@ -31,14 +29,16 @@ function scaleByCenter(containerEl, slides) {
 		const r = slideEl.getBoundingClientRect()
 		const sx = r.left + r.width / 2
 		const dist = Math.abs(cx - sx)
-		const radius = r.width * 2.2 // 影響半徑（可調 2.0~2.6）
-		const p = Math.min(dist / radius, 1) // 0=中心, 1=很遠
+		const radius = r.width * 2.2
+		const p = Math.min(dist / radius, 1)
 
 		let scale
 		if (p >= 0.6) {
-			const t = (p - 0.6) / 0.4; scale = MID + (SMALL - MID) * t // 中→小
+			const t = (p - 0.6) / 0.4
+			scale = MID + (SMALL - MID) * t
 		} else {
-			const t = p / 0.6; scale = MAX + (MID - MAX) * t     // 大→中
+			const t = p / 0.6
+			scale = MAX + (MID - MAX) * t
 		}
 		slideEl.style.setProperty('--card-scale', String(scale))
 		slideEl.style.zIndex = String(1000 - Math.round(p * 1000))
@@ -48,57 +48,113 @@ function scaleByCenter(containerEl, slides) {
 export default function InforcardGSAP() {
 	const wrapRef = useRef(null)
 	const trackRef = useRef(null)
-	const tweenRef = useRef(null)
+	const segRef = useRef(0)          // 一段長度（px）
+	const xRef = useRef(0)            // 目前位移（px）
+	const timerRef = useRef(null)     // 自動滑 interval
 
-	// 速度（px/秒）＆ 每張寬（需與 SCSS 對齊）
-	const PX_PER_SEC = 120
+	// 自動滑速度（px/sec）
+	const SPEED_PX_PER_SEC = 80
+	const TICK_MS = 16
+	const SPEED_PX_PER_TICK = (SPEED_PX_PER_SEC * TICK_MS) / 1000
+
+	// 滑鼠移動靈敏度（>1 代表滑鼠移 1px，軌道就移更多 px）
+	const HOVER_SPEED_MULTIPLIER = 1.0
+
+	// 追蹤滑鼠移動
+	const isHoveringRef = useRef(false)
+	const lastXRef = useRef(0)
+
+	const triple = [...arrCardinfor, ...arrCardinfor, ...arrCardinfor]
+
+	const wrapX = (x, seg) => {
+		if (!seg) return x
+		const mod = ((x % seg) + seg) % seg
+		return mod - seg
+	}
+
+	const applyTransformAndScale = () => {
+		const wrap = wrapRef.current
+		const track = trackRef.current
+		if (!wrap || !track) return
+		track.style.transform = `translate3d(${xRef.current}px, 0, 0)`
+		scaleByCenter(wrap, Array.from(track.children))
+	}
+
+	const stopAuto = () => {
+		if (timerRef.current) {
+			clearInterval(timerRef.current)
+			timerRef.current = null
+		}
+	}
+	const startAuto = () => {
+		stopAuto()
+		timerRef.current = setInterval(() => {
+			const seg = segRef.current || 0
+			xRef.current = wrapX(xRef.current - SPEED_PX_PER_TICK, seg)
+			applyTransformAndScale()
+		}, TICK_MS)
+	}
 
 	useLayoutEffect(() => {
+		const track = trackRef.current
+		if (!track) return
+		segRef.current = track.scrollWidth / 3
+		xRef.current = 0
+		track.style.transform = `translate3d(0px, 0, 0)`
+		const wrap = wrapRef.current
+		if (wrap) scaleByCenter(wrap, Array.from(track.children))
+	}, [])
+
+	useEffect(() => {
 		const wrap = wrapRef.current
 		const track = trackRef.current
 		if (!wrap || !track) return
 
-		// 1) 初始位置
-		gsap.set(track, { x: 0 })
+		startAuto()
 
-		// 2) 一共渲染了 3 倍內容 → 一段長度 = 總寬的 1/3
-		const segment = track.scrollWidth / 5
-
-		// 3) 建立線性連續動畫（ease: 'none'），並用 wrap 無縫循環
-		const duration = segment / PX_PER_SEC
-		tweenRef.current?.kill()
-		tweenRef.current = gsap.to(track, {
-			x: -segment,
-			duration,
-			ease: 'none',
-			repeat: -1,
-			modifiers: {
-				x: (x) => {
-					const v = parseFloat(x)
-					// 把 x 值包回 [-segment, 0) 範圍內，達到無縫
-					const wrapped = ((v + segment) % segment) - segment
-					return `${wrapped}px`
-				}
-			},
-			onUpdate: () => scaleByCenter(wrap, Array.from(track.children)),
-		})
-
-		// 4) 視窗尺寸變動時重算
-		const onR = () => {
-			const s = track.scrollWidth / 3
-			const d = s / PX_PER_SEC
-			tweenRef.current?.kill()
-			gsap.set(track, { x: 0 })
-			tweenRef.current = gsap.to(track, {
-				x: -s, duration: d, ease: 'none', repeat: -1,
-				modifiers: { x: (x) => `${(((parseFloat(x) + s) % s) - s)}px` },
-				onUpdate: () => scaleByCenter(wrap, Array.from(track.children)),
-			})
+		const onPointerEnter = (e) => {
+			isHoveringRef.current = true
+			lastXRef.current = e.clientX
+			stopAuto()
+			wrap.classList.add('is-hovering')
 		}
-		window.addEventListener('resize', onR)
+
+		const onPointerMove = (e) => {
+			if (!isHoveringRef.current) return
+			const dx = (e.clientX - lastXRef.current) * HOVER_SPEED_MULTIPLIER
+			lastXRef.current = e.clientX
+			const seg = segRef.current || 0
+			// 滑鼠往右移 → 內容往右移（直覺同步）
+			xRef.current = wrapX(xRef.current + dx, seg)
+			applyTransformAndScale()
+		}
+
+		const onPointerLeave = () => {
+			isHoveringRef.current = false
+			wrap.classList.remove('is-hovering')
+			startAuto()
+		}
+
+		wrap.addEventListener('pointerenter', onPointerEnter)
+		wrap.addEventListener('pointermove', onPointerMove)
+		wrap.addEventListener('pointerleave', onPointerLeave)
+
+		const onResize = () => {
+			stopAuto()
+			const newSeg = track.scrollWidth / 3
+			segRef.current = newSeg
+			xRef.current = wrapX(xRef.current, newSeg)
+			applyTransformAndScale()
+			startAuto()
+		}
+		window.addEventListener('resize', onResize)
+
 		return () => {
-			window.removeEventListener('resize', onR)
-			tweenRef.current?.kill()
+			wrap.removeEventListener('pointerenter', onPointerEnter)
+			wrap.removeEventListener('pointermove', onPointerMove)
+			wrap.removeEventListener('pointerleave', onPointerLeave)
+			window.removeEventListener('resize', onResize)
+			stopAuto()
 		}
 	}, [])
 
@@ -106,7 +162,7 @@ export default function InforcardGSAP() {
 		<div className="inforcard-wrap">
 			<div className="marquee" ref={wrapRef}>
 				<div className="marquee__track" ref={trackRef}>
-					{[...arrCardinfor, ...arrCardinfor, ...arrCardinfor].map((card, i) => (
+					{triple.map((card, i) => (
 						<div className="marquee__slide" key={`${card.id}-${i}`}>
 							<Card
 								tag={card.tag}
