@@ -4,8 +4,8 @@
   padding-top: 80px;
   gap: 100px;
 
+  /* 麵包屑 */
   .y_breadcrumb {
-
     margin: 80px 0 20px;
     display: flex;
   }
@@ -70,7 +70,7 @@
 
   .info-card {
     width: 260px; // 固定寬度
-    height: 340px; // 固定高度
+    height: 350px; // 固定高度
     margin-bottom: 10px;
     border-radius: 12px;
     overflow: hidden;
@@ -81,8 +81,14 @@
     transition: transform 0.2s ease;
 
     &:hover {
-      transform: translateY(-10px);
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
     }
+
+    &:active {
+                transform: scale(0.98);
+            }
 
     img {
       width: 100%;
@@ -102,86 +108,84 @@
 }
 
 .info-card {
-	width: 270px;
-	height: 420px; // ✅ 統一高度
-	border-radius: 20px;
-	background-color: white;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-	overflow: hidden;
-	position: relative;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	/* ✅ 垂直排列內容 */
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  /* ✅ 垂直排列內容 */
 }
 
 /* ✅ 移除不同尺寸的高度差異，統一大小 */
 .info-card.large,
 .info-card.medium,
 .info-card.small {
-	width: 250px;
-	height: 420px;
+  width: 250px;
+  height: 350px;
 }
 
 .info-tag {
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	background-color: #ff4d4f;
-	color: white;
-	font-size: 12px;
-	padding: 4px 10px;
-	border-radius: 12px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ff4d4f;
+  color: white;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
 }
 
 .info-img {
-	width: 100%;
-	height: 50%; // ✅ 固定圖片佔卡片一半
-	object-fit: cover;
-	border-bottom: 1px solid #eee;
-	border-top-left-radius: 20px;
-	border-top-right-radius: 20px;
+  width: 100%;
+  height: 50%; // ✅ 固定圖片佔卡片一半
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .info-content {
-	padding: 10px 16px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: flex-start;
-	flex-grow: 1;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-grow: 1;
 }
 
 /* 標題 */
 .info-title {
-	font-size: 16px;
-	font-weight: bold;
-	margin: 10px 0 5px;
-	word-break: break-word;
-	/* ✅ 避免爆版 */
-	line-height: 1.4;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  word-break: break-word;
+  /* ✅ 避免爆版 */
+  line-height: 1.4;
 }
 
 .info-seller {
-	color: #888;
-	font-size: 14px;
-	margin-bottom: 10px;
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .info-price {
-	display: flex;
-	align-items: center;
-	gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .price-now {
-	font-size: 18px;
-	font-weight: bold;
-	color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
 }
 
 .price-old {
-	font-size: 14px;
-	color: #aaa;
-	text-decoration: line-through;
+  font-size: 14px;
+  color: #aaa;
+  text-decoration: line-through;
 }

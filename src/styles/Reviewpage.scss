@@ -1,3 +1,10 @@
+// 顏色變數
+$red-bg: #ff0000;
+$white-text: #ffffff;
+$light-white-text: rgba(255, 255, 255, 0.8);
+$gold-star: #ffd700;
+$shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 .y_Reviewpage {
     font-family: 'Noto Sans TC', sans-serif;
     color: #333;
@@ -8,172 +15,164 @@
     padding: 0 16px;
 
     /* 賣家資訊 */
-    .y_product__seller {
-        height: 360px;
-        position: relative;
+    .y_seller {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        padding-top: 150px;
 
-        .seller {
-            height: 250px;
+        /* 左側：頭像與名稱 */
+        &__profile {
             display: flex;
-            position: relative;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            gap: 70px;
-            padding: 0 clamp(10px, 7%, 90px);
+            flex-shrink: 0;
 
+            .y_seller__avatar {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
 
-            &__profile {
+            .y_seller__name {
+                margin-top: 8px;
+                font-size: 14px;
+                color: #555;
+            }
+        }
+
+        /* 中間：評分、地區、描述、標籤 */
+        &__stats {
+            display: grid;
+            margin-left: -300px;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "rating"
+                "desc"
+                "tags";
+
+            .y_seller__rating {
+                grid-area: rating;
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-                padding-left: 20px;
+                gap: 12px; // 調整間距
 
-                &>.seller__avatar {
-                    width: 150px;
-                    height: 150px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-
-                &>.seller__name {
-                    margin-top: 8px;
+                .y_seller__location {
                     font-size: 14px;
                     color: #555;
+                    white-space: nowrap;
                 }
-            }
 
-            &__stats {
-                // 1x2 版面：上排兩欄（評分 / 地區），下排 1 欄（整列給 tags）
-                display: grid; // Grid（網格）
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto auto auto auto;
-                grid-template-areas:
-                    "rating rating"
-                    "desc   desc"
-                    "location location"
-                    "tags    tags";
-                column-gap: 12px; // 欄距
-                row-gap: 8px; // 列距
-                margin-left: 8px;
-                min-width: 0; // 防止被內容撐破
-                padding-bottom: 25px;
-
-
-                // 上排左：評分
-                &>.seller__rating {
-                    display: flex;
-                    align-items: center;
-                    gap: 6px; // 控制間距
+                .y_seller__score {
+                    font-weight: 700;
                     font-size: 20px;
-                    color: #444;
-
-
-                    .seller__score {
-                        font-weight: 700;
-                        font-size: 20px;
-                        color: #e63026;
-                        display: flex;
-                        align-items: center;
-                        gap: 6px;
-                        white-space: nowrap;
-                        line-height: 1.2;
-                    }
-
-                    .seller__count {
-                        white-space: nowrap;
-                        font-size: 14px;
-                        line-height: 1.2;
-                    }
-
-                    .seller__desc {
-                        position: absolute;
-                        top: 120px; // 根據你要插入的位置微調
-                        left: clamp(10px, 7%, 90px); // 與 padding 對齊
-                        width: calc(100% - clamp(10px, 7%, 90px) * 2);
-                        font-size: 14px;
-                        line-height: 1.6;
-                        color: #555;
-                    }
-
-
-                    img {
-                        width: 20px;
-                        height: 20px;
-                    }
-
-                    &>.seller__count {
-                        font-size: 14px;
-                        color: #666;
-
-                    }
+                    color: #e63026;
+                    white-space: nowrap;
                 }
 
-                // 上排右：地區
-                &>.seller__location {
+                img {
+                    width: 18px;
+                    height: 18px;
+                }
+
+                .y_seller__count {
                     font-size: 14px;
-                    color: #555;
-                    white-space: nowrap; // 需要可自動換行就改成 normal
-                }
-
-                // 下排整欄：tags
-                &>.seller__tags {
-                    grid-area: tags;
-                    margin-top: 0; // 由 grid 的 row-gap 控制間距
-                    display: flex;
-                    gap: 12px;
-                    align-items: center;
-                    min-width: 0;
-
-                    img {
-                        width: auto;
-                        height: 50px;
-                        display: block;
-                    }
+                    color: #666;
+                    white-space: nowrap;
                 }
             }
 
 
 
-            &__actions {
+            /* 描述放在評分/地區下方 */
+            +.y_seller__desc {
+                grid-area: desc;
+                font-size: 14px;
+                line-height: 1.6;
+                color: #444;
+            }
+
+            .y_seller__tags {
+                grid-area: tags;
                 display: flex;
                 gap: 12px;
-                white-space: nowrap;
-                padding-bottom: 25px;
+                align-items: center;
+
+                img {
+                    height: 40px;
+                    width: auto;
+                }
             }
         }
 
-        .top_decorate {
-            position: absolute;
-            top: 0;
-            background: var(--nav);
-            height: 30px;
-            width: 100%;
-            clip-path: polygon(0 0, 100% 0, 100% 20%, 97% 20%, 95.5% 100%, 45% 100%, 43.5% 20%, 0 20%);
-            pointer-events: none;
+        /* 右側：按鈕 */
+        &__actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .btn {
+                display: flex;
+                padding: 10px 18px;
+                border-radius: 20px;
+                border: none;
+                cursor: pointer;
+                font-weight: 600;
+                color: #fff;
+                border: 3px solid #4C4C4C;
+                border-radius: 999px;
+                background: linear-gradient(#B7B7B7, #858585, #595959, #4C4C4C);
+                width: 85px;
+            }
         }
 
-        .down_decorate {
-            position: absolute;
-            bottom: 0;
-            background: var(--nav);
-            height: 30px;
-            width: 100%;
-            clip-path: polygon(0 80%, 3% 80%, 4.5% 0%, 50% 0%, 51.5% 80%, 100% 80%, 100% 100%, 0 100%);
-            pointer-events: none;
+        /* RWD 手機版：垂直排列 */
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: flex-start;
+
+            &__actions {
+                flex-direction: row;
+            }
         }
     }
 
 
+    /* 按鈕 */
+    .y_categories {
+        display: flex;
+        justify-content: space-around;
+        color: #DE1A10;
+        margin: 40px 0;
+        width: 100%;
 
+        .y_btn {
+            min-width: 150px;
+            display: flex;
+            width: 100%;
+            height: 48px;
+            margin: 0 60px;
+            padding: 20px 10px;
+            justify-content: center;
+            align-items: center;
+            gap: 7px;
+            border-radius: 47px;
+            border: 2px solid #A12424;
+            background: var(--nav, #DE1A10);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+
+        }
+    }
 
 
     /* 最新商品區塊 */
     .latest_products {
-        margin-top: 100px;
+        margin-top: 50px;
 
         .section_header {
             display: flex;
@@ -376,16 +375,16 @@
         }
     }
 }
+
 .container {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	/* ✅ 固定5欄 */
-	gap: 40px;
-	align-items: center;
-	width: 100%;
-	max-width: 1400px;
-	/* ✅ 避免超寬 */
-	margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* ✅ 固定5欄 */
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    /* ✅ 避免超寬 */
+    margin: 0 auto;
 
 }
-

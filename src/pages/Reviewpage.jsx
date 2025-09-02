@@ -1,6 +1,11 @@
 import '../styles/Reviewpage.scss'
 import Card from "../components/Card"
-import SellerInfo from '../components/product/SellerInfo'
+import check from '../images/ProductPage/check.svg'
+import fastShip from '../images/ProductPage/fastShip.svg'
+import quickReply from '../images/ProductPage/quickReply.svg'
+import user from '../images/ProductPage/user.jpg'
+import star from '../images/ProductPage/star.svg'
+
 import DKB from '../images/Card_Image/DKB.webp'
 import DS2CE from '../images/Card_Image/DS2CE.webp'
 import SWP2 from '../images/Card_Image/switch_pro2.webp'
@@ -49,14 +54,44 @@ export default function Reviewpage() {
 
   return (
     <div className="y_Reviewpage">
-
       {/* 個人資料區塊 */}
-      <div className="y_product__seller">
-        <div className="y_section_header">
-          <h3 className="y_section_title">賣家資訊</h3>
+      <div className="y_seller">
+        <div className="y_seller__profile">
+          <img src={user} alt="賣家頭像" className="y_seller__avatar" />
+          <p className="y_seller__name">@fun31**56</p>
         </div>
-        <SellerInfo />
+
+        <div className="y_seller__stats">
+          <div className="y_seller__rating">
+            <span className="y_seller__score">4.8</span>
+            <img src={star} alt="" />
+            <span className="y_seller__count">(518則評價)</span>
+            <p className="y_seller__location">台北市/萬華區</p>
+          </div>
+          <div className="y_seller__desc">
+            <p>
+              個人賣場，商品多九成新，基本上24小時內回覆，歡迎使用留言提問及聊聊^^
+            </p>
+          </div>
+          <div className="y_seller__tags">
+            <img src={check} alt="" />
+            <img src={fastShip} alt="" />
+            <img src={quickReply} alt="" />
+          </div>
+        </div>
+        <div className="y_seller__actions">
+          <button className="btn">追蹤+</button>
+          <button className="btn">聊聊</button>
+        </div>
       </div>
+
+      {/* 按鈕區塊 */}
+      <div className="y_categories">
+        <button className="y_btn y_btn--red">主機 (3)</button>
+        <button className="y_btn y_btn--red">遊戲 (8)</button>
+        <button className="y_btn y_btn--red">配件 (0)</button>
+      </div>
+
 
       {/* 最新商品區塊 */}
       <div className="latest_products">
