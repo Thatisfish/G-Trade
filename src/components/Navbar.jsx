@@ -45,7 +45,7 @@ export default function Navbar({ theme, onOpenLogin }) {
 					<li className="shadow-img">
 						<BellPopover />  {/* ✅ 替代原本的 <Link className="icon-bell" /> */}
 					</li>
-					<li className="shadow-img"><Link className="icon-hamburger" to="/#" /></li>
+					<li className="shadow-img"><Link className="icon-hamburger" to="/HamburgerMenu" /></li>
 				</ul>
 			</nav>
 		</header>

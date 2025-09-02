@@ -1,8 +1,17 @@
 import '../styles/_HamburgerMenu.scss'
+import { FaArrowAltCircleDown, FaArrowAltCircleRight } from "react-icons/fa";
 
 const HamburgerMenu = () => {
     return (
         <>
+            {/*漢堡按鈕 */}
+            <button class="hamburger-btn" id="hamburgerBtn">
+                <div class="hamburger-icon">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </button>
             {/* 彈窗遮罩 */}
             <div class="modalOverlay" id="modalOverlay"></div>
 
@@ -14,19 +23,19 @@ const HamburgerMenu = () => {
 
                     <ul class="menu">
                         <li class="menuItem">
-                            <a href="#" class="menuLink">TOP</a><img class="arrow" src="" alt="" />
+                            <a href="#" class="menuLink">TOP</a><FaArrowAltCircleRight />
                         </li>
                         <li class="menuItem">
-                            <a href="#" class="menuLink">最新消息</a>
+                            <a href="#" class="menuLink">最新消息</a><FaArrowAltCircleRight />
                         </li>
                         <li class="menuItem">
-                            <a href="#" class="menuLink">熱門商品</a>
+                            <a href="#" class="menuLink">熱門商品</a><FaArrowAltCircleRight />
                         </li>
                         <li class="menuItem">
-                            <a href="#" class="menuLink">會員中心</a>
+                            <a href="#" class="menuLink">會員中心</a><FaArrowAltCircleRight />
                         </li>
-                        <li class="menuItem">
-                            <a class="menuLink">平台特色</a>
+                        <li class="menuItem2">
+                            <a class="menuLink">平台特色</a><FaArrowAltCircleDown />
                             <div>
                                 <a href="#" class="menu_item_item">包裝宣導</a>
                                 <a href="#" class="menu_item_item">第三方撥款</a>
@@ -37,24 +46,24 @@ const HamburgerMenu = () => {
                     </ul>
 
                     <ul class="menu">
-                        <li class="menuItem">
-                            <a class="menuLink">Switch</a>
+                        <li class="menuItem2">
+                            <a class="menuLink">Switch</a><FaArrowAltCircleDown />
                             <div class="">
                                 <a href="#" class="menu_item_item">主機</a>
                                 <a href="#" class="menu_item_item">遊戲</a>
                                 <a href="#" class="menu_item_item">配件</a>
                             </div>
                         </li>
-                        <li class="menuItem">
-                            <a class="menuLink">PS系列</a>
+                        <li class="menuItem2">
+                            <a class="menuLink">PS系列</a><FaArrowAltCircleDown />
                             <div class="">
                                 <a href="#" class="menu_item_item">主機</a>
                                 <a href="#" class="menu_item_item">遊戲</a>
                                 <a href="#" class="menu_item_item">配件</a>
                             </div>
                         </li>
-                        <li class="menuItem">
-                            <a class="menuLink">Xbox</a>
+                        <li class="menuItem2">
+                            <a class="menuLink">Xbox</a><FaArrowAltCircleDown />
                             <div class="">
                                 <a href="#" class="menu_item_item">主機</a>
                                 <a href="#" class="menu_item_item">遊戲</a>
