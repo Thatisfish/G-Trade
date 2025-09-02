@@ -7,6 +7,15 @@ import DS2CE from '../images/Card_Image/DS2CE.webp'
 import SWP2 from '../images/Card_Image/switch_pro2.webp'
 import SW2 from '../images/Card_Image/switch2.webp'
 import SWB from '../images/Card_Image/item_switch01.avif'
+import banner02 from '../images/Alltype_SW/Alltype_banner02.avif'
+import banner03 from '../images/Alltype_SW/Alltype_banner03.avif'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const arrCardinfor = [
 	{
@@ -132,7 +141,31 @@ const Alltype = () => {
 			{/* <Nav /> */}
 			<div className='B_content'>
 				<div className='B_banner'>
-					<img src={Banner} alt="banner" />
+					<Swiper
+						spaceBetween={30}
+						centeredSlides={true}
+						autoplay={{
+							delay: 2500,
+							disableOnInteraction: false,
+						}}
+						pagination={{
+							clickable: true,
+						}}
+						navigation={true}
+						modules={[Autoplay, Pagination, Navigation]}
+						className="mySwiper"
+					>
+						<SwiperSlide>
+							<img src={Banner} alt="" />
+						</SwiperSlide>
+						<SwiperSlide>
+							<img src={banner02} alt="" />
+						</SwiperSlide>
+						<SwiperSlide>
+							<img src={banner03} alt="" />
+						</SwiperSlide>
+
+					</Swiper>
 				</div>
 
 				<p className='B_name'>switch</p>
