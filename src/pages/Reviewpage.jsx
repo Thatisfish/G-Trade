@@ -1,5 +1,7 @@
 import '../styles/Reviewpage.scss'
+import PageLayout from './PageLayout';
 import Card from "../components/Card"
+import Sidebar from '../components/Sidebar'
 import check from '../images/ProductPage/check.svg'
 import fastShip from '../images/ProductPage/fastShip.svg'
 import quickReply from '../images/ProductPage/quickReply.svg'
@@ -41,19 +43,14 @@ export default function Reviewpage() {
       priceNow: '1800',
       size: 'small'
     },
-    {
-      id: 4,
-      image: SWB,
-      category: '配件',
-      title: 'Switch 保護殼組合',
-      seller: 'fun**01',
-      priceNow: '999',
-      size: 'small'
-    },
+    
   ]
 
   return (
     <div className="y_Reviewpage">
+      <div className='y_layout'> 
+      <Sidebar />
+      <div className="y_main">
       {/* 個人資料區塊 */}
       <div className="y_seller">
         <div className="y_seller__profile">
@@ -142,8 +139,15 @@ export default function Reviewpage() {
             </div>
           </div>
         ))}
+        </div>
+      </div>
+
       </div>
 
     </div>
+    
+    
   );
-}
+  
+};
+

@@ -1,18 +1,35 @@
-// 顏色變數
-$red-bg: #ff0000;
-$white-text: #ffffff;
-$light-white-text: rgba(255, 255, 255, 0.8);
-$gold-star: #ffd700;
-$shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
 .y_Reviewpage {
     font-family: 'Noto Sans TC', sans-serif;
     color: #333;
+    padding-left: 10.1px;
 
     /* 限制整體寬度並置中 */
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 16px;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+    gap: 100px;
+
+    .y_layout {
+        display: flex;
+        align-items: flex-start;
+        gap: 90px; // sidebar 和右側內容的間距
+    }
+
+    /* Sidebar 固定寬度 */
+    .y_layout>.Sidebar {
+        width: 240px;
+        flex-shrink: 0;
+    }
+
+    /* 右側內容撐滿剩下空間 */
+    .y_main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
 
     /* 賣家資訊 */
     .y_seller {
@@ -46,7 +63,7 @@ $shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         /* 中間：評分、地區、描述、標籤 */
         &__stats {
             display: grid;
-            margin-left: -300px;
+            margin-right: 300px;
             grid-template-columns: 1fr;
             grid-template-areas:
                 "rating"
@@ -172,7 +189,6 @@ $shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     /* 最新商品區塊 */
     .latest_products {
-        margin-top: 50px;
 
         .section_header {
             display: flex;
