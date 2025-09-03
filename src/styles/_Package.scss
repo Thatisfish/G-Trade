@@ -60,7 +60,7 @@
 
 	.c_packPrepare {
 		width: 65vw;
-		height: 70vh;
+		min-height: 70vh;
 		gap: 90px;
 		display: flex;
 		flex-direction: column;
@@ -73,13 +73,12 @@
 
 		.c_packOutBox {
 			display: flex;
-			// gap: 80px;
+			gap: 15px;
 			align-items: center;
 			justify-content: space-between;
 
 			.c_packBox {
 				width: 400px;
-				// width: 50vw;
 
 				.c_packDirections {
 					font-size: 16px;
@@ -193,7 +192,6 @@
 			display: block;
 			margin-top: 80px;
 			margin-bottom: 80px;
-			// padding: 0 40px 80px;
 			width: 50vw;
 
 			.c_packStepItem {
@@ -205,7 +203,6 @@
 
 				.c_packPhText {
 					display: grid;
-					max-width: 100%;
 					margin-top: 50px;
 					gap: 50px;
 				}
@@ -276,7 +273,8 @@
 
 		/* 準備材料區塊 */
 		.c_packPrepare {
-			margin: 180px 0 600px;
+			min-height: 120vh;
+			margin-top: 180px;
 
 			.c_packA {
 				font-size: 18px;
@@ -332,7 +330,6 @@
 
 				.c_packPhText {
 					display: grid;
-					max-width: 100%;
 					gap: 50px;
 				}
 			}
@@ -376,7 +373,12 @@
 
 		/* 準備材料區塊 */
 		.c_packPrepare {
-			margin: 200px 0 600px;
+			margin-top: 200px;
+			min-height: 130vh;
+
+			.c_packA {
+				font-size: 1rem;
+			}
 
 			.c_packOutBox {
 				.c_packBox {

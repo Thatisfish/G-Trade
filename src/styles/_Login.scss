@@ -10,7 +10,7 @@
 
     .c_loginBox {
         background: url(../images/allbg.webp);
-        padding: 80px 50px;
+        padding: 35px 50px;
         border-radius: 20px;
         position: relative;
         max-width: 500px;
@@ -18,8 +18,7 @@
         height: 600px;
 
         @media (max-width:640px) {
-            padding: 50px 35px;
-
+            padding: 50px 30px;
         }
 
         .c_close-btn {
@@ -41,12 +40,41 @@
             text-align: center;
             max-width: 400px;
             height: 420px;
+            position: relative;
 
             @media (max-width:640px) {
-                width: 100%;
-                max-width: 100%;
+                // width: 90%;
+                max-width: 100vw;
                 display: flex;
                 flex-direction: column;
+            }
+
+            .c_suffixIn,
+            .c_suffixIn2 {
+                position: absolute;
+                top: 27px;
+                right: 40px;
+                border: solid 0.5px #979797;
+                border-radius: 5px;
+                background-color: #FCFAFF;
+                font-size: 12px;
+                white-space: nowrap;
+                padding: 2px;
+                color: #595959;
+                cursor: pointer;
+
+                @media (max-width:640px) {
+                    top: 22px;
+                    right: 8vw;
+                }
+            }
+
+            .c_suffixIn2 {
+                top: 103px;
+
+                @media (max-width:640px) {
+                    top: 90px;
+                }
             }
 
             input {
@@ -54,7 +82,7 @@
                 text-align: center;
                 height: 56px;
                 padding: 10px;
-                margin: 20px;
+                margin: 10px 20px;
                 border-radius: 999px;
                 background-color: #FCFAFF;
                 border: #444;
@@ -68,9 +96,18 @@
                 }
 
                 @media (max-width:640px) {
-                    margin: 10px 0 10px;
+                    padding: 10px 50px 10px 0;
+                    margin: 10px 5vw;
                 }
 
+            }
+
+            .c_realErr {
+                color: #DE1A10;
+
+                @media (max-width:640px) {
+                    font-size: 14px;
+                }
             }
 
             .c_rule {
@@ -107,8 +144,14 @@
                 color: #FCFAFF;
                 font-size: 24px;
                 font-weight: 600;
-                height: 56px;
+                line-height: 100%;
                 transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
+
+                @media (max-width:640px) {
+                    font-size: 18px;
+                    margin: 10px 5vw 20px;
+
+                }
 
                 &:hover {
                     box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
@@ -139,6 +182,7 @@
                     white-space: nowrap; // 保持連結完整不斷行
                     display: inline-block;
                     color: #1E39E6;
+                    cursor: pointer;
                 }
             }
         }
