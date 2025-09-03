@@ -1,52 +1,108 @@
 .footer {
+	/* 版面 */
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	height: 230px;
-	border-top: solid 1px rgba(63, 63, 63, 0.7);
+	align-items: stretch;
+	border-top: 1px solid rgba(63, 63, 63, 0.7);
+	/* 讓它靠內容長高，不要卡住 */
+	height: auto;
+	/* 需要基本高度時才撐住，可自行調整 */
 
+	/* 內距讓內容呼吸，不用固定 180px 高 */
+	padding-top: 24px;
+
+	/* 內容容器（container） */
 	nav {
-		height: 180px;
+		/* 桌機置中對齊 */
 		display: flex;
-		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-	}
+		/* 控制最大寬（max-width），避免超寬螢幕過長 */
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 0 24px;
 
-	.sitemap-f {
-		font-size: 20px;
-		font-weight: bold;
-	}
-
-	>div {
-		flex: 1;
-	}
-
-	a {
-		text-decoration: none;
-	}
-
-	.sitemap {
-		display: flex;
-		list-style: none;
-		gap: clamp(10px, 6.5vw, 100px);
-
-		li {
-			text-align: center;
+		@media (max-width: 900px) {
+			flex-direction: column;
+			// margin-bottom: 20px;
 		}
 	}
 
+	/* 項目題頭（section header） */
+	.sitemap-f {
+		font-size: 20px;
+		font-weight: 700;
+		display: inline-block;
+		margin-bottom: 8px;
+	}
+
+	/* 站點地圖（sitemap）主層 */
+	.sitemap {
+		/* 水平並排，每組是一欄 */
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		justify-content: center;
+		list-style: none;
+		gap: clamp(16px, 2.9vw, 100px);
+		margin: 0;
+		padding: 0;
+
+		@media (max-width: 900px) {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		/* 每一組（商品總覽、會員中心...） */
+		>li {
+			text-align: center;
+			min-width: 140px;
+			/* 保證欄寬大致一致，可依版面微調 */
+
+			/* 次層連結清單 */
+			>ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				/* 垂直排整齊 */
+				row-gap: 6px;
+				/* 項目間距（spacing 間距） */
+			}
+		}
+	}
+
+	/* 連結（link 連結） */
+	a {
+		text-decoration: none;
+		transition: opacity .2s ease;
+
+		&:hover {
+			opacity: .85;
+		}
+
+		&:focus-visible {
+			outline: 2px solid currentColor;
+			outline-offset: 2px;
+		}
+
+		/* 無障礙（accessibility 可近用性） */
+	}
+
+	/* 版權列（copyright） */
 	small {
-		margin-top: auto;
+		margin-top: 24px;
+		/* 與上方內容留距 */
 		display: block;
 		width: 100%;
-		height: 50px;
+		min-height: 50px;
+		/* 避免行高太小 */
 		text-align: center;
-		padding: 10px 0;
+		padding: 12px 0;
 	}
 }
 
-/* Light 主題 */
+/* ===== Light 主題（theme） ===== */
 .footer.light {
 	background-color: transparent;
 	color: var(--light);
@@ -62,14 +118,13 @@
 	}
 }
 
-/* Red 主題 */
+/* ===== Red 主題（theme） ===== */
 .footer.red {
 	background-color: transparent;
 	color: var(--nav);
 
 	a {
 		color: var(--nav);
-		display: inline;
 	}
 
 	small {
@@ -77,3 +132,45 @@
 		color: var(--nav);
 	}
 }
+
+// @media (max-width: 768px) {
+// 	.footer {
+// 		nav {
+// 			/* 改為直式排列 */
+// 			flex-direction: column;
+// 			align-items: flex-start;
+// 			/* 靠左比較直覺 */
+// 			justify-content: flex-start;
+// 		}
+
+// 		.sitemap {
+// 			flex-direction: column;
+// 			/* 水平變直式 */
+// 			align-items: flex-start;
+// 			/* 左對齊 */
+// 			gap: 20px;
+// 			/* 區塊之間的距離 */
+
+// 			>li {
+// 				text-align: left;
+// 				/* 直式排，左對齊比較自然 */
+// 				min-width: auto;
+// 				/* 不要再卡 140px */
+
+// 				>ul {
+// 					padding-left: 16px;
+// 					/* 次層縮排 */
+// 					row-gap: 8px;
+// 					/* 子項目間距 */
+// 				}
+// 			}
+// 		}
+
+// 		small {
+// 			margin-top: 16px;
+// 			font-size: 12px;
+// 			line-height: 1.4;
+// 			text-align: center;
+// 		}
+// 	}
+// }

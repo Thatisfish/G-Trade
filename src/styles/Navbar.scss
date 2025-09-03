@@ -30,7 +30,7 @@
 		}
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		display: none;
 	}
 }
@@ -69,13 +69,21 @@
 	.menu {
 		margin: 0 auto; // 讓 menu 自己往中間擠
 		display: flex;
-		gap: clamp(10px, 6.5vw, 100px);
+		gap: clamp(10px, 6vw, 100px);
 		list-style: none;
 		margin-bottom: 15px;
 	}
 
-	&.scrolled {
-		background-color: #000;
+	&.light {
+		&.scrolled {
+			background: linear-gradient(to bottom, #F53E3A, #E83633); // light 捲動後背景
+		}
+	}
+
+	&.red {
+		&.scrolled {
+			background-color: #fff; // red 捲動後背景
+		}
 	}
 
 	.shadow-img {
@@ -305,7 +313,7 @@
 }
 
 .mobile-bottom-nav {
-	/* 預設：正常寬度(>768px) 隱藏 */
+	/* 預設：正常寬度(>900px) 隱藏 */
 	display: none;
 	position: fixed;
 	bottom: 0;
@@ -342,7 +350,7 @@
 		}
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		display: flex;
 		/* 只在手機寬度顯示 */
 	}
@@ -471,7 +479,7 @@
 		}
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		display: block;
 	}
 }
