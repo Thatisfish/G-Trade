@@ -23,7 +23,7 @@ import Reviewpage from './pages/Reviewpage';
 import ProductPage from './pages/ProductPage';
 import EscrowInfo from './pages/Escrow_Info';
 import ListingGuideline from './pages/ListingGuideline'
-import HamburgerMenu from'./pages/HamburgerMenu'
+import HamburgerMenu from './pages/HamburgerMenu'
 
 export default function App() {
 	const { pathname } = useLocation();
@@ -42,7 +42,6 @@ export default function App() {
 
 	return (
 		<>
-
 			<Navbar theme={theme} onOpenLogin={openLogin} />
 
 			<div className={isHome ? "home-bg" : ""}>
@@ -69,7 +68,7 @@ export default function App() {
 					<Route path='/ProductPage' element={<ProductPage />} />
 					<Route path='/Escrow_Info' element={<EscrowInfo />} />
 					<Route path='/ListingGuideline' element={<ListingGuideline />} />
-					<Route path='/hamburgerMenu' element={<HamburgerMenu/>}/>
+					<Route path='/hamburgerMenu' element={<HamburgerMenu />} />
 				</Routes>
 
 				<Footer theme={theme} />
