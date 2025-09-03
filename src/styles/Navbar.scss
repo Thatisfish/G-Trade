@@ -297,3 +297,49 @@
 		pointer-events: none; // 不擋按鈕點擊
 	}
 }
+
+.mobile-bottom-nav {
+	/* 預設：正常寬度(>768px) 隱藏 */
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;
+	background: #fff;
+	border-top: 1px solid #ddd;
+	justify-content: space-around;
+	/* 只有在手機時才會生效 */
+	align-items: center;
+	z-index: 1000;
+	padding-bottom: env(safe-area-inset-bottom);
+	/* iOS 安全區域（safe area） */
+
+	a {
+		flex: 1;
+		text-align: center;
+		font-size: 14px;
+		font-weight: 00;
+		color: #333;
+		text-decoration: none;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		img {
+			width: 35px;
+			height: 35px;
+		}
+
+		&:hover {
+			color: #e63026;
+		}
+	}
+
+
+
+	@media (max-width: 768px) {
+		display: flex;
+		/* 只在手機寬度顯示 */
+	}
+}
