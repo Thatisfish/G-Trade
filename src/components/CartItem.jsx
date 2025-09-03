@@ -1,4 +1,5 @@
 import React from "react";
+import ashcan from '../images/ShoppingCard_icon/ashcan.svg'
 
 export default function CartItem({ img, title, price, qty }) {
   return (
@@ -10,7 +11,9 @@ export default function CartItem({ img, title, price, qty }) {
         <p className="J_itemPrice">NT$ {price}</p>
       </div>
       <span className="J_itemQty">x {qty}</span>
-      <button className="J_deleteBtn">🗑</button>
+      <button className="J_deleteBtn">
+        <img src={ashcan} alt="刪除商品" />
+      </button>
     </div>
   );
 }
