@@ -21,11 +21,12 @@
 -  0824-package_紅黑外框元件/下半段進行中
 -  0825-realname_必填修正/package_80% (?
 -  0826-package_90%偷工減料改頁面滾動少一點
--  0828-C-list_恐龍動畫/package_padding
--  0829-C-list_恐龍動畫完
--  0831-C-list_補裝飾/package_rwd+紅黑框小調
--  0901-C-package_rwd調整
--  0902-C-pack_rwd/realname_water/其他改padding
+-  0828-list_恐龍動畫/package_padding
+-  0829-list_恐龍動畫完
+-  0831-list_補裝飾/package_rwd+紅黑框小調
+-  0901-package_rwd調整
+-  0902-pack_rwd/realname_water/其他改padding
+-  0903-pack_rwd完/登入/包裝/實名/忘記密碼/註冊成功_頁面+表單輸入限制修改中+奇怪的問題調整
 ### Biki
 - 0902-漢堡選單調整、分類頁換圖輪播
 - 0901-Xbox頁面完成、漢堡選單切版、樣式
