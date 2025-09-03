@@ -6,6 +6,8 @@ const Login = ({ onClose }) => {
 	const navigate = useNavigate();
 	const [showForget, setShowForget] = useState(false);
 	const [pwErr, setPwErr] = useState(false);
+	const [phone, setPhone] = useState("");  // 控制電話欄位值
+	const [userName, setUserName] = useState("") // 控制使用者名稱欄位值
 	const handleSubmit = (e) => {
 		e.preventDefault();      // 阻止表單刷新
 
@@ -14,11 +16,19 @@ const Login = ({ onClose }) => {
 			const pw1 = form.querySelector('input[placeholder="請輸入新密碼"]').value;
 			const pw2 = form.querySelector('input[placeholder="請再次輸入新密碼"]').value;
 			if (pw1 !== pw2) {
-				setPwErr(true); //顯示錯誤訊息
+				setPwErr(true); // 顯示錯誤訊息
 				return;
 			}
+			// 重設完回登入
+			setPwErr(false);
+			alert('密碼已更新，請重新登入')
+			setPhone('');
+			setUserName('');
+			setShowForget(false);
+			return;
 		}
-		setPwErr(false); //清除錯誤訊息
+		// 登入
+		setPwErr(false); // 清除錯誤訊息
 		onClose();               // 關閉彈窗
 		navigate("/Collect");    // 跳轉到 /Collect
 	};
@@ -41,14 +51,22 @@ const Login = ({ onClose }) => {
 								<form className="c_loginForm" method="post" onSubmit={handleSubmit}>
 									<input
 										type="tel"
-										className="c_userPhone"
+										className="c_userPhone2"
 										title="手機號碼"
 										placeholder="請輸入手機號碼"
 										pattern="09[0-9]{8}"
 										maxLength={10}
+										value={phone}
+										onChange={(e) => setPhone(e.target.value)}
 										required autoFocus />
 									<button type="button" className='c_suffixIn'>獲取驗證碼</button>
-									<input type="text" className="c_username" title="驗證碼" placeholder="請輸入驗證碼" required autoFocus />
+									<input 
+									type="text" 
+									className="c_username" 
+									title="驗證碼" 
+									placeholder="請輸入驗證碼" 
+									maxLength={6}
+									required autoFocus />
 									<button type="button" className='c_suffixIn2'>重發驗證碼</button>
 									<input
 										type="password"
@@ -67,8 +85,7 @@ const Login = ({ onClose }) => {
 										maxLength={16}
 										required />
 									{pwErr && <p className='c_realErr'>兩次輸入的密碼不一致，請重新輸入</p>}
-									{/* ✅ 保留 button 並在 handleSubmit 裡跳轉 */}
-									<button className="c_btn-login" type="submit">修改密碼</button>
+									<button className="c_btn-login" type="submit" >修改密碼</button>
 
 									<div className='c_try'>
 										<div className="c_join">加入我們！
@@ -91,6 +108,8 @@ const Login = ({ onClose }) => {
 										placeholder="請輸入使用者名稱"
 										minLength={8}
 										maxLength={16}
+										value={userName}
+										onChange={(e) => setUserName(e.target.value)}
 										required autoFocus />
 									<input
 										type="password"

@@ -1,6 +1,6 @@
 import '../styles/_Regform.scss'
 
-const Regform = ({ iconSrc,line, type, id, placeholder, suffix, hint, pattern, minLength, maxLength }) => {
+const Regform = ({ iconSrc, line, type, id, placeholder, suffix, hint, pattern, minLength, maxLength, value, onChange }) => {
     return (
         <>
             <div className='c_inputOut'>
@@ -17,6 +17,8 @@ const Regform = ({ iconSrc,line, type, id, placeholder, suffix, hint, pattern, m
                         pattern={pattern}  /* 格式限制 */
                         minLength={minLength}
                         maxLength={maxLength}
+                        value={value}
+                        onChange={onChange}
                         required
                     />
                     {/* 右邊小提示 suffix後綴*/}
