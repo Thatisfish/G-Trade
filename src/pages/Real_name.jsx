@@ -43,13 +43,21 @@ const Real_name = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); // 阻止預設送出
     // 重置錯誤訊息
-    setFrontErrMsg('');
-    setBackErrMsg('');
-    if (!frontPreview || !backPreview) {
-      if (!frontPreview) setFrontErrMsg('請上傳身分證正面圖檔');
-      if (!backPreview) setBackErrMsg('請上傳身分證反面圖檔');
+    // setFrontErrMsg('');
+    // setBackErrMsg('');
+    // if (!frontPreview || !backPreview) {
+    let hasError = false;
+    if (!frontPreview) {
+      setFrontErrMsg('請上傳身分證正面圖檔');
+      hasError = true;
     }
-    if (frontErrMsg || backErrMsg) return;
+    if (!backPreview) {
+      setBackErrMsg('請上傳身分證反面圖檔');
+      hasError = true;
+    }
+    // }
+    // if (frontErrMsg || backErrMsg) return;
+    if (hasError) return; //阻止進下一步
     setVerifying(true);
   }
 
@@ -81,7 +89,7 @@ const Real_name = () => {
               </div>
             ) : (<span className='c_plus'> <img src={c_plus} alt="上傳" /> </span>)
             }
-            <input type="file" className='c_upLoadInput' onChange={picOnChange} accept='image/*' required />
+            <input type="file" className='c_upLoadInput' onChange={picOnChange} accept='image/*' />
           </div>
           <div className='c_upLoadLabel'>{label}</div>
         </div>
@@ -136,11 +144,14 @@ const Real_name = () => {
                   <div className='c_realUpload'>
                     <label htmlFor="">上傳證件圖檔</label>
                     <div className='c_upLoadGroup'>
-                      <UpLoadBox side="front" imgPreview={frontPreview} onError={handleErr} label={"身分證正面"} />
-                      {frontErrMsg && <p className='c_realErr'>{frontErrMsg}</p>}
-                      <UpLoadBox side="back" imgPreview={backPreview} onError={handleErr} label={"身分證反面"} />
-                      {backErrMsg && <p className='c_realErr'>{backErrMsg}</p>}
-
+                      <div className='c_uploadGroupBox'>
+                        <UpLoadBox side="front" imgPreview={frontPreview} onError={handleErr} label={"身分證正面"} />
+                        {frontErrMsg && <p className='c_realErr'>{frontErrMsg}</p>}
+                      </div>
+                      <div className='c_uploadGroupBox'>
+                        <UpLoadBox side="back" imgPreview={backPreview} onError={handleErr} label={"身分證反面"} />
+                        {backErrMsg && <p className='c_realErr'>{backErrMsg}</p>}
+                      </div>
                     </div>
                   </div>
                   <div className='c_realOnly'>*為保障您的個資安全，請於空白處註明「僅供遊玩人間市集確認身分使用」</div>

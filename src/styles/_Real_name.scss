@@ -118,6 +118,13 @@
                     .c_upLoadGroup {
                         display: flex;
                         gap: 20px;
+                        .c_uploadGroupBox{
+                            gap: 20px;
+
+                            .c_realErr{
+                                color: #DE1A10;
+                            }
+                        }
                     }
 
                     .c_uploadCase {

@@ -1,13 +1,13 @@
 import '../styles/_Register.scss'
 import Regform from '../components/Regform'
 import Formdata from '../components/Formdata.jsx'
-import Login from '../components/Login'
 import { useState } from 'react';
 
 
 
 const Register = () => {
-  // Login彈窗
+  const [regEd, setRegEd] = useState(false);
+
   return (
     <>
       <main className='c_main'>

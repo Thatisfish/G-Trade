@@ -145,15 +145,6 @@
             }
         }
 
-        /* RWD 手機版：垂直排列 */
-        @media (max-width: 768px) {
-            flex-direction: column;
-            align-items: flex-start;
-
-            &__actions {
-                flex-direction: row;
-            }
-        }
     }
 
 
@@ -219,8 +210,8 @@
         }
 
         .y_newproducts {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 16px;
         }
 
@@ -355,40 +346,7 @@
             }
         }
 
-        /* 平板以下：時間和評分拆行 */
-        @media (max-width: 768px) {
-            .transaction {
-                grid-template-columns: 1fr auto;
-                grid-template-areas:
-                    "time rating"
-                    "info rating";
-                align-items: start;
 
-                p {
-                    grid-area: time;
-                }
-
-                .rating_bar {
-                    grid-area: rating;
-                }
-            }
-        }
-
-        /* 手機以下：垂直堆疊 */
-        @media (max-width: 480px) {
-            .transaction {
-                grid-template-columns: 1fr;
-                grid-template-areas:
-                    "time"
-                    "info"
-                    "rating";
-
-                .rating_bar {
-                    justify-self: start;
-                    margin-top: 0.25rem;
-                }
-            }
-        }
     }
 }
 
@@ -403,4 +361,94 @@
     /* ✅ 避免超寬 */
     margin: 0 auto;
 
+}
+
+/* 手機版 320px ~ 430px RWD */
+@media (max-width: 430px) {
+    .y_Reviewpage {
+        flex-direction: column;
+        padding-left: 0;
+        gap: 20px;
+        padding-top: 40px;
+
+        .y_layout {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Sidebar 全寬 */
+        .y_layout>.Sidebar {
+            width: 100%;
+        }
+
+        /* 右側內容全寬 */
+        .y_main {
+            width: 100%;
+            gap: 16px;
+        }
+
+        /* 賣家資訊區塊垂直排列 */
+        .y_seller {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            padding-top: 20px;
+
+            &__stats {
+                margin-right: 0;
+            }
+
+            &__actions {
+                flex-direction: row;
+                gap: 12px;
+            }
+        }
+
+        /* 分類按鈕改成可換行 */
+        .y_categories {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+
+            .y_btn {
+                min-width: auto;
+                width: auto;
+                margin: 0;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+
+        /* 最新商品卡片改成單欄或雙欄 */
+        .latest_products {
+            .y_newproducts {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+            }
+
+            .info-card img {
+                height: 140px;
+            }
+        }
+
+        /* 過去交易紀錄縮排 */
+        .past_transactions {
+            margin: 20px 0 60px;
+
+            .transaction {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "time"
+                    "info"
+                    "rating";
+                gap: 8px;
+                padding: 10px;
+
+                .rating_bar {
+                    justify-self: start;
+                }
+            }
+        }
+    }
 }
