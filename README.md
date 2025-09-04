@@ -27,6 +27,7 @@
 -  0901-package_rwd調整
 -  0902-pack_rwd/realname_water/其他改padding
 -  0903-pack_rwd完/登入/包裝/實名/忘記密碼/註冊成功_頁面+表單輸入限制修改中+奇怪的問題調整
+-  0904-register+login_rwd完/跳轉登入+重回註冊_完/實名介紹_rwd待續
 ### Biki
 - 0902-漢堡選單調整、分類頁換圖輪播
 - 0901-Xbox頁面完成、漢堡選單切版、樣式
