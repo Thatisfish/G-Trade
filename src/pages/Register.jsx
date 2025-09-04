@@ -1,9 +1,9 @@
 import '../styles/_Register.scss'
 import Regform from '../components/Regform'
 import Formdata from '../components/Formdata.jsx'
-import { useState } from 'react';
-import { DiVim } from 'react-icons/di';
+import { useEffect, useState } from 'react';
 import c_success from "../images/Regform_icon/c_success.webp"
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [regInput, setRegInput] = useState({
@@ -16,6 +16,23 @@ const Register = () => {
   });
   const [regErrMsg, setRegErrMsg] = useState("");
   const [regSuccess, setRegSuccess] = useState(false)
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // 每次進入頁面都重置狀態
+    setRegSuccess(false);
+    setRegErrMsg('');
+    setRegInput({
+      c_regUser: '',
+      c_regPassword: '',
+      c_regPassword_2: '',
+      c_regEmail: '',
+      c_regPhone: '',
+      c_regCheck: '',
+    });
+    // location.key會在每次跳轉更新，同一路徑也能觸發
+  }, [location.key]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,6 +48,7 @@ const Register = () => {
     setRegErrMsg('');
     setRegSuccess(true);
   }
+
   return (
     <>
       <main className='c_main'>
@@ -40,7 +58,12 @@ const Register = () => {
               <h2>註冊成功！</h2>
               <p>歡迎加入遊玩人間！</p>
               <img src={c_success} alt="" />
-              <button type='button' className='c_regLoginNow'>立即登入</button>
+              <button
+                type='button'
+                className='c_regLoginNow'
+                // onClick={handleLoginNow}
+                onClick={() => navigate("/", { state: { openLogin: true } })}
+              >立即登入</button>
             </div>
           ) : (
             <>
@@ -70,7 +93,10 @@ const Register = () => {
                 </div>
                 <button className="c_btn-register" type="submit">註冊</button>
                 <div className='c_regLogin'>
-                  已經加入了！<a href="#">登入</a>
+                  已經加入了！<a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/", { state: { openLogin: true } })
+                  }}>登入</a>
                 </div>
               </form>
             </>

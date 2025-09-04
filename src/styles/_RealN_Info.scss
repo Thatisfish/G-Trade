@@ -9,6 +9,10 @@
     flex-direction: column;
     align-items: center;
 
+    @media (max-width: 1024px) {
+        margin: 0 20px;
+    }
+
     .B_h2 {
         font-size: 2rem;
         font-weight: 500;
@@ -18,12 +22,22 @@
     .B_one {
         width: 65%;
         height: 100vh;
+
+        @media (max-width: 1024px) {
+            width: 80%;
+            height: auto;
+        }
     }
 
     .B_RNtitle {
         display: flex;
         justify-content: space-between;
 
+        @media (max-width: 1024px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
 
         .B_RNtitle01 {
             flex-direction: column;
@@ -36,20 +50,37 @@
                 font-size: 64px;
                 letter-spacing: .1em;
 
+                @media (max-width: 1024px) {
+                    font-size: 48px;
+                }
+
                 span {
                     font-size: 48px;
+
+                    @media (max-width: 1024px) {
+                        font-size: 36px;
+                    }
                 }
             }
 
             small {
                 font-size: 24px;
                 width: 100%;
+
+                @media (max-width: 1024px) {
+                    font-size: 18px;
+                }
             }
         }
 
         .B_p {
             font-size: 28px;
             margin-top: 90px;
+
+            @media (max-width: 1024px) {
+                font-size: 22px;
+                font-weight: 400;
+            }
         }
 
     }
@@ -59,16 +90,34 @@
         flex-direction: row;
         margin-top: 180px;
         gap: 122px;
+
+        @media (max-width:1024px) {
+            margin-top: 100px;
+            flex-direction: column;
+            gap: 30px;
+        }
     }
 
     .B_div {
         margin-top: 50px;
+
+        @media (max-width:1024px) {
+            display: grid;
+            justify-content: center;
+        }
 
 
         .B_RNtitle_p1 {
             width: 240px;
             display: flex;
             flex-direction: column;
+
+            @media (max-width:1024px) {
+                width: 100%;
+                text-align: center;
+                font-size: 18px;
+                width: 60vw;
+            }
         }
     }
 
@@ -93,12 +142,21 @@
     .B_img1 {
         width: 300px;
         display: flex;
+
         // flex-direction: row;
+        @media (max-width:1024px) {
+            max-width: 30vw;
+        }
     }
 
     .B_img2 {
         width: 220px;
         height: 236px;
+
+        @media (max-width:1024px) {
+            max-width: 23vw;
+            height: auto;
+        }
     }
 
     .B_two {
