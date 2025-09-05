@@ -10,7 +10,7 @@
 
     .c_loginBox {
         background: url(../images/allbg.webp);
-        padding: 35px 50px;
+        padding: 56px 50px;
         border-radius: 20px;
         position: relative;
         max-width: 500px;
@@ -96,7 +96,14 @@
                 }
 
                 @media (max-width:640px) {
-                    padding: 10px 50px 10px 0;
+                    font-size: 14px;
+                    padding: 10px 50px;
+                    margin: 10px 5vw;
+                }
+
+                @media (max-width:400px) {
+                    font-size: 14px;
+                    text-align: start;
                     margin: 10px 5vw;
                 }
 

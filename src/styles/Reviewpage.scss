@@ -423,13 +423,36 @@
         /* 最新商品卡片改成單欄或雙欄 */
         .latest_products {
             .y_newproducts {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 12px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); // 一排兩個
+                gap: 10px;
+                padding: 0 12px;
+            }
+
+            .info-card {
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
 
             .info-card img {
-                height: 140px;
+                width: 100%;
+                aspect-ratio: 4 / 3;
+                object-fit: cover;
             }
+
+            .card-content {
+                padding: 8px;
+
+                .title {
+                    font-size: 14px;
+                }
+
+                .price {
+                    font-size: 16px;
+                }
+            }
+
         }
 
         /* 過去交易紀錄縮排 */

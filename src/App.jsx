@@ -1,5 +1,5 @@
 // App.jsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -26,13 +26,23 @@ import ListingGuideline from './pages/ListingGuideline'
 import HamburgerMenu from './pages/HamburgerMenu'
 
 export default function App() {
-	const { pathname } = useLocation();
+	const location = useLocation();
+	const pathname = location.pathname;
 	const isHome = pathname === "/";
 	const theme = isHome ? "light" : "red";
 
-	const [showLogin, setShowLogin] = useState(false);
 	const navigate = useNavigate();
+	const [showLogin, setShowLogin] = useState(false);
 
+	useEffect(() => {
+		// 判斷別頁是否跳轉並要求打開登入彈窗
+		if (location.state?.openLogin) {
+			setShowLogin(true);
+			setTimeout(() => {
+				navigate(location.pathname, { replace: true, state: {} });
+			}, 0);
+		}
+	}, [location, navigate]);
 	const openLogin = () => setShowLogin(true);
 	const closeLogin = () => setShowLogin(false);
 	const goRegister = () => {
