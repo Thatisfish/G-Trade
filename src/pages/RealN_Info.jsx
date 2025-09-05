@@ -56,18 +56,18 @@ const RealN_Info = () => {
                     <div className="B_why">
                         <div className='B_why1'>
                             <img className='B_img4' src={B_Img5} alt="" />
-                            <OuterFrame text="提升帳號安全性" />
+                            <OuterFrame text="提升帳號安全性" textClass="c_packPhFrame" />
                         </div>
                         <div className='B_why1'>
-                            <OuterFrame text="降低詐騙風險" />
+                            <OuterFrame text="降低詐騙風險" textClass="c_packPhFrame" />
                             <img className='B_img5' src={B_Img6} alt="" />
                         </div>
                         <div className='B_why1'>
                             <img className='B_img4' src={B_Img7} alt="" />
-                            <OuterFrame text="建立可信用戶群體" />
+                            <OuterFrame text="建立可信用戶群體" textClass="c_packPhFrame" />
                         </div>
                         <div className='B_why1'>
-                            <OuterFrame text="減少網路騷擾和惡意評價" />
+                            <OuterFrame text="減少網路騷擾和惡意評價" textClass="c_packPhFrame" />
                             <img className='B_img5' src={B_Img8} alt="" />
                         </div>
                     </div>
@@ -90,8 +90,8 @@ const RealN_Info = () => {
 
                     <div className='B_div5'>
                         <div className='B_divImg'>
-                        <img className='B_img7' src={B_Img12} alt="" />
-                        <img className='B_img7' src={B_Img13} alt="" />
+                            <img className='B_img7' src={B_Img12} alt="" />
+                            <img className='B_img7' src={B_Img13} alt="" />
                         </div>
                         <button className='RNbtn'>立即認證 </button>
                     </div>

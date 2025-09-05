@@ -6,8 +6,7 @@
 	align-items: center;
 
 	.c_packTop {
-		width: 65vw;
-		height: 100vh;
+		width: 65%;
 
 		.c_packHead {
 			display: flex;
@@ -59,8 +58,8 @@
 	}
 
 	.c_packPrepare {
-		width: 65vw;
-		min-height: 70vh;
+		width: 65%;
+		margin-top: 150px;
 		gap: 90px;
 		display: flex;
 		flex-direction: column;
@@ -100,11 +99,9 @@
 	.c_packScroll {
 		height: 450vh;
 		position: relative;
-		// width: 65vw;
 
 
 		.c_packScene {
-			// padding-top: -500px;
 			position: sticky;
 			top: 0;
 			height: 100vh;
@@ -208,7 +205,7 @@
 				}
 
 				.c_packPhFrame {
-					font-size: 1.0rem;
+					font-size: 1rem;
 				}
 
 				.c_packPhSub {
@@ -272,7 +269,6 @@
 
 		/* 準備材料區塊 */
 		.c_packPrepare {
-			min-height: 120vh;
 			margin-top: 180px;
 
 			.c_packA {
@@ -371,8 +367,7 @@
 
 		/* 準備材料區塊 */
 		.c_packPrepare {
-			margin-top: 200px;
-			min-height: 130vh;
+			margin-top: 110px;
 
 			.c_packA {
 				font-size: 1rem;

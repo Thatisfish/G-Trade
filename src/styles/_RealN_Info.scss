@@ -1,7 +1,3 @@
-// * {
-//     border: 1px solid red;
-// }
-
 .B_main {
     margin: 0 80px 0 80px;
     padding-top: 130px;
@@ -13,24 +9,12 @@
         margin: 0 20px;
     }
 
-    .B_h2 {
-        font-size: 2rem;
-        font-weight: 500;
-        text-align: center;
-        margin-bottom: 150px;
-
-        @media (max-width: 1024px) {
-            margin-bottom: 100px;
-        }
-    }
-
     .B_one {
         width: 65%;
-        height: 100vh;
 
         @media (max-width: 1024px) {
             width: 80%;
-            height: 70vh;
+            height: auto;
         }
     }
 
@@ -92,8 +76,8 @@
 
     .B_intro {
         display: flex;
-        flex-direction: row;
-        margin-top: 150px;
+        align-items: center;
+        margin-top: 250px;
         gap: 122px;
 
         @media (max-width:1024px) {
@@ -104,7 +88,7 @@
     }
 
     .B_div {
-        margin-top: 50px;
+        // margin-top: 50px;
 
         @media (max-width:1024px) {
             display: grid;
@@ -117,6 +101,7 @@
             min-width: 150px;
             display: flex;
             flex-direction: column;
+            color: #222;
 
             @media (max-width:1024px) {
                 text-align: center;
@@ -153,47 +138,50 @@
 
     .B_img1 {
         height: 18vw;
-        // width: 300px;
         width: auto;
         display: flex;
 
-        // flex-direction: row;
         @media (max-width:1024px) {
-            max-height: 25vw;
+            height: 23vw;
             width: auto;
         }
     }
 
     .B_img2 {
-        // width: 220px;
-        // height: 236px;
         height: 12vw;
         width: auto;
 
         @media (max-width:1024px) {
-            max-height: 18vw;
+            height: 15vw;
             width: auto;
         }
     }
 
     .B_two {
         width: 65%;
-        height: 100vh;
-        // margin-top: 100px;
-        padding-bottom: 120px;
+        margin: 150px 0 120px;
         display: grid;
         place-items: center;
 
         @media (max-width:1024px) {
-            padding-bottom: 100px;
-            padding-top: 100px;
-            // margin-top: 180px;
+            margin: 100px 0 80px;
         }
 
         .B_img3 {
             width: 70px;
-            // align-items: center;
-            // margin-left: 45%;
+        }
+
+        .B_h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+
+            @media (max-width: 1024px) {
+                margin-bottom: 100px;
+                font-size: 1.5rem;
+            }
         }
 
         .B_why {
@@ -202,25 +190,30 @@
             grid-template-rows: repeat(2, 150px);
             gap: 100px;
             max-width: 800px;
-            // margin: 170px auto 0 auto;
+            margin-top: 150px;
             white-space: nowrap;
 
             @media (max-width:1024px) {
                 display: flex;
                 flex-direction: column;
                 gap: 120px;
-                // margin-top: 70px;
+                margin-top: 70px;
             }
         }
 
         .B_img5,
         .B_img4 {
-            // width: 130px;
             width: 6.5vw;
         }
 
         .B_why1 {
             position: relative;
+
+            .c_packPhFrame {
+                @media (max-width:1024px) {
+                    font-size: 1rem;
+                }
+            }
 
             .B_img4 {
                 position: absolute;
@@ -228,7 +221,7 @@
                 right: 320px;
 
                 @media (max-width:1024px) {
-                    bottom: 60px;
+                    bottom: 50px;
                     right: 310px;
                 }
             }
@@ -239,7 +232,7 @@
                 left: 320px;
 
                 @media (max-width:1024px) {
-                    bottom: 60px;
+                    bottom: 50px;
                     left: 310px;
                 }
             }
@@ -257,20 +250,30 @@
             text-align: center;
             font-size: 24px;
             width: auto;
+            white-space: nowrap;
+
+
         }
 
         .B_img6 {
             position: absolute;
             width: 70px;
-            right: 300px;
-            top: 10px;
+            right: -50px;
+            top: 8px;
+
+            @media (max-width:640px) {}
         }
     }
 
     .B_three {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 65%;
+
         .B_div4 {
             display: flex;
-            flex-direction: row;
+            // flex-direction: row;
             justify-content: center;
             align-items: center;
             margin-bottom: 100px;
@@ -281,20 +284,27 @@
         }
 
         .B_how {
-            height: 100%;
             position: relative;
+
+            @media (max-width:1024px) {
+                justify-content: center;
+                width: 80vw;
+            }
 
             .B_how_p {
                 font-size: 20px;
+                padding: 0 20px;
+                @media (max-width:1024px) {
+                    font-size: 1rem;
+                    padding: unset;
+                }
             }
 
             .B_img6 {
                 position: absolute;
                 width: 54px;
-                bottom: 68px;
-                right: 800px;
-
-
+                bottom: 60px;
+                left: -30px;
             }
         }
 
@@ -302,7 +312,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 50px;
+            margin-bottom: 80px;
 
             .RNbtn {
                 color: white;
@@ -310,7 +320,7 @@
                 padding: 16px 32px;
                 justify-content: center;
                 align-items: center;
-                gap: 10px;
+                // gap: 10px;
                 cursor: pointer;
 
                 border-radius: 99px;
@@ -320,15 +330,17 @@
 
             .B_divImg {
                 display: flex;
-                flex-direction: row;
+                // flex-direction: row;
                 justify-content: center;
+                margin: 50px;
+                gap: 50px;
 
                 .B_img7 {
-                    height: 270px;
-                    padding: 40px;
-                    margin: 20px;
+                    height: 20vh;
+                    // height: 270px;
+                    // padding: 40px;
+                    // margin: 20px;
                 }
-
             }
         }
     }
