@@ -81,25 +81,6 @@ export default function Reviewpage() {
       priceNow: '1800',
       size: 'small'
     },
-    {
-      id: 8,
-      image: SWP2,
-      category: '配件',
-      title: 'Switch Pro 控制器',
-      seller: 'shop**11',
-      priceNow: '1800',
-      size: 'small'
-    },
-    {
-      id: 9,
-      image: SWP2,
-      category: '配件',
-      title: 'Switch Pro 控制器',
-      seller: 'shop**11',
-      priceNow: '1800',
-      size: 'small'
-    },
-
 
   ]
   // 依照選擇的分類過濾
