@@ -57,7 +57,7 @@ export default function Navbar({ theme, onOpenLogin }) {
 			<header className={`mobile-nav ${theme}`}>
 				<div className="mobile-nav__container">
 
-					<div className="mobile-icon">
+					<div className="icon-logo mobile-icon">
 						<Link to="/#">
 							<img src={Logo} alt="" />
 						</Link>
@@ -72,6 +72,9 @@ export default function Navbar({ theme, onOpenLogin }) {
 							<Link to="/#" />
 						</div>
 					</div>
+					<div className="icon-notice mobile-icon">
+						<BellPopover />
+					</div>
 					<div className="icon-hamburger mobile-icon">
 						<Link to="/HamburgerMenu" />
 					</div>
@@ -80,7 +83,7 @@ export default function Navbar({ theme, onOpenLogin }) {
 			</header>
 			<nav className="mobile-bottom-nav">
 				<Link to="/"><img src={Home} alt="" />首頁</Link>
-				<Link to="/Notice"><img src={Bell} alt="" />通知</Link>
+				{/* <Link to="/Notice"><img src={Bell} alt="" />通知</Link> */}
 				<Link to="/Shopping_cart"><img src={Cart} alt="" />購物車</Link>
 				<Link to="/Customer"><img src={Member} alt="" />顧客中心</Link>
 			</nav>
