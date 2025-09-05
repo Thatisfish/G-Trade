@@ -17,6 +17,11 @@
         font-size: 2rem;
         font-weight: 500;
         text-align: center;
+        margin-bottom: 150px;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 100px;
+        }
     }
 
     .B_one {
@@ -25,13 +30,14 @@
 
         @media (max-width: 1024px) {
             width: 80%;
-            height: auto;
+            height: 70vh;
         }
     }
 
     .B_RNtitle {
         display: flex;
         justify-content: space-between;
+        align-items: end;
 
         @media (max-width: 1024px) {
             flex-direction: column;
@@ -75,7 +81,6 @@
 
         .B_p {
             font-size: 28px;
-            margin-top: 90px;
 
             @media (max-width: 1024px) {
                 font-size: 22px;
@@ -88,13 +93,13 @@
     .B_intro {
         display: flex;
         flex-direction: row;
-        margin-top: 180px;
+        margin-top: 150px;
         gap: 122px;
 
         @media (max-width:1024px) {
             margin-top: 100px;
             flex-direction: column;
-            gap: 30px;
+            gap: 70px;
         }
     }
 
@@ -104,16 +109,16 @@
         @media (max-width:1024px) {
             display: grid;
             justify-content: center;
+            gap: 20px;
         }
 
 
         .B_RNtitle_p1 {
-            width: 240px;
+            min-width: 150px;
             display: flex;
             flex-direction: column;
 
             @media (max-width:1024px) {
-                width: 100%;
                 text-align: center;
                 font-size: 18px;
                 width: 60vw;
@@ -126,6 +131,9 @@
         flex-direction: row;
         align-items: end;
 
+        @media (max-width:1024px) {
+            justify-content: center;
+        }
     }
 
     .B_div2_div {
@@ -136,40 +144,57 @@
         .B_sp {
             margin-bottom: 15px;
             font-weight: 500;
+
+            @media (max-width:1024px) {
+                font-weight: 400;
+            }
         }
     }
 
     .B_img1 {
-        width: 300px;
+        height: 18vw;
+        // width: 300px;
+        width: auto;
         display: flex;
 
         // flex-direction: row;
         @media (max-width:1024px) {
-            max-width: 30vw;
+            max-height: 25vw;
+            width: auto;
         }
     }
 
     .B_img2 {
-        width: 220px;
-        height: 236px;
+        // width: 220px;
+        // height: 236px;
+        height: 12vw;
+        width: auto;
 
         @media (max-width:1024px) {
-            max-width: 23vw;
-            height: auto;
+            max-height: 18vw;
+            width: auto;
         }
     }
 
     .B_two {
         width: 65%;
         height: 100vh;
+        // margin-top: 100px;
+        padding-bottom: 120px;
+        display: grid;
+        place-items: center;
+
+        @media (max-width:1024px) {
+            padding-bottom: 100px;
+            padding-top: 100px;
+            // margin-top: 180px;
+        }
 
         .B_img3 {
             width: 70px;
-            align-items: center;
-            margin-left: 45%;
+            // align-items: center;
+            // margin-left: 45%;
         }
-
-
 
         .B_why {
             display: grid;
@@ -177,13 +202,21 @@
             grid-template-rows: repeat(2, 150px);
             gap: 100px;
             max-width: 800px;
-            margin: 170px auto 0 auto;
+            // margin: 170px auto 0 auto;
+            white-space: nowrap;
 
+            @media (max-width:1024px) {
+                display: flex;
+                flex-direction: column;
+                gap: 120px;
+                // margin-top: 70px;
+            }
         }
 
         .B_img5,
         .B_img4 {
-            width: 130px;
+            // width: 130px;
+            width: 6.5vw;
         }
 
         .B_why1 {
@@ -192,19 +225,33 @@
             .B_img4 {
                 position: absolute;
                 bottom: 150px;
-                right: 350px;
+                right: 320px;
+
+                @media (max-width:1024px) {
+                    bottom: 60px;
+                    right: 310px;
+                }
             }
 
             .B_img5 {
                 position: absolute;
                 bottom: 150px;
-                left: 350px;
+                left: 320px;
+
+                @media (max-width:1024px) {
+                    bottom: 60px;
+                    left: 310px;
+                }
             }
         }
     }
 
     .B_div3 {
         position: relative;
+
+        @media (max-width:1024px) {
+            margin: 80px 0 90px;
+        }
 
         .B_p2 {
             text-align: center;

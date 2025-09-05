@@ -22,7 +22,7 @@ const RealN_Info = () => {
                     <div className='B_RNtitle'>
                         <div className='B_RNtitle01'>
                             <h2>實名<span>登錄</span> </h2>
-                            <small>Packaging Guide</small>
+                            <small>Real Name Login</small>
                         </div>
 
                         <p className='B_p'>更可靠的資訊，更安心的交易，更友善的環境</p>
