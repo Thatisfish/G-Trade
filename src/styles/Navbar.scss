@@ -9,7 +9,6 @@
 	height: 85px;
 	z-index: 999;
 
-
 	.nav-icon {
 		margin: 0 5px 7px 0;
 		display: flex;
@@ -35,7 +34,7 @@
 	}
 }
 
-/* 離開 #topbar 的獨立區塊（保持選擇器不變） */
+/* 獨立 logo 區 */
 .logo {
 	img {
 		padding-top: 20px;
@@ -44,15 +43,9 @@
 }
 
 /* =========================
-   Shadow Image
-   ========================= */
-
-
-/* =========================
-   Navigation (light / red themes)
+   Navigation (light / red)
    ========================= */
 .navigation {
-	/* 全局設定 */
 	background-color: rgba(255, 255, 255, 0);
 	font-weight: 500;
 	font-size: 18px;
@@ -67,7 +60,7 @@
 	height: 80px;
 
 	.menu {
-		margin: 0 auto; // 讓 menu 自己往中間擠
+		margin: 0 auto;
 		display: flex;
 		gap: clamp(10px, 6vw, 100px);
 		list-style: none;
@@ -76,13 +69,13 @@
 
 	&.light {
 		&.scrolled {
-			background: linear-gradient(to bottom, #F53E3A, #E83633); // light 捲動後背景
+			background: linear-gradient(to bottom, #F53E3A, #E83633);
 		}
 	}
 
 	&.red {
 		&.scrolled {
-			background-color: #fff; // red 捲動後背景
+			background-color: #fff;
 		}
 	}
 
@@ -115,7 +108,6 @@
 			}
 		}
 
-		// nav-bar icon
 		.icon-search {
 			background-image: url('../images/icon/icon-search_light.svg');
 		}
@@ -125,7 +117,7 @@
 		}
 
 		.icon-member {
-			all: unset; // 重置瀏覽器預設 button 樣式
+			all: unset;
 			cursor: pointer;
 			display: inline-block;
 			background: url('../images/icon/icon-member_light.svg') no-repeat center/contain;
@@ -151,7 +143,6 @@
 			}
 		}
 
-		// nav-bar icon
 		.icon-search {
 			background-image: url('../images/icon/icon-search_red.svg');
 		}
@@ -161,10 +152,9 @@
 		}
 
 		.icon-member {
-			all: unset; // 重置瀏覽器預設 button 樣式
+			all: unset;
 			cursor: pointer;
 			display: inline-block;
-			/* 保留原本 Link 時的 icon 設定，例如背景圖 */
 			background: url('../images/icon/icon-member_red.svg') no-repeat center/contain;
 		}
 
@@ -178,17 +168,21 @@
 	}
 }
 
+/* =========================
+   Bell（通知面板）
+   ========================= */
 .bell {
 	position: relative;
 
+	/* 桌機用：保留 40×40（行動版會被 .mobile-nav 覆蓋） */
 	.icon-bell {
-		position: relative;
-		all: unset; // 清掉預設 button/link 樣式
+		all: unset;
 		cursor: pointer;
 		display: inline-block;
-		width: 40px; // 保留你需要的大小
+		width: 40px;
 		height: 40px;
-		background: url('../images/icon/icon_bell_red.svg') no-repeat center/contain;
+		background: url('../images/icon/icon_bell_red.svg') no-repeat center;
+		/* 圖示視覺大小 */
 	}
 
 	&__panel {
@@ -211,7 +205,6 @@
 		}
 
 		&::before {
-			// 小角
 			content: "";
 			position: absolute;
 			top: -8px;
@@ -221,13 +214,13 @@
 			background: #fff;
 			transform: rotate(45deg);
 			box-shadow: -3px -3px 10px rgba(0, 0, 0, 0.06);
-			z-index: 1; // 箭頭在第1層
+			z-index: 1;
 		}
 	}
 
 	&__panelHeader {
 		position: relative;
-		z-index: 2; // 紅條抬高到第2層 → 會蓋住箭頭
+		z-index: 2;
 		height: 44px;
 		background: #e63026;
 		border-radius: 10px 10px 0 0;
@@ -293,27 +286,29 @@
 	&__badge {
 		position: absolute;
 		right: 4px;
-		height: 15px; // ← 高度 14
-		min-width: 15px; // ← 至少 14（1 位數時是圓）
-		padding: 0 4px; // ← 2 位數以上自動變膠囊，不會擠出來
+		height: 15px;
+		min-width: 15px;
+		padding: 0 4px;
 		border-radius: 9999px;
-		display: inline-flex; // ← 置中關鍵
+		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 10px; // ← 14px 高度下可讀的字級
+		font-size: 10px;
 		font-weight: 700;
-		line-height: 14px; // 備援：即使非 flex 也垂直置中
-		white-space: nowrap; // 不換行，避免斷行
+		line-height: 14px;
+		white-space: nowrap;
 		background: #e63026;
 		color: #fff;
-		box-shadow: 0 0 0 2px #fff; // 外白邊避免吃到底色
+		box-shadow: 0 0 0 2px #fff;
 		z-index: 1000;
-		pointer-events: none; // 不擋按鈕點擊
+		pointer-events: none;
 	}
 }
 
+/* =========================
+   Mobile Bottom Nav
+   ========================= */
 .mobile-bottom-nav {
-	/* 預設：正常寬度(>900px) 隱藏 */
 	display: none;
 	position: fixed;
 	bottom: 0;
@@ -323,11 +318,9 @@
 	background: #fff;
 	border-top: 1px solid #ddd;
 	justify-content: space-around;
-	/* 只有在手機時才會生效 */
 	align-items: center;
 	z-index: 1000;
 	padding-bottom: env(safe-area-inset-bottom);
-	/* iOS 安全區域（safe area） */
 
 	a {
 		flex: 1;
@@ -352,13 +345,16 @@
 
 	@media (max-width: 900px) {
 		display: flex;
-		/* 只在手機寬度顯示 */
 	}
 }
 
+/* =========================
+   Mobile Nav（關鍵重寫）
+   ========================= */
 .mobile-nav {
 	display: none;
 	position: fixed;
+	padding: 10px 0;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -370,30 +366,40 @@
 		align-items: center;
 	}
 
+	/* 可點擊外框：固定尺寸 + 不被擠小 */
 	.mobile-icon {
-		width: 60px;
-		height: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		flex: 0 0 40px;
+		/* 不長不縮（English grow/shrink 都 0） */
+		min-width: 40px;
+		/* 保底寬度 */
 	}
 
 	&__container {
 		display: flex;
 		align-items: center;
-		padding: 0 15px;
-		height: 100%;
-		gap: 15px;
+		padding: 0 10px;
+		flex-wrap: nowrap;
+		min-width: 0;
 	}
 
 	&__search {
-		flex: 1;
+		flex: 1 1 auto;
+		min-width: 0;
 		display: flex;
 		align-items: center;
 		border-radius: 20px;
-		padding: 0 15px;
+		padding: 0 5px 0 15px;
 		height: 40px;
 		margin: 0 10px;
 
 		&-input {
-			flex: 1;
+			flex: 1 1 auto;
+			min-width: 0;
 			border: none;
 			outline: none;
 			font-size: 14px;
@@ -403,28 +409,56 @@
 				color: #999;
 			}
 		}
-
-		.icon-search {
-			width: 24px;
-			height: 24px;
-			margin-left: 10px;
-		}
 	}
 
-	// 手機版圖標基本樣式
+	/* 基礎 icon 外觀（背景圖不跟容器自適應） */
 	.icon-search,
+	.icon-notice,
 	.icon-hamburger {
-		width: 40px;
-		height: 40px;
 		display: inline-block;
 		background-repeat: no-repeat;
 		background-position: center;
-		background-size: contain;
+		/* 改成固定數值，由下方各自覆寫 */
 	}
 
+	/* logo 外框較寬 */
+	.icon-logo {
+		flex: 0 0 60px;
+		width: 60px;
+		height: 40px;
+	}
+
+	/* 搜尋圖示稍小 */
 	.icon-search {
-		width: 30px;
-		height: 30px;
+		background-size: 32px 32px;
+	}
+
+	/* —— 鈴鐺：解耦按鈕尺寸與視覺大小 —— */
+	.icon-notice.mobile-icon {
+		position: relative;
+
+		.bell {
+			inline-size: 100%;
+			block-size: 100%;
+			position: relative;
+
+			.icon-bell {
+				all: unset;
+				display: block;
+				inline-size: 100%;
+				block-size: 100%;
+				cursor: pointer;
+				background: url('../images/icon/icon_bell_red.svg') no-repeat center;
+				/* 只改這裡即可調整鈴鐺視覺大小 */
+			}
+
+			.bell__badge {
+				position: absolute;
+				bottom: 2px;
+				right: 2px;
+				pointer-events: none;
+			}
+		}
 	}
 
 	/* Light 主題 */
@@ -432,8 +466,8 @@
 		background-color: #fff;
 
 		.mobile-nav__search {
-			background: #fff; // 淺灰背景
-			border: 1px solid var(--nav); // 淺色邊框
+			background: #fff;
+			border: 1px solid var(--nav);
 		}
 
 		.mobile-nav__search-input {
@@ -458,8 +492,8 @@
 		background-color: var(--nav);
 
 		.mobile-nav__search {
-			background: #fff; // 白色背景
-			border: 1px solid var(--nav); // 紅色邊框
+			background: #fff;
+			border: 1px solid var(--nav);
 		}
 
 		.mobile-nav__search-input {
@@ -481,5 +515,38 @@
 
 	@media (max-width: 900px) {
 		display: block;
+	}
+
+	@media (max-width: 360px) {
+		.mobile-icon {
+			width: 32px;
+			height: 32px;
+			flex: 0 0 32px;
+			min-width: 32px;
+		}
+
+		.icon-logo {
+			flex: 0 0 52px;
+			width: 52px;
+			height: 32px;
+		}
+
+		/* 小螢幕時一起縮圖心 */
+		// .icon-search,
+		// .icon-hamburger {
+		// }
+
+		// .icon-notice .icon-bell {
+		// }
+
+		&__container {
+			gap: 0;
+		}
+
+		&__search {
+			margin: 0 6px;
+			padding: 0 5px;
+			max-width: 200px;
+		}
 	}
 }
