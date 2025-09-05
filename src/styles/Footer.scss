@@ -1,3 +1,5 @@
+$bottom-nav-h: 60px;
+
 .footer {
 	/* 版面 */
 	display: flex;
@@ -69,6 +71,13 @@
 				row-gap: 6px;
 				/* 項目間距（spacing 間距） */
 			}
+		}
+	}
+
+	small {
+		@media (max-width: 900px) {
+			// 讓 footer 內容不被蓋住：在行動版加下內距（含 iOS 安全區）
+			margin-bottom: calc(#{$bottom-nav-h} + env(safe-area-inset-bottom, 0px));
 		}
 	}
 
