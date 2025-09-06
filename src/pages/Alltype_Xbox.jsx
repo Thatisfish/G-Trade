@@ -1,4 +1,3 @@
-import '../styles/_Alltype_Xbox.scss'
 import { useMemo, useState } from 'react';
 import Banner from '../images/Alltype_Xbox/Alltype_Xbox_banner01.avif'
 import AllTypeCards from '../components/AllTypeCards.jsx'
