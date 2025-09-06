@@ -1,10 +1,10 @@
 import '../styles/_Regform.scss'
 
-const Regform = ({ iconSrc, line, type, id, placeholder, suffix, hint, pattern, minLength, maxLength, value, onChange }) => {
+const Regform = ({ iconSrc, line, type, id, placeholder, suffix, hint, pattern, minLength, maxLength, value, onChange, error }) => {
     return (
         <>
             <div className='c_inputOut'>
-                <div className='c_inputPlace'>
+                <div className={`c_inputPlace ${error ? 'c_inputError' : ''}`}>
                     {/* 左邊icon */}
                     {iconSrc && <img src={iconSrc} className='c_inputIcon' alt={`${placeholder}圖示`} />}
                     {line && <img src={line} className='c_line' />}
@@ -26,7 +26,7 @@ const Regform = ({ iconSrc, line, type, id, placeholder, suffix, hint, pattern, 
                 </div>
                 {/* 提示 hint */}
                 {hint && <div className='c_hintIn'>{hint}</div>}
-            </div>
+            </div >
         </>
     )
 }
