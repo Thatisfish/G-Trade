@@ -1,5 +1,7 @@
 .B_info-card {
-    width: 270px;
+    width: 100%; // 改為 100% 讓它填滿父容器
+    max-width: 270px; // 設定最大寬度
+    min-width: 200px; // 設定最小寬度
     height: 350px;
     border-radius: 20px;
     background-color: white;
@@ -20,8 +22,22 @@
     &:active {
         transform: scale(0.98);
     }
-}
 
+    // 平板尺寸
+    @media (max-width: 1024px) {
+        display: flex;
+        flex-direction: row;
+        max-width: 680px;
+        width: 100%;
+        height: 170px;
+        border-radius: 10px;
+    }
+
+    @media (max-width:640px) {
+        min-width: 350px;
+        border-radius: 5px;
+    }
+}
 
 .B_info-tag {
     position: absolute;
@@ -37,32 +53,45 @@
 .B_info-img {
     width: 100%;
     aspect-ratio: 3 / 2;
-    /* ✅ 自動縮放維持比例 */
     object-fit: cover;
-    /* ✅ 填滿並裁切 */
     border-bottom: 1px solid #eee;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+
+    @media(max-width:1024px) {
+        width: 50%;
+        height: 100%;
+        border-radius: none;
+        border-radius: 10px;
+    }
+
+    @media(max-width:640px) {
+        width: 35%;
+
+    }
 }
 
 .B_info-content {
-    width: 270px;
-    height: 170px;
+    width: 100%;
+    height: 100%;
     padding: 10px 16px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     flex-grow: 1;
+
+    @media (max-width:1024px) {
+        height: auto;
+    }
 }
 
 /* 標題 */
 .B_info-title {
-    height: 50px;
+    width: 100%;
+    height: 2.8rem;
     font-size: 16px;
     font-weight: bold;
-    margin: 5px 0 ;
-    // word-wrap: break-word;
-    // word-break: break-word;
+    margin: 5px;
     line-height: 1.4;
     display: -webkit-box; // 讓 box 成為彈性容器
     -webkit-box-orient: vertical; // 垂直排列
