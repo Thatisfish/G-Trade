@@ -1,10 +1,6 @@
 .J_cartPage {
-    padding: 140px 120px 120px;
+    padding: 140px 0 120px;
 
-    // display: inline-flex;
-    // justify-content: center;
-    // align-items: flex-start;
-    // gap: 93px;
 
     .J_cartTitle {
         color: #DE1A10;
@@ -21,6 +17,34 @@
         gap: 5%;
         max-width: 80%;
         margin: 0 auto;
+
+
+        @media (max-width:640px) {
+            /* 手機板改為上下排列 */
+            flex-direction: column;
+            gap: 4px;
+            max-width: 100%;
+            width: 100%;
+            padding: 8px;
+            margin: 0;
+
+            /* 讓左右欄各自撐滿寬度 */
+            .J_cartLeft,
+            .J_cartRight {
+                flex: none;
+                width: 100%;
+                padding: 0;
+            }
+
+            /* 右欄與左欄之間的間距 */
+            .J_cartRight {
+                display: flex;
+                justify-content: center;
+                margin-top: 12px;
+                max-width: 640px;
+                width: 100%;
+            }
+        }
     }
 
     /* 左側 */
@@ -182,12 +206,12 @@
                 }
             }
 
-            .J_storeInf{
-                .J_other{
+            .J_storeInf {
+                .J_other {
                     color: #1E39E6;
                 }
             }
-            
+
         }
     }
 
