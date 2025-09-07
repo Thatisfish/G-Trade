@@ -25,6 +25,7 @@ $bottom-nav-h: 60px;
 		padding: 0 24px;
 
 		@media (max-width: 900px) {
+			margin: 0 10%;
 			flex-direction: column;
 			// margin-bottom: 20px;
 		}
@@ -51,9 +52,46 @@ $bottom-nav-h: 60px;
 		padding: 0;
 
 		@media (max-width: 900px) {
-			flex-direction: column;
-			align-items: center;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr); // 3 欄，等分
+			grid-template-rows: repeat(3, auto); // 2 列，高度自適應	
+			width: 80%;
+			height: 400px;
+			grid-template-areas:
+				"news products"
+				"member about"
+				"contact contact";
+
+			>li:nth-child(1) {
+				grid-area: news;
+			}
+
+			// 最新消息
+			>li:nth-child(2) {
+				grid-area: about;
+			}
+
+			// 商品總覽（移到第二列右側）
+			>li:nth-child(3) {
+				grid-area: member;
+			}
+
+			// 會員中心
+			>li:nth-child(4) {
+				grid-area: products;
+			}
+
+			// 關於我們（移到第一列右側）
+			.about {
+				grid-column: 1/3; // 跨兩欄
+				text-align: center;
+			}
 		}
+
+		// @media (max-width: 640px) {
+		// 	flex-direction: column;
+		// 	align-items: center;
+		// }
 
 		/* 每一組（商品總覽、會員中心...） */
 		>li {
@@ -141,45 +179,3 @@ $bottom-nav-h: 60px;
 		color: var(--nav);
 	}
 }
-
-// @media (max-width: 768px) {
-// 	.footer {
-// 		nav {
-// 			/* 改為直式排列 */
-// 			flex-direction: column;
-// 			align-items: flex-start;
-// 			/* 靠左比較直覺 */
-// 			justify-content: flex-start;
-// 		}
-
-// 		.sitemap {
-// 			flex-direction: column;
-// 			/* 水平變直式 */
-// 			align-items: flex-start;
-// 			/* 左對齊 */
-// 			gap: 20px;
-// 			/* 區塊之間的距離 */
-
-// 			>li {
-// 				text-align: left;
-// 				/* 直式排，左對齊比較自然 */
-// 				min-width: auto;
-// 				/* 不要再卡 140px */
-
-// 				>ul {
-// 					padding-left: 16px;
-// 					/* 次層縮排 */
-// 					row-gap: 8px;
-// 					/* 子項目間距 */
-// 				}
-// 			}
-// 		}
-
-// 		small {
-// 			margin-top: 16px;
-// 			font-size: 12px;
-// 			line-height: 1.4;
-// 			text-align: center;
-// 		}
-// 	}
-// }
