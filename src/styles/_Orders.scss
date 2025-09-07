@@ -288,3 +288,312 @@
 	text-align: center;
 	font-weight: 600;
 }
+
+
+// 手機板
+
+@media (max-width:640px) {
+
+	/* Content */
+	.J_content {
+		padding: 120px 20px 20px 20px;
+
+
+		.J_content>.sidebar,
+		.J_sidebar,
+		aside,
+		#sidebar {
+			display: none !important;
+		}
+
+		// 麵包屑
+		.J_breadcrumbs {
+			display: none;
+		}
+
+	}
+
+	// 右邊區塊寬度設定
+	.J_layout {
+		max-width: 640px;
+		width: 100%;
+	}
+
+
+	/* OrderTabs */
+	.J_ordertabs {
+		display: flex;
+		gap: 8px;
+
+		button {
+			padding: 12px;
+			border-bottom: 2px solid transparent;
+			background: none;
+			cursor: pointer;
+		}
+
+		.active {
+			color: #d00;
+			border-color: #d00;
+		}
+	}
+
+	/* OrderCard */
+	.J_ordercard {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		padding: 0;
+		border-bottom: #000 1px solid;
+		width: 100%;
+		box-sizing: border-box;
+
+		img {
+			width: 140px;
+			height: auto;
+		}
+
+		.J_details {
+			flex: 1;
+
+			width: 100%;
+
+			.J_status {
+				// display: flex;
+				justify-content: flex-start;
+				align-items: left;
+			}
+
+			.J_detailsflex {
+				display: flex;
+				flex-direction: column;
+				// justify-content: space-between;
+				align-items: flex-start;
+
+			}
+
+			.J_detailsflex2 {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+
+				.J_order-actions {
+					margin-left: 0;
+					display: flex;
+					gap: 4px;
+					flex-direction: column;
+					align-items: flex-start;
+					width: 100%;
+					margin-left: 0;
+
+					.J_RB1 {
+						background: #DE1A10;
+						color: white;
+						width: 200px;
+						font-size: 16px;
+
+						border-color: #A12424;
+						border-radius: 999px;
+
+						padding: 8px;
+						cursor: pointer;
+
+						margin-top: 8px;
+
+						.J_checkoutContent {
+							display: flex;
+							align-items: center;
+							justify-content: center;
+						}
+
+						.J_Checkout {
+							width: 85%;
+
+						}
+
+					}
+
+					.J_RB2 {
+						background: #DE1A10;
+						color: white;
+						width: 200px;
+						font-size: 16px;
+
+						border-color: #A12424;
+						border-radius: 999px;
+
+						padding: 8px;
+
+						cursor: pointer;
+
+						margin-top: 20px;
+
+						.J_checkoutContent {
+							display: flex;
+							align-items: center;
+							justify-content: center;
+						}
+
+						.J_Checkout {
+							width: 85%;
+
+						}
+
+					}
+				}
+			}
+
+		}
+
+		.J_actions {
+			display: flex;
+			flex-direction: column;
+			gap: .5rem;
+
+			button {
+				padding: .5rem 1rem;
+				border: none;
+				background: #d00;
+				color: #fff;
+				cursor: pointer;
+				border-radius: 4px;
+			}
+		}
+	}
+
+	.J_ordercard:last-child {
+		border-bottom: none;
+	}
+
+	/* ReviewCard */
+	.J_reviewcard {
+		display: flex;
+		flex-direction: column;
+
+		max-width: 640px;
+		width: 100%;
+
+
+		border: 1px solid #C8C8C8;
+		background: #FFF;
+		padding: 12px 12px;
+
+		.J_reviewSection {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 2rem; // 左右間距
+			// margin-left: auto;
+
+			.J_reviewCardContent {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 8px; // 左右間距
+			}
+
+			.J_reviewSeller {
+				min-width: 150px;
+				display: flex;
+				flex-direction: column;
+				align-items: center; // 讓圖片和文字都置中
+				justify-content: center;
+				text-align: center;
+
+				gap: 12px;
+			}
+
+			.J_reviewform {
+				flex: 1;
+				min-width: 300px;
+				max-width: 450px;
+			}
+
+		}
+
+		.J_avatar {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+		}
+
+		.J_reviewform {
+			flex: 1;
+			min-width: 350px; // 評價區寬度，可依需求調整
+			max-width: 450px;
+
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			.J_stars {
+				margin-bottom: .5rem;
+			}
+
+			textarea {
+				width: 100%;
+				min-height: 60px;
+				margin-bottom: .5rem;
+			}
+
+			.J_checkoutBtn {
+				background: #DE1A10;
+				color: white;
+				width: 77%;
+				font-size: 16px;
+
+				border-color: #A12424;
+				border-radius: 999px;
+
+				padding: 12px 10px;
+
+				cursor: pointer;
+
+				margin-top: 20px;
+
+				.J_checkoutContent {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+
+				.J_Checkout {
+					width: 85%;
+
+				}
+
+			}
+		}
+
+		.J_reviweBtn {
+			display: flex;
+			width: 100%;
+			justify-content: center;
+			align-items: center;
+
+
+		}
+
+		.J_reviweBtn button {
+			border-radius: 99px;
+			border: 2px solid #A12424;
+			background: #DE1A10;
+			color: #fff;
+			padding: 12px 32px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+	}
+
+
+	// /* Pagination */
+	.J_pagination {
+		margin: 2rem 0;
+		text-align: center;
+		font-weight: 600;
+	}
+
+
+}
