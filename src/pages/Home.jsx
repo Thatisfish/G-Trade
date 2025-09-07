@@ -7,6 +7,8 @@ import M from '../images/M.webp'
 import E from '../images/E.webp'
 import icon_star from '../images/icon-star.svg'
 import Slogan from '../images/slogan1.webp'
+import Slogan1 from '../images/home/slogan1.webp'
+import Slogan2 from '../images/home/slogan2.webp'
 import HPP from '../images/HomePageP.webp'
 import Switch from '../images/switch.svg'
 import NewsCardC from '../components/NewsCard'
@@ -26,18 +28,26 @@ export default function Home() {
 			<div className='bodd'>
 				<div className="hero-section">
 					{/* （包含整段標語） */}
-					<img className="hero-text" src={Slogan} alt="slogan" />
+					{/* <img className="hero-text1" src={Slogan1} alt="slogan" />
+					<img className="hero-text2" src={Slogan2} alt="slogan" /> */}
+
 					{/* 文字圖檔 */}
 					<div>
+						<div className="hero-text">
+							<span className="small-text">找主機，不用再比價比命運</span>
+							<p>買得放心，玩的開心，就在這裡</p>
+						</div>
 						<div className="game-letters">
 							<img src={G} alt="G" className="letter g" />
 							<img src={A} alt="A" className="letter a" />
 							<img src={M} alt="M" className="letter m" />
 							<img src={E} alt="E" className="letter e" />
 						</div>
+
 						<div className='bp'>
 							<img src={HPP} alt="P" className='hpb' />
 						</div>
+
 					</div>
 
 					{/* 小 icon 裝飾 */}
