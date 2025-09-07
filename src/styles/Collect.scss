@@ -4,13 +4,13 @@
   padding-top: 80px;
   gap: 100px;
 
-  /* 麵包屑 */
+  // 麵包屑
   .y_breadcrumb {
     margin: 80px 0 20px;
     display: flex;
   }
 
-  /* 收藏清單標題 + 刪除按鈕 */
+  // 標題 + 清空按鈕
   .collect_header {
     display: flex;
     justify-content: space-between;
@@ -33,13 +33,14 @@
     }
   }
 
+  // 卡片容器
   .y_cardbox {
     max-width: 840px;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     gap: 30px;
-    flex-wrap: wrap;
     transition: transform 0.4s ease, opacity 0.4s ease;
 
     &.slide-in {
@@ -53,7 +54,7 @@
     }
   }
 
-  /* 可選取的卡片 */
+  // 可選卡片
   .selectable_card {
     position: relative;
 
@@ -67,15 +68,16 @@
     }
   }
 
-
+  // 單張卡片樣式
   .info-card {
-    width: 260px; // 固定寬度
-    height: 350px; // 固定高度
-    margin-bottom: 10px;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #fff;
+    width: 260px;
+    height: 350px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease;
@@ -87,13 +89,16 @@
     }
 
     &:active {
-                transform: scale(0.98);
-            }
+      transform: scale(0.98);
+    }
 
     img {
       width: 100%;
-      height: 180px; // 固定圖片高度
-      object-fit: cover; // 保持比例裁切
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom: 1px solid #eee;
     }
 
     .card-body {
@@ -104,88 +109,172 @@
       justify-content: space-between;
     }
 
+    // 統一尺寸（如果有 .large / .medium / .small 類別）
+    &.large,
+    &.medium,
+    &.small {
+      width: 260px;
+      height: 350px;
+    }
+
+    // 標籤
+    .info-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #ff4d4f;
+      color: white;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    // 內容區塊
+    .info-content {
+      padding: 10px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-grow: 1;
+
+      .info-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px 0 5px;
+        line-height: 1.4;
+        word-break: break-word;
+      }
+
+      .info-seller {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 10px;
+      }
+
+      .info-price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .price-now {
+          font-size: 18px;
+          font-weight: bold;
+          color: #000;
+        }
+
+        .price-old {
+          font-size: 14px;
+          color: #aaa;
+          text-decoration: line-through;
+        }
+      }
+    }
   }
 }
 
-.info-card {
-  border-radius: 20px;
-  background-color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  /* ✅ 垂直排列內容 */
-}
 
-/* ✅ 移除不同尺寸的高度差異，統一大小 */
-.info-card.large,
-.info-card.medium,
-.info-card.small {
-  width: 250px;
-  height: 350px;
-}
+// 手機版
+@media screen and (max-width: 430px) {
+  .y_Collect {
+    display: block;
+    padding: 12px;
+  }
 
-.info-tag {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #ff4d4f;
-  color: white;
-  font-size: 12px;
-  padding: 4px 10px;
-  border-radius: 12px;
-}
+  .y_breadcrumb {
+    font-size: 14px;
+    flex-wrap: wrap;
+    gap: 4px;
 
-.info-img {
-  width: 100%;
-  height: 50%; // ✅ 固定圖片佔卡片一半
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
+    a {
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
 
-.info-content {
-  padding: 10px 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-grow: 1;
-}
+  .collect_header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 
-/* 標題 */
-.info-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 10px 0 5px;
-  word-break: break-word;
-  /* ✅ 避免爆版 */
-  line-height: 1.4;
-}
+    h2 {
+      font-size: 20px;
+    }
 
-.info-seller {
-  color: #888;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
+    .remove_all_btn {
+      font-size: 14px;
+      padding: 6px 12px;
+    }
+  }
 
-.info-price {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+  .y_cardbox {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    align-items: stretch;
+    padding: 0 8px 24px;
+  }
 
-.price-now {
-  font-size: 18px;
-  font-weight: bold;
-  color: #000;
-}
+  .selectable_card {
+    width: 100%;
+    box-sizing: border-box;
 
-.price-old {
-  font-size: 14px;
-  color: #aaa;
-  text-decoration: line-through;
+    .select_checkbox {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      transform: scale(1.1);
+      z-index: 2;
+    }
+  }
+
+  .info-card,
+  .info-card.large,
+  .info-card.medium,
+  .info-card.small {
+    width: 100% !important;
+    height: auto !important;
+    font-size: 13px;
+    aspect-ratio: 3 / 4; // 或者 min-height: 350px;
+  }
+
+  .info-img {
+    height: 140px;
+  }
+
+  .info-content {
+    img {
+      height: 140px;
+      object-fit: cover;
+    }
+  }
+
+  .info-title {
+    font-size: 14px;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .price-now {
+    font-size: 16px;
+  }
+
+  .price-old {
+    font-size: 12px;
+  }
+
+  .pagination {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    button {
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+  }
 }
