@@ -37,6 +37,7 @@ export default function Home() {
 							<span className="small-text">找主機，不用再比價比命運</span>
 							<p>買得放心，玩的開心，就在這裡</p>
 						</div>
+						<div className="hero-mask"></div>
 						<div className="game-letters">
 							<img src={G} alt="G" className="letter g" />
 							<img src={A} alt="A" className="letter a" />
