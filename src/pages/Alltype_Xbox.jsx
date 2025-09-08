@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Banner from '../images/Alltype_Xbox/Alltype_Xbox_banner01.avif'
 import AllTypeCards from '../components/AllTypeCards.jsx'
 import item11 from '../images/Alltype_Xbox/Alltype_Xbox_item01.avif'
@@ -167,7 +168,11 @@ const Alltype_Xbox = () => {
                     </Swiper>
                 </div>
 
-                <p className='B_name'>PS系列</p>
+                <div className='B_itemTitles'>
+                    <Link className='B_itemTitle' to="/Alltype">Switch</Link>
+                    <p className='B_name'>Xbox</p>
+                    <Link className='B_itemTitle' to="/Alltype_PS">PS系列</Link>
+                </div>
                 <div className='B_category' role="tablist" aria-label="商品分類">
                     {TABS.map(tab => (
                         <button
