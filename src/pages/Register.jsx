@@ -89,7 +89,7 @@ const Register = () => {
       case 'c_regPhone':
         if (!value) {
           error = "請輸入手機號碼";
-        } else if (!/^09\\d{8}$/.test(value)) {
+        } else if (!/^09\d{8}$/.test(value)) {
           error = "請輸入正確的手機號碼格式";
         }
         break;

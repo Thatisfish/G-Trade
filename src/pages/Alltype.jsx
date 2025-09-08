@@ -1,4 +1,5 @@
 import '../styles/_Alltype.scss'
+import { Link } from 'react-router-dom';
 import { useMemo, useState } from 'react';
 import Banner from '../images/banner_pokemon.avif'
 import AllTypeCards from '../components/AllTypeCards.jsx'
@@ -10,7 +11,7 @@ import SWB from '../images/Card_Image/item_switch01.avif'
 import banner02 from '../images/Alltype_SW/Alltype_banner02.avif'
 import banner03 from '../images/Alltype_SW/Alltype_banner03.avif'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -168,7 +169,12 @@ const Alltype = () => {
 					</Swiper>
 				</div>
 
-				<p className='B_name'>switch</p>
+				<div className='B_itemTitles'>
+					<Link className='B_itemTitle' to="/Alltype_PS">PS系列</Link>
+					<p className='B_name'>Switch</p>
+					<Link className='B_itemTitle' to="/Alltype_Xbox">Xbox</Link>
+				</div>
+				
 				<div className='B_category' role="tablist" aria-label="商品分類">
 					{TABS.map(tab => (
 						<button
