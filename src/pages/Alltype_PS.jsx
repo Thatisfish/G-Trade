@@ -1,5 +1,6 @@
 import '../styles/_Alltype_PS.scss'
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Banner from '../images/Alltype_PS/Alltype_PS_banner01.webp'
 import AllTypeCards from '../components/AllTypeCards.jsx'
 import item02 from '../images/Alltype_PS/Alltype_PS_item03.avif'
@@ -168,7 +169,12 @@ const Alltype_PS = () => {
                     </Swiper>
                 </div>
 
-                <p className='B_name'>PS系列</p>
+                <div className='B_itemTitles'>
+                    <Link className='B_itemTitle' to="/Alltype">Switch</Link>
+                    <p className='B_name'>PS系列</p>
+                    <Link className='B_itemTitle' to="/Alltype_Xbox">Xbox</Link>
+                </div>
+
                 <div className='B_category' role="tablist" aria-label="商品分類">
                     {TABS.map(tab => (
                         <button
