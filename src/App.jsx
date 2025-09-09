@@ -23,7 +23,7 @@ import Reviewpage from './pages/Reviewpage';
 import ProductPage from './pages/ProductPage';
 import EscrowInfo from './pages/Escrow_Info';
 import ListingGuideline from './pages/ListingGuideline'
-import HamburgerMenu from './pages/HamburgerMenu'
+import HamburgerMenu from './components/HamburgerMenu'
 
 export default function App() {
 	const location = useLocation();
