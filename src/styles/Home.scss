@@ -697,6 +697,10 @@ body,
 	align-items: center;
 	margin-bottom: 50px;
 
+	@media (max-width: 640px) {
+		height: 1000px;
+	}
+
 	.section-title-n {
 		display: inline-block;
 		text-align: center;
@@ -746,6 +750,11 @@ body,
 					text-decoration: underline;
 					text-decoration-thickness: 2px; // 粗細
 					text-underline-offset: 5px; // 與文字距離
+					display: -webkit-box; // 讓瀏覽器把元素當作彈性盒
+					-webkit-box-orient: vertical; // 垂直排列
+					-webkit-line-clamp: 1; // 限制顯示行數 (這裡是3行)
+					line-clamp: 1;
+					overflow: hidden; // 超出隱藏
 				}
 
 				p {
@@ -760,8 +769,7 @@ body,
 			}
 
 			img {
-				height: 233px;
-				width: 233px;
+				width: 26vw;
 			}
 
 			&::after {
@@ -792,11 +800,6 @@ body,
 				align-items: center;
 
 				/* 保證水平置中 */
-				img {
-					width: 80%;
-					height: 80%;
-
-				}
 			}
 		}
 	}
@@ -804,6 +807,47 @@ body,
 	@media (max-width: 640px) {
 		.section-title-n {
 			width: 80%;
+		}
+
+		.news-main {
+			a {
+				img {
+					width: 120px;
+					height: 120px;
+				}
+
+				.newfont {
+					margin-left: 8vw;
+
+					h4 {
+						font-size: 22px;
+					}
+
+					p {
+						margin-top: 20px;
+						font-size: 16px;
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: 480px) {
+		.news-main {
+			a {
+				.newfont {
+					margin-left: 10px;
+
+					h4 {
+						font-size: 18px;
+					}
+
+					p {
+						margin-top: 20px;
+						font-size: 14px;
+					}
+				}
+			}
 		}
 	}
 }
