@@ -14,10 +14,10 @@ const arrCardinfor = [
 	{ id: 1, image: DKB, title: '咚奇剛蕉力全開+咚奇剛amiibo', seller: 'paly**56', priceNow: '800', size: 'small' },
 	{ id: 2, tag: '全新上架', image: DS2CE, title: '死亡擱淺典藏版', seller: 'Ds2CE**250626', priceNow: '1100', size: 'medium' },
 	{ id: 3, tag: '限時優惠', image: ps5_pro, title: 'PS5 PRO主機 1TB 極致黑', seller: 'Ssp**5', priceNow: '9999', priceOld: '15000', size: 'large' },
-	{ id: 4, tag: '', image: SWP2, title: 'PS5 PRO主機 1TB 極致黑', seller: 'fun31**56', priceNow: '5000', priceOld: '5500', size: 'medium' },
-	{ id: 5, tag: '限時優惠', image: SW2, title: 'PS5 PRO主機 1TB 極致黑', seller: 'fun31**56', priceNow: '5000', priceOld: '5500', size: 'small' },
-	{ id: 6, tag: '', image: Hollow, title: 'PS5 PRO主機 1TB 極致黑', seller: 'fun31**56', priceNow: '5000', priceOld: '5500', size: 'small' },
-	{ id: 7, tag: '限時優惠', image: flower, title: 'PS5 PRO主機 1TB 極致黑', seller: 'fun31**56', priceNow: '5000', priceOld: '5500', size: 'small' },
+	{ id: 4, tag: '', image: SWP2, title: 'Switch Pro 2代手把', seller: 'fun31**56', priceNow: '5000', priceOld: '5500', size: 'medium' },
+	{ id: 5, tag: '限時優惠', image: SW2, title: 'Switch 2 全新', seller: 'fun31**56', priceNow: '5000', priceOld: '5500', size: 'small' },
+	{ id: 6, tag: '', image: Hollow, title: '空洞騎士:絲綢之歌 二手遊戲片', seller: 'fun31**56', priceNow: '5000', priceOld: '5500', size: 'small' },
+	{ id: 7, tag: '限時優惠', image: flower, title: '食人花造型攝影機 NS2主機用', seller: 'fun31**56', priceNow: '5000', priceOld: '5500', size: 'small' },
 ]
 
 function scaleByCenter(containerEl, slides) {
