@@ -2,6 +2,14 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "../styles/_Sidebar.scss";
 import { useEffect, useState } from "react";
 
+const MENU = [
+  { path: '/Collect', label: "收藏清單", icon: "📁" },
+  { path: '/Orders', label: "我的訂單", icon: "📦" },
+  { path: '/', label: "優惠券匣", icon: "🎟️" },
+  { path: '/Real_name', label: "實名認證", icon: "✅" },
+  { path: '/Reviewpage', label: "客服中心", icon: "💬" },
+];
+
 const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,73 +27,41 @@ const Sidebar = () => {
   const handleSelectChange = (path) => {
     setSelectPath(path); // 更新選擇狀態
     navigate(path);      // 導到選擇的那一頁
+    setIsOpen(false);
   };
 
-  // 根據選擇路徑對應顯示文字
-  const getLabel = (path) => {
-    switch (path) {
-      case "/Collect":
-        return "📁 收藏清單";
-      case "/Orders":
-        return "📦 我的訂單";
-      case "/":
-        return "🎟️ 優惠券匣";
-      case "/Real_name":
-        return "✅ 實名認證";
-      case "/Reviewpage":
-        return "💬 客服中心";
-      default: return "";
-    }
-  };
   return (
     <>
       <aside className="sidebar">
         <ul className="sidebar-menu">
-          <li>
-            <NavLink to="/Collect" className={({ isActive }) => isActive ? "active" : undefined}>
-              <span className="icon">📁</span>
-              收藏清單
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Orders" className={({ isActive }) => isActive ? "active" : undefined}>
-              <span className="icon">📦</span>
-              我的訂單
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className={({ isActive }) => isActive ? "active" : undefined}>
-              <span className="icon">🎟️</span>
-              優惠券匣
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Real_name" className={({ isActive }) => isActive ? "active" : undefined}>
-              <span className="icon">✅</span>
-              實名認證
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Reviewpage" className={({ isActive }) => isActive ? "active" : undefined}>
-              <span className="icon">💬</span>
-              客服中心
-            </NavLink>
-          </li>
+          {MENU.map((item) => (
+            <li key={item.path}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) => (isActive ? "active" : undefined)}
+              >
+                <span className="icon">{item.icon}</span>
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </aside>
       <div className="c_phSidebar">
-        <div className="c_phSelect" onClick={() => setIsOpen(!isOpen)}>{getLabel(selectPath)}
+        <div className="c_phSelect" onClick={() => setIsOpen(!isOpen)}>
+          {MENU.find((item) => item.path === selectPath)?.icon}{""}
+          {MENU.find((item) => item.path === selectPath)?.label}
           <span className="dropdown-arrow">
             {isOpen ? '▲' : '▼'}
           </span>
         </div>
         {isOpen && (
           <ul className="option">
-            <li onClick={() => handleSelectChange("/Collect")}>📁 收藏清單</li>
-            <li onClick={() => handleSelectChange("/Orders")}>📦 我的訂單</li>
-            <li onClick={() => handleSelectChange("/")}>🎟️ 優惠券匣</li>
-            <li onClick={() => handleSelectChange("/Real_name")}>✅ 實名認證</li>
-            <li onClick={() => handleSelectChange("/Reviewpage")}>💬 客服中心</li>
+            {MENU.map((item) => (
+              <li key={item.path} onClick={() => handleSelectChange(item.path)}>
+                {item.icon}{item.label}
+              </li>
+            ))}
           </ul>
         )}
 

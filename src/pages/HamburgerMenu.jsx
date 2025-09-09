@@ -1,81 +1,138 @@
-import '../styles/_HamburgerMenu.scss'
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/_HamburgerMenu.scss';
 import { FaArrowAltCircleDown, FaArrowAltCircleRight } from "react-icons/fa";
 
-const HamburgerMenu = () => {
+const HamburgerMenu = ({ isOpen, onClose }) => {
+
+    // ESC 鍵關閉選單
+    useEffect(() => {
+        const handleEscKey = (e) => {
+            if (e.key === 'Escape' && isOpen) {
+                onClose();
+            }
+        };
+
+        if (isOpen) {
+            document.addEventListener('keydown', handleEscKey);
+            document.body.style.overflow = 'hidden'; // 防止背景滾動
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleEscKey);
+            document.body.style.overflow = 'auto';
+        };
+    }, [isOpen, onClose]);
+
+    // 點擊遮罩關閉
+    const handleOverlayClick = (e) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
+    // 點擊連結後關閉選單
+    const handleLinkClick = () => {
+        onClose();
+    };
+
+    if (!isOpen) return null; // 不顯示時直接返回 null
+
     return (
         <>
-            {/*漢堡按鈕 */}
-            <button class="hamburger-btn" id="hamburgerBtn">
-                <div class="hamburger-icon">
-                    <div class="hamburger-line"></div>
-                    <div class="hamburger-line"></div>
-                    <div class="hamburger-line"></div>
-                </div>
-            </button>
             {/* 彈窗遮罩 */}
-            <div class="modalOverlay" id="modalOverlay"></div>
+            <div
+                className={`modalOverlay ${isOpen ? 'active' : ''}`}
+                onClick={handleOverlayClick}
+            ></div>
 
-            {/* <彈窗選單 */}
-            <div class="modal" id="modal">
-                <button class="closeBtn" id="closeBtn">&times;</button>
+            {/* 彈窗選單 */}
+            <div className={`modal ${isOpen ? 'active' : ''}`}>
+                <button
+                    className="closeBtn"
+                    onClick={onClose}
+                    aria-label="關閉選單"
+                >
+                    &times;
+                </button>
 
-                <div class="menuContent">
-
-                    <ul class="menu">
-                        <li class="menuItem">
-                            <a href="#" class="menuLink">TOP</a><FaArrowAltCircleRight />
+                <div className="menuContent">
+                    <ul className="menu">
+                        <li className="menuItem">
+                            <Link to="/" className="menuLink" onClick={handleLinkClick}>
+                                首頁
+                            </Link>
+                            <FaArrowAltCircleRight />
                         </li>
-                        <li class="menuItem">
-                            <a href="#" class="menuLink">最新消息</a><FaArrowAltCircleRight />
+                        <li className="menuItem">
+                            <Link to="/New_info" className="menuLink" onClick={handleLinkClick}>
+                                最新消息
+                            </Link>
+                            <FaArrowAltCircleRight />
                         </li>
-                        <li class="menuItem">
-                            <a href="#" class="menuLink">熱門商品</a><FaArrowAltCircleRight />
+                        <li className="menuItem">
+                            <Link to="/ProductPage" className="menuLink" onClick={handleLinkClick}>
+                                熱門商品
+                            </Link>
+                            <FaArrowAltCircleRight />
                         </li>
-                        <li class="menuItem">
-                            <a href="#" class="menuLink">會員中心</a><FaArrowAltCircleRight />
+                        <li className="menuItem">
+                            <Link to="/Shopping_cart" className="menuLink" onClick={handleLinkClick}>
+                                購物車
+                            </Link>
+                            <FaArrowAltCircleRight />
                         </li>
-                        <li class="menuItem2">
-                            <a class="menuLink">平台特色</a><FaArrowAltCircleDown />
-                            <div>
-                                <a href="#" class="menu_item_item">包裝宣導</a>
-                                <a href="#" class="menu_item_item">第三方撥款</a>
-                                <a href="#" class="menu_item_item">賣家實名制</a>
-                                <a href="#" class="menu_item_item">商品狀態標示</a>
-                            </div>
+                        <li className="menuItem">
+                            <Link to="/Customer" className="menuLink" onClick={handleLinkClick}>
+                                會員中心
+                            </Link>
+                            <FaArrowAltCircleRight />
                         </li>
                     </ul>
 
-                    <ul class="menu">
-                        <li class="menuItem2">
-                            <a class="menuLink">Switch</a><FaArrowAltCircleDown />
-                            <div class="">
-                                <a href="#" class="menu_item_item">主機</a>
-                                <a href="#" class="menu_item_item">遊戲</a>
-                                <a href="#" class="menu_item_item">配件</a>
+                    <ul className="menu">
+                        <li className="menuItem2">
+                            <div className='menuTitle'><a className="menuLink">Switch</a>
+                                <FaArrowAltCircleDown />
+                            </div>
+
+                            <div className="submenu">
+                                <Link to="/Alltype" className="menu_item_item" onClick={handleLinkClick}>
+                                </Link>
+                                <a href="#" className="menu_item_item">主機</a>
+                                <a href="#" className="menu_item_item">遊戲</a>
+                                <a href="#" className="menu_item_item">配件</a>
                             </div>
                         </li>
-                        <li class="menuItem2">
-                            <a class="menuLink">PS系列</a><FaArrowAltCircleDown />
-                            <div class="">
-                                <a href="#" class="menu_item_item">主機</a>
-                                <a href="#" class="menu_item_item">遊戲</a>
-                                <a href="#" class="menu_item_item">配件</a>
+                        <li className="menuItem2">
+                            <a className="menuLink">PS系列</a>
+                            <FaArrowAltCircleDown />
+                            <div className="submenu">
+                                <Link to="/Alltype_PS" className="menu_item_item" onClick={handleLinkClick}>
+                                </Link>
+                                <a href="#" className="menu_item_item">主機</a>
+                                <a href="#" className="menu_item_item">遊戲</a>
+                                <a href="#" className="menu_item_item">配件</a>
                             </div>
                         </li>
-                        <li class="menuItem2">
-                            <a class="menuLink">Xbox</a><FaArrowAltCircleDown />
-                            <div class="">
-                                <a href="#" class="menu_item_item">主機</a>
-                                <a href="#" class="menu_item_item">遊戲</a>
-                                <a href="#" class="menu_item_item">配件</a>
+                        <li className="menuItem2">
+                            <a className="menuLink">Xbox系列</a>
+                            <FaArrowAltCircleDown />
+                            <div className="submenu">
+                                <Link to="/Alltype_Xbox" className="menu_item_item" onClick={handleLinkClick}>
+                                </Link>
+                                <a href="#" className="menu_item_item">主機</a>
+                                <a href="#" className="menu_item_item">遊戲</a>
+                                <a href="#" className="menu_item_item">配件</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-
         </>
-    )
-}
+    );
+};
 
-export default HamburgerMenu
+export default HamburgerMenu;
