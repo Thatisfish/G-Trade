@@ -38,11 +38,13 @@ export default function Home() {
 							<p>買得放心，玩的開心，就在這裡</p>
 						</div>
 						<div className="hero-mask"></div>
-						<div className="game-letters">
-							<img src={G} alt="G" className="letter g" />
-							<img src={A} alt="A" className="letter a" />
-							<img src={M} alt="M" className="letter m" />
-							<img src={E} alt="E" className="letter e" />
+						<div className="game-letters-scale">
+							<div className="game-letters">
+								<img src={G} alt="G" className="letter g" />
+								<img src={A} alt="A" className="letter a" />
+								<img src={M} alt="M" className="letter m" />
+								<img src={E} alt="E" className="letter e" />
+							</div>
 						</div>
 
 						<div className='bp'>
