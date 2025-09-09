@@ -101,16 +101,6 @@ const Real_name = () => {
       <main className='c_realMain'>
         <Sidebar className="c_sidebar" />
         <div className='c_realOutside'>
-          {/* <div className='y_breadcrumb'>
-            <a href="/">首頁</a>
-            <span className="divider">›</span>
-            <a href="/member">會員中心</a>
-            <span className="divider">›</span>
-            <a href="/shop">購買中心</a>
-            <span className="divider">›</span>
-            <span className="current">實名認證</span>
-          </div> */}
-
           <div className='c_realBox'>
             {verifying ? (
               <div className='c_verifyBox'>

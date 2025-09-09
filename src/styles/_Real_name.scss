@@ -12,12 +12,11 @@
     }
 
     .c_realOutside {
-        margin-top: 20px;
+        margin-top: 80px;
 
-        // .y_breadcrumb {
-        //     display: flex;
-        //     margin-bottom: 20px;
-        // }
+        @media (max-width:1024px) {
+            margin-top: 20px;
+        }
 
         .c_realBox {
             display: flex;
@@ -29,6 +28,7 @@
             border: solid 1px #DEDADA;
             background-color: #FCFAFF;
             padding: 20px 0;
+
 
             .c_verifyBox {
                 display: grid;
@@ -90,10 +90,11 @@
 
                 @media (max-width:1024px) {
                     justify-content: flex-start;
+                    width: 75%;
                 }
 
                 @media (max-width:640px) {
-                    // width: 90%;
+                    width: 80%;
                     align-items: center;
                     margin-top: 10px;
                 }
@@ -104,6 +105,7 @@
 
                     @media (max-width:1024px) {
                         justify-content: center;
+                        width: 100%;
                     }
 
                     @media (max-width:640px) {
@@ -136,6 +138,10 @@
                         color: #333;
                         font-size: 16px;
 
+                        &[type="date"] {
+                            width: 100%;
+                        }
+
                         &:focus {
                             outline: solid 2px rgb(92, 92, 92)
                         }
@@ -145,7 +151,6 @@
                             padding: 10px 10px;
                             height: 44px;
                             font-size: 0.85rem;
-
                         }
                     }
                 }
@@ -184,6 +189,7 @@
                     .c_upLoadGroup {
                         display: flex;
                         gap: 20px;
+                        width: 100%;
 
                         @media (max-width:1024px) {
                             gap: 10px;
@@ -193,11 +199,15 @@
 
 
                         .c_uploadGroupBox {
-                            gap: 20px;
+                            display: flex;
+                            width: 100%;
+                            justify-content: center;
 
                             .c_realErr {
                                 color: #DE1A10;
                             }
+
+                            @media (max-width:640px) {}
                         }
                     }
 
@@ -205,6 +215,12 @@
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
+
+                        @media (max-width:640px) {
+                            align-items: center;
+                            width: clamp(180px, 80vw, 275px);
+                            max-width: 90%;
+                        }
 
                         .c_upLoadFrame {
                             display: flex;
@@ -216,16 +232,18 @@
                             background-color: #FCFAFF;
                             border: #444;
                             box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
-                            height: 10vw;
-                            width: 15vw;
-                            min-height: 180px;
-                            min-width: 280px;
+                            height: 180px;
+                            width: 280px;
                             padding: 5px;
                             overflow: hidden;
 
                             @media (max-width:640px) {
+                                width: clamp(180px, 100%, 230px);
+                                max-width: none;
+                                max-height: none;
+                                height: auto;
                                 min-height: 120px;
-                                min-width: 190px;
+                                aspect-ratio: 3/2;
                             }
 
                             .c_upLoadPreBox {
@@ -335,8 +353,14 @@
                         color: #DE1A10;
                     }
 
+                    @media (max-width:1024px) {
+                        margin: 0 40px 5px;
+                        padding: 5px 20px;
+
+                    }
                     @media (max-width:640px) {
                         font-size: 16px;
+                        padding: 5px 20px;
                         margin: 0 20px 5px;
                     }
                 }
