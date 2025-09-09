@@ -61,6 +61,7 @@
     display: block;
     margin-top: 80px;
     justify-items: center;
+    position: relative;
 
     .c_phSelect {
       display: flex;
@@ -80,6 +81,7 @@
     }
 
     .option {
+      position: absolute;
       color: #333;
       width: 57vw;
       border-radius: 8px;
@@ -88,9 +90,9 @@
       font-weight: 500;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       background: #fff;
-      opacity: 0;  // 確保動畫從0開始
+      opacity: 0; // 確保動畫從0開始
       animation: fadeIn .25s ease-in forwards;
-
+      
       li {
         padding: 11px 0;
         letter-spacing: 1px;

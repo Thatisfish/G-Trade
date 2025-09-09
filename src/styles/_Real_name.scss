@@ -8,23 +8,23 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap:0;
+        gap: 0;
     }
 
     .c_realOutside {
-        margin-top: 80px;
+        margin-top: 20px;
 
-        .y_breadcrumb {
-            display: flex;
-            margin-bottom: 20px;
-        }
+        // .y_breadcrumb {
+        //     display: flex;
+        //     margin-bottom: 20px;
+        // }
 
         .c_realBox {
             display: flex;
             flex-direction: column;
             align-items: center;
             max-width: 840px;
-            width: 840px;
+            width: 80vw;
             border-radius: 20px;
             border: solid 1px #DEDADA;
             background-color: #FCFAFF;
@@ -61,11 +61,19 @@
                 h2 {
                     font-size: 18px;
                     font-weight: 600;
+
+                    @media (max-width:640px) {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
                 }
 
                 .c_realTop {
                     font-size: 16px;
 
+                    @media (max-width:640px) {
+                        font-size: 14px;
+                    }
                 }
             }
 
@@ -75,16 +83,42 @@
             }
 
             .c_realForm {
-                display: grid;
+                display: flex;
+                flex-direction: column;
                 justify-content: center;
                 width: 85%;
 
+                @media (max-width:1024px) {
+                    justify-content: flex-start;
+                }
+
+                @media (max-width:640px) {
+                    // width: 90%;
+                    align-items: center;
+                    margin-top: 10px;
+                }
+
                 .c_realTopThree {
-                    display: grid;
+                    display: flex;
+                    flex-direction: column;
+
+                    @media (max-width:1024px) {
+                        justify-content: center;
+                    }
+
+                    @media (max-width:640px) {
+                        width: 100%;
+                    }
 
                     div {
                         display: flex;
                         align-items: center;
+
+                        @media (max-width:640px) {
+                            width: 100%;
+                            flex-direction: column;
+
+                        }
                     }
 
                     input {
@@ -93,7 +127,6 @@
                         justify-content: center;
                         flex: 1;
                         height: 48px;
-                        // width: 100%;
                         padding: 0 60px;
                         margin: 10px 0;
                         border-radius: 999px;
@@ -106,6 +139,14 @@
                         &:focus {
                             outline: solid 2px rgb(92, 92, 92)
                         }
+
+                        @media (max-width:640px) {
+                            width: 100%;
+                            padding: 10px 10px;
+                            height: 44px;
+                            font-size: 0.85rem;
+
+                        }
                     }
                 }
 
@@ -114,6 +155,13 @@
                     min-width: 100px;
                     text-align: right;
                     margin-right: 20px;
+
+                    @media (max-width:640px) {
+                        font-size: .85rem;
+                        margin-right: 5px;
+                        text-align: center;
+                        width: 100%;
+                    }
                 }
 
                 .c_realUpload {
@@ -122,9 +170,27 @@
                     justify-content: center;
                     margin-top: 10px;
 
+                    @media (max-width:1024px) {
+                        // width: 85%;
+                        justify-content: left;
+                    }
+
+                    @media (max-width:640px) {
+                        flex-direction: column;
+                        align-items: center;
+
+                    }
+
                     .c_upLoadGroup {
                         display: flex;
                         gap: 20px;
+
+                        @media (max-width:1024px) {
+                            gap: 10px;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+
 
                         .c_uploadGroupBox {
                             gap: 20px;
@@ -150,10 +216,17 @@
                             background-color: #FCFAFF;
                             border: #444;
                             box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
-                            height: 170px;
-                            width: 280px;
+                            height: 10vw;
+                            width: 15vw;
+                            min-height: 180px;
+                            min-width: 280px;
                             padding: 5px;
                             overflow: hidden;
+
+                            @media (max-width:640px) {
+                                min-height: 120px;
+                                min-width: 190px;
+                            }
 
                             .c_upLoadPreBox {
                                 position: relative;
@@ -188,6 +261,8 @@
                                 width: 100%;
                                 height: 100%;
                                 cursor: pointer;
+
+
                             }
 
                         }
@@ -195,6 +270,10 @@
                         .c_upLoadLabel {
                             font-size: 16px;
                             font-weight: 300;
+
+                            @media (max-width:640px) {
+                                font-size: 14px;
+                            }
                         }
                     }
                 }
@@ -254,6 +333,11 @@
                     &:active {
                         background-color: #fff;
                         color: #DE1A10;
+                    }
+
+                    @media (max-width:640px) {
+                        font-size: 16px;
+                        margin: 0 20px 5px;
                     }
                 }
             }

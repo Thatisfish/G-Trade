@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import '../styles/Collect.scss'
 import "../styles/_Real_name.scss"
 import Sidebar from '../components/Sidebar'
 import c_plus from "../images/Regform_icon/c_plus.png"
@@ -102,7 +101,7 @@ const Real_name = () => {
       <main className='c_realMain'>
         <Sidebar className="c_sidebar" />
         <div className='c_realOutside'>
-          <div className='y_breadcrumb'>
+          {/* <div className='y_breadcrumb'>
             <a href="/">首頁</a>
             <span className="divider">›</span>
             <a href="/member">會員中心</a>
@@ -110,7 +109,7 @@ const Real_name = () => {
             <a href="/shop">購買中心</a>
             <span className="divider">›</span>
             <span className="current">實名認證</span>
-          </div>
+          </div> */}
 
           <div className='c_realBox'>
             {verifying ? (
