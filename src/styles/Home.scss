@@ -36,7 +36,20 @@ body,
 		/* 第三層：背景圖片 */
 		url(../images/homebg.webp);
 
-	/* 上方標語圖檔 */
+	.hero-mask {
+		display: none; // 預設不顯示
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0; // 從底部開始
+		height: 200px; // 遮罩高度，可依需求調整
+		background: linear-gradient(to top,
+				rgba(0, 0, 0, 0.4) 50%,
+				rgba(0, 0, 0, 0) 100%);
+		z-index: 9; // 要比背景高，但比 bp 低
+	}
+
+	/* 上方標語 */
 	.hero-text {
 		position: absolute;
 		bottom: clamp(50px, 6vw, 107px);
@@ -47,6 +60,7 @@ body,
 		text-shadow:
 			1px 1px 0 #000, // 實心貼邊（取代描邊的視覺）
 			0 3px 6px rgba(0, 0, 0, 0.45); // 柔和散影
+
 		color: #FFF;
 		font-size: 45px;
 		font-style: normal;
@@ -54,17 +68,35 @@ body,
 		line-height: 150%;
 
 		.small-text {
-			color: #FFF;
-			font-size: 26.356px;
+			color: #F0f0f0;
+			font-size: 26px;
 			font-style: normal;
 			font-weight: 700;
 			line-height: 150%;
 			/* 39.535px */
 		}
 
-		// @media(max-width: 900px) {
+		@media (max-width: 900px) {
+			font-size: 36px;
+		}
+	}
 
-		// }
+	@media (max-width: 900px) {
+		.hero-mask {
+			display: block;
+		}
+	}
+
+	@media(max-width: 640px) {
+		height: 800px;
+
+		.hero-text {
+			top: 80%;
+		}
+
+		.hero-mask {
+			display: none;
+		}
 	}
 }
 
@@ -78,6 +110,14 @@ body,
 		width: clamp(300px, 28vw, 400px);
 		;
 		height: auto;
+
+		@media(max-width: 900px) {
+			width: 270px;
+		}
+
+		@media(max-width: 640px) {
+			width: clamp(180px, 56vw, 270px);
+		}
 	}
 }
 
@@ -97,6 +137,12 @@ body,
 	display: flex;
 
 	@media(max-width: 900px) {
+		left: 43%;
+		width: 700px;
+		height: auto;
+	}
+
+	@media(max-width: 640px) {
 		display: none;
 	}
 }
@@ -130,34 +176,65 @@ body,
 }
 
 .e {
-	top: clamp(270px, 20vw, 300px);
+	// top: clamp(270px, 20vw, 300px);
+	top: 300px;
 	left: clamp(70%, 72vw, 73%);
 	z-index: 4;
 }
 
 @media(max-width: 900px) {
 	.g {
-		top: 130px;
-		left: 17%;
-		z-index: 1;
-	}
-
-	.a {
-		top: 25%;
-		left: 50%;
-		z-index: 2;
-	}
-
-	.m {
-		top: 40%;
-		left: 27%;
+		top: 5%;
+		left: 2%;
 		z-index: 3;
 	}
 
-	.e {
-		top: 40%;
-		left: 57%;
+	.a {
+		top: 18%;
+		left: 22%;
 		z-index: 4;
+	}
+
+	.m {
+		top: 6%;
+		left: 48%;
+		z-index: 2;
+	}
+
+	.e {
+		top: 20%;
+		left: 62%;
+		z-index: 4;
+	}
+}
+
+@media(max-width: 640px) {
+	.g {
+		top: 7%;
+		left: 15%;
+		z-index: 2;
+		// transform: rotate(-20deg);
+	}
+
+	.a {
+		top: 10%;
+		left: 48%;
+		z-index: 3;
+		// transform: rotate(10deg);
+	}
+
+	.m {
+		top: 26%;
+		left: 15%;
+		z-index: 2;
+		transform: rotate(-30deg);
+	}
+
+	.e {
+		top: 26%;
+		left: 48%;
+		z-index: 4;
+		transform: rotate(25deg);
 	}
 }
 
@@ -185,8 +262,8 @@ body,
 .bridge {
 	display: flex;
 	justify-content: flex-start; // 水平靠左
-	align-items: flex-start; // 垂直靠上
-	height: 598px;
+	align-items: center; // 垂直靠上
+	height: 31.15vw;
 	position: relative;
 	background: linear-gradient(to right,
 			rgba(255, 255, 255, 0.3) 0%,
@@ -194,8 +271,7 @@ body,
 			rgba(0, 0, 0, 0%) 60%,
 			rgba(255, 255, 255, 0.3) 100%), #020000;
 	overflow: hidden;
-	padding-left: 438px;
-	padding-top: 170px;
+	padding-left: clamp(160px, 18vw, 440px);
 
 	.hot {
 		display: flex;
@@ -207,7 +283,7 @@ body,
 
 	h3 {
 		text-decoration: none;
-		font-size: 36px;
+		font-size: clamp(17px, 2.5vw, 36px);
 		font-weight: 700;
 		margin-bottom: 20px;
 	}
@@ -220,10 +296,30 @@ body,
 		padding-left: 20px; // 向右內縮，看起來更像圖2
 
 		p {
-			font-size: 24px;
+			font-size: clamp(11px, 1.8vw, 24px);
 			font-weight: 300;
 			margin: 5px;
 		}
+	}
+
+	@media(max-width:900px) {
+		height: 280px;
+		padding-left: 110px;
+
+		h3 {
+			font-size: 20px;
+		}
+
+		.hot-list {
+			p {
+				font-size: 14px;
+			}
+		}
+	}
+
+	@media(max-width :640px) {
+		padding: 0;
+		justify-content: center;
 	}
 }
 
@@ -238,6 +334,11 @@ body,
 	border: 1vw solid white;
 	background: transparent;
 	z-index: 0;
+
+	@media(max-width :640px) {
+		width: clamp(256px, 110vw, 512px);
+		height: clamp(256px, 110vw, 512px);
+	}
 }
 
 .Switch {
@@ -247,6 +348,16 @@ body,
 	top: -10vw;
 	right: 8vw;
 	z-index: 99;
+
+	@media(max-width:900px) {
+		right: -5vw;
+		width: 450px;
+		height: 450px;
+	}
+
+	@media(max-width :640px) {
+		display: none;
+	}
 }
 
 /*------------------------ 最新上架 ------------------------*/

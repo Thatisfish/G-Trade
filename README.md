@@ -19,7 +19,7 @@
 -  0821-realname_調整中
 -  0823-realname_95%/移除多餘元件/package-top+2區_放大鏡超連結
 -  0824-package_紅黑外框元件/下半段進行中
--  0825-realname_必填修正/package_80% (?
+-  0825-realname_必填修正/package_80%
 -  0826-package_90%偷工減料改頁面滾動少一點
 -  0828-list_恐龍動畫/package_padding
 -  0829-list_恐龍動畫完
@@ -30,6 +30,7 @@
 -  0904-register+login_rwd完/跳轉登入+重回註冊_完/實名介紹_rwd待續
 -  0905-實名介紹_平板rwd完/包裝頁_rwd調整
 -  0906-實名介紹_rwd完/註冊輸入限制_完
+-  0908-sidebar下拉選單(+rwd)_完
 ### Biki
 - 0909-漢堡調整中
  -0908-商品分類連結 
