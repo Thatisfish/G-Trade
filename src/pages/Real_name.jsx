@@ -88,7 +88,7 @@ const Real_name = () => {
               </div>
             ) : (<span className='c_plus'> <img src={c_plus} alt="上傳" /> </span>)
             }
-            <input type="file" className='c_upLoadInput' onChange={picOnChange} accept='image/*' />
+            <input id='c_upLoadInput' type="file" className='c_upLoadInput' onChange={picOnChange} accept='image/*' />
           </div>
           <div className='c_upLoadLabel'>{label}</div>
         </div>
@@ -118,20 +118,20 @@ const Real_name = () => {
                 <form action="" className='c_realForm' onSubmit={handleSubmit}>
                   <div className='c_realTopThree'>
                     <div>
-                      <label htmlFor="">姓名</label>
-                      <input className='c_realName' type="text" placeholder='請輸入真實姓名' required />
+                      <label htmlFor='c_realName'>姓名</label>
+                      <input id='c_realName' className='c_realName' type="text" placeholder='請輸入真實姓名' required />
                     </div>
                     <div>
-                      <label htmlFor="">身分證字號</label>
-                      <input className='c_realId' type="text" placeholder='請輸入身分證字號，如：A123456789' pattern='[A-Z][12][0-9]{8}' maxLength={10} required />
+                      <label htmlFor='c_realId'>身分證字號</label>
+                      <input id='c_realId' className='c_realId' type="text" placeholder='請輸入身分證字號，如：A123456789' pattern='[A-Z][12][0-9]{8}' maxLength={10} required />
                     </div>
                     <div>
-                      <label htmlFor="">生日</label>
-                      <input type="date" required />
+                      <label htmlFor='c_realDate'>生日</label>
+                      <input id='c_realDate' className='c_realDate' type="date" required />
                     </div>
                   </div>
                   <div className='c_realUpload'>
-                    <label htmlFor="">上傳證件圖檔</label>
+                    <label htmlFor='c_upLoadInput'>上傳證件圖檔</label>
                     <div className='c_upLoadGroup'>
                       <div className='c_uploadGroupBox'>
                         <UpLoadBox side="front" imgPreview={frontPreview} onError={handleErr} label={"身分證正面"} />

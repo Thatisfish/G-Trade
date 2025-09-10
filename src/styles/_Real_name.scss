@@ -91,6 +91,7 @@
                 @media (max-width:1024px) {
                     justify-content: flex-start;
                     width: 75%;
+                    gap: 10px;
                 }
 
                 @media (max-width:640px) {
@@ -106,6 +107,7 @@
                     @media (max-width:1024px) {
                         justify-content: center;
                         width: 100%;
+                        gap: 10px;
                     }
 
                     @media (max-width:640px) {
@@ -138,12 +140,15 @@
                         color: #333;
                         font-size: 16px;
 
-                        &[type="date"] {
-                            width: 100%;
-                        }
-
                         &:focus {
                             outline: solid 2px rgb(92, 92, 92)
+                        }
+
+                        @media (max-width:1024px) {
+                            width: 100%;
+                            padding: 0 30px;
+                            min-width: 0; // 重置最小寬度
+                            box-sizing: border-box; // 確保 padding 不會影響總寬度
                         }
 
                         @media (max-width:640px) {
@@ -151,6 +156,8 @@
                             padding: 10px 10px;
                             height: 44px;
                             font-size: 0.85rem;
+                            min-width: 0; // 重置最小寬度
+                            box-sizing: border-box; // 確保 padding 不會影響總寬度
                         }
                     }
                 }
@@ -358,6 +365,7 @@
                         padding: 5px 20px;
 
                     }
+
                     @media (max-width:640px) {
                         font-size: 16px;
                         padding: 5px 20px;
