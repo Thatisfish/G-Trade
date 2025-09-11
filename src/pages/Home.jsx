@@ -97,6 +97,7 @@ export default function Home() {
 							二手商品也能安心購入
 						</text>
 					</svg>
+
 					{/* 四個區塊 */}
 					<div className="special-cards">
 						<Link to="/Package" className="card c1"><img src={special01} alt="包裝宣導" /></Link>

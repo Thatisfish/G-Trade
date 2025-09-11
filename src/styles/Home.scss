@@ -507,7 +507,7 @@ body,
 	}
 
 	.clippath2 {
-		/* 讓第二片比第一片略小，形成“邊框”視覺 */
+		/* 讓第二片比第一片略小，形成"邊框"視覺 */
 		width: calc(100% - 40px);
 		height: calc(100% - 80px);
 		background: #F0EFEF;
@@ -534,13 +534,12 @@ body,
 	/* 兩組外框連結列（卡片區） */
 	.special-cards {
 		place-self: center;
-		transform: translate(30%, -5%); // X(水平), Y(垂直)
-		// margin: clamp(60px, 8vw, 120px) clamp(60px, 8vw, 120px) 0 0;
-
 		display: grid;
+		align-items: center;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: repeat(2, 1fr);
 		gap: clamp(16px, 2vw, 28px);
+		transform: translateX(clamp(0%, 15vw, 30%)) translateY(-5%);
 
 		.detail-hint {
 			display: grid;
@@ -629,29 +628,44 @@ body,
 	}
 
 	/* --- RWD 斷點：視需要微調 --- */
-	@media (max-width: 992px) {
+	@media (max-width: 900px) {
 		height: 760px;
 
-		.OuterFrame {
-			place-self: center center;
-			flex-wrap: wrap;
+		.special-cards {
+			/* 調整位移幅度 */
+			transform: translateX(clamp(0%, 8vw, 15%)) translateY(-3%);
+			/* 縮小間距 */
+			gap: clamp(12px, 1.5vw, 20px);
 
-			a {
-				width: 200px;
+			.card {
+				/* 卡片大小固定不再縮小 */
+				width: 160px;
 			}
 
-			&.OuterFrame1 {
-				transform: translate(0px, 120px);
+			.empty {
+				width: 160px;
 			}
 
-			&.OuterFrame2 {
-				transform: translate(0px, 260px);
+			.detail-hint {
+				/* 調整提示區域的 padding */
+				padding: 100px 15px 0 0;
+
+				.hint-text {
+					font-size: clamp(16px, 1.8vw, 22px);
+				}
+
+				img {
+					height: 32px;
+					width: 32px;
+				}
 			}
 		}
 
 		.hand {
 			height: 460px;
-			transform: translateY(190px);
+			/* 往左下縮小：設定變形原點為左下角，然後縮放 + 位移 */
+			transform-origin: left bottom;
+			transform: translateY(190px) scale(0.85);
 		}
 
 		.headline-svg {
@@ -660,28 +674,6 @@ body,
 			text {
 				font-size: 36px;
 				letter-spacing: 12px;
-			}
-		}
-	}
-
-	@media (max-width: 576px) {
-		height: 720px;
-
-		.hand {
-			height: 380px;
-			transform: translateY(180px);
-		}
-
-		.OuterFrame a {
-			width: 160px;
-		}
-
-		.headline-svg {
-			margin-left: 16px;
-
-			text {
-				font-size: 30px;
-				letter-spacing: 8px;
 			}
 		}
 	}
