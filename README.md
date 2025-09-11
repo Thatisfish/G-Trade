@@ -33,6 +33,7 @@
 -  0908-sidebar下拉選單(+rwd)_完
 -  0909-realname_rwd_差點/sidebar_檔案合併+微調
 -  0910-realname_rwd_完
+-  0911-botnav會員登入_完
 ### Biki
 - 0909-漢堡調整中
  -0908-商品分類連結 
