@@ -43,7 +43,7 @@
 
 .B_category {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	color: #DE1A10;
 	margin: 30px 0;
 	width: 100%;
@@ -78,6 +78,7 @@
 }
 
 .B_Categories {
+	max-width: 250px;
 	min-width: 150px;
 	display: flex;
 	width: 100%;
@@ -111,7 +112,7 @@
 }
 
 .B_item {
-	width: 80%;
+	width: 65%;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 30px;
