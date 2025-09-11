@@ -102,7 +102,7 @@ export default function Home() {
 					<div className="special-cards">
 						<Link to="/Package" className="card c1"><img src={special01} alt="包裝宣導" /></Link>
 						<Link to="/RealN_Info" className="card c2"><img src={special02} alt="實名制" /></Link>
-						<div className="detail-hint">
+						<div className="detail-hint c3">
 							<img src={ArrowLeft} alt="左箭頭" className="arrow left" />
 							<span className="hint-text">點擊了解詳細</span>
 							<img src={ArrowDown} alt="下箭頭" className="arrow down" />
