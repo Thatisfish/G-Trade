@@ -85,7 +85,13 @@ export default function Navbar({ theme, onOpenLogin }) {
 				<Link to="/"><img src={Home} alt="" />首頁</Link>
 				{/* <Link to="/Notice"><img src={Bell} alt="" />通知</Link> */}
 				<Link to="/Shopping_cart"><img src={Cart} alt="" />購物車</Link>
-				<Link to="/Customer"><img src={Member} alt="" />顧客中心</Link>
+				<button
+					type="button"
+					className="icon-mobile-member"
+					onClick={onOpenLogin}
+					aria-label="會員中心"
+				><img src={Member} alt="會員中心" />會員中心</button>
+				{/* <Link to="/Customer"><img src={Member} alt="" />顧客中心</Link> */}
 			</nav>
 		</>
 	);
