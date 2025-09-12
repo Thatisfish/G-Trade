@@ -1,5 +1,9 @@
 .product {
-	padding: 130px clamp(80px, 7%, 110px);
+	padding: 130px clamp(50px, 7%, 110px);
+
+	@media(max-width:720px) {
+		padding: 130px clamp(30px, 7%, 110px);
+	}
 
 	.breadcrumb {
 		display: flex;
@@ -358,19 +362,26 @@
 
 	.seller-mobile {
 		display: none;
+		justify-content: flex-start;
+		align-items: center;
+		height: auto;
+		margin: 10px 0;
 
 		.seller__avatar {
-			width: 130px;
-			height: 130px;
+			width: clamp(50px, 20vw, 110px);
 			border-radius: 50%;
 			object-fit: cover;
 		}
 
 		.scenter {
 			display: flex;
+			flex: 1;
 			flex-direction: column;
+			gap: 10px;
 
 			.seller__rating {
+				display: flex;
+
 				img {
 					width: 24px;
 					height: 24px;
@@ -379,12 +390,22 @@
 
 			.seller__tags {
 				display: flex;
+				gap: 5px;
 
 				img {
 					width: auto;
-					height: 24px;
+					height: 28px;
 					display: block;
 				}
+			}
+		}
+
+		.seller__actions {
+			padding: 0;
+
+			.btn {
+				width: auto;
+				padding: 5px 10px;
 			}
 		}
 	}
