@@ -217,6 +217,8 @@
 	justify-content: center;
 	background: #fffefd8a;
 
+
+
 	.seller {
 		height: 250px;
 		display: flex;
@@ -244,6 +246,12 @@
 				font-size: 14px;
 				color: #555;
 			}
+		}
+
+		&__rwd {
+			display: flex;
+			gap: clamp(10px, 3vw, 70px);
+			;
 		}
 
 		&__stats {
@@ -333,7 +341,67 @@
 			white-space: nowrap;
 			padding-bottom: 25px;
 		}
+
+		@media(max-width:1024px) {
+			.seller__rwd {
+				display: flex;
+				flex-direction: column;
+				gap: 0;
+			}
+
+			.seller__actions {
+				display: flex;
+				flex-direction: column;
+			}
+		}
 	}
+
+	.seller-mobile {
+		display: none;
+
+		.seller__avatar {
+			width: 130px;
+			height: 130px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		.scenter {
+			display: flex;
+			flex-direction: column;
+
+			.seller__rating {
+				img {
+					width: 24px;
+					height: 24px;
+				}
+			}
+
+			.seller__tags {
+				display: flex;
+
+				img {
+					width: auto;
+					height: 24px;
+					display: block;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 720px) {
+		height: auto;
+		padding: 30px 0;
+
+		.seller-pc {
+			display: none;
+		}
+
+		.seller-mobile {
+			display: flex;
+		}
+	}
+
 
 	.top_decorate {
 		position: absolute;
@@ -388,6 +456,7 @@
 			color: #333;
 			white-space: pre-line; // 讓換行符號生效（對照你的內文有斷行）
 		}
+
 	}
 }
 
