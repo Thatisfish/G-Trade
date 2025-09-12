@@ -215,6 +215,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	background: #fffefd8a;
 
 	.seller {
 		height: 250px;
@@ -222,18 +223,18 @@
 		align-items: center;
 		justify-content: space-between;
 		width: 100%;
-		gap: 70px;
-		padding: 0 clamp(10px, 7%, 90px);
+		gap: clamp(10px, 3vw, 70px);
+		padding: 0 clamp(10px, 3vw, 90px);
 
 		&__profile {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			padding-left: 20px;
+			padding-left: 0;
 
 			&>.seller__avatar {
-				width: 150px;
-				height: 150px;
+				width: 130px;
+				height: 130px;
 				border-radius: 50%;
 				object-fit: cover;
 			}
@@ -255,7 +256,7 @@
 				"tags    tags";
 			column-gap: 12px; // 欄距
 			row-gap: 8px; // 列距
-			margin-left: 8px;
+
 			min-width: 0; // 防止被內容撐破
 			padding-bottom: 25px;
 
@@ -307,18 +308,16 @@
 
 				img {
 					width: auto;
-					height: 50px;
+					height: 40px;
 					display: block;
 				}
 			}
 		}
 
 		&__desc {
-			padding-left: 20px;
-
 			flex: 1 1 0; // 保持可伸縮
 			min-width: 0; // 允許縮小，不把外層撐爆
-			font-size: 20px;
+			font-size: 16px;
 			line-height: 1.7;
 			color: #444;
 			padding-bottom: 25px;
