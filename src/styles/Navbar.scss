@@ -128,7 +128,10 @@
 		}
 
 		.icon-hamburger {
-			background-image: url('../images/icon/icon-hamburger_light.svg');
+			all: unset;
+			cursor: pointer;
+			display: inline-block;
+			background: url('../images/icon/icon-hamburger_light.svg') no-repeat center/contain;
 		}
 	}
 
@@ -163,7 +166,10 @@
 		}
 
 		.icon-hamburger {
-			background-image: url('../images/icon/icon-hamburger_red.svg');
+			all: unset;
+			cursor: pointer;
+			display: inline-block;
+			background: url('../images/icon/icon-hamburger_red.svg') no-repeat center/contain;
 		}
 	}
 }
@@ -386,7 +392,7 @@
 		align-items: center;
 	}
 
-	/* 可點擊外框：固定尺寸 + 不被擠小 */
+	/* 可點擊外框：固定尺寸 + 不被撐大 */
 	.mobile-icon {
 		display: flex;
 		align-items: center;
@@ -434,7 +440,7 @@
 	/* 基礎 icon 外觀（背景圖不跟容器自適應） */
 	.icon-search,
 	.icon-notice,
-	.icon-hamburger {
+	.hamburger-btn {
 		display: inline-block;
 		background-repeat: no-repeat;
 		background-position: center;
@@ -481,6 +487,17 @@
 		}
 	}
 
+	/* —— 漢堡按鈕樣式 —— */
+	.hamburger-btn {
+		all: unset;
+		cursor: pointer;
+		width: 100%;
+		height: 100%;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+	}
+
 	/* Light 主題 */
 	&.light {
 		background-color: #fff;
@@ -502,7 +519,7 @@
 			background-image: url('../images/icon/icon-search_red.svg');
 		}
 
-		.icon-hamburger {
+		.hamburger-btn {
 			background-image: url('../images/icon/icon-hamburger_red.svg');
 		}
 	}
@@ -536,7 +553,7 @@
 			background-image: url('../images/icon/icon-search_red.svg');
 		}
 
-		.icon-hamburger {
+		.hamburger-btn {
 			background-image: url('../images/icon/icon-hamburger_light.svg');
 		}
 	}
@@ -561,7 +578,7 @@
 
 		/* 小螢幕時一起縮圖心 */
 		// .icon-search,
-		// .icon-hamburger {
+		// .hamburger-btn {
 		// }
 
 		// .icon-notice .icon-bell {

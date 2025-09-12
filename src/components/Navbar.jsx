@@ -8,15 +8,43 @@ import Cart from '../images/icon/icon-Shopping_cart_gray.svg'
 import Home from '../images/icon/icon-home_gray.svg'
 import Bell from '../images/icon/icon_bell_gray.svg'
 import Member from '../images/icon/icon-member_gray.svg'
+import HamburgerMenu from './HamburgerMenu';
 
 export default function Navbar({ theme, onOpenLogin }) {
 	const [scrolled, setScrolled] = useState(false);
+	const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
 	useEffect(() => {
-		const handleScroll = () => setScrolled(window.pageYOffset !== 0);
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
+		const el = document.body; // ✅ 你的情況是 body 在滾動
+		if (!el) return;
+
+		const handleScroll = () => {
+			setScrolled(el.scrollTop > 0);
+		};
+
+		// 初始化判斷一次
+		handleScroll();
+
+		el.addEventListener('scroll', handleScroll, { passive: true });
+		window.addEventListener('resize', handleScroll);
+
+		return () => {
+			el.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('resize', handleScroll);
+		};
 	}, []);
+
+	const handleHamburgerToggle = () => {
+		setIsHamburgerOpen(!isHamburgerOpen);
+	};
+
+	const handleHamburgerClose = () => {
+		setIsHamburgerOpen(false);
+		// 選單關閉後重新檢查滾動位置
+		setTimeout(() => {
+			setScrolled(document.body.scrollTop > 0 || document.documentElement.scrollTop > 0);
+		}, 10);
+	};
 
 	return (
 		<>
@@ -50,7 +78,14 @@ export default function Navbar({ theme, onOpenLogin }) {
 						<li className="shadow-img">
 							<BellPopover />  {/* ✅ 替代原本的 <Link className="icon-bell" /> */}
 						</li>
-						<li className="shadow-img"><Link className="icon-hamburger" to="/HamburgerMenu" /></li>
+						<li className="shadow-img">
+							<button
+								type="button"
+								className="icon-hamburger"
+								onClick={handleHamburgerToggle}
+								aria-label="選單"
+							/>
+						</li>
 					</ul>
 				</nav>
 			</header>
@@ -76,7 +111,12 @@ export default function Navbar({ theme, onOpenLogin }) {
 						<BellPopover />
 					</div>
 					<div className="icon-hamburger mobile-icon">
-						<Link to="/HamburgerMenu" />
+						<button
+							type="button"
+							className="hamburger-btn"
+							onClick={handleHamburgerToggle}
+							aria-label="選單"
+						/>
 					</div>
 
 				</div>
@@ -93,6 +133,12 @@ export default function Navbar({ theme, onOpenLogin }) {
 				><img src={Member} alt="會員中心" />會員中心</button>
 				{/* <Link to="/Customer"><img src={Member} alt="" />顧客中心</Link> */}
 			</nav>
+
+			{/* 漢堡選單 */}
+			<HamburgerMenu
+				isOpen={isHamburgerOpen}
+				onClose={handleHamburgerClose}
+			/>
 		</>
 	);
 }

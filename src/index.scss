@@ -13,14 +13,19 @@ body,
 }
 
 .red-banner {
-	position: absolute;
-	background: var(--nav);
-	height: 30px;
+	position: fixed;
+	top: 80px; // 你想讓它開始的位置
+	left: 0;
 	width: 100%;
-	margin-top: 80px;
-	z-index: -1;
-	clip-path: polygon(0 0, 100% 0, 100% 10%, 50% 10%, 48.5% 100%, 5% 100%, 3.5% 10%, 0 10%);
-	;
+	height: 30px;
+	background: var(--nav);
+	clip-path: polygon(0 0, 100% 0, 100% 10%, 50% 10%,
+			48.5% 100%, 5% 100%, 3.5% 10%, 0 10%);
+	z-index: 998; // 放在內容之上，但低於 navbar (navbar 通常 z-index:999)
+
+	@media(max-width: 900px) {
+		display: none;
+	}
 }
 
 :root {
