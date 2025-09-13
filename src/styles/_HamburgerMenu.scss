@@ -48,6 +48,12 @@
     padding: 8px;
     border-radius: 4px;
     transition: all 0.3s ease;
+
+    @media(max-width:1024px) {
+        position:absolute;
+        top: 20px;
+        right: 20px;
+    }
 }
 
 .closeBtn:hover {
@@ -60,6 +66,14 @@
     margin: 10% 15%;
     display: flex;
     flex-direction: row;
+
+    @media (max-width:1024px) {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+
+    }
 
 }
 
@@ -81,11 +95,7 @@
     transition: all 0.3s ease;
 }
 
-.categoryBtn.active,
-.categoryBtn:hover {
-    color: #DA5050;
-    border-bottom-color: #DA5050;
-}
+
 
 /* 選單項目 */
 .menu {
@@ -94,12 +104,14 @@
     margin: 0 20px;
 }
 
-.menuTitle{
+.menuTitle {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
+
 .menuItem,
 .menuItem2 {
+    width: auto;
     position: relative;
     flex-direction: column;
     /* 支援垂直下拉 */
@@ -107,44 +119,42 @@
     /* 讓下拉選單可見 */
     display: flex;
     overflow: hidden;
-    margin-bottom: 8px;
+    // margin-bottom: 6px;
 
 
 }
 
-.menu_item_item {
-    color: #FFF;
-    // margin: 10px 20px;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 0;
-}
+.submenu {
 
-.menu_item_item a,
-.menu_item_item div {
-    display: block;
-    padding: 8px 16px;
-    color: #ccc;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: all 0.2s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+    .menu_item_item {
+        color: #FFF;
+        // margin: 10px 20px;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0;
+    }
 
-.menu_item_item a:last-child,
-.menu_item_item div:last-child {
-    border-bottom: none;
-}
+    .menu_item_item a,
+    .menu_item_item div {
+        display: block;
+        padding: 8px 16px;
+        color: #ccc;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: all 0.2s ease;
 
-.menu_item_item a:hover,
-.menu_item_item div:hover {
-    color: #DA5050;
-    // background: rgba(218, 80, 80, 0.1);
-    padding-left: 20px;
+    }
+
+    // .menu_item_item a:last-child,
+    // .menu_item_item div:last-child {
+    //     border-bottom: none;
+    // }
+
+
 }
 
 .menuLink {
@@ -161,45 +171,12 @@
     transition: all 0.3s ease;
     /* 改為 all 以包含字體大小變化 */
     z-index: 2;
-
+    
 }
 
 .menuLink:hover {
     font-size: 1.7rem;
 }
-
-/* 橘紅色背景元素 */
-.menuItem::before,
-.menuItem2::before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    right: 10px;
-    height: 27px;
-    background: linear-gradient(135deg, #DA5050, #DA5050);
-    transform: translateY(-50%) translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    z-index: 1;
-}
-
-.menuItem::before {
-    top: 50%;
-}
-.menuItem2::before {
-    top: 40%;
-}
-
-/* Hover 效果 */
-.menuItem:hover::before,
-.menuItem2:hover::before {
-    transform: translateY(-50%) translateX(0);
-}
-
-.menuItem:hover .menu-link,
-.menuItem2:hover .menu-link {
-    color: white;
-}
-
 
 /* 顯示下拉選單 */
 .menuItem:hover .menu_item_item,
@@ -208,25 +185,71 @@
     max-height: 200px;
     /* 根據內容調整 */
     transform: translateY(0);
-    padding: 10px 0;
+    padding-bottom: 30px;
 }
 
-@keyframes menuBounce {
-    0% {
-        transform: translateY(-50%) translateX(-100%) scale(1);
-    }
+/* 橘紅色背景元素 */
+// .menuItem::before,
+// .menuItem2::before {
+//     content: '';
+//     position: absolute;
+//     left: 10px;
+//     right: 10px;
+//     height: 27px;
+//     background: linear-gradient(135deg, #DA5050, #DA5050);
+//     transform: translateY(-50%) translateX(-100%);
+//     transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+//     z-index: 1;
+// }
 
-    60% {
-        transform: translateY(-50%) translateX(0) scale(1.08);
-    }
+// .menuItem::before {
+//     top: 50%;
+// }
 
-    100% {
-        transform: translateY(-50%) translateX(0) scale(1);
-    }
+// .menuItem2::before {
+//     top: 50%;
+// }
+
+// /* Hover 效果 */
+// .menuItem:hover::before {
+//     transform: translateY(-50%) translateX(0);
+// }
+
+// .menuItem2:hover::before {
+//     transform: translateY(-50%) translateX(0);
+// }
+
+.menuItem:hover .menu-link,
+.menuItem2:hover .menu-link {
+    color: white;
 }
 
-/* 響應式設計 */
-@media (max-width: 768px) {
+
+
+// .menuItem2:hover .menu_item_item {
+//     opacity: 1;
+//     max-height: 200px;
+//     /* 根據內容調整 */
+//     transform: translateY(0);
+//     padding: 10px 0;
+// }
+
+// @keyframes menuBounce {
+//     0% {
+//         transform: translateY(-50%) translateX(-100%) scale(1);
+//     }
+
+//     60% {
+//         transform: translateY(-50%) translateX(0) scale(1.08);
+//     }
+
+//     100% {
+//         transform: translateY(-50%) translateX(0) scale(1);
+//     }
+// }
+
+/* RWD */
+@media (max-width: 640px) {
     .modal {
         width: 280px;
     }
@@ -238,5 +261,11 @@
     .menuLink {
         font-size: 15px;
         padding: 14px 18px;
+    }
+}
+
+@media(max-width:1024px){
+    .modal{
+        width: 100%;
     }
 }
