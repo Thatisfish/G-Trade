@@ -7,7 +7,8 @@ import DS2CE from '../images/Card_Image/DS2CE.webp'
 import SWP2 from '../images/Card_Image/switch_pro2.webp'
 import SW2 from '../images/Card_Image/switch2.webp'
 import SWB from '../images/Card_Image/item_switch01.avif'
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+
 
 
 
@@ -169,56 +170,56 @@ const Collect = () => {
     },
   ];
 
-  // 收藏清單 state
-  const [products, setProducts] = useState(y_products);
-  // 勾選的商品 id
+    const [products, setProducts] = useState(y_products);
   const [selectedIds, setSelectedIds] = useState([]);
-  // 分頁
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+
+  // ✅ SSR 安全的每頁數量設定
+  const [itemsPerPage, setItemsPerPage] = useState(9);
+
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      setItemsPerPage(window.innerWidth > 1180 ? 9 : 10);
+    };
+    updateItemsPerPage(); // 初始化
+    window.addEventListener('resize', updateItemsPerPage);
+    return () => window.removeEventListener('resize', updateItemsPerPage);
+  }, []);
+
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentProducts = products.slice(startIndex, startIndex + itemsPerPage);
 
-  // 動畫狀態
-  const [animating, setAnimating] = useState(false);
+  // 換頁（直接切換）
+  const handlePageChange = (page) => {
+    if (page === currentPage) return;
+    setCurrentPage(page);
+  };
 
   // 勾選 / 取消勾選
   const toggleSelect = (id) => {
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((sid) => sid !== id) : [...prev, id]
+    setSelectedIds(prev =>
+      prev.includes(id) ? prev.filter(sid => sid !== id) : [...prev, id]
     );
   };
 
-  // 刪除選取的收藏
+  // 刪除選取
   const handleRemoveSelected = () => {
     if (selectedIds.length === 0) {
       alert("請先選擇要刪除的商品");
       return;
     }
     if (window.confirm(`確定要刪除 ${selectedIds.length} 個收藏嗎？`)) {
-      setProducts((prev) => prev.filter((item) => !selectedIds.includes(item.id)));
+      setProducts(prev => prev.filter(item => !selectedIds.includes(item.id)));
       setSelectedIds([]);
     }
-  };
-
-  // 換頁（帶動畫）
-  const [direction, setDirection] = useState('next');
-  const handlePageChange = (page) => {
-    if (page === currentPage) return;
-    setDirection(page > currentPage ? 'next' : 'prev');
-    setAnimating(true);
-    setTimeout(() => {
-      setCurrentPage(page);
-      setAnimating(false);
-    }, 300); // 與 CSS 動畫時間一致
   };
 
   return (
     <main className="y_Collect">
       <Sidebar />
       <div>
-        {/* 麵包屑導覽 */}
+        {/* 麵包屑 */}
         <div className='y_breadcrumb'>
           <a href="/">首頁</a>
           <span className="divider">›</span>
@@ -229,7 +230,7 @@ const Collect = () => {
           <span className="current">收藏清單</span>
         </div>
 
-        {/* 標題 + 批量刪除按鈕 */}
+        {/* 標題 + 批量刪除 */}
         <div className="collect_header">
           <h2>我的收藏</h2>
           <button className="remove_all_btn" onClick={handleRemoveSelected}>
@@ -238,8 +239,8 @@ const Collect = () => {
         </div>
 
         {/* 商品清單 */}
-        <div className={`y_cardbox ${animating ? `slide-${direction}` : ''}`}>
-          {currentProducts.map((item) => (
+        <div className="y_cardbox">
+          {currentProducts.map(item => (
             <div key={item.id} className="selectable_card">
               <input
                 type="checkbox"
@@ -261,7 +262,6 @@ const Collect = () => {
       </div>
     </main>
   );
-
 };
 
 export default Collect;
