@@ -13,6 +13,7 @@ import SWP2 from '../images/Card_Image/switch_pro2.webp'
 import SW2 from '../images/Card_Image/switch2.webp'
 import SWB from '../images/Card_Image/item_switch01.avif'
 import PS5 from '../images/Card_Image/ps5_pro.webp'
+import item02 from '../images/Alltype_PS/Alltype_PS_item03.avif'
 import item12 from '../images/Alltype_Xbox/Alltype_Xbox_item02.avif'
 
 export default function Reviewpage() {
@@ -92,6 +93,16 @@ export default function Reviewpage() {
       priceNow: '11900',
       size: 'large'
     },
+    {
+      id: 9,
+      tag: '全新上架',
+      category: '遊戲',
+      image: item02,
+      title: "《Demon's Souls》重製版",
+      seller: 'Ds2CE**250626',
+      priceNow: '1100',
+      size: 'medium'
+    },
 
   ]
   // 依照選擇的分類過濾
@@ -136,7 +147,7 @@ export default function Reviewpage() {
           {/* 按鈕區塊 */}
           <div className="y_categories">
             <button className="y_btn y_btn--red" onClick={() => setFilterCategory("主機")}>主機 (3)</button>
-            <button className="y_btn y_btn--red" onClick={() => setFilterCategory("遊戲")}>遊戲 (8)</button>
+            <button className="y_btn y_btn--red" onClick={() => setFilterCategory("遊戲")}>遊戲 (3)</button>
             <button className="y_btn y_btn--red" onClick={() => setFilterCategory("配件")}>配件 (3)</button>
           </div>
 

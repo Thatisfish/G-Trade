@@ -210,14 +210,16 @@
         }
 
         .y_newproducts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            /* 每張卡片最小 260px，空間夠就多塞一張 */
+            gap: 30px;
+            /* 減少間距讓卡片更靠近 */
         }
 
         /* 卡片本身樣式 */
         .info-card {
-            width: 260px;
+            width: 100%;
             height: 350px;
             margin: 0 auto;
             border-radius: 20px;
@@ -261,7 +263,7 @@
             &.large,
             &.medium,
             &.small {
-                width: 260px;
+
                 height: 350px;
             }
 
@@ -499,6 +501,108 @@
     }
 }
 
+/* 小平板版 431px ~ 640px */
+@media (min-width: 431px) and (max-width: 640px) {
+    .y_Reviewpage {
+        flex-direction: column;
+        padding-left: 0;
+        gap: 24px;
+
+        .y_layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .y_main {
+            width: 100%;
+            padding: 0 12px;
+            gap: 20px;
+        }
+
+        .y_seller {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+            padding-top: 40px;
+
+            &__stats {
+                margin-right: 0;
+            }
+
+            &__actions {
+                flex-direction: row;
+                gap: 16px;
+            }
+        }
+
+        .y_categories {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 24px 0;
+
+            .y_btn {
+                min-width: 100px;
+                font-size: 15px;
+                padding: 10px 14px;
+            }
+        }
+
+        .latest_products {
+            .y_newproducts {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); // 固定兩欄
+                gap: 12px;
+                padding: 0 12px;
+                box-sizing: border-box;
+
+
+                .info-card {
+                    width: 100%;
+                    min-width: 0; // 防止卡片撐爆欄位
+                    box-sizing: border-box;
+
+                    .info-card img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: cover;
+                        display: block;
+                    }
+                }
+
+                .card-content {
+                    padding: 8px;
+
+                    .title {
+                        font-size: 15px;
+                        word-break: break-word;
+                    }
+
+                    .price {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+        .past_transactions {
+            margin: 24px 0 60px;
+
+            .transaction {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 12px;
+
+                .rating_bar {
+                    justify-self: start;
+                }
+            }
+        }
+    }
+}
+
 // 平板版
 @media (min-width: 641px) and (max-width: 1024px) {
     .y_Reviewpage {
@@ -516,7 +620,8 @@
 
         .y_main {
             width: 100%;
-            max-width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
             padding: 0 16px; // ✅ 加點左右內距
             box-sizing: border-box;
         }
@@ -604,25 +709,42 @@
         }
 
         .latest_products {
+            width: 100%;
+            padding: 0 12px;
+            box-sizing: border-box;
+
             .y_newproducts {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                display: flex;
+                /* 橫向排列 */
+                flex-wrap: nowrap;
+                /* ✅ 禁止換行 */
                 gap: 16px;
-                padding: 0 12px;
+                overflow-x: auto;
+                /* 允許橫向捲動 */
+                scroll-snap-type: x mandatory;
+                /* 滑動對齊 */
+                -webkit-overflow-scrolling: touch;
+                /* iOS 慣性滑動 */
+                padding-bottom: 8px;
+
+                /* 隱藏捲軸（可選） */
+                &::-webkit-scrollbar {
+                    display: none;
+                }
             }
 
             .info-card {
-                width: 100%;
+                flex: 0 0 auto; // 固定寬度，不被壓縮
+                width: 280px; // 每張卡片寬度
+                scroll-snap-align: start; // 滑動對齊到卡片開頭
                 box-sizing: border-box;
 
                 img {
-                    display: block; // ✅ 消除 inline 空隙
                     width: 100%;
                     height: 160px;
                     object-fit: cover;
-                    border-top-left-radius: 12px; // ✅ 跟卡片一致
-                    border-top-right-radius: 12px;
                     display: block;
+                    border-radius: 12px 12px 0 0;
                 }
 
                 .card-content {
@@ -631,6 +753,7 @@
                     .title {
                         font-size: 15px;
                         margin-bottom: 12px;
+                        word-break: break-word;
                     }
 
                     .price {
@@ -657,6 +780,169 @@
 
                     span {
                         font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* 小桌機版 1025px ~ 1170px */
+@media (min-width: 1025px) and (max-width: 1180px) {
+    .y_Reviewpage {
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 0;
+        gap: 32px;
+
+        .y_layout {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .y_main {
+            flex: 1;
+            max-width: 800px;
+            padding: 0 24px;
+            box-sizing: border-box;
+            gap: 24px;
+        }
+
+        .y_seller {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 28px;
+            padding-top: 60px;
+
+            &__profile {
+                flex-direction: row;
+                align-items: center;
+                gap: 20px;
+
+                .y_seller__avatar {
+                    width: 100px;
+                    height: 100px;
+                }
+
+                .y_seller__name {
+                    font-size: 16px;
+                }
+            }
+
+            &__stats {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "rating"
+                    "desc"
+                    "tags";
+
+                .y_seller__rating {
+                    flex-wrap: wrap;
+                    gap: 10px;
+
+                    .y_seller__score {
+                        font-size: 20px;
+                    }
+
+                    .y_seller__location,
+                    .y_seller__count {
+                        font-size: 14px;
+                    }
+                }
+
+                .y_seller__desc {
+                    font-size: 14px;
+                }
+
+                .y_seller__tags {
+                    flex-wrap: wrap;
+                    gap: 10px;
+
+                    img {
+                        height: 36px;
+                    }
+                }
+            }
+
+            &__actions {
+                flex-direction: row;
+                justify-content: flex-start;
+
+                .btn {
+                    font-size: 15px;
+                    padding: 10px 14px;
+                }
+            }
+        }
+
+        .y_categories {
+            display: flex;
+            justify-content: space-between;
+            /* 三個按鈕左右分開 */
+            align-items: center;
+            gap: 0;
+            /* 移除多餘間距，讓 space-between 生效 */
+            flex-wrap: nowrap;
+            /* 不換行 */
+
+            .y_btn {
+                flex: 1;
+                /* 平均分配寬度 */
+                max-width: 32%;
+                /* 三個剛好一排 */
+                text-align: center;
+            }
+        }
+
+        .latest_products {
+            .y_newproducts {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                padding: 0 16px;
+            }
+
+            .info-card {
+                img {
+                    height: 180px;
+                    border-radius: 12px 12px 0 0;
+                }
+
+                .card-content {
+                    padding: 10px;
+
+                    .title {
+                        font-size: 16px;
+                        margin-bottom: 10px;
+                    }
+
+                    .price {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+
+        .past_transactions {
+            margin: 30px 0 80px;
+
+            .transaction {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                padding: 14px;
+
+                p {
+                    font-size: 15px;
+                }
+
+                .rating_bar {
+                    justify-self: start;
+
+                    span {
+                        font-size: 0.9rem;
                     }
                 }
             }
