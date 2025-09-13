@@ -203,12 +203,15 @@ const Collect = () => {
   };
 
   // 換頁（帶動畫）
+  const [direction, setDirection] = useState('next');
   const handlePageChange = (page) => {
-    setAnimating(true); // slide-out
+    if (page === currentPage) return;
+    setDirection(page > currentPage ? 'next' : 'prev');
+    setAnimating(true);
     setTimeout(() => {
       setCurrentPage(page);
-      setAnimating(false); // slide-in
-    }, 400); // 與 CSS transition 時間一致
+      setAnimating(false);
+    }, 300); // 與 CSS 動畫時間一致
   };
 
   return (
@@ -235,7 +238,7 @@ const Collect = () => {
         </div>
 
         {/* 商品清單 */}
-        <div className={`y_cardbox ${animating ? "slide-out" : "slide-in"}`}>
+        <div className={`y_cardbox ${animating ? `slide-${direction}` : ''}`}>
           {currentProducts.map((item) => (
             <div key={item.id} className="selectable_card">
               <input

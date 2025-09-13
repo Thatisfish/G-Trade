@@ -42,15 +42,37 @@
     justify-content: flex-start;
     gap: 30px;
     transition: transform 0.4s ease, opacity 0.4s ease;
+  }
 
-    &.slide-in {
+  .y_cardbox.slide-next {
+    animation: slideNext 0.3s ease forwards;
+  }
+
+  .y_cardbox.slide-prev {
+    animation: slidePrev 0.3s ease forwards;
+  }
+
+  @keyframes slideNext {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    100% {
       transform: translateX(0);
       opacity: 1;
     }
+  }
 
-    &.slide-out {
+  @keyframes slidePrev {
+    0% {
       transform: translateX(-100%);
       opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 
@@ -175,14 +197,21 @@
 
 
 // 手機版
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 1024px) {
   .y_Collect {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0;
 
+
+
   }
+
+  .c_phSidebar {
+    z-index: 10;
+  }
+
 
   .y_breadcrumb {
     font-size: 14px;
@@ -281,4 +310,3 @@
     }
   }
 }
-
