@@ -2,7 +2,7 @@
 	padding: 130px clamp(50px, 7%, 110px);
 
 	@media(max-width:720px) {
-		padding: 130px clamp(30px, 7%, 110px);
+		padding: 130px clamp(10px, 3%, 110px);
 	}
 
 	.breadcrumb {
@@ -459,7 +459,6 @@
 		background-color: #fff;
 		border: 5px solid #000; // 黑色外框
 		padding: 40px;
-		height: 70%;
 		width: 80%;
 		line-height: 1.6; // 行高讓文字比較好讀
 		min-height: 300px;
@@ -478,6 +477,30 @@
 			white-space: pre-line; // 讓換行符號生效（對照你的內文有斷行）
 		}
 
+	}
+
+	@media(max-width:768px) {
+		margin: 40px 0;
+
+		.detail {
+			width: 90%;
+		}
+	}
+
+	@media(max-width:520px) {
+		.detail {
+			padding: 20px;
+			height: auto;
+			min-height: auto;
+
+			&_title {
+				margin-bottom: 15px;
+			}
+
+			&_content {
+				padding: 0 15px;
+			}
+		}
 	}
 }
 
@@ -648,6 +671,10 @@
 				}
 			}
 		}
+	}
+
+	@media(max-width:520px) {
+		margin: 0 0 80px;
 	}
 
 	.top_decorate2 {
