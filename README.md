@@ -34,6 +34,7 @@
 -  0909-realname_rwd_差點/sidebar_檔案合併+微調
 -  0910-realname_rwd_完
 -  0911-botnav會員登入_完
+-  0914-修package動畫/實名認證微調
 ### Biki
 - 0913-漢堡選單完成
 - 0909-漢堡調整中
