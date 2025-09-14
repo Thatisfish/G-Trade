@@ -124,7 +124,7 @@ const Package = () => {
             // 取得scrollEl的位子資訊
             const rect = scrollEl.getBoundingClientRect();
             // 滾動的頁面高度
-            const scrollTop = window.scrollY;
+            const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
             // 頁面高度(設100vh)
             const stepHeight = window.innerHeight * 0.5;
             // 還沒進入c_packScroll，顯示第一張
@@ -143,7 +143,8 @@ const Package = () => {
             }
         };
         // 滾動時執行事件監聽
-        window.addEventListener("scroll", handelScroll);
+        // body 綁定 scroll
+        document.body.addEventListener("scroll", handelScroll);
         // 清除監聽
         return () => window.removeEventListener("scroll", handelScroll);
     }, [])
