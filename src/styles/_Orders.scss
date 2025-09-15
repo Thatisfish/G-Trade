@@ -333,7 +333,7 @@
 	/* OrderCard */
 	.J_ordercard {
 		display: flex;
-		flex-wrap: wrap;
+		// flex-wrap: wrap;
 		gap: 12px;
 		padding: 0;
 		border-bottom: #000 1px solid;
@@ -370,13 +370,9 @@
 				align-items: flex-start;
 
 				.J_order-actions {
-					margin-left: 0;
+					margin-left: auto;
 					display: flex;
-					gap: 0px;
-					flex-direction: column;
-					align-items: flex-start;
-					width: 100%;
-					margin-left: 0;
+					gap: 25px;
 
 					.J_RB1 {
 						background: #DE1A10;
@@ -925,5 +921,3 @@
 
 
 }
-
-
