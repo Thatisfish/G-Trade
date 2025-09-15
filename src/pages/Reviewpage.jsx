@@ -113,12 +113,14 @@ export default function Reviewpage() {
         <Sidebar />
         <div className="y_main">
           {/* 個人資料區塊 */}
+          
           <div className="y_seller">
+            <div className='y_seller_ps'>
             <div className="y_seller__profile">
               <img src={user} alt="賣家頭像" className="y_seller__avatar" />
               <p className="y_seller__name">@fun31**56</p>
             </div>
-
+           
             <div className="y_seller__stats">
               <div className="y_seller__rating">
                 <span className="y_seller__score">4.8</span>
@@ -137,6 +139,8 @@ export default function Reviewpage() {
                 <img src={quickReply} alt="" />
               </div>
             </div>
+            </div>
+
             <div className="y_seller__actions">
               <button className="btn">追蹤+</button>
               <button className="btn">聊聊</button>
