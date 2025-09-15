@@ -14,6 +14,7 @@
     .y_layout {
         display: flex;
         align-items: flex-start;
+        width: 100%;
         gap: 90px; // sidebar 和右側內容的間距
     }
 
@@ -25,10 +26,12 @@
 
     /* 右側內容撐滿剩下空間 */
     .y_main {
-        flex: 1;
+        // flex: 1;
+        max-width: 840px;
         display: flex;
         flex-direction: column;
         gap: 24px;
+        width: 90%;
     }
 
     /* 賣家資訊 */
@@ -36,75 +39,77 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 40px;
-        padding-top: 150px;
+        padding-top: 80px;
+        padding-right: 10px;
 
-        .y_seller_ps{
+        .y_seller_ps {
             display: flex;
+            gap: 30px;
+
             /* 左側：頭像與名稱 */
             .y_seller__profile {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 flex-shrink: 0;
-    
+
                 .y_seller__avatar {
                     width: 120px;
                     height: 120px;
                     border-radius: 50%;
                     object-fit: cover;
                 }
-    
+
                 .y_seller__name {
                     margin-top: 8px;
                     font-size: 14px;
                     color: #555;
                 }
             }
-    
+
             /* 中間：評分、地區、描述、標籤 */
             .y_seller__stats {
                 display: grid;
-                margin-right: 300px;
+                max-width: 300px;
                 grid-template-columns: 1fr;
                 grid-template-areas:
                     "rating"
                     "desc"
                     "tags";
-    
+
                 .y_seller__rating {
                     grid-area: rating;
                     display: flex;
                     align-items: center;
                     gap: 12px; // 調整間距
-    
+
                     .y_seller__location {
                         font-size: 14px;
                         color: #555;
                         white-space: nowrap;
                     }
-    
+
                     .y_seller__score {
                         font-weight: 700;
                         font-size: 20px;
                         color: #e63026;
                         white-space: nowrap;
                     }
-    
+
                     img {
                         width: 18px;
                         height: 18px;
                     }
-    
+
                     .y_seller__count {
                         font-size: 14px;
                         color: #666;
                         white-space: nowrap;
                     }
                 }
-    
-    
-    
+
+
+
                 /* 描述放在評分/地區下方 */
                 +.y_seller__desc {
                     grid-area: desc;
@@ -112,13 +117,13 @@
                     line-height: 1.6;
                     color: #444;
                 }
-    
+
                 .y_seller__tags {
                     grid-area: tags;
                     display: flex;
                     gap: 12px;
                     align-items: center;
-    
+
                     img {
                         height: 40px;
                         width: auto;
@@ -408,21 +413,21 @@
         }
 
         /* 賣家資訊區塊垂直排列 */
-        .y_seller {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 20px;
-            padding-top: 20px;
+        // .y_seller {
+        //     flex-direction: column;
+        //     align-items: flex-start;
+        //     gap: 20px;
+        //     padding-top: 20px;
 
-            &__stats {
-                margin-right: 0;
-            }
+        //     &__stats {
+        //         margin-right: 0;
+        //     }
 
-            &__actions {
-                flex-direction: row;
-                gap: 12px;
-            }
-        }
+        //     &__actions {
+        //         flex-direction: row;
+        //         gap: 12px;
+        //     }
+        // }
 
         /* 分類按鈕改成可換行 */
         .y_categories {

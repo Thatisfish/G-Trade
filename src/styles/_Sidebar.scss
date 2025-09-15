@@ -33,6 +33,7 @@
         color: inherit; // 讓 active 能改色
         text-decoration: none;
         transition: all 0.2s ease;
+        white-space: nowrap;
 
         &:hover {
           background: rgba(255, 255, 255, 0.2);
