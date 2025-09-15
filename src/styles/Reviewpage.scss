@@ -14,6 +14,7 @@
     .y_layout {
         display: flex;
         align-items: flex-start;
+        width: 100%;
         gap: 90px; // sidebar 和右側內容的間距
     }
 
@@ -25,10 +26,12 @@
 
     /* 右側內容撐滿剩下空間 */
     .y_main {
-        flex: 1;
+        // flex: 1;
+        max-width: 840px;
         display: flex;
         flex-direction: column;
         gap: 24px;
+        width: 90%;
     }
 
     /* 賣家資訊 */
@@ -36,93 +39,100 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 40px;
-        padding-top: 150px;
+        padding-top: 80px;
+        padding-right: 10px;
 
-        /* 左側：頭像與名稱 */
-        &__profile {
+        .y_seller_ps {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-shrink: 0;
+            gap: 30px;
 
-            .y_seller__avatar {
-                width: 120px;
-                height: 120px;
-                border-radius: 50%;
-                object-fit: cover;
-            }
-
-            .y_seller__name {
-                margin-top: 8px;
-                font-size: 14px;
-                color: #555;
-            }
-        }
-
-        /* 中間：評分、地區、描述、標籤 */
-        &__stats {
-            display: grid;
-            margin-right: 300px;
-            grid-template-columns: 1fr;
-            grid-template-areas:
-                "rating"
-                "desc"
-                "tags";
-
-            .y_seller__rating {
-                grid-area: rating;
+            /* 左側：頭像與名稱 */
+            .y_seller__profile {
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                gap: 12px; // 調整間距
+                flex-shrink: 0;
 
-                .y_seller__location {
+                .y_seller__avatar {
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .y_seller__name {
+                    margin-top: 8px;
                     font-size: 14px;
                     color: #555;
-                    white-space: nowrap;
+                }
+            }
+
+            /* 中間：評分、地區、描述、標籤 */
+            .y_seller__stats {
+                display: grid;
+                max-width: 300px;
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "rating"
+                    "desc"
+                    "tags";
+
+                .y_seller__rating {
+                    grid-area: rating;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px; // 調整間距
+
+                    .y_seller__location {
+                        font-size: 14px;
+                        color: #555;
+                        white-space: nowrap;
+                    }
+
+                    .y_seller__score {
+                        font-weight: 700;
+                        font-size: 20px;
+                        color: #e63026;
+                        white-space: nowrap;
+                    }
+
+                    img {
+                        width: 18px;
+                        height: 18px;
+                    }
+
+                    .y_seller__count {
+                        font-size: 14px;
+                        color: #666;
+                        white-space: nowrap;
+                    }
                 }
 
-                .y_seller__score {
-                    font-weight: 700;
-                    font-size: 20px;
-                    color: #e63026;
-                    white-space: nowrap;
-                }
 
-                img {
-                    width: 18px;
-                    height: 18px;
-                }
 
-                .y_seller__count {
+                /* 描述放在評分/地區下方 */
+                +.y_seller__desc {
+                    grid-area: desc;
                     font-size: 14px;
-                    color: #666;
-                    white-space: nowrap;
+                    line-height: 1.6;
+                    color: #444;
+                }
+
+                .y_seller__tags {
+                    grid-area: tags;
+                    display: flex;
+                    gap: 12px;
+                    align-items: center;
+
+                    img {
+                        height: 40px;
+                        width: auto;
+                    }
                 }
             }
 
-
-
-            /* 描述放在評分/地區下方 */
-            +.y_seller__desc {
-                grid-area: desc;
-                font-size: 14px;
-                line-height: 1.6;
-                color: #444;
-            }
-
-            .y_seller__tags {
-                grid-area: tags;
-                display: flex;
-                gap: 12px;
-                align-items: center;
-
-                img {
-                    height: 40px;
-                    width: auto;
-                }
-            }
         }
+
 
         /* 右側：按鈕 */
         &__actions {
@@ -382,7 +392,7 @@
 }
 
 /* 手機版 320px ~ 430px RWD */
-@media (max-width: 430px) {
+@media (max-width: 1024px) {
     .y_Reviewpage {
         flex-direction: column;
         padding: 80px 20px 30px;
@@ -403,21 +413,21 @@
         }
 
         /* 賣家資訊區塊垂直排列 */
-        .y_seller {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 20px;
-            padding-top: 20px;
+        // .y_seller {
+        //     flex-direction: column;
+        //     align-items: flex-start;
+        //     gap: 20px;
+        //     padding-top: 20px;
 
-            &__stats {
-                margin-right: 0;
-            }
+        //     &__stats {
+        //         margin-right: 0;
+        //     }
 
-            &__actions {
-                flex-direction: row;
-                gap: 12px;
-            }
-        }
+        //     &__actions {
+        //         flex-direction: row;
+        //         gap: 12px;
+        //     }
+        // }
 
         /* 分類按鈕改成可換行 */
         .y_categories {
@@ -499,435 +509,257 @@
     }
 }
 
-/* 小平板版 431px ~ 640px */
-@media (min-width: 431px) and (max-width: 640px) {
-    .y_Reviewpage {
-        flex-direction: column;
-        padding: 80px 20px 30px;
-        gap: 24px;
-
-        .y_layout {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-        }
-
-        .y_main {
-            width: 100%;
-            padding: 0 12px;
-            gap: 20px;
-        }
-
-        .y_seller {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 24px;
-            padding-top: 40px;
-
-            &__stats {
-                margin-right: 0;
-            }
-
-            &__actions {
-                flex-direction: row;
-                gap: 16px;
-            }
-        }
-
-        .y_categories {
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin: 24px 0;
-
-            .y_btn {
-                min-width: 100px;
-                font-size: 15px;
-                padding: 10px 14px;
-            }
-        }
-
-        .latest_products {
-            .y_newproducts {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                padding: 0 12px;
-            }
-
-            .info-card img {
-                height: 180px;
-            }
-
-            .card-content {
-                padding: 8px;
-
-                .title {
-                    font-size: 15px;
-                }
-
-                .price {
-                    font-size: 16px;
-                }
-            }
-        }
-
-        .past_transactions {
-            margin: 24px 0 60px;
-
-            .transaction {
-                grid-template-columns: 1fr;
-                gap: 10px;
-                padding: 12px;
-
-                .rating_bar {
-                    justify-self: start;
-                }
-            }
-        }
-    }
-}
-
-// 平板版
-@media (min-width: 641px) and (max-width: 1024px) {
-    .y_Reviewpage {
-        justify-content: flex-start; // ✅ 不要置中
-        padding: 80px 20px 30px;
-
-        .y_layout {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-
-        }
-
-        .y_main {
-            width: 100%;
-            max-width: 100%;
-            padding: 0 16px; // ✅ 加點左右內距
-            box-sizing: border-box;
-        }
-
-        .y_seller {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 24px;
-            padding-top: 60px;
-
-            &__profile {
-                flex-direction: row;
-                align-items: center;
-                gap: 16px;
-
-                .y_seller__avatar {
-                    width: 100px;
-                    height: 100px;
-                }
-
-                .y_seller__name {
-                    font-size: 15px;
-                }
-            }
-
-            &__stats {
-                margin-right: 0;
-                grid-template-columns: 1fr;
-                grid-template-areas:
-                    "rating"
-                    "desc"
-                    "tags";
-
-                .y_seller__rating {
-                    flex-wrap: wrap;
-                    gap: 8px;
-
-                    .y_seller__score {
-                        font-size: 18px;
-                    }
-
-                    .y_seller__location,
-                    .y_seller__count {
-                        font-size: 13px;
-                    }
-                }
-
-                .y_seller__desc {
-                    font-size: 13px;
-                }
-
-                .y_seller__tags {
-                    flex-wrap: wrap;
-                    gap: 8px;
-
-                    img {
-                        height: 32px;
-                    }
-                }
-            }
-
-            &__actions {
-                flex-direction: row;
-                justify-content: flex-start;
-
-                .btn {
-                    width: auto;
-                    font-size: 14px;
-                    padding: 8px 12px;
-                }
-            }
-        }
-
-        .y_categories {
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-
-            .y_btn {
-                margin: 0;
-                min-width: 120px;
-                font-size: 15px;
-                padding: 12px 8px;
-            }
-        }
-
-        .latest_products {
-            .y_newproducts {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 16px;
-                padding: 0 12px;
-            }
-
-            .info-card {
-                width: 100%;
-                box-sizing: border-box;
-
-                img {
-                    display: block; // ✅ 消除 inline 空隙
-                    width: 100%;
-                    height: 160px;
-                    object-fit: cover;
-                    border-top-left-radius: 12px; // ✅ 跟卡片一致
-                    border-top-right-radius: 12px;
-                    display: block;
-                }
-
-                .card-content {
-                    padding: 10px;
-
-                    .title {
-                        font-size: 15px;
-                        margin-bottom: 12px;
-                    }
-
-                    .price {
-                        font-size: 17px;
-                    }
-                }
-            }
-        }
-
-        .past_transactions {
-            .transaction {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto;
-                gap: 12px;
-
-                p {
-                    grid-column: 1 / -1;
-                    font-size: 14px;
-                }
-
-                .rating_bar {
-                    grid-column: 1 / -1;
-                    justify-self: start;
-
-                    span {
-                        font-size: 0.8rem;
-                    }
-                }
-            }
-        }
-    }
-}
-
-/* 小桌機版 1025px ~ 1170px */
-@media (min-width: 1025px) and (max-width: 1180px) {
-    .y_Reviewpage {
-        display: flex;
-        justify-content: flex-start;
-        padding: 80px 20px 30px;
-        gap: 32px;
-
-        .y_layout {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 24px;
-        }
-
-        .y_main {
-            flex: 1;
-            max-width: 800px;
-            padding: 0 24px;
-            box-sizing: border-box;
-            gap: 24px;
-        }
-
-        .y_seller {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 28px;
-            padding-top: 60px;
-
-            &__profile {
-                flex-direction: row;
-                align-items: center;
-                gap: 20px;
-
-                .y_seller__avatar {
-                    width: 100px;
-                    height: 100px;
-                }
-
-                .y_seller__name {
-                    font-size: 16px;
-                }
-            }
-
-            &__stats {
-                grid-template-columns: 1fr;
-                grid-template-areas:
-                    "rating"
-                    "desc"
-                    "tags";
-
-                .y_seller__rating {
-                    flex-wrap: wrap;
-                    gap: 10px;
-
-                    .y_seller__score {
-                        font-size: 20px;
-                    }
-
-                    .y_seller__location,
-                    .y_seller__count {
-                        font-size: 14px;
-                    }
-                }
-
-                .y_seller__desc {
-                    font-size: 14px;
-                }
-
-                .y_seller__tags {
-                    flex-wrap: wrap;
-                    gap: 10px;
-
-                    img {
-                        height: 36px;
-                    }
-                }
-            }
-
-            &__actions {
-                flex-direction: row;
-                justify-content: flex-start;
-
-                .btn {
-                    font-size: 15px;
-                    padding: 10px 14px;
-                }
-            }
-        }
-
-        .y_categories {
-            display: flex;
-            justify-content: space-between;
-            /* 三個按鈕左右分開 */
-            align-items: center;
-            gap: 0;
-            /* 移除多餘間距，讓 space-between 生效 */
-            flex-wrap: nowrap;
-            /* 不換行 */
-
-            .y_btn {
-                flex: 1;
-                /* 平均分配寬度 */
-                max-width: 32%;
-                /* 三個剛好一排 */
-                text-align: center;
-            }
-        }
-
-        .latest_products {
-            max-width: 100%;
-
-            .y_newproducts {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 16px;
-                max-width: 100%;
-                box-sizing: border-box;
-
-            }
-
-            .info-card {
-                max-width: 360px;
-                width: 100%;
-                box-sizing: border-box;
-
-                img {
-                    width: 100%;
-                    height: 180px;
-                    /* 桌機版固定高度 */
-                    object-fit: cover;
-                    display: block;
-                }
-
-                .card-content {
-                    padding: 10px;
-
-                    .title {
-                        font-size: 16px;
-                        margin-bottom: 10px;
-                        word-break: break-word;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                    }
-
-                    .price {
-                        font-size: 18px;
-                    }
-                }
-            }
-        }
-
-        .past_transactions {
-            margin: 30px 0 80px;
-
-            .transaction {
-                grid-template-columns: 1fr;
-                gap: 14px;
-                padding: 14px;
-
-                p {
-                    font-size: 15px;
-                }
-
-                .rating_bar {
-                    justify-self: start;
-
-                    span {
-                        font-size: 0.9rem;
-                    }
-                }
-            }
-        }
-    }
-}
+// /* 小平板版 431px ~ 640px */
+// @media (min-width: 431px) and (max-width: 640px) {
+//     .y_Reviewpage {
+//         flex-direction: column;
+//         padding: 80px 20px 30px;
+//         gap: 24px;
+
+//         .y_layout {
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             gap: 0;
+//         }
+
+//         .y_main {
+//             width: 100%;
+//             padding: 0 12px;
+//             gap: 20px;
+//         }
+
+//         .y_seller {
+//             flex-direction: column;
+//             align-items: flex-start;
+//             gap: 24px;
+//             padding-top: 40px;
+
+//             &__stats {
+//                 margin-right: 0;
+//             }
+
+//             &__actions {
+//                 flex-direction: row;
+//                 gap: 16px;
+//             }
+//         }
+
+//         .y_categories {
+//             flex-wrap: wrap;
+//             justify-content: center;
+//             gap: 12px;
+//             margin: 24px 0;
+
+//             .y_btn {
+//                 min-width: 100px;
+//                 font-size: 15px;
+//                 padding: 10px 14px;
+//             }
+//         }
+
+//         .latest_products {
+//             .y_newproducts {
+//                 display: grid;
+//                 grid-template-columns: repeat(2, 1fr);
+//                 gap: 12px;
+//                 padding: 0 12px;
+//             }
+
+//             .info-card img {
+//                 height: 180px;
+//             }
+
+//             .card-content {
+//                 padding: 8px;
+
+//                 .title {
+//                     font-size: 15px;
+//                 }
+
+//                 .price {
+//                     font-size: 16px;
+//                 }
+//             }
+//         }
+
+//         .past_transactions {
+//             margin: 24px 0 60px;
+
+//             .transaction {
+//                 grid-template-columns: 1fr;
+//                 gap: 10px;
+//                 padding: 12px;
+
+//                 .rating_bar {
+//                     justify-self: start;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// // 平板版
+// @media (min-width: 641px) and (max-width: 1024px) {
+//     .y_Reviewpage {
+//         justify-content: flex-start; // ✅ 不要置中
+//         padding: 80px 20px 30px;
+
+//         .y_layout {
+//             width: 100%;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             gap: 0;
+
+//         }
+
+//         .y_main {
+//             width: 100%;
+//             max-width: 100%;
+//             padding: 0 16px; // ✅ 加點左右內距
+//             box-sizing: border-box;
+//         }
+
+//         .y_seller {
+//             flex-direction: column;
+//             align-items: stretch;
+//             gap: 24px;
+//             padding-top: 60px;
+
+//             &__profile {
+//                 flex-direction: row;
+//                 align-items: center;
+//                 gap: 16px;
+
+//                 .y_seller__avatar {
+//                     width: 100px;
+//                     height: 100px;
+//                 }
+
+//                 .y_seller__name {
+//                     font-size: 15px;
+//                 }
+//             }
+
+//             &__stats {
+//                 margin-right: 0;
+//                 grid-template-columns: 1fr;
+//                 grid-template-areas:
+//                     "rating"
+//                     "desc"
+//                     "tags";
+
+//                 .y_seller__rating {
+//                     flex-wrap: wrap;
+//                     gap: 8px;
+
+//                     .y_seller__score {
+//                         font-size: 18px;
+//                     }
+
+//                     .y_seller__location,
+//                     .y_seller__count {
+//                         font-size: 13px;
+//                     }
+//                 }
+
+//                 .y_seller__desc {
+//                     font-size: 13px;
+//                 }
+
+//                 .y_seller__tags {
+//                     flex-wrap: wrap;
+//                     gap: 8px;
+
+//                     img {
+//                         height: 32px;
+//                     }
+//                 }
+//             }
+
+//             &__actions {
+//                 flex-direction: row;
+//                 justify-content: flex-start;
+
+//                 .btn {
+//                     width: auto;
+//                     font-size: 14px;
+//                     padding: 8px 12px;
+//                 }
+//             }
+//         }
+
+//         .y_categories {
+//             flex-wrap: wrap;
+//             gap: 12px;
+//             justify-content: center;
+
+//             .y_btn {
+//                 margin: 0;
+//                 min-width: 120px;
+//                 font-size: 15px;
+//                 padding: 12px 8px;
+//             }
+//         }
+
+//         .latest_products {
+//             .y_newproducts {
+//                 display: grid;
+//                 grid-template-columns: repeat(3, 1fr);
+//                 gap: 16px;
+//                 padding: 0 12px;
+//             }
+
+//             .info-card {
+//                 width: 100%;
+//                 box-sizing: border-box;
+
+//                 img {
+//                     display: block; // ✅ 消除 inline 空隙
+//                     width: 100%;
+//                     height: 160px;
+//                     object-fit: cover;
+//                     border-top-left-radius: 12px; // ✅ 跟卡片一致
+//                     border-top-right-radius: 12px;
+//                     display: block;
+//                 }
+
+//                 .card-content {
+//                     padding: 10px;
+
+//                     .title {
+//                         font-size: 15px;
+//                         margin-bottom: 12px;
+//                     }
+
+//                     .price {
+//                         font-size: 17px;
+//                     }
+//                 }
+//             }
+//         }
+
+//         .past_transactions {
+//             .transaction {
+//                 grid-template-columns: 1fr;
+//                 grid-template-rows: auto auto;
+//                 gap: 12px;
+
+//                 p {
+//                     grid-column: 1 / -1;
+//                     font-size: 14px;
+//                 }
+
+//                 .rating_bar {
+//                     grid-column: 1 / -1;
+//                     justify-self: start;
+
+//                     span {
+//                         font-size: 0.8rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

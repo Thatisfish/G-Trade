@@ -687,11 +687,50 @@
 				width: 90%;
 			}
 		}
+	}
 
+	@media(max-width:640px) {
+		.qa {
+			.qa_item {
+				padding: 30px clamp(10px, 5vw, 30px) 20px;
+
+				.qa_answer {
+					margin: 30px 0;
+				}
+			}
+		}
 	}
 
 	@media(max-width:520px) {
 		margin: 0 0 80px;
+
+		.qa {
+			.qa_item {
+				.qa_header {
+					gap: clamp(10px, 3vw, 20px);
+					margin-bottom: 6px;
+					padding: 0;
+					display: flex;
+					flex-wrap: wrap; // 允許換行
+
+					.qa_number,
+					.qa_user {
+						white-space: nowrap; // 保持在一行，不要中途斷
+					}
+
+					.qa_time {
+						white-space: nowrap; // 日期整段不拆開
+						// flex-basis: 100%; // 遇到不夠空間時自動掉到下一行
+					}
+				}
+
+				.qa_answer {
+					margin: 20px 0;
+					display: flex;
+					flex-direction: column;
+				}
+			}
+		}
 	}
 
 	.top_decorate2 {
@@ -724,7 +763,6 @@
 	.recommend {
 		// margin-top: 70px;
 		border: 2px solid #9D9D9D;
-		height: 650px;
 		width: 90%;
 		padding: 50px;
 		display: flex;
@@ -747,6 +785,116 @@
 
 			.btn {
 				width: 200px;
+			}
+		}
+
+		.abc {
+			display: flex;
+
+			.o1 {
+				flex: 1;
+				height: 400px;
+				margin: 0 20px 16px;
+				// aspect-ratio: 1/2;
+
+				.o2 {
+					display: flex;
+					flex-direction: column;
+					gap: 20px;
+					padding: 8px;
+					// height: 450px;
+
+					.cain {
+						width: 100%;
+						max-width: 304px;
+
+						.userInfo {
+							display: flex;
+							align-items: center;
+							flex: 1;
+							margin-bottom: 8px;
+
+							.userImg {
+								margin-right: 8px;
+								width: 40px;
+								height: 40px;
+								border-radius: 50%;
+							}
+
+							p {
+								display: flex;
+							}
+
+							.userName {
+								font-size: 16px;
+							}
+
+							.upDate {
+								font-size: 14px;
+							}
+						}
+
+						.commodityInfo {
+							overflow: hidden;
+							display: block;
+
+							.comImg {
+								margin-bottom: 8px;
+								// max-width: 280px;
+								width: 100%;
+
+								img {
+									display: block;
+									width: 100%;
+									height: auto;
+									border-radius: 4px;
+								}
+							}
+
+							.comTitle {
+								font-size: 16px;
+							}
+						}
+					}
+
+					.comHeart {
+						.btn-fav {
+							width: 30px;
+							height: 43px;
+							background: none;
+							border: none;
+							cursor: pointer;
+							display: flex;
+							align-items: center;
+							justify-content: start;
+							transition: transform 0.2s;
+							padding: 0;
+
+							.heart {
+								font-size: 20px;
+								color: #aaa;
+								transition: color 0.3s;
+
+
+								// 這裡用字元 ❤️ 或 icon
+								&::before {
+									content: "♥";
+
+								}
+							}
+
+							&:hover {
+								transform: scale(1.1);
+							}
+
+							&.active {
+								.heart {
+									color: #e63026; // 收藏後變紅
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 
