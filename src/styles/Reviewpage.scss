@@ -1,7 +1,6 @@
 .y_Reviewpage {
     font-family: 'Noto Sans TC', sans-serif;
     color: #333;
-    padding-left: 10.1px;
 
     /* 限制整體寬度並置中 */
     max-width: 1200px;
@@ -13,7 +12,6 @@
 
     .y_layout {
         display: flex;
-        align-items: flex-start;
         width: 100%;
         gap: 90px; // sidebar 和右側內容的間距
     }
@@ -26,12 +24,13 @@
 
     /* 右側內容撐滿剩下空間 */
     .y_main {
-        // flex: 1;
         max-width: 840px;
         display: flex;
         flex-direction: column;
         gap: 24px;
-        width: 90%;
+        width: auto;
+        // padding-right: 20px;
+        gap: 24px;
     }
 
     /* 賣家資訊 */
@@ -40,7 +39,7 @@
         align-items: center;
         justify-content: space-between;
         padding-top: 80px;
-        padding-right: 10px;
+
 
         .y_seller_ps {
             display: flex;
@@ -221,13 +220,22 @@
 
         .y_newproducts {
             display: flex;
-            flex-wrap: wrap;
+            grid-template-columns: repeat(3, 1fr); // >=1025px 固定三欄
             gap: 16px;
+
+            @media (max-width: 1024px) {
+                grid-template-columns: repeat(2, 1fr); // 平板兩欄
+            }
+
+            @media (max-width: 768px) {
+                grid-template-columns: 1fr; // 手機一欄
+            }
         }
 
         /* 卡片本身樣式 */
         .info-card {
-            width: 260px;
+            width: 100%;
+            max-width: none;
             height: 350px;
             margin: 0 auto;
             border-radius: 20px;
@@ -391,7 +399,7 @@
 
 }
 
-/* 手機版 320px ~ 430px RWD */
+/* 手機版 1024px RWD */
 @media (max-width: 1024px) {
     .y_Reviewpage {
         flex-direction: column;
@@ -409,29 +417,39 @@
         /* 右側內容全寬 */
         .y_main {
             width: 100%;
-            gap: 16px;
+            gap: 10px;
+        }
+        /* 賣家資訊區塊垂直排列 */
+        .y_seller {
+             @media (max-width:500px) {
+                    flex-direction: column;
+                }
+            .y_seller_ps{
+                align-items: flex-start;
+                gap: 20px;
+                padding-top: 20px;
+                 @media (max-width:500px) {
+                    flex-direction: column;
+                }
+                
+               
+
+                .y_seller__stats {
+                    margin-right: 0;
+                }
+    
+                .y_seller__actions {
+                    flex-direction: row;
+                    gap: 12px;
+                }
+
+            }
         }
 
-        /* 賣家資訊區塊垂直排列 */
-        // .y_seller {
-        //     flex-direction: column;
-        //     align-items: flex-start;
-        //     gap: 20px;
-        //     padding-top: 20px;
 
-        //     &__stats {
-        //         margin-right: 0;
-        //     }
-
-        //     &__actions {
-        //         flex-direction: row;
-        //         gap: 12px;
-        //     }
-        // }
 
         /* 分類按鈕改成可換行 */
         .y_categories {
-            flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
             margin: 20px 0;
@@ -449,8 +467,7 @@
         .latest_products {
             .y_newproducts {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr); // 一排兩個
-                gap: 10px;
+                gap: 20px;
                 padding: 0 8px;
             }
 
