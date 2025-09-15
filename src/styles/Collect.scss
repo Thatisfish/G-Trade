@@ -1,7 +1,7 @@
 .y_Collect {
   display: flex;
   justify-content: center;
-  padding-top: 80px;
+  padding: 80px 50px 30px;
   gap: 100px;
 
   // 麵包屑
@@ -170,8 +170,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0;
-
-
+    padding: 80px 20px 30px;
 
   }
 

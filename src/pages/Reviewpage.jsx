@@ -13,8 +13,8 @@ import SWP2 from '../images/Card_Image/switch_pro2.webp'
 import SW2 from '../images/Card_Image/switch2.webp'
 import SWB from '../images/Card_Image/item_switch01.avif'
 import PS5 from '../images/Card_Image/ps5_pro.webp'
-import item02 from '../images/Alltype_PS/Alltype_PS_item03.avif'
 import item12 from '../images/Alltype_Xbox/Alltype_Xbox_item02.avif'
+import HOL from'../images/Card_Image/Hollow.webp'
 
 export default function Reviewpage() {
   const [filterCategory, setFilterCategory] = useState("遊戲");
@@ -95,13 +95,12 @@ export default function Reviewpage() {
     },
     {
       id: 9,
-      tag: '全新上架',
+      image: HOL,
       category: '遊戲',
-      image: item02,
-      title: "《Demon's Souls》重製版",
-      seller: 'Ds2CE**250626',
-      priceNow: '1100',
-      size: 'medium'
+      title: '空洞騎士：絲綢之歌 (Hollow Knight: Silksong)',
+      seller: 'paly**56',
+      priceNow: '300',
+      size: 'small'
     },
 
   ]
