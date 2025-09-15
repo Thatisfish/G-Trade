@@ -1,5 +1,5 @@
 .c_realMain {
-    padding: 80px 0 30px;
+    padding: 80px 10px 30px;
     display: flex;
     justify-content: center;
     gap: 100px;
@@ -13,6 +13,7 @@
 
     .c_realOutside {
         margin-top: 80px;
+        max-width: 840px;
 
         @media (max-width:1024px) {
             margin-top: 20px;
@@ -22,13 +23,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 750px;
-            width: 80vw;
+            flex: 1;
             border-radius: 20px;
             border: solid 1px #DEDADA;
             background-color: #FCFAFF;
             padding: 20px 0;
-
 
             .c_verifyBox {
                 display: grid;
