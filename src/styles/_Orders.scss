@@ -2,7 +2,7 @@
 .J_content {
 	display: flex;
 	justify-content: center;
-	padding-top: 80px;
+	padding: 80px 50px 30px;
 	gap: 100px;
 
 	// 麵包屑
@@ -703,18 +703,15 @@
 				align-items: flex-start;
 
 				.J_order-actions {
-					margin-left: 0;
+					margin-left: auto;
 					display: flex;
-					gap: 4px;
-					flex-direction: column;
-					align-items: flex-start;
-					width: 100%;
-					margin-left: 0;
+					gap: clamp(4px, 1.5vw, 25px);;
+					
 
 					.J_RB1 {
 						background: #DE1A10;
 						color: white;
-						width: 120px;
+						width: 100px;
 						font-size: 14px;
 
 						border-color: #A12424;
@@ -733,7 +730,6 @@
 
 						.J_Checkout {
 							width: 85%;
-
 						}
 
 					}
@@ -741,7 +737,7 @@
 					.J_RB2 {
 						background: #DE1A10;
 						color: white;
-						width: 120px;
+						width: 100px;
 						font-size: 14px;
 
 						border-color: #A12424;
