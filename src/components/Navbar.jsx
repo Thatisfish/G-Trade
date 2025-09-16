@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import '../styles/Navbar.scss';
-import Logo from '../images/logo.png';
+import Logo from '../images/logo_white.avif';
 import BellPopover from './Navbar/BellPopover'
 import Cart from '../images/icon/icon-Shopping_cart_gray.svg'
 import Home from '../images/icon/icon-home_gray.svg'

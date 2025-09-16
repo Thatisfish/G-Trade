@@ -36,9 +36,13 @@
 
 /* 獨立 logo 區 */
 .logo {
+	display: flex;
+	align-items: center;
+	height: 70px;
+
 	img {
-		padding-top: 20px;
-		height: 100px;
+
+		height: 50px;
 	}
 }
 
