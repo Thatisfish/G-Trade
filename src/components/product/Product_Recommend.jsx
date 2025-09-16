@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import Card from '../Card'
 import DKB from '../../images/Card_Image/DKB.webp'
 import DS2CE from '../../images/Card_Image/DS2CE.webp'
 import ps5_pro from '../../images/Card_Image/ps5_pro.webp'
 import SWP2 from '../../images/Card_Image/switch_pro2.webp'
-import UImg from '../../images/ProductPage/user.jpg'
+import G1 from '../../images/ProductPage/G1.avif'
+import S8 from '../../images/ProductPage/S8.avif'
+import SP from '../../images/ProductPage/SP.avif'
+import WB from '../../images/ProductPage/WB.avif'
 
 const PrCard = ({ userImg, userName, upDate, commodityImage, commodityTitle, commodityPrice }) => {
 	const [isFav, setIsFav] = useState(false);
@@ -14,7 +18,7 @@ const PrCard = ({ userImg, userName, upDate, commodityImage, commodityTitle, com
 			<div className="o1">
 				<div className="o2">
 					<div className="cain">
-						<a href="#" className="userInfo">
+						<Link to="/Reviewpage" className="userInfo">
 							<div>
 								<img src={userImg} alt="" className="userImg" />
 							</div>
@@ -22,7 +26,7 @@ const PrCard = ({ userImg, userName, upDate, commodityImage, commodityTitle, com
 								<p className="userName">{userName}</p>
 								<p className="upDate">{upDate}</p>
 							</div>
-						</a>
+						</Link>
 
 						<a href="" className="commodityInfo">
 							<div className="comImg">
@@ -53,7 +57,7 @@ const Inforcard = () => {
 	const arrCardinfor = [
 		{
 			id: 1,
-			userImg: UImg,
+			userImg: G1,
 			userName: 'paly**56',
 			upDate: '3天前',
 			commodityImage: DKB,
@@ -62,8 +66,8 @@ const Inforcard = () => {
 		},
 		{
 			id: 2,
-			userImg: UImg,
-			userName: 'Ds2CE**250626',
+			userImg: S8,
+			userName: 'Ds2CE**6',
 			upDate: '3天前',
 			commodityImage: DS2CE,
 			commodityTitle: '死亡擱淺典藏版',
@@ -71,7 +75,7 @@ const Inforcard = () => {
 		},
 		{
 			id: 3,
-			userImg: UImg,
+			userImg: SP,
 			userName: 'Ssp**5',
 			upDate: '3天前',
 			commodityImage: ps5_pro,
@@ -80,7 +84,7 @@ const Inforcard = () => {
 		},
 		{
 			id: 4,
-			userImg: UImg,
+			userImg: WB,
 			userName: 'fun31**56',
 			upDate: '3天前',
 			commodityImage: SWP2,
@@ -111,7 +115,6 @@ const ProductRecommend = () => {
 		<div className='recommend'>
 			<p className='recommend_title'>你可能有興趣的商品</p>
 			<Inforcard />
-			{/* <PrCard /> */}
 			<div className='recommend_btn'>
 				<button className='btn'>更多商品</button>
 			</div>
