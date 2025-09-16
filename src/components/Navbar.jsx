@@ -51,7 +51,7 @@ export default function Navbar({ theme, onOpenLogin }) {
 			<header id="topbar">
 				<nav className={`navigation ${theme} ${scrolled ? 'scrolled' : ''}`}>
 					<Link to="/">
-						<div className="logo">
+						<div className="logo shadow-img">
 							<img src={Logo} alt="logo" />
 						</div>
 					</Link>
