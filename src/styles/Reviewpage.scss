@@ -1,34 +1,28 @@
 .y_Reviewpage {
     font-family: 'Noto Sans TC', sans-serif;
     color: #333;
-    /* 限制整體寬度並置中 */
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
     padding-top: 80px;
-    gap: 100px;
+    // display: flex;
+    // justify-content: center;
+    // gap: 100px;
 
     .y_layout {
-        display: flex;
+        // display: flex;
         width: 100%;
-        gap: 90px; // sidebar 和右側內容的間距
+        // gap: 90px; // sidebar 和右側內容的間距
     }
 
-    /* Sidebar 固定寬度 */
-    .y_layout>.Sidebar {
-        width: 240px;
-        flex-shrink: 0;
-    }
 
     .y_realOutside {
         margin-top: 80px;
-        max-width: 840px;
+        // max-width: 840px;
        
 
         /* 右側內容撐滿剩下空間 */
         .y_main {
-            max-width: 840px;
+            // max-width: 840px;
             display: flex;
             flex-direction: column;
             gap: 24px;
@@ -233,8 +227,8 @@
 
             .y_newproducts {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr); // >=1025px 固定三欄
-                gap: 16px;
+                grid-template-columns: repeat(4, 1fr); // >=1025px 固定三欄
+                gap: 10px;
 
                 @media (max-width: 1024px) {
                     grid-template-columns: repeat(2, 1fr); // 平板兩欄
