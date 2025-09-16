@@ -38,7 +38,8 @@
 .logo {
 	display: flex;
 	align-items: center;
-	height: 70px;
+	height: 66px;
+	margin-bottom: 7px;
 
 	img {
 		height: 50px;
@@ -93,7 +94,7 @@
 			bottom: 5px;
 			width: 80%;
 			height: 8px;
-			background: rgba(0, 0, 0, 0.25);
+			background: rgba(0, 0, 0, 0.3);
 			filter: blur(6px);
 			border-radius: 50%;
 			z-index: 998;
