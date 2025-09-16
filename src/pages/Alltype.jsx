@@ -12,6 +12,7 @@ import banner02 from '../images/Alltype_SW/Alltype_banner02.avif'
 import banner03 from '../images/Alltype_SW/Alltype_banner03.avif'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import Paginations from "../components/Pagination.jsx"
 
 // Import Swiper styles
 import 'swiper/css';
@@ -113,12 +114,33 @@ const arrCardinfor = [
 		priceNow: '800',
 		size: 'small'
 	},
+	{
+		id: 10,
+		image: DKB,
+		category: '遊戲',
+		title: '咚奇剛蕉力全開+咚奇剛amiibo',
+		seller: 'paly**56',
+		priceNow: '800',
+		size: 'small'
+	},
+	{
+		id: 11,
+		image: DKB,
+		category: '遊戲',
+		title: '咚奇剛蕉力全開+咚奇剛amiibo',
+		seller: 'paly**56',
+		priceNow: '800',
+		size: 'small'
+	},
 ];
 
 const TABS = ['全部', '主機', '遊戲', '配件'];
 
 const Alltype = () => {
+	const [currentPage, setCurrentPage] = useState(1);
+	const ITEMS_PER_PAGE = 9;
 	const [active, setActive] = useState('全部');
+
 	const counts = useMemo(() => {
 		return arrCardinfor.reduce(
 			(acc, p) => {
@@ -136,6 +158,29 @@ const Alltype = () => {
 			? arrCardinfor
 			: arrCardinfor.filter((p) => p.category === active);
 	}, [active]);
+
+	// 計算總頁數
+	const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+
+	// 依照當前頁面切片顯示的商品
+	const currentItems = useMemo(() => {
+		const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+		const endIndex = startIndex + ITEMS_PER_PAGE;
+		return filtered.slice(startIndex, endIndex);
+	}, [filtered, currentPage]);
+
+	// 處理頁面變更的函數
+	const handlePageChange = (page) => {
+		setCurrentPage(page);
+		// 可選：滾動到商品列表頂部
+		document.querySelector('.B_item')?.scrollIntoView({ behavior: 'smooth' });
+	};
+
+	// 當切換分類時重置到第一頁
+	const handleCategoryChange = (tab) => {
+		setActive(tab);
+		setCurrentPage(1);
+	};
 
 	return (
 		<>
@@ -165,7 +210,6 @@ const Alltype = () => {
 						<SwiperSlide>
 							<img src={banner03} alt="" />
 						</SwiperSlide>
-
 					</Swiper>
 				</div>
 
@@ -174,7 +218,7 @@ const Alltype = () => {
 					<p className='B_name'>Switch</p>
 					<Link className='B_itemTitle' to="/Alltype_Xbox">Xbox</Link>
 				</div>
-				
+
 				<div className='B_category' role="tablist" aria-label="商品分類">
 					{TABS.map(tab => (
 						<button
@@ -183,7 +227,7 @@ const Alltype = () => {
 							type='button'
 							role="tab"
 							aria-selected={active === tab}
-							onClick={() => setActive(tab)}
+							onClick={() => handleCategoryChange(tab)}
 						>
 							{tab}({counts[tab]})
 						</button>
@@ -191,12 +235,19 @@ const Alltype = () => {
 				</div>
 
 				<div className='B_item'>
-					{filtered.map(item => (
+					{currentItems.map(item => (
 						<AllTypeCards key={item.id} {...item} />
 					))}
 				</div>
 
-				<div className='B_pages'>1 2 3 4 5 6</div>
+				{/* 分頁組件 */}
+				{totalPages > 1 && (
+					<Paginations
+						totalPages={totalPages}
+						onPageChange={handlePageChange}
+						currentPage={currentPage}
+					/>
+				)}
 			</div >
 		</>
 	)
