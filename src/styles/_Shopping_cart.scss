@@ -178,7 +178,24 @@
         padding: 8px 0;
         border-bottom: 1px solid #eee;
 
+        .J_product {
+            display: flex;
+            align-items: center;
+            gap: 12px;
 
+        }
+
+        @media (max-width:640px) {
+
+            .J_product {
+                flex-direction: column;
+                gap: 8px;
+
+                img {
+                    margin: 0 auto;
+                }
+            }
+        }
 
         img {
             width: 60px;
@@ -233,22 +250,18 @@
         .J_optionGroup {
             display: inline-flex;
             align-items: center;
-            gap: 50px;
+            gap: clamp(10px, 4vw, 50px);;
             margin-bottom: 15px;
             flex-wrap: wrap;
 
-            // 手機板、平板版讓運送選項一行一個小朋友
-            @media (max-width:640px) {
+            // 寬度小於等於1496後讓運送選項一行一個小朋友
+            @media (max-width:1496px) {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
             }
 
-            @media (max-width:1024px) {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
+            
 
             label {
                 display: flex;
@@ -281,16 +294,12 @@
         padding: 20px 0 10px;
         flex-wrap: wrap;
 
-        // 手機板、平板版讓付款選項一行一個小朋友
-        @media (max-width:640px) {
+        //寬度小於等於1496後讓付款選項一行一個小朋友
+        @media (max-width:1496px) {
             display: flex;
             flex-direction: column;
         }
 
-        @media (max-width:1024px) {
-            display: flex;
-            flex-direction: column;
-        }
 
         label {
 
@@ -349,6 +358,8 @@
         border-radius: 20px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
+
+
         p {
             display: flex;
             justify-content: space-between;
@@ -386,5 +397,29 @@
             }
 
         }
+
+        // 平板版結帳摘要
+        @media (max-width:1024px) {
+            width: 68%;
+
+            padding: 8px 20px 20px 20px;
+            // clamp(10px, 6vw, 100px)
+
+            p{
+                font-size: 16px;
+                margin: 12px clamp(0px, 4vw, 80px);
+                letter-spacing: clamp(0px, 1vw, 3px);;
+            }
+            .J_total{
+                font-size: 16px;
+            }
+
+            .J_checkoutBtn{
+                font-size: 14px;
+                   display: block;
+                   margin: 12px auto 0 auto;
+            }
+        }
+
     }
 }
