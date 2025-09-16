@@ -4,6 +4,10 @@
   padding: 80px 50px 30px;
   gap: 100px;
 
+  .c_phSidebar{
+    z-index: 3;
+  }
+
   // 麵包屑
   .y_breadcrumb {
     margin: 80px 0 20px;
@@ -48,7 +52,7 @@
 
     // 手機：1欄
     @media (max-width: 768px) {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
