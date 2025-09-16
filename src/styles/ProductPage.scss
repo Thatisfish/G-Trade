@@ -1,5 +1,5 @@
 .product {
-	padding: 130px 10% 70px;
+	padding: 130px 5% 70px;
 
 	@media(max-width:1024px) {
 		padding: 130px clamp(10px, 3%, 110px) 70px;
@@ -35,8 +35,8 @@
 
 	.product-page {
 		display: flex;
-		gap: 120px;
-		padding: 40px;
+		gap: clamp(10px, 5vw, 120px);
+		padding: 0 clamp(10px, 2.5vw, 40px) 60px;
 
 		.product-gallery {
 			display: flex;
@@ -94,7 +94,6 @@
 
 			.product-main {
 				border-bottom: 1px solid #5E5E5E;
-				height: 150px;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
@@ -172,7 +171,8 @@
 				.btn-cart,
 				.btn-buy {
 					font-size: 14px;
-					width: 200px;
+					flex: 1;
+					max-width: 200px;
 					padding: 5px;
 
 				}
