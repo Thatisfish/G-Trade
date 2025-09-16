@@ -1,9 +1,8 @@
 .product {
-	// padding: 130px clamp(50px, 10%, 180px);
-	padding: 130px 10%;
+	padding: 130px 10% 70px;
 
 	@media(max-width:1024px) {
-		padding: 130px clamp(10px, 3%, 110px);
+		padding: 130px clamp(10px, 3%, 110px) 70px;
 	}
 
 	.breadcrumb {
@@ -210,8 +209,6 @@
 		}
 	}
 }
-
-
 
 /*------------------------ 賣家資訊 ------------------------*/
 .product__seller {
@@ -702,7 +699,7 @@
 	}
 
 	@media(max-width:520px) {
-		margin: 0 0 80px;
+		margin: 0 0 0;
 
 		.qa {
 			.qa_item {
@@ -756,30 +753,34 @@
 
 /*------------------------ 你可能有興趣的商品 ------------------------*/
 .product__recommend {
-	height: 700px;
 	display: flex;
 	justify-content: center;
+	margin-top: 30px;
 
 	.recommend {
 		border: 2px solid #9D9D9D;
 		width: 90%;
-		padding: 50px;
+		padding: 40px clamp(10px, 3vw, 50px);
+
 		display: flex;
 		flex-direction: column;
+		gap: clamp(16px, 2vw, 24px);
+		/* 標題、卡片區、按鈕之間的距離 */
 		background-color: #fff;
 		box-shadow: 10px 10px 11.2px rgba(0, 0, 0, 0.25);
 
 		&_title {
 			font-size: 28px;
 			font-weight: 500;
-			margin-bottom: 30px;
+			// margin-bottom: 30px;
+			margin: 0;
 		}
 
 		&_btn {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			margin: 40px 0;
+			margin: 0;
 
 			.btn {
 				width: 200px;
@@ -790,26 +791,29 @@
 			display: flex;
 			flex-wrap: nowrap; // 不允許換行，強制保持同一行
 			gap: 20px; // 統一間距
+			align-items: stretch;
 
 			.abc {
-				flex: 1; // 每個卡片等比例分配空間
+				flex: 1 1 0; // 每個卡片等比例分配空間
 				min-width: 0; // 移除最小寬度限制，允許縮小
 				// 移除最大寬度限制
 
 				.o1 {
-					height: 400px;
+					min-height: 0;
+					display: flex;
+					flex-direction: column;
 
 					.o2 {
+						flex: 1 1 auto;
 						display: flex;
 						flex-direction: column;
-						// justify-content: space-between;
 						gap: 20px;
 						padding: 8px;
-						height: 100%;
+						min-height: 0;
 
 						.cain {
 							width: 100%;
-							// flex: 1;
+							flex: 0 1 auto;
 
 							.userInfo {
 								display: flex;
@@ -934,21 +938,26 @@
 }
 
 // RWD 響應式設計 - 只在極小螢幕時調整
-@media (max-width: 480px) {
-	.product__recommend .recommend {
-		padding: 15px;
+@media (max-width: 640px) {
+	.product__recommend {
+		.recommend {
+			padding: 20px clamp(10px, 3vw, 50px);
 
-		&_title {
-			font-size: clamp(20px, 4vw, 28px);
-			margin-bottom: 20px;
-		}
+			.recommend_title {
+				font-size: 22px;
+			}
 
-		.containerPrCard {
-			gap: 10px; // 減少間距以節省空間
-		}
+			.containerPrCard {
+				display: grid; // 改用 grid
+				grid-template-columns: repeat(2, 1fr); // 兩欄
+				grid-template-rows: auto; // 高度自動
+				gap: 12px; // 卡片間距（可依需求調整）
 
-		&_btn .btn {
-			width: clamp(150px, 40vw, 200px);
+				.abc {
+					flex: none; // 取消 flex 設定
+					min-width: 0;
+				}
+			}
 		}
 	}
 }
