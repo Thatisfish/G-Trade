@@ -235,6 +235,7 @@
             align-items: center;
             gap: 50px;
             margin-bottom: 15px;
+            flex-wrap: wrap;
 
             // 手機板、平板版讓運送選項一行一個小朋友
             @media (max-width:640px) {
@@ -278,6 +279,7 @@
         flex-direction: row;
         gap: 50px;
         padding: 20px 0 10px;
+        flex-wrap: wrap;
 
         // 手機板、平板版讓付款選項一行一個小朋友
         @media (max-width:640px) {

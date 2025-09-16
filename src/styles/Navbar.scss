@@ -36,11 +36,16 @@
 
 /* 獨立 logo 區 */
 .logo {
+	display: flex;
+	align-items: center;
+	// height: 66px;
+	margin-bottom: 7px;
+
 	img {
-		padding-top: 20px;
-		height: 100px;
+		height: 66px;
 	}
 }
+
 
 /* =========================
    Navigation (light / red)
@@ -81,7 +86,6 @@
 
 	.shadow-img {
 		position: relative;
-		display: inline-block;
 
 		&::after {
 			content: '';
@@ -90,7 +94,7 @@
 			bottom: 5px;
 			width: 80%;
 			height: 8px;
-			background: rgba(0, 0, 0, 0.25);
+			background: rgba(0, 0, 0, 0.3);
 			filter: blur(6px);
 			border-radius: 50%;
 			z-index: 998;

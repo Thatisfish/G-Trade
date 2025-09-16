@@ -8,20 +8,20 @@ export default function PaymentOptions() {
   return (
     <div className="J_paymentOptions">
       <label>
-        <input type="checkbox" name="paym  ent" value="credit" />
+        <input type="radio" name="paym  ent" value="credit" />
+        信用卡
         <img src={visa} alt="visa" />
         <img src={visa2} alt="master" />
         <img src={JCB} alt="jcb" />
-        信用卡
       </label>
 
       <label>
-        <input type="checkbox" name="payment" value="atm" />
+        <input type="radio" name="payment" value="atm" />
         ATM 轉帳
       </label>
 
       <label>
-        <input type="checkbox" name="payment" value="cvs" />
+        <input type="radio" name="payment" value="cvs" />
         超商貨到付款
       </label>
     </div>

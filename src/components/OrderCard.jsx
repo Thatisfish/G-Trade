@@ -4,7 +4,7 @@ import React from 'react'
 export default function OrderCard({ id, shop, title, price, date, status, img }) {
   return (
     <div className="J_ordercard">
-      <div>
+      <div className="J_ordercardLeft">
         <h2>{shop}</h2>
         <img src={img} alt={title} />
       </div>

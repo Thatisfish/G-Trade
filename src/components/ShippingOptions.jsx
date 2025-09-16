@@ -11,7 +11,7 @@ export default function ShippingOptions() {
       <h3>超商門市</h3>
       <div className="J_optionGroup">
         <label>
-          <input type="checkbox" name="shipping" value="7-11" />
+          <input type="radio" name="shipping" value="7-11" />
           <img src={A711} alt="" />
           <div className="J_storeInf">
             <p className="J_price">$60</p>
@@ -20,7 +20,7 @@ export default function ShippingOptions() {
           </div>
         </label>
         <label>
-          <input type="checkbox" name="shipping" value="familymart" />
+          <input type="radio" name="shipping" value="familymart" />
           <img src={family} alt="" />
           <div className="J_storeInf">
             <p className="J_price">$60</p>
@@ -33,15 +33,15 @@ export default function ShippingOptions() {
       <h3>賣家自行提供</h3>
       <div className="J_optionGroup">
         <label>
-          <input type="checkbox" name="shipping" value="post" />
+          <input type="radio" name="shipping" value="post" />
           <img src={post} alt="" />郵寄掛號 <span className="J_price">$80</span>
         </label>
         <label>
-          <input type="checkbox" name="shipping" value="home" />
+          <input type="radio" name="shipping" value="home" />
           <img src={blackcat} alt="" />宅配/快遞寄送 <span className="J_price">$80</span>
         </label>
         <label>
-          <input type="checkbox" name="shipping" value="face" />
+          <input type="radio" name="shipping" value="face" />
           面交
         </label>
       </div>

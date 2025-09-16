@@ -2,7 +2,8 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import '../styles/Navbar.scss';
-import Logo from '../images/logo.png';
+import Logo_w from '../images/logo_white.avif';
+import Logo_r from '../images/logo_red.avif';
 import BellPopover from './Navbar/BellPopover'
 import Cart from '../images/icon/icon-Shopping_cart_gray.svg'
 import Home from '../images/icon/icon-home_gray.svg'
@@ -51,8 +52,11 @@ export default function Navbar({ theme, onOpenLogin }) {
 			<header id="topbar">
 				<nav className={`navigation ${theme} ${scrolled ? 'scrolled' : ''}`}>
 					<Link to="/">
-						<div className="logo">
-							<img src={Logo} alt="logo" />
+						<div className="logo shadow-img">
+							<img
+								src={theme === 'light' ? Logo_w : Logo_r}
+								alt="logo"
+							/>
 						</div>
 					</Link>
 
@@ -94,7 +98,10 @@ export default function Navbar({ theme, onOpenLogin }) {
 
 					<div className="icon-logo mobile-icon">
 						<Link to="/#">
-							<img src={Logo} alt="" />
+							<img
+								src={theme === 'light' ? Logo_r : Logo_w}
+								alt="logo"
+							/>
 						</Link>
 					</div>
 					<div className="mobile-nav__search">
