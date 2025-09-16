@@ -77,7 +77,7 @@ const Orders = () => {
         </div>
 
         {/* Review */}
-        <ReviewCard />
+        {/* <ReviewCard /> */}
 
         {/* Pagination */}
         <div className="J_pagination">« ‹ 1 2 3 4 › »</div>

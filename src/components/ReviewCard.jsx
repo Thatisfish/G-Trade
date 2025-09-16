@@ -1,7 +1,10 @@
 import React from 'react'
 import sellerImg from '../images/orderImg2.webp'
 
-export default function ReviewCard() {
+export default function ReviewCard({ onSubmit }) {
+  const handleSubmit = () => {
+    if (onSubmit) onSubmit();
+  };
   return (
     // 整個元件
     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -47,7 +50,7 @@ export default function ReviewCard() {
         </div>
 
         <div className="J_reviweBtn">
-          <button>確定送出</button>
+          <button onClick={handleSubmit}>確定送出</button>
         </div>
 
       </div>

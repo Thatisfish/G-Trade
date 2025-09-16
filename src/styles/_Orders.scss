@@ -1,3 +1,59 @@
+// ReviewCard 浮現動畫
+.J_review-float {
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(-12px) scale(0.98);
+	transition: opacity 0.18s, transform 0.18s cubic-bezier(.4,0,.2,1);
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	z-index: 10;
+}
+.J_review-float.is-open {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0) scale(1);
+}
+// Modal 浮現動畫仿 bell 通知
+.J_modal-overlay {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.18s ease;
+	position: fixed;
+	top: 0; left: 0; right: 0; bottom: 0;
+	background: rgba(0,0,0,0.4);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+}
+.J_modal-overlay.is-open {
+	opacity: 1;
+	pointer-events: auto;
+}
+.J_modal-content {
+	background: #fff;
+	border-radius: 12px;
+	padding: 32px 24px;
+	min-width: 320px;
+	max-width: 90vw;
+	max-height: 90vh;
+	overflow-y: auto;
+	position: relative;
+	transform: translateY(-16px) scale(0.98);
+	transition: transform 0.18s cubic-bezier(.4,0,.2,1);
+}
+.J_modal-overlay.is-open .J_modal-content {
+	transform: translateY(0) scale(1);
+}
+.J_triangle.is-open {
+	transform: rotate(90deg);
+	transition: transform 0.2s;
+}
+.J_triangle {
+	transition: transform 0.2s;
+}
 /* Content */
 .J_content {
 	display: flex;
@@ -72,8 +128,10 @@
 
 		.J_detailsflex2 {
 			display: flex;
-			justify-content: space-between;
-			align-items: center;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 8px;
+
 
 			.J_order-actions {
 				margin-left: auto;
@@ -172,6 +230,7 @@
 	border: 1px solid #C8C8C8;
 	background: #FFF;
 	padding: 33px 53px;
+	border-radius: 20px;
 
 	.J_reviewSection {
 		display: flex;
@@ -279,6 +338,34 @@
 		font-size: 16px;
 		cursor: pointer;
 	}
+
+	.J_modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.J_modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 24px;
+  min-width: 320px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+.J_modal-close {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
 
 }
 
@@ -459,8 +546,8 @@
 		display: flex;
 		flex-direction: column;
 
-		max-width: 640px;
-		width: 100%;
+		
+
 
 
 		border: 1px solid #C8C8C8;
@@ -792,9 +879,7 @@
 		flex-direction: column;
 		align-items: center;
 
-		max-width: 640px;
-		width: 100%;
-
+		
 
 		border: 1px solid #C8C8C8;
 		background: #FFF;
