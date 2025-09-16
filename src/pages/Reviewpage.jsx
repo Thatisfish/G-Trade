@@ -15,6 +15,9 @@ import SWB from '../images/Card_Image/item_switch01.avif'
 import PS5 from '../images/Card_Image/ps5_pro.webp'
 import item12 from '../images/Alltype_Xbox/Alltype_Xbox_item02.avif'
 import HOL from '../images/Card_Image/Hollow.webp'
+import AM from '../images/Card_Image/Animal_Crossing_New_Horizons.webp'
+import GB from '../images/Card_Image/photo-1649341566042-8b3f5103c3f3.avif'
+import NES from '../images/Card_Image/Nintendo-Famicom-Console-Set-FL.webp'
 
 export default function Reviewpage() {
   const [filterCategory, setFilterCategory] = useState("遊戲");
@@ -102,6 +105,34 @@ export default function Reviewpage() {
       priceNow: '300',
       size: 'small'
     },
+    {
+      id: 10,
+      image: AM,
+      category: '遊戲',
+      title: 'NS 集合啦！動物森友會 中文版',
+      seller: 'paly**56',
+      priceNow: '800',
+      size: 'small'
+    },
+     {
+      id: 11,
+      image: GB,
+      category: '配件',
+      title: ' 任天堂 Game Boy',
+      seller: 'shop**11',
+      priceNow: '1800',
+      size: 'small'
+    },
+    {
+      id: 12,
+      tag: '限時優惠',
+      category: '主機',
+      image: NES,
+      title: '初代 紅白機 Nintendo Family Computer',
+      seller: 'xseries**882712',
+      priceNow: '2200',
+      size: 'large'
+    },
 
   ]
   // 依照選擇的分類過濾
@@ -110,7 +141,7 @@ export default function Reviewpage() {
   return (
     <div className="y_Reviewpage">
       <div className='y_layout'>
-        <Sidebar />
+       
         <div className='y_realOutside'>
 
           <div className="y_main">
@@ -151,9 +182,9 @@ export default function Reviewpage() {
 
             {/* 按鈕區塊 */}
             <div className="y_categories">
-              <button className="y_btn y_btn--red" onClick={() => setFilterCategory("主機")}>主機 (3)</button>
-              <button className="y_btn y_btn--red" onClick={() => setFilterCategory("遊戲")}>遊戲 (3)</button>
-              <button className="y_btn y_btn--red" onClick={() => setFilterCategory("配件")}>配件 (3)</button>
+              <button className="y_btn y_btn--red" onClick={() => setFilterCategory("主機")}>主機 (4)</button>
+              <button className="y_btn y_btn--red" onClick={() => setFilterCategory("遊戲")}>遊戲 (6)</button>
+              <button className="y_btn y_btn--red" onClick={() => setFilterCategory("配件")}>配件 (4)</button>
             </div>
 
 
