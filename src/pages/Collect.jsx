@@ -1,5 +1,4 @@
 import '../styles/Collect.scss'
-import Card from "../components/Card"
 import Sidebar from '../components/Sidebar'
 import Pagination from '../components/Pagination'
 import DKB from '../images/Card_Image/DKB.webp'
