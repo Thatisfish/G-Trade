@@ -7,6 +7,7 @@ import DS2CE from '../images/Card_Image/DS2CE.webp'
 import SWP2 from '../images/Card_Image/switch_pro2.webp'
 import SW2 from '../images/Card_Image/switch2.webp'
 import SWB from '../images/Card_Image/item_switch01.avif'
+import AllTypeCards from '../components/AllTypeCards.jsx'
 import { useState, useEffect } from 'react';
 
 
@@ -248,7 +249,7 @@ const Collect = () => {
                 checked={selectedIds.includes(item.id)}
                 onChange={() => toggleSelect(item.id)}
               />
-              <Card {...item} />
+               <AllTypeCards {...item} />
             </div>
           ))}
         </div>
