@@ -378,8 +378,96 @@
 
 }
 
+@keyframes pop {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+.mobile-bottom-nav.detail {
+	gap: 10px;
+	padding: 0 10px;
+	justify-content: flex-start;
+
+	.btn-favorite {
+		display: flex;
+		flex-direction: column;
+		justify-content: end;
+		align-items: center;
+		border: none;
+		background: none;
+		height: 56px;
+		width: 42px;
+		padding: 0;
+		color: #818181;
+
+		svg {
+			margin-top: 5px;
+			flex: 1;
+			transition: transform 0.2s ease, color 0.2s ease;
+			width: 24px;
+			height: 24px;
+		}
+
+		span {
+			text-align: center;
+			font-size: 14px;
+			font-weight: 0;
+			color: #333;
+		}
+
+		// 點擊後 → 愛心變紅，並有縮放動畫
+		&.active {
+			color: var(--nav);
+
+			svg {
+				animation: pop 0.3s ease;
+			}
+		}
+	}
+
+
+	a {
+		flex: 0 0 auto;
+	}
+
+	.mbnd {
+		display: flex;
+		width: 100%;
+		gap: 5px;
+
+		.btn-add-cart {
+			border: 2px solid var(--nav);
+			color: var(--nav);
+			background: white;
+			border-radius: 10px;
+			width: 50%;
+			padding: 5px 0;
+			font-weight: 600;
+		}
+
+		.btn-buy-now {
+			// flex: 1;
+			background: var(--nav);
+			width: 50%;
+			color: #fff;
+			border-radius: 10px;
+			padding: 5px 0;
+			font-weight: 700;
+		}
+	}
+}
+
 /* =========================
-   Mobile Nav（關鍵重寫）
+   Mobile Nav
    ========================= */
 .mobile-nav {
 	display: none;
