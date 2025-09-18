@@ -43,6 +43,25 @@ export default function App() {
 			}, 0);
 		}
 	}, [location, navigate]);
+
+	// ✅ 新增：支援 /#newup 這種 hash 錨點的平滑滾動（同頁或跨頁回到 Home 都適用）
+	useEffect(() => {
+		if (!location.hash) return;
+
+		const tryScroll = () => {
+			const hash = location.hash; // 例如 "#newup"
+			// 先找 id（#newup），找不到就用 class（.newup）做後備
+			const el = document.querySelector(hash) || document.querySelector(`.${hash.slice(1)}`);
+			if (el) {
+				el.scrollIntoView({ block: "center" });
+			}
+		};
+
+		// 等當前 Route 完成渲染、避免被 ScrollToTop 抢先置頂
+		const t = setTimeout(tryScroll, 60);
+		return () => clearTimeout(t);
+	}, [location]);
+
 	const openLogin = () => setShowLogin(true);
 	const closeLogin = () => setShowLogin(false);
 	const goRegister = () => {

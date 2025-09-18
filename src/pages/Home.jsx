@@ -74,8 +74,8 @@ export default function Home() {
 						<img src={Switch} alt="Switch主機" className="Switch" />
 					</div>
 				</div>
-				<div className='newup'>
-					<h2 className="section-title">最新上架</h2>
+				<div id="newup" className='newup'>
+					<h2 className="section-title">熱門商品</h2>
 					<InforCard />
 					<button className="view-all-button">查看所有商品</button>
 				</div>
