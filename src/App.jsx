@@ -100,7 +100,7 @@ export default function App() {
 					<Route path='/hamburgerMenu' element={<HamburgerMenu />} />
 				</Routes>
 
-				<Footer theme={theme} />
+				<Footer theme={theme} onOpenLogin={openLogin} />
 			</div>
 		</>
 	);

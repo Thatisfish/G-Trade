@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../styles/Footer.scss'
 
-export default function Footer({ theme = 'red' }) {
+export default function Footer({ theme = 'red', onOpenLogin }) {
 	return (
 		<footer className={`footer ${theme}`}>
 			<nav>
@@ -16,7 +16,12 @@ export default function Footer({ theme = 'red' }) {
 						</ul>
 					</li>
 					<li>
-						<Link to="/Register" className="sitemap-f">會員中心</Link>
+						<button
+							type="button"
+							className="icon-member"
+							onClick={onOpenLogin}
+							aria-label="會員登入"
+						>會員中心</button>
 						<ul>
 							<li><Link to="/BuyerCenter">買家中心</Link></li>
 							<li><Link to="/SellerCenter">賣家中心</Link></li>
