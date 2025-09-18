@@ -90,7 +90,7 @@ const HamburgerMenu = ({ isOpen, onClose, onOpenLogin }) => {
 								className="menuLink icon-member" // 如果要沿用原本的樣式，這邊保留 menuLink
 								onClick={() => {
 									onClose();      // 先關掉漢堡選單
-									setTimeout(onOpenLogin, 0);  // 再打開登入彈窗
+									onOpenLogin();  // 再打開登入彈窗
 								}}
 								aria-label="會員登入"
 							>

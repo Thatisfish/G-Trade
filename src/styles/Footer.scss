@@ -60,7 +60,6 @@ $bottom-nav-h: 60px;
 			display: inline-block;
 			margin-bottom: 8px;
 			padding: 0;
-			color: var(--nav);
 		}
 
 		@media (max-width: 900px) {
@@ -162,6 +161,16 @@ $bottom-nav-h: 60px;
 	background-color: transparent;
 	color: var(--light);
 
+	.sitemap {
+		button {
+			cursor: pointer;
+			background: none;
+			border: none;
+			text-align: start;
+			color: var(--light);
+		}
+	}
+
 	a,
 	.sitemap-f {
 		color: var(--light);
@@ -177,6 +186,16 @@ $bottom-nav-h: 60px;
 .footer.red {
 	background-color: transparent;
 	color: var(--nav);
+
+	.sitemap {
+		button {
+			cursor: pointer;
+			background: none;
+			border: none;
+			text-align: start;
+			color: var(--var);
+		}
+	}
 
 	a {
 		color: var(--nav);
