@@ -1,125 +1,125 @@
 /* 彈窗遮罩 */
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 999;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
 
-    @media(max-width:1024px) {
-        width: 100%;
-    }
+	@media(max-width:1024px) {
+		width: 100%;
+	}
 
-    @media (max-width: 768px) {
-        width: 100%;
-    }
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 }
 
 .modalOverlay.active {
-    opacity: 1;
-    visibility: visible;
+	opacity: 1;
+	visibility: visible;
 }
 
 /* 彈窗主體 */
 .modal {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: min(1920px, 100vw);
-    height: 100vh;
-    background: #000;
-    z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    overflow-y: auto;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: min(1920px, 100vw);
+	height: 100vh;
+	background: #000;
+	z-index: 1000;
+	transform: translateX(100%);
+	transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	overflow-y: auto;
 
 }
 
 .modal.active {
-    transform: translateX(0);
+	transform: translateX(0);
 }
 
 /*關閉按鈕 */
 .closeBtn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    z-index: 1001;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: transparent;
+	border: none;
+	color: white;
+	font-size: 24px;
+	cursor: pointer;
+	padding: 8px;
+	border-radius: 4px;
+	transition: all 0.3s ease;
+	z-index: 1001;
 
-    min-width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	min-width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-    margin-right: max(0px, calc(5vw - 15px));
+	margin-right: max(0px, calc(5vw - 15px));
 
-    // 響應式調整
-    @media (max-width: 1024px) {
-        right: 4%;
-        font-size: 22px;
-    }
+	// 響應式調整
+	@media (max-width: 1024px) {
+		right: 4%;
+		font-size: 22px;
+	}
 
-    @media (max-width: 768px) {
-        right: 20px; // 固定距離
-        top: 15px;
-        font-size: 20px;
-        min-width: 36px;
-        height: 36px;
-    }
+	@media (max-width: 768px) {
+		right: 20px; // 固定距離
+		top: 15px;
+		font-size: 20px;
+		min-width: 36px;
+		height: 36px;
+	}
 
-    @media (max-width: 480px) {
-        right: 15px;
-        top: 12px;
-        font-size: 18px;
-        min-width: 32px;
-        height: 32px;
-        padding: 6px;
-    }
+	@media (max-width: 480px) {
+		right: 15px;
+		top: 12px;
+		font-size: 18px;
+		min-width: 32px;
+		height: 32px;
+		padding: 6px;
+	}
 
-    @media (max-width: 360px) {
-        right: 12px;
-        top: 10px;
-        font-size: 16px;
-        min-width: 28px;
-        height: 28px;
-        padding: 4px;
-    }
+	@media (max-width: 360px) {
+		right: 12px;
+		top: 10px;
+		font-size: 16px;
+		min-width: 28px;
+		height: 28px;
+		padding: 4px;
+	}
 }
 
 
 .closeBtn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.1);
+	background: rgba(255, 255, 255, 0.1);
+	transform: scale(1.1);
 }
 
 /* 選單內容 */
 .menuContent {
-    width: auto;
-    margin: 10% 15%;
-    display: flex;
-    flex-direction: row;
+	width: auto;
+	margin: 10% 15%;
+	display: flex;
+	flex-direction: row;
 
-    @media (max-width:640px) {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: auto;
+	@media (max-width:640px) {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		width: auto;
 
-    }
+	}
 
 
 }
@@ -128,111 +128,120 @@
 
 /* 選單項目 */
 .menu {
-    list-style: none;
-    padding: 0;
-    margin: 0 20px;
+	list-style: none;
+	padding: 0;
+	margin: 0 20px;
 }
 
 .menuTitle {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .menuItem,
 .menuItem2 {
-    width: auto;
-    position: relative;
-    flex-direction: column;
-    /* 支援垂直下拉 */
-    overflow: visible;
-    /* 讓下拉選單可見 */
-    display: flex;
-    overflow: hidden;
-    // margin-bottom: 6px;
+	width: auto;
+	position: relative;
+	flex-direction: column;
+	/* 支援垂直下拉 */
+	overflow: visible;
+	/* 讓下拉選單可見 */
+	display: flex;
+	overflow: hidden;
+	// margin-bottom: 6px;
+}
 
-
+.menuItem {
+	button {
+		cursor: pointer;
+		background: none;
+		border: none;
+		text-align: start;
+	}
 }
 
 .submenu {
-    margin-left: 30px;
+	margin-left: 30px;
 
-    .menu_item_item {
-        color: #FFF;
-        opacity: 0;
-        max-height: 0;
-        overflow: hidden;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
-        background: rgba(0, 0, 0, 0.3);
-        padding: 0;
-    }
+	.menu_item_item {
+		color: #FFF;
+		opacity: 0;
+		max-height: 0;
+		overflow: hidden;
+		transform: translateY(-10px);
+		transition: all 0.3s ease;
+		background: rgba(0, 0, 0, 0.3);
+		padding: 0;
+	}
 
-    .menu_item_item a,
-    .menu_item_item div {
-        display: block;
-        color: #ccc;
-        text-decoration: none;
-        font-size: 1.2rem;
-        transition: all 0.2s ease;
+	.menu_item_item a,
+	.menu_item_item div {
+		display: block;
+		color: #ccc;
+		text-decoration: none;
+		font-size: 1.2rem;
+		transition: all 0.2s ease;
 
-    }
+	}
 
 
 }
 
+
+
 .menuLink {
-    width: 214px;
-    display: block;
-    position: relative;
-    margin-right: 1.2rem;
-    padding: 16px 20px;
-    color: white;
-    text-decoration: none;
-    background: transparent;
-    font-size: 1.5rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    /* 改為 all 以包含字體大小變化 */
-    z-index: 2;
+	width: 214px;
+	display: block;
+	position: relative;
+	margin-right: 1.2rem;
+	padding: 16px 20px;
+	color: white;
+	text-decoration: none;
+	background: transparent;
+	font-size: 1.5rem;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	/* 改為 all 以包含字體大小變化 */
+	z-index: 2;
 
 }
 
 .menuLink:hover {
-    font-size: 1.7rem;
+	font-size: 1.7rem;
 }
 
 /* 顯示下拉選單 */
 .menuItem:hover .menu_item_item,
 .menuItem2:hover .menu_item_item {
-    opacity: 1;
-    max-height: 200px;
-    /* 根據內容調整 */
-    transform: translateY(0);
-    padding-bottom: 30px;
+	opacity: 1;
+	max-height: 200px;
+	/* 根據內容調整 */
+	transform: translateY(0);
+	padding-bottom: 30px;
 }
 
 
 
 /* RWD */
 @media (max-width: 640px) {
-    .modal {
-        display: flex;
-        flex-direction: column;
-        width: 280px;
-    }
+	.modal {
+		display: flex;
+		flex-direction: column;
+		width: 280px;
+	}
 
-    .menuTitle {
-        font-size: 20px;
-    }
+	.menuTitle {
+		font-size: 20px;
+	}
 
-    .menuLink {
-        font-size: 15px;
-        padding: 14px 18px;
-    }
+	.menuLink {
+		font-size: 15px;
+		padding: 14px 18px;
+	}
 }
 
 @media(max-width:1024px) {
-    .modal {
-        width: 100%;
-    }
+	.modal {
+		width: 100%;
+	}
 }

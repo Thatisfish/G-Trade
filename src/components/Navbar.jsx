@@ -181,6 +181,7 @@ export default function Navbar({ theme, onOpenLogin }) {
 			<HamburgerMenu
 				isOpen={isHamburgerOpen}
 				onClose={handleHamburgerClose}
+				onOpenLogin={onOpenLogin} // ★ 新增：把父層的開窗函式往下傳
 			/>
 		</>
 	);
