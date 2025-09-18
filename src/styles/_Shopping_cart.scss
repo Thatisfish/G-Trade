@@ -1,10 +1,20 @@
 .J_cartPage {
     padding: 140px 0 120px;
 
-    // @media (max-width:1024px) {
-    //         padding: 100px 0 50px;
+@media (max-width:1024px) {
+            padding: 140px 45px 50px;
 
-    // }
+    }
+
+    @media (max-width:900px) {
+            padding: 100px  clamp(15px, 5vw, 45px) 50px;
+
+    }
+
+    @media (max-width:640px) {
+            padding: 80px 8px 30px;
+
+    }
 
     .J_cartTitle {
         color: #DE1A10;
@@ -13,6 +23,11 @@
 
         text-align: center;
         margin-bottom: 20px;
+
+        @media (max-width:640px) {
+           margin-bottom: 10px;
+
+    }
     }
 
 
@@ -22,33 +37,8 @@
         max-width: 80%;
         margin: 0 auto;
 
-        // 手機板、平板版讓結帳框框到下面
-        @media (max-width:640px) {
-            /* 手機板改為上下排列 */
-            flex-direction: column;
-            gap: 4px;
-            max-width: 100%;
-            width: 100%;
-            padding: 8px;
-            margin: 0;
-
-            /* 讓左右欄各自撐滿寬度 */
-            .J_cartLeft,
-            .J_cartRight {
-                flex: none;
-                width: 100%;
-                padding: 0;
-            }
-
-            /* 右欄與左欄之間的間距 */
-            .J_cartRight {
-                display: flex;
-                justify-content: center;
-                margin-top: 12px;
-                width: 100%;
-            }
-        }
-
+        // 平板版以下讓結帳框框到下面
+     
         @media (max-width:1024px) {
             /* 平板板改為上下排列 */
             flex-direction: column;
@@ -95,7 +85,6 @@
     .J_cartSection {
         background: #fff;
         padding: 30px;
-        margin: 0 45px;
         border-radius: 20px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
@@ -133,7 +122,6 @@
     .J_cartSection2 {
         background: #fff;
         padding: 30px 50px 30px 70px;
-        margin: 0 45px;
         border-radius: 20px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
