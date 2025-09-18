@@ -1,7 +1,6 @@
 import '../styles/Reviewpage.scss'
 import React, { useState } from "react";
-import Card from "../components/Card"
-import Sidebar from '../components/Sidebar'
+import AllTypeCards from '../components/AllTypeCards.jsx'
 import check from '../images/ProductPage/check.svg'
 import fastShip from '../images/ProductPage/fastShip.svg'
 import quickReply from '../images/ProductPage/quickReply.svg'
@@ -183,7 +182,7 @@ export default function Reviewpage() {
             {/* 按鈕區塊 */}
             <div className="y_categories">
               <button className="y_btn y_btn--red" onClick={() => setFilterCategory("主機")}>主機 (4)</button>
-              <button className="y_btn y_btn--red" onClick={() => setFilterCategory("遊戲")}>遊戲 (6)</button>
+              <button className="y_btn y_btn--red" onClick={() => setFilterCategory("遊戲")}>遊戲 (4)</button>
               <button className="y_btn y_btn--red" onClick={() => setFilterCategory("配件")}>配件 (4)</button>
             </div>
 
@@ -202,7 +201,7 @@ export default function Reviewpage() {
               </div>
               <div className="y_newproducts">
                 {filteredProducts.map((item) => (
-                  <Card
+                  <AllTypeCards
                     key={item.id}
                     title={item.title}
                     priceNow={item.priceNow}

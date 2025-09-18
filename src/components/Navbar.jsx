@@ -1,6 +1,7 @@
 // Navbar.jsx
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import '../styles/Navbar.scss';
 import Logo_w from '../images/logo_white.avif';
 import Logo_r from '../images/logo_red.avif';
@@ -14,6 +15,18 @@ import HamburgerMenu from './HamburgerMenu';
 export default function Navbar({ theme, onOpenLogin }) {
 	const [scrolled, setScrolled] = useState(false);
 	const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+	const location = useLocation();
+	const isDetailRoute = location.pathname.startsWith('/ProductPage');
+	const [isFavorite, setIsFavorite] = useState(false);
+
+	const [lte640, setLte640] = useState(() => window.matchMedia('(max-width: 640px)').matches);
+	useEffect(() => {
+		const mq = window.matchMedia('(max-width: 640px)');
+		const onChange = e => setLte640(e.matches);
+		mq.addEventListener('change', onChange);
+		return () => mq.removeEventListener('change', onChange);
+	}, []);
+	const showDetailBar = isDetailRoute && lte640;
 
 	useEffect(() => {
 		const el = document.body; // ✅ 你的情況是 body 在滾動
@@ -128,17 +141,40 @@ export default function Navbar({ theme, onOpenLogin }) {
 
 				</div>
 			</header>
-			<nav className="mobile-bottom-nav">
-				<Link to="/"><img src={Home} alt="" />首頁</Link>
-				{/* <Link to="/Notice"><img src={Bell} alt="" />通知</Link> */}
-				<Link to="/Shopping_cart"><img src={Cart} alt="" />購物車</Link>
-				<button
-					type="button"
-					className="icon-mobile-member"
-					onClick={onOpenLogin}
-					aria-label="會員中心"
-				><img src={Member} alt="會員中心" />會員中心</button>
-				{/* <Link to="/Customer"><img src={Member} alt="" />顧客中心</Link> */}
+
+
+			<nav className={`mobile-bottom-nav ${showDetailBar ? 'detail' : ''}`}>
+				{showDetailBar ? (
+					<>
+						<button
+							className={`btn-favorite ${isFavorite ? "active" : ""}`}
+							onClick={() => setIsFavorite(!isFavorite)}
+						>
+							{isFavorite ? (
+								<FaHeart className="icon-heart" />
+							) : (
+								<FaRegHeart className="icon-heart" />
+							)}
+							<span>收藏</span>
+						</button>
+						<Link to="/Shopping_cart" className='btn-cart'><img src={Cart} alt="" />購物車</Link>
+						<div className='mbnd'>
+							<button className="btn-add-cart">加入購物車</button>
+							<button className="btn-buy-now">立即購買</button>
+						</div>
+					</>
+				) : (
+					<>
+						<Link to="/"><img src={Home} alt="" />首頁</Link>
+						<Link to="/Shopping_cart"><img src={Cart} alt="" />購物車</Link>
+						<button
+							type="button"
+							className="icon-mobile-member"
+							onClick={onOpenLogin}
+							aria-label="會員中心"
+						><img src={Member} alt="會員中心" />會員中心</button>
+					</>
+				)}
 			</nav>
 
 			{/* 漢堡選單 */}

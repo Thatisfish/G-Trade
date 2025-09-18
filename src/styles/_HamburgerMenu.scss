@@ -10,6 +10,14 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+
+    @media(max-width:1024px) {
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 }
 
 .modalOverlay.active {
@@ -49,7 +57,7 @@
     padding: 8px;
     border-radius: 4px;
     transition: all 0.3s ease;
-    z-index: 1001; 
+    z-index: 1001;
 
     min-width: 40px;
     height: 40px;
@@ -100,7 +108,7 @@
 
 /* 選單內容 */
 .menuContent {
-    width: 100vw;
+    width: auto;
     margin: 10% 15%;
     display: flex;
     flex-direction: row;
@@ -109,7 +117,7 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: auto;
 
     }
 
@@ -146,10 +154,10 @@
 }
 
 .submenu {
+    margin-left: 30px;
 
     .menu_item_item {
         color: #FFF;
-        // margin: 10px 20px;
         opacity: 0;
         max-height: 0;
         overflow: hidden;
@@ -162,7 +170,6 @@
     .menu_item_item a,
     .menu_item_item div {
         display: block;
-        padding: 8px 16px;
         color: #ccc;
         text-decoration: none;
         font-size: 1.2rem;

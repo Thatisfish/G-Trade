@@ -1,24 +1,20 @@
+@use './AllTypeCards.scss' as *;
+
 .y_Reviewpage {
     font-family: 'Noto Sans TC', sans-serif;
     color: #333;
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 80px;
-    // display: flex;
-    // justify-content: center;
-    // gap: 100px;
 
     .y_layout {
-        // display: flex;
         width: 100%;
-        // gap: 90px; // sidebar 和右側內容的間距
     }
-
 
     .y_realOutside {
         margin-top: 80px;
         // max-width: 840px;
-       
+
 
         /* 右側內容撐滿剩下空間 */
         .y_main {
@@ -29,7 +25,7 @@
             width: auto;
             // padding-right: 20px;
 
-            
+
         }
 
         /* 賣家資訊 */
@@ -227,87 +223,21 @@
 
             .y_newproducts {
                 display: grid;
-                grid-template-columns: repeat(4, 1fr); // >=1025px 固定三欄
-                gap: 10px;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 16px;
 
-                @media (max-width: 1024px) {
-                    grid-template-columns: repeat(2, 1fr); // 平板兩欄
-                }
-
-                @media (max-width: 768px) {
-                    grid-template-columns: repeat(2, 1fr); // 平板兩欄
-                }
-            }
-
-            /* 卡片本身樣式 */
-            .info-card {
-                width: 100%;
-                max-width: none;
-                height: 350px;
-                margin: 0 auto;
-                border-radius: 20px;
-                background-color: #fff;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                overflow: hidden;
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                transition: transform 0.2s ease;
-
-
-                &:hover {
-                    transform: scale(1.03);
-                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-                    cursor: pointer;
-                }
-
-                &:active {
-                    transform: scale(0.98);
-                }
-
-                img {
+                &>.B_info-card {
                     width: 100%;
-                    height: 180px;
-                    object-fit: cover;
-                    border-top-left-radius: 20px;
-                    border-top-right-radius: 20px;
-                    border-bottom: 1px solid #eee;
+                    max-width: none;
+                    min-width: none ;
+                    height: auto ;
+                    margin: 0 ;
                 }
 
-                .card-body {
-                    flex: 1;
-                    padding: 12px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                }
-
-                // 統一尺寸（如果有 .large / .medium / .small 類別）
-                &.large,
-                &.medium,
-                &.small {
-                    width: 260px;
-                    height: 350px;
-                }
-
-                .card-content {
-                    padding: 12px;
-
-                    .title {
-                        font-size: 16px;
-                        font-weight: 600;
-                        margin-bottom: 18px;
-                        line-height: 1.4;
-                    }
-
-                    .price {
-                        font-size: 18px;
-                        color: #e74c3c;
-                        font-weight: bold;
-                    }
-                }
             }
         }
+
+
 
         /* 過去交易紀錄 */
         .past_transactions {
@@ -394,7 +324,6 @@
     }
 }
 
-
 /* 手機版 1024px RWD */
 @media (max-width: 1024px) {
     .y_Reviewpage {
@@ -427,11 +356,12 @@
             /* 賣家資訊區塊垂直排列 */
             .y_seller {
 
-                 
+
                 .y_seller_ps {
                     align-items: flex-start;
                     gap: 20px;
                     padding-top: 20px;
+
                     @media (max-width:500px) {
                         flex-direction: column;
                     }
@@ -469,40 +399,53 @@
             .latest_products {
                 .y_newproducts {
                     display: grid;
-                    gap: 20px;
-                    padding: 0 8px;
-                }
-
-                .info-card {
+                    grid-template-columns: 1fr;
+                    /* ✅ 簡化為單欄 */
+                    gap: 16px;
+                    max-width: 680px; // ✅ 固定寬度
                     width: 100%;
-                    height: auto;
-                    // display: block;
-                    object-fit: cover;
-                    font-size: 13px;
+                    margin: 0 auto; // ✅ 置中
                 }
 
-                .info-card img {
+                /* 卡片橫向排列 */
+                .B_info-card {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
                     width: 100%;
-                    height: 180px;
-                    object-fit: cover;
-                    display: block;
+                    height: 170px;
+                    border-radius: 10px;
+                    margin: 0;
                 }
 
-                .card-content {
-                    padding: 6px;
+                .B_info-img {
+                    width: 40%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 0;
+                }
 
-                    .title {
-                        font-size: 14px;
-                        margin-bottom: 6px;
-                        line-height: 1.4;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
-                        word-break: break-word;
-                    }
+                .B_info-content {
+                    flex: 1;
+                    padding: 8px 12px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
 
-                    .price {
-                        font-size: 14px;
-                    }
+                .B_info-title {
+                    width: 100%;
+                    height: 2.8rem;
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin: 5px;
+                    line-height: 1.4;
+                    display: -webkit-box; // 讓 box 成為彈性容器
+                    -webkit-box-orient: vertical; // 垂直排列
+                    -webkit-line-clamp: 2; // 限制 2 行
+                    overflow: hidden; // 超出隱藏
+                    text-overflow: ellipsis;
+                    cursor: pointer;
                 }
 
             }
@@ -535,257 +478,257 @@
 
 
 
-    // /* 小平板版 431px ~ 640px */
-    // @media (min-width: 431px) and (max-width: 640px) {
-    //     .y_Reviewpage {
-    //         flex-direction: column;
-    //         padding: 80px 20px 30px;
-    //         gap: 24px;
+// /* 小平板版 431px ~ 640px */
+// @media (min-width: 431px) and (max-width: 640px) {
+//     .y_Reviewpage {
+//         flex-direction: column;
+//         padding: 80px 20px 30px;
+//         gap: 24px;
 
-    //         .y_layout {
-    //             display: flex;
-    //             flex-direction: column;
-    //             align-items: center;
-    //             gap: 0;
-    //         }
+//         .y_layout {
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             gap: 0;
+//         }
 
-    //         .y_main {
-    //             width: 100%;
-    //             padding: 0 12px;
-    //             gap: 20px;
-    //         }
+//         .y_main {
+//             width: 100%;
+//             padding: 0 12px;
+//             gap: 20px;
+//         }
 
-    //         .y_seller {
-    //             flex-direction: column;
-    //             align-items: flex-start;
-    //             gap: 24px;
-    //             padding-top: 40px;
+//         .y_seller {
+//             flex-direction: column;
+//             align-items: flex-start;
+//             gap: 24px;
+//             padding-top: 40px;
 
-    //             &__stats {
-    //                 margin-right: 0;
-    //             }
+//             &__stats {
+//                 margin-right: 0;
+//             }
 
-    //             &__actions {
-    //                 flex-direction: row;
-    //                 gap: 16px;
-    //             }
-    //         }
+//             &__actions {
+//                 flex-direction: row;
+//                 gap: 16px;
+//             }
+//         }
 
-    //         .y_categories {
-    //             flex-wrap: wrap;
-    //             justify-content: center;
-    //             gap: 12px;
-    //             margin: 24px 0;
+//         .y_categories {
+//             flex-wrap: wrap;
+//             justify-content: center;
+//             gap: 12px;
+//             margin: 24px 0;
 
-    //             .y_btn {
-    //                 min-width: 100px;
-    //                 font-size: 15px;
-    //                 padding: 10px 14px;
-    //             }
-    //         }
+//             .y_btn {
+//                 min-width: 100px;
+//                 font-size: 15px;
+//                 padding: 10px 14px;
+//             }
+//         }
 
-    //         .latest_products {
-    //             .y_newproducts {
-    //                 display: grid;
-    //                 grid-template-columns: repeat(2, 1fr);
-    //                 gap: 12px;
-    //                 padding: 0 12px;
-    //             }
+//         .latest_products {
+//             .y_newproducts {
+//                 display: grid;
+//                 grid-template-columns: repeat(2, 1fr);
+//                 gap: 12px;
+//                 padding: 0 12px;
+//             }
 
-    //             .info-card img {
-    //                 height: 180px;
-    //             }
+//             .info-card img {
+//                 height: 180px;
+//             }
 
-    //             .card-content {
-    //                 padding: 8px;
+//             .card-content {
+//                 padding: 8px;
 
-    //                 .title {
-    //                     font-size: 15px;
-    //                 }
+//                 .title {
+//                     font-size: 15px;
+//                 }
 
-    //                 .price {
-    //                     font-size: 16px;
-    //                 }
-    //             }
-    //         }
+//                 .price {
+//                     font-size: 16px;
+//                 }
+//             }
+//         }
 
-    //         .past_transactions {
-    //             margin: 24px 0 60px;
+//         .past_transactions {
+//             margin: 24px 0 60px;
 
-    //             .transaction {
-    //                 grid-template-columns: 1fr;
-    //                 gap: 10px;
-    //                 padding: 12px;
+//             .transaction {
+//                 grid-template-columns: 1fr;
+//                 gap: 10px;
+//                 padding: 12px;
 
-    //                 .rating_bar {
-    //                     justify-self: start;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+//                 .rating_bar {
+//                     justify-self: start;
+//                 }
+//             }
+//         }
+//     }
+// }
 
-    // // 平板版
-    // @media (min-width: 641px) and (max-width: 1024px) {
-    //     .y_Reviewpage {
-    //         justify-content: flex-start; // ✅ 不要置中
-    //         padding: 80px 20px 30px;
+// // 平板版
+// @media (min-width: 641px) and (max-width: 1024px) {
+//     .y_Reviewpage {
+//         justify-content: flex-start; // ✅ 不要置中
+//         padding: 80px 20px 30px;
 
-    //         .y_layout {
-    //             width: 100%;
-    //             display: flex;
-    //             flex-direction: column;
-    //             align-items: center;
-    //             gap: 0;
+//         .y_layout {
+//             width: 100%;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             gap: 0;
 
-    //         }
+//         }
 
-    //         .y_main {
-    //             width: 100%;
-    //             max-width: 100%;
-    //             padding: 0 16px; // ✅ 加點左右內距
-    //             box-sizing: border-box;
-    //         }
+//         .y_main {
+//             width: 100%;
+//             max-width: 100%;
+//             padding: 0 16px; // ✅ 加點左右內距
+//             box-sizing: border-box;
+//         }
 
-    //         .y_seller {
-    //             flex-direction: column;
-    //             align-items: stretch;
-    //             gap: 24px;
-    //             padding-top: 60px;
+//         .y_seller {
+//             flex-direction: column;
+//             align-items: stretch;
+//             gap: 24px;
+//             padding-top: 60px;
 
-    //             &__profile {
-    //                 flex-direction: row;
-    //                 align-items: center;
-    //                 gap: 16px;
+//             &__profile {
+//                 flex-direction: row;
+//                 align-items: center;
+//                 gap: 16px;
 
-    //                 .y_seller__avatar {
-    //                     width: 100px;
-    //                     height: 100px;
-    //                 }
+//                 .y_seller__avatar {
+//                     width: 100px;
+//                     height: 100px;
+//                 }
 
-    //                 .y_seller__name {
-    //                     font-size: 15px;
-    //                 }
-    //             }
+//                 .y_seller__name {
+//                     font-size: 15px;
+//                 }
+//             }
 
-    //             &__stats {
-    //                 margin-right: 0;
-    //                 grid-template-columns: 1fr;
-    //                 grid-template-areas:
-    //                     "rating"
-    //                     "desc"
-    //                     "tags";
+//             &__stats {
+//                 margin-right: 0;
+//                 grid-template-columns: 1fr;
+//                 grid-template-areas:
+//                     "rating"
+//                     "desc"
+//                     "tags";
 
-    //                 .y_seller__rating {
-    //                     flex-wrap: wrap;
-    //                     gap: 8px;
+//                 .y_seller__rating {
+//                     flex-wrap: wrap;
+//                     gap: 8px;
 
-    //                     .y_seller__score {
-    //                         font-size: 18px;
-    //                     }
+//                     .y_seller__score {
+//                         font-size: 18px;
+//                     }
 
-    //                     .y_seller__location,
-    //                     .y_seller__count {
-    //                         font-size: 13px;
-    //                     }
-    //                 }
+//                     .y_seller__location,
+//                     .y_seller__count {
+//                         font-size: 13px;
+//                     }
+//                 }
 
-    //                 .y_seller__desc {
-    //                     font-size: 13px;
-    //                 }
+//                 .y_seller__desc {
+//                     font-size: 13px;
+//                 }
 
-    //                 .y_seller__tags {
-    //                     flex-wrap: wrap;
-    //                     gap: 8px;
+//                 .y_seller__tags {
+//                     flex-wrap: wrap;
+//                     gap: 8px;
 
-    //                     img {
-    //                         height: 32px;
-    //                     }
-    //                 }
-    //             }
+//                     img {
+//                         height: 32px;
+//                     }
+//                 }
+//             }
 
-    //             &__actions {
-    //                 flex-direction: row;
-    //                 justify-content: flex-start;
+//             &__actions {
+//                 flex-direction: row;
+//                 justify-content: flex-start;
 
-    //                 .btn {
-    //                     width: auto;
-    //                     font-size: 14px;
-    //                     padding: 8px 12px;
-    //                 }
-    //             }
-    //         }
+//                 .btn {
+//                     width: auto;
+//                     font-size: 14px;
+//                     padding: 8px 12px;
+//                 }
+//             }
+//         }
 
-    //         .y_categories {
-    //             flex-wrap: wrap;
-    //             gap: 12px;
-    //             justify-content: center;
+//         .y_categories {
+//             flex-wrap: wrap;
+//             gap: 12px;
+//             justify-content: center;
 
-    //             .y_btn {
-    //                 margin: 0;
-    //                 min-width: 120px;
-    //                 font-size: 15px;
-    //                 padding: 12px 8px;
-    //             }
-    //         }
+//             .y_btn {
+//                 margin: 0;
+//                 min-width: 120px;
+//                 font-size: 15px;
+//                 padding: 12px 8px;
+//             }
+//         }
 
-    //         .latest_products {
-    //             .y_newproducts {
-    //                 display: grid;
-    //                 grid-template-columns: repeat(3, 1fr);
-    //                 gap: 16px;
-    //                 padding: 0 12px;
-    //             }
+//         .latest_products {
+//             .y_newproducts {
+//                 display: grid;
+//                 grid-template-columns: repeat(3, 1fr);
+//                 gap: 16px;
+//                 padding: 0 12px;
+//             }
 
-    //             .info-card {
-    //                 width: 100%;
-    //                 box-sizing: border-box;
+//             .info-card {
+//                 width: 100%;
+//                 box-sizing: border-box;
 
-    //                 img {
-    //                     display: block; // ✅ 消除 inline 空隙
-    //                     width: 100%;
-    //                     height: 160px;
-    //                     object-fit: cover;
-    //                     border-top-left-radius: 12px; // ✅ 跟卡片一致
-    //                     border-top-right-radius: 12px;
-    //                     display: block;
-    //                 }
+//                 img {
+//                     display: block; // ✅ 消除 inline 空隙
+//                     width: 100%;
+//                     height: 160px;
+//                     object-fit: cover;
+//                     border-top-left-radius: 12px; // ✅ 跟卡片一致
+//                     border-top-right-radius: 12px;
+//                     display: block;
+//                 }
 
-    //                 .card-content {
-    //                     padding: 10px;
+//                 .card-content {
+//                     padding: 10px;
 
-    //                     .title {
-    //                         font-size: 15px;
-    //                         margin-bottom: 12px;
-    //                     }
+//                     .title {
+//                         font-size: 15px;
+//                         margin-bottom: 12px;
+//                     }
 
-    //                     .price {
-    //                         font-size: 17px;
-    //                     }
-    //                 }
-    //             }
-    //         }
+//                     .price {
+//                         font-size: 17px;
+//                     }
+//                 }
+//             }
+//         }
 
-    //         .past_transactions {
-    //             .transaction {
-    //                 grid-template-columns: 1fr;
-    //                 grid-template-rows: auto auto;
-    //                 gap: 12px;
+//         .past_transactions {
+//             .transaction {
+//                 grid-template-columns: 1fr;
+//                 grid-template-rows: auto auto;
+//                 gap: 12px;
 
-    //                 p {
-    //                     grid-column: 1 / -1;
-    //                     font-size: 14px;
-    //                 }
+//                 p {
+//                     grid-column: 1 / -1;
+//                     font-size: 14px;
+//                 }
 
-    //                 .rating_bar {
-    //                     grid-column: 1 / -1;
-    //                     justify-self: start;
+//                 .rating_bar {
+//                     grid-column: 1 / -1;
+//                     justify-self: start;
 
-    //                     span {
-    //                         font-size: 0.8rem;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+//                     span {
+//                         font-size: 0.8rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
