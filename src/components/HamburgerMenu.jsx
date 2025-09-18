@@ -73,7 +73,7 @@ const HamburgerMenu = ({ isOpen, onClose, onOpenLogin }) => {
 
 						</li>
 						<li className="menuItem">
-							<Link to="/ProductPage" className="menuLink" onClick={handleLinkClick}>
+							<Link to="/#newup" className="menuLink" onClick={handleLinkClick}>
 								熱門商品
 							</Link>
 

@@ -386,6 +386,40 @@ body,
 	border: 1vw solid white;
 	background: transparent;
 	z-index: 0;
+	isolation: isolate;
+
+	// 彩虹旋轉外圈
+	&::after {
+		content: "";
+		position: absolute;
+		inset: -1.01vw; // ❗比原本縮小一點，讓白邊能露出來
+		border-radius: 50%;
+		background: conic-gradient(hsla(0, 100%, 60%, 0.8),
+				hsla(40, 100%, 60%, 0.8),
+				hsla(80, 100%, 60%, 0.8),
+				hsla(160, 100%, 60%, 0.8),
+				hsla(220, 100%, 65%, 0.8),
+				hsla(280, 100%, 65%, 0.8),
+				hsla(320, 100%, 65%, 0.8),
+				hsla(360, 100%, 60%, 0.8));
+		// 挖中間做成圓環
+		padding: 1vw; // 彩虹圈的厚度
+		-webkit-mask:
+			linear-gradient(#000 0 0) content-box,
+			linear-gradient(#000 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+
+		animation: rainbow-spin 5s linear infinite;
+		z-index: 1; // 蓋在白邊上
+		pointer-events: none;
+	}
+
+	@keyframes rainbow-spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
 
 	@media(max-width :640px) {
 		width: clamp(256px, 110vw, 512px);

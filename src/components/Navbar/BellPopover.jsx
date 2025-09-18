@@ -3,9 +3,9 @@ import { useState, useRef, useEffect } from "react";
 export default function BellPopover() {
 	/* 計算未讀數 */
 	const notices = [
-		{ id: 1, text: "您所收藏的商品特價中！", date: "2025-08-06", unread: true },
-		{ id: 2, text: "您追蹤的賣場已更新！", date: "2025-08-06", unread: true },
-		{ id: 3, text: "您所收藏的商品特價中！", date: "2025-05-16", unread: false, disabled: true }
+		{ id: 1, text: "您所收藏的商品「九成新 Switch主機 黑色版」有價格更新！", date: "2025-08-06", unread: true },
+		{ id: 2, text: "您追蹤的賣場「Ssp**5」有新商品上架！", date: "2025-08-06", unread: true },
+		{ id: 3, text: "您所收藏的商品「咚奇剛蕉力全開+咚奇剛amiibo」有價格更新", date: "2025-05-16", unread: false, disabled: true }
 	];
 	const unreadCount = notices.filter(n => n.unread).length;
 
@@ -50,16 +50,23 @@ export default function BellPopover() {
 				role="dialog"
 				aria-label="通知列表"
 			>
-				<div className="bell__panelHeader" />
+				<div className="bell__panelHeader">
+					<p>通知</p>
+					<span>查看所有通知</span>
+				</div>
 				<ul className="bell__list">
 					{notices.map(n => (
 						<li
 							key={n.id}
 							className={`bell__item ${n.unread ? "is-unread" : ""} ${n.disabled ? "is-disabled" : ""}`}
 						>
-							<div className="bell__dot" />
-							<p className="bell__text">{n.text}</p>
-							<time className="bell__date">{n.date}</time>
+							<div className="bdt">
+								<div className="bell__dot" />
+								<p className="bell__text">{n.text}</p>
+							</div>
+							<div className="bd">
+								<time className="bell__date">{n.date}</time>
+							</div>
 						</li>
 					))}
 				</ul>
