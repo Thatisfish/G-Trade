@@ -170,21 +170,22 @@ const Collect = () => {
     },
   ];
 
-    const [products, setProducts] = useState(y_products);
+  const [products, setProducts] = useState(y_products);
   const [selectedIds, setSelectedIds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
-  // ✅ SSR 安全的每頁數量設定
-  const [itemsPerPage, setItemsPerPage] = useState(9);
-
+  // ✅ 移除 useEffect 區塊，不再根據視窗大小變更每頁數量
+  /*
   useEffect(() => {
-    const updateItemsPerPage = () => {
-      setItemsPerPage(window.innerWidth > 1180 ? 9 : 10);
-    };
-    updateItemsPerPage(); // 初始化
-    window.addEventListener('resize', updateItemsPerPage);
-    return () => window.removeEventListener('resize', updateItemsPerPage);
+      const updateItemsPerPage = () => {
+        setItemsPerPage(window.innerWidth > 1180 ? 9 : 10);
+      };
+      updateItemsPerPage(); // 初始化
+      window.addEventListener('resize', updateItemsPerPage);
+      return () => window.removeEventListener('resize', updateItemsPerPage);
   }, []);
+  */
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -248,7 +249,7 @@ const Collect = () => {
                 checked={selectedIds.includes(item.id)}
                 onChange={() => toggleSelect(item.id)}
               />
-               <AllTypeCards {...item} />
+              <AllTypeCards {...item} />
             </div>
           ))}
         </div>

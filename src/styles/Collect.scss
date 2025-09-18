@@ -1,4 +1,4 @@
-@import './_AllTypeCards.scss';
+@use './AllTypeCards.scss' as *;
 
 .y_Collect {
   display: flex;
