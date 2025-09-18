@@ -11,6 +11,11 @@
 
     }
 
+    @media (max-width:640px) {
+            padding: 80px 8px 30px;
+
+    }
+
     .J_cartTitle {
         color: #DE1A10;
         font-size: 25px;
@@ -18,6 +23,11 @@
 
         text-align: center;
         margin-bottom: 20px;
+
+        @media (max-width:640px) {
+           margin-bottom: 10px;
+
+    }
     }
 
 
