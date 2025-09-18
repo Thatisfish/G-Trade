@@ -107,7 +107,7 @@
 	border-bottom: #000 1px solid;
 
 	img {
-		width: 170px;
+		width: 150px;
 		height: auto;
 	}
 
@@ -382,9 +382,9 @@
 
 	/* Content */
 	.J_content {
-		padding: 80px;
+		padding: 80px 50px 50px;
 		flex-direction: column;
-		gap: 32px;
+		gap: 12px;
 
 		// 麵包屑
 		.J_breadcrumbs {
@@ -429,7 +429,7 @@
 		box-sizing: border-box;
 
 		img {
-			width: 140px;
+			width: 120px;
 			height: auto;
 		}
 
@@ -673,6 +673,13 @@
 
 
 }
+@media (max-width:900px) {
+
+	.J_content {
+		padding: 80px clamp(15px, 5vw, 50px) 50px;
+
+	}
+}
 
 
 // 手機板
@@ -680,9 +687,9 @@
 
 	/* Content */
 	.J_content {
-		padding: 24px 8px 24px 8px;
+		padding: 80px 12px 24px 12px;
 		flex-direction: column;
-		gap: 32px;
+		gap:0px;
 
 		// 麵包屑
 		.J_breadcrumbs {
@@ -761,7 +768,7 @@
 		
 
 		img {
-			width: 140px;
+			width: 120px;
 			height: auto;
 		}
 
@@ -798,7 +805,7 @@
 					.J_RB1 {
 						background: #DE1A10;
 						color: white;
-						width: 100px;
+						width: 95px;
 						font-size: 14px;
 
 						border-color: #A12424;
@@ -824,7 +831,7 @@
 					.J_RB2 {
 						background: #DE1A10;
 						color: white;
-						width: 100px;
+						width: 95px;
 						font-size: 14px;
 
 						border-color: #A12424;

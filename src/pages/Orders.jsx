@@ -11,7 +11,7 @@ import sellerImg from '../images/orderImg2.webp'
 const mockOrders = [
   {
     id: "C2025080501",
-    shop: '@GAME_1318的賣場',
+    shop: '@GAME_1318',
     title: "附硬殼包+玻璃貼+TPU材質透明殼【Switch2主機 NS2主機】",
     date: "2025-08-05",
     price: 999,
