@@ -118,25 +118,94 @@
 	}
 
 	.info-content {
-		padding: 10px 16px;
+		padding: 5px 16px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: flex-start;
 		flex-grow: 1;
 
-		.info-title {
-			font-size: 16px;
-			font-weight: bold;
-			margin: 10px 0 5px;
-			word-break: break-word;
-			line-height: 1.4;
-		}
+		.itsd {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
 
-		.info-seller {
-			color: #888;
-			font-size: 14px;
-			margin-bottom: 10px;
+			.its {
+				text-align: left;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				width: 100%;
+
+				.info-title {
+					font-size: 17px;
+					font-weight: bold;
+					margin: 10px 0 5px;
+					word-break: break-word;
+					line-height: 1.2;
+					min-height: calc(1.2em * 2);
+					width: 100%;
+				}
+
+				.info-seller {
+					color: #888;
+					font-size: 14px;
+					margin-bottom: 10px;
+					width: 100%;
+				}
+			}
+
+			.decorate {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 15px;
+
+				.abbutton {
+					display: grid;
+					margin: 5px 0 5px;
+					grid-template-columns: repeat(2, 25px); // 2 欄
+					grid-template-rows: repeat(2, 25px); // 2 列
+
+					.item {
+						position: relative; // 讓文字能相對於 item 定位
+						display: flex;
+						justify-content: center;
+						align-items: center;
+
+						.radio-icon {
+							font-size: 30px;
+						}
+
+						.radio-text {
+							color: #999999;
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							font-size: 14px;
+							font-weight: bold;
+							pointer-events: none; // 文字不影響點擊
+						}
+					}
+
+					.item-1 {
+						grid-column: 1;
+						grid-row: 2;
+						justify-self: center;
+						align-self: center;
+					}
+
+					.item-2 {
+						grid-column: 2;
+						grid-row: 1;
+						justify-self: center;
+						align-self: center;
+					}
+				}
+			}
 		}
 
 		.info-price {
