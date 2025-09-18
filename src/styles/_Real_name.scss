@@ -1,378 +1,379 @@
 .c_realMain {
-    padding: 80px 10px 30px;
-    display: flex;
-    justify-content: center;
-    gap: 100px;
-
-    @media (max-width:1024px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-    }
-
-    .c_realOutside {
-        margin-top: 80px;
-        max-width: 840px;
-
-        @media (max-width:1024px) {
-            margin-top: 20px;
-        }
-
-        .c_realBox {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-            border-radius: 20px;
-            border: solid 1px #DEDADA;
-            background-color: #FCFAFF;
-            padding: 20px 0;
-
-            .c_verifyBox {
-                display: grid;
-                text-align: center;
-                place-items: center; // img是行內元素grid配place-items置中
-
-                h2 {
-                    font-size: 32px;
-                    margin: 50px;
-                }
-
-                p {
-                    font-size: 24px;
-                    margin-bottom: 80px;
-                }
-
-                img {
-                    max-width: 60%;
-                    margin-bottom: 100px;
-                }
-            }
-
-            .c_realHead {
-                background-color: #FFE5E5;
-                margin: 20px 0;
-                width: 85%;
-                padding: 10px;
-                border-radius: 10px;
-
-                h2 {
-                    font-size: 18px;
-                    font-weight: 600;
-
-                    @media (max-width:640px) {
-                        font-size: 16px;
-                        font-weight: 500;
-                    }
-                }
-
-                .c_realTop {
-                    font-size: 16px;
-
-                    @media (max-width:640px) {
-                        font-size: 14px;
-                    }
-                }
-            }
-
-            .c_realAlert {
-                color: #DE1A10;
-                font-size: 14px;
-            }
-
-            .c_realForm {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                width: 90%;
-
-                @media (max-width:1024px) {
-                    justify-content: flex-start;
-                    width: 75%;
-                    gap: 10px;
-                }
-
-                @media (max-width:640px) {
-                    width: 80%;
-                    align-items: center;
-                    margin-top: 10px;
-                }
-
-                .c_realTopThree {
-                    display: flex;
-                    flex-direction: column;
-
-                    @media (max-width:1024px) {
-                        justify-content: center;
-                        width: 100%;
-                        gap: 10px;
-                    }
-
-                    @media (max-width:640px) {
-                        width: 100%;
-                    }
-
-                    div {
-                        display: flex;
-                        align-items: center;
-
-                        @media (max-width:640px) {
-                            width: 100%;
-                            flex-direction: column;
-
-                        }
-                    }
-
-                    input {
-                        display: flex;
-                        text-align: center;
-                        justify-content: center;
-                        flex: 1;
-                        height: 48px;
-                        padding: 0 60px;
-                        margin: 10px 0;
-                        border-radius: 999px;
-                        background-color: #FCFAFF;
-                        border: #444;
-                        box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
-                        color: #333;
-                        font-size: 16px;
-
-                        &:focus {
-                            outline: solid 2px rgb(92, 92, 92)
-                        }
-
-                        @media (max-width:1024px) {
-                            width: 100%;
-                            padding: 0 30px;
-                            min-width: 0; // 重置最小寬度
-                            box-sizing: border-box; // 確保 padding 不會影響總寬度
-                        }
-
-                        @media (max-width:640px) {
-                            width: 100%;
-                            padding: 10px 10px;
-                            height: 44px;
-                            font-size: 0.85rem;
-                            min-width: 0; // 重置最小寬度
-                            box-sizing: border-box; // 確保 padding 不會影響總寬度
-                        }
-                    }
-                }
-
-                label {
-                    width: 100px;
-                    min-width: 100px;
-                    text-align: right;
-                    margin-right: 20px;
-
-                    @media (max-width:640px) {
-                        font-size: .85rem;
-                        margin-right: 5px;
-                        text-align: center;
-                        width: 100%;
-                    }
-                }
-
-                .c_realUpload {
-                    display: flex;
-                    text-align: center;
-                    justify-content: center;
-                    margin-top: 10px;
-
-                    @media (max-width:1024px) {
-                        // width: 85%;
-                        justify-content: left;
-                    }
-
-                    @media (max-width:640px) {
-                        flex-direction: column;
-                        align-items: center;
-
-                    }
-
-                    .c_upLoadGroup {
-                        display: flex;
-                        gap: 20px;
-                        width: 100%;
-
-                        @media (max-width:1024px) {
-                            gap: 10px;
-                            flex-direction: column;
-                            align-items: center;
-                        }
-
-
-                        .c_uploadGroupBox {
-                            display: flex;
-                            width: 100%;
-                            justify-content: center;
-
-                            .c_realErr {
-                                color: #DE1A10;
-                            }
-
-                            @media (max-width:640px) {}
-                        }
-                    }
-
-                    .c_uploadCase {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 10px;
-
-                        @media (max-width:640px) {
-                            align-items: center;
-                            width: clamp(180px, 80vw, 275px);
-                            max-width: 90%;
-                        }
-
-                        .c_upLoadFrame {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: center;
-                            position: relative;
-                            border-radius: 8px;
-                            background-color: #FCFAFF;
-                            border: #444;
-                            box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
-                            height: 175px;
-                            width: 265px;
-                            padding: 5px;
-                            overflow: hidden;
-
-                            @media (max-width:640px) {
-                                width: clamp(180px, 100%, 230px);
-                                max-width: none;
-                                max-height: none;
-                                height: auto;
-                                min-height: 120px;
-                                aspect-ratio: 3/2;
-                            }
-
-                            .c_upLoadPreBox {
-                                position: relative;
-                                display: inline-block;
-
-                                .c_realPreview {
-                                    display: block;
-                                    max-width: 98%;
-                                    max-height: 98%;
-                                    object-fit: cover;
-                                    object-position: center;
-                                    border-radius: 8px;
-                                }
-
-                                .c_upLoadWater {
-                                    position: absolute;
-                                    top: 50%;
-                                    right: 17px;
-                                    background-color: rgba(255, 255, 255, .6);
-                                    color: rgba(51, 51, 51, 0.5);
-                                    font-size: 14px;
-                                    padding: 4px 8px;
-                                    border-radius: 4px;
-                                    pointer-events: none;
-                                    user-select: none;
-                                }
-                            }
-
-                            .c_upLoadInput {
-                                position: absolute;
-                                opacity: 0;
-                                width: 100%;
-                                height: 100%;
-                                cursor: pointer;
-
-
-                            }
-
-                        }
-
-                        .c_upLoadLabel {
-                            font-size: 16px;
-                            font-weight: 300;
-
-                            @media (max-width:640px) {
-                                font-size: 14px;
-                            }
-                        }
-                    }
-                }
-
-                .c_realOnly {
-                    font-size: 14px;
-                    font-weight: 700;
-                    display: flex;
-                    justify-content: center;
-                    margin-top: 20px;
-                }
-
-                .c_realCheck {
-                    // width: 80%;
-                    margin: 20px 50px 10px;
-
-                    span {
-                        color: #595959;
-                        justify-content: center;
-                        font-size: 14px;
-
-                        .c_realEighteen {
-
-                            color: #DE1A10;
-                        }
-
-                        a {
-                            color: #1E39E6;
-                            white-space: nowrap; // 保持連結完整不斷行
-                            display: inline-block; // 可設定 padding、hover 效果
-                        }
-                    }
-                }
-
-                .c_btn-realName {
-                    cursor: pointer;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 5px;
-                    margin: 0 150px 5px;
-                    // width: 420px;
-                    border-radius: 999px;
-                    background-color: #DE1A10;
-                    border: solid 2px #A12424;
-                    color: #FCFAFF;
-                    font-size: 20px;
-                    font-weight: 600;
-                    // height: 50px;
-                    line-height: 30px;
-                    transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
-
-                    &:hover {
-                        box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
-                    }
-
-                    &:active {
-                        background-color: #fff;
-                        color: #DE1A10;
-                    }
-
-                    @media (max-width:1024px) {
-                        margin: 0 40px 5px;
-                        padding: 5px 20px;
-
-                    }
-
-                    @media (max-width:640px) {
-                        font-size: 16px;
-                        padding: 5px 20px;
-                        margin: 0 20px 5px;
-                    }
-                }
-            }
-
-        }
-    }
+	padding: 80px 10px 30px;
+	display: flex;
+	justify-content: center;
+	gap: 100px;
+
+	@media (max-width:1024px) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0;
+	}
+
+	.c_realOutside {
+		margin-top: 80px;
+		max-width: 840px;
+
+		@media (max-width:1024px) {
+			margin-top: 20px;
+		}
+
+		.c_realBox {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			flex: 1;
+			border-radius: 20px;
+			border: solid 1px #DEDADA;
+			background-color: #FCFAFF;
+			padding: 20px 0;
+
+			.c_verifyBox {
+				display: grid;
+				text-align: center;
+				place-items: center; // img是行內元素grid配place-items置中
+
+				h2 {
+					font-size: 32px;
+					margin: 50px;
+				}
+
+				p {
+					font-size: 24px;
+					margin-bottom: 80px;
+				}
+
+				img {
+					max-width: 60%;
+					margin-bottom: 100px;
+				}
+			}
+
+			.c_realHead {
+				background-color: #FFE5E5;
+				margin: 20px 0;
+				width: 85%;
+				padding: 10px;
+				border-radius: 10px;
+
+				h2 {
+					font-size: 18px;
+					font-weight: 600;
+
+					@media (max-width:640px) {
+						font-size: 16px;
+						font-weight: 500;
+					}
+				}
+
+				.c_realTop {
+					font-size: 16px;
+
+					@media (max-width:640px) {
+						font-size: 14px;
+					}
+				}
+			}
+
+			.c_realAlert {
+				color: #DE1A10;
+				font-size: 14px;
+			}
+
+			.c_realForm {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				width: 90%;
+
+				@media (max-width:1024px) {
+					justify-content: flex-start;
+					width: 75%;
+					gap: 10px;
+				}
+
+				@media (max-width:640px) {
+					width: 80%;
+					align-items: center;
+					margin-top: 10px;
+				}
+
+				.c_realTopThree {
+					display: flex;
+					flex-direction: column;
+
+					@media (max-width:1024px) {
+						justify-content: center;
+						width: 100%;
+						gap: 10px;
+					}
+
+					@media (max-width:640px) {
+						width: 100%;
+					}
+
+					div {
+						display: flex;
+						align-items: center;
+
+						@media (max-width:640px) {
+							width: 100%;
+							flex-direction: column;
+
+						}
+					}
+
+					input {
+						display: flex;
+						text-align: center;
+						justify-content: center;
+						flex: 1;
+						height: 48px;
+						padding: 0 60px;
+						margin: 10px 0;
+						border-radius: 999px;
+						background-color: #FCFAFF;
+						border: #444;
+						box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
+						color: #333;
+						font-size: 16px;
+
+						&:focus {
+							outline: solid 2px rgb(92, 92, 92)
+						}
+
+						@media (max-width:1024px) {
+							width: 100%;
+							padding: 0 30px;
+							min-width: 0; // 重置最小寬度
+							box-sizing: border-box; // 確保 padding 不會影響總寬度
+						}
+
+						@media (max-width:640px) {
+							width: 100%;
+							padding: 10px 10px;
+							height: 44px;
+							font-size: 0.85rem;
+							min-width: 0; // 重置最小寬度
+							box-sizing: border-box; // 確保 padding 不會影響總寬度
+						}
+					}
+				}
+
+				label {
+					width: 100px;
+					min-width: 100px;
+					text-align: right;
+					margin-right: 20px;
+
+					@media (max-width:640px) {
+						font-size: .85rem;
+						margin-right: 5px;
+						text-align: center;
+						width: 100%;
+					}
+				}
+
+				.c_realUpload {
+					display: flex;
+					text-align: center;
+					justify-content: center;
+					margin-top: 10px;
+
+					@media (max-width:1024px) {
+						// width: 85%;
+						justify-content: left;
+					}
+
+					@media (max-width:640px) {
+						flex-direction: column;
+						align-items: center;
+
+					}
+
+					.c_upLoadGroup {
+						display: flex;
+						gap: 20px;
+						width: 100%;
+
+						@media (max-width:1024px) {
+							gap: 10px;
+							flex-direction: column;
+							align-items: center;
+						}
+
+
+						.c_uploadGroupBox {
+							display: flex;
+							flex-direction: column;
+							width: 100%;
+							justify-content: center;
+
+							.c_realErr {
+								color: #DE1A10;
+							}
+
+							@media (max-width:640px) {}
+						}
+					}
+
+					.c_uploadCase {
+						display: flex;
+						flex-direction: column;
+						gap: 10px;
+
+						@media (max-width:640px) {
+							align-items: center;
+							width: clamp(180px, 80vw, 275px);
+							max-width: 90%;
+						}
+
+						.c_upLoadFrame {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							justify-content: center;
+							position: relative;
+							border-radius: 8px;
+							background-color: #FCFAFF;
+							border: #444;
+							box-shadow: 2px 4px 5px rgba(0, 0, 0, .25), 2px 2px 4px rgba(0, 0, 0, .25) inset;
+							height: 175px;
+							width: 100%;
+							padding: 5px;
+							overflow: hidden;
+
+							@media (max-width:640px) {
+								width: clamp(180px, 100%, 230px);
+								max-width: none;
+								max-height: none;
+								height: auto;
+								min-height: 120px;
+								aspect-ratio: 3/2;
+							}
+
+							.c_upLoadPreBox {
+								position: relative;
+								display: inline-block;
+
+								.c_realPreview {
+									display: block;
+									max-width: 98%;
+									max-height: 98%;
+									object-fit: cover;
+									object-position: center;
+									border-radius: 8px;
+								}
+
+								.c_upLoadWater {
+									position: absolute;
+									top: 50%;
+									right: 17px;
+									background-color: rgba(255, 255, 255, .6);
+									color: rgba(51, 51, 51, 0.5);
+									font-size: 14px;
+									padding: 4px 8px;
+									border-radius: 4px;
+									pointer-events: none;
+									user-select: none;
+								}
+							}
+
+							.c_upLoadInput {
+								position: absolute;
+								opacity: 0;
+								width: 100%;
+								height: 100%;
+								cursor: pointer;
+
+
+							}
+
+						}
+
+						.c_upLoadLabel {
+							font-size: 16px;
+							font-weight: 300;
+
+							@media (max-width:640px) {
+								font-size: 14px;
+							}
+						}
+					}
+				}
+
+				.c_realOnly {
+					font-size: 14px;
+					font-weight: 700;
+					display: flex;
+					justify-content: center;
+					margin-top: 20px;
+				}
+
+				.c_realCheck {
+					// width: 80%;
+					margin: 20px 50px 10px;
+
+					span {
+						color: #595959;
+						justify-content: center;
+						font-size: 14px;
+
+						.c_realEighteen {
+
+							color: #DE1A10;
+						}
+
+						a {
+							color: #1E39E6;
+							white-space: nowrap; // 保持連結完整不斷行
+							display: inline-block; // 可設定 padding、hover 效果
+						}
+					}
+				}
+
+				.c_btn-realName {
+					cursor: pointer;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding: 5px;
+					margin: 0 150px 5px;
+					// width: 420px;
+					border-radius: 999px;
+					background-color: #DE1A10;
+					border: solid 2px #A12424;
+					color: #FCFAFF;
+					font-size: 20px;
+					font-weight: 600;
+					// height: 50px;
+					line-height: 30px;
+					transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
+
+					&:hover {
+						box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+					}
+
+					&:active {
+						background-color: #fff;
+						color: #DE1A10;
+					}
+
+					@media (max-width:1024px) {
+						margin: 0 40px 5px;
+						padding: 5px 20px;
+
+					}
+
+					@media (max-width:640px) {
+						font-size: 16px;
+						padding: 5px 20px;
+						margin: 0 20px 5px;
+					}
+				}
+			}
+
+		}
+	}
 }
