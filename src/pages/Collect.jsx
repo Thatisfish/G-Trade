@@ -175,17 +175,6 @@ const Collect = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
-  // ✅ 移除 useEffect 區塊，不再根據視窗大小變更每頁數量
-  /*
-  useEffect(() => {
-      const updateItemsPerPage = () => {
-        setItemsPerPage(window.innerWidth > 1180 ? 9 : 10);
-      };
-      updateItemsPerPage(); // 初始化
-      window.addEventListener('resize', updateItemsPerPage);
-      return () => window.removeEventListener('resize', updateItemsPerPage);
-  }, []);
-  */
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -221,14 +210,14 @@ const Collect = () => {
       <Sidebar />
       <div>
         {/* 麵包屑 */}
-        <div className='y_breadcrumb'>
-          <a href="/">首頁</a>
+        <div >
+          {/* <a href="/">首頁</a>
           <span className="divider">›</span>
           <a href="/member">會員中心</a>
           <span className="divider">›</span>
           <a href="/shop">購買中心</a>
           <span className="divider">›</span>
-          <span className="current">收藏清單</span>
+          <span className="current">收藏清單</span> */}
         </div>
 
         {/* 標題 + 批量刪除 */}
