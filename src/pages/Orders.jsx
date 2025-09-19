@@ -49,16 +49,7 @@ const Orders = () => {
 		<main className="J_content">
 			<Sidebar />
 			<div className="J_layout">
-				{/* 麵包屑 */}
-				<div className="J_breadcrumbs">
-					<a href="#">首頁</a>
-					<span >›</span>
-					<a href="#">會員中心</a>
-					<span >›</span>
-					<a href="#">購買中心</a>
-					<span >›</span>
-					<span >收藏清單</span>
-				</div>
+				
 
 				{/* OrderTabs */}
 				<div className="J_ordertabs">
