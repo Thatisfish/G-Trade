@@ -133,9 +133,15 @@
                 a {
                     white-space: nowrap; // 保持連結完整不斷行
                     display: inline-block; // 可設定 padding、hover 效果
-                    color: #1E39E6;
+                    color: #000000;
                     max-width: 100%;
                     overflow-wrap: break-word;
+                    border-bottom: 1.5px solid transparent;
+                    transition: border-color 0.35s;
+
+                    &:hover {
+                        border-bottom-color: #000000;
+                    }
                 }
             }
 
@@ -182,14 +188,26 @@
 
                     a {
                         color: #DE1A10;
+                        border-bottom: 2px solid transparent;
+                        transition: border-color 0.35s;
+
+                        &:hover {
+                            border-bottom-color: #DE1A10;
+                        }
                     }
                 }
 
                 a {
                     white-space: nowrap; // 保持連結完整不斷行
                     display: inline-block;
-                    color: #1E39E6;
+                    color: #000000;
                     cursor: pointer;
+                    border-bottom: 2px solid transparent;
+                    transition: border-color 0.35s;
+
+                    &:hover {
+                        border-bottom-color: #000000;
+                    }
                 }
             }
         }
