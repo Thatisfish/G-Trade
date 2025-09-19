@@ -12,7 +12,6 @@ import item17 from '../images/Alltype_Xbox/Alltype_Xbox_item06.avif'
 import item18 from '../images/Alltype_Xbox/Alltype_Xbox_item07.avif'
 import item19 from '../images/Alltype_Xbox/Alltype_Xbox_item09.avif'
 import banner02 from '../images/Alltype_Xbox/Alltype_Xbox_banner04.avif'
-import banner03 from '../images/Alltype_Xbox/Alltype_Xbox_banner03.avif'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Paginations from "../components/Pagination.jsx"
@@ -119,7 +118,7 @@ const TABS = ['全部', '主機', '遊戲', '配件'];
 
 const Alltype_Xbox = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const ITEMS_PER_PAGE = 9;
+    const ITEMS_PER_PAGE = 12;
     const [active, setActive] = useState('全部');
 
     const counts = useMemo(() => {
@@ -187,9 +186,6 @@ const Alltype_Xbox = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <img src={banner02} alt="" />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src={banner03} alt="" />
                         </SwiperSlide>
 
                     </Swiper>

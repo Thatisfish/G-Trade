@@ -132,13 +132,34 @@ const arrCardinfor = [
 		priceNow: '800',
 		size: 'small'
 	},
+	{
+		id: 12,
+		tag: '全新上架',
+		category: '遊戲',
+		image: DS2CE,
+		title: '死亡擱淺典藏版',
+		seller: 'Ds2CE**250626',
+		priceNow: '1100',
+		size: 'medium'
+	},
+	{
+		id: 13,
+		tag: '限時優惠',
+		image: SW2,
+		category: '主機',
+		title: '全新紅藍switch主機 附明星大亂鬥遊戲片全新紅藍switch主機 附明星大亂鬥遊戲片',
+		seller: 'fun31**56',
+		priceNow: '5000',
+		priceOld: '5500',
+		size: 'small'
+	},
 ];
 
 const TABS = ['全部', '主機', '遊戲', '配件'];
 
 const Alltype = () => {
 	const [currentPage, setCurrentPage] = useState(1);
-	const ITEMS_PER_PAGE = 9;
+	const ITEMS_PER_PAGE = 12;
 	const [active, setActive] = useState('全部');
 
 	const counts = useMemo(() => {

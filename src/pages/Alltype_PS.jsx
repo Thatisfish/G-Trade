@@ -150,7 +150,7 @@ const TABS = ['全部', '主機', '遊戲', '配件'];
 
 const Alltype_PS = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const ITEMS_PER_PAGE = 9;
+    const ITEMS_PER_PAGE = 12;
     const [active, setActive] = useState('全部');
 
     const counts = useMemo(() => {

@@ -1,5 +1,5 @@
 .swiper {
-	width: 100%;
+	width: 80%;
 	height: 100%;
 }
 
@@ -79,12 +79,12 @@
 }
 
 .B_Categories {
-	max-width: 250px;
+	// max-width: 250px;
 	min-width: 150px;
 	display: flex;
-	width: 100%;
+	width: auto;
 	height: 48px;
-	margin: 0 60px;
+	margin: 0 1.25rem;
 	padding: 12px 10px;
 	justify-content: center;
 	align-items: center;
@@ -96,13 +96,28 @@
 	font-size: 16px;
 	font-weight: 700;
 	cursor: pointer;
+	transition: .2s;
+
+
+	&:hover {
+		transform: scale(1.1);
+	}
+	&.is-active {
+		background: #fff;
+		color: #DE1A10;
+		border: 2px solid #DE1A10;
+		box-shadow: 0 4px 8px rgba(222, 26, 16, 0.3);
+		transform: scale(1.05);
+	}
 
 	@media (max-width:1024px) {
 		border: none;
 		background: none;
-		color: #DE1A10;
+		color: #DE1a10;
 		padding: 0px;
 		margin: 0px;
+
+
 	}
 
 	@media(max-width:640px) {
@@ -113,11 +128,11 @@
 }
 
 .B_item {
-	width: 65%;
+	width: auto;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	gap: 30px;
-	margin: 30px 0;
+	margin: 30px 10px;
 
 	// 平板尺寸
 	@media (max-width: 1024px) {
