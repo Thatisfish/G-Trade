@@ -1,4 +1,4 @@
-import '../styles/_Alltype_PS.scss'
+// import '../styles/_Alltype.scss'
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../images/Alltype_PS/Alltype_PS_banner01.webp'
