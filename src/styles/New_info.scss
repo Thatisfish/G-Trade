@@ -19,6 +19,7 @@
         p {
             font-size: 24px;
             font-weight: 500;
+            
         }
     }
 
@@ -43,7 +44,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: start;
-                margin: 8px 0;
+                margin: 15px 0;
                 // padding-bottom: 16px;
                 border-bottom: 2px solid black;
 
@@ -55,9 +56,9 @@
 
                 img {
                     display: block;
-                    width: 15%;
-                    align-self: self-end;
+                    width: 20%;
                     min-width: 105px;
+                    align-self: center;
 
                     @media (max-width:1024px) {
                         width: 120px;
@@ -68,8 +69,10 @@
                 .newfont {
                     display: flex;
                     flex-direction: column;
+                    width: 80%;
+                    margin-bottom: 5%;
                     gap: 20px;
-                    padding-left: 10px;
+                    padding: 15px 20px 0 20px;
 
                     h4 {
                         font-size: 24px;
@@ -87,6 +90,7 @@
                         line-clamp: 2;
                         -webkit-line-clamp: 2;
                         overflow: hidden;
+                        padding-left: 3%;
                     }
                 }
             }

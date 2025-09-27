@@ -27,6 +27,7 @@ const ProductPage = lazy(() => import("./pages/ProductPage"));
 const EscrowInfo = lazy(() => import("./pages/Escrow_Info"));
 const ListingGuideline = lazy(() => import("./pages/ListingGuideline"));
 const HamburgerMenu = lazy(() => import("./components/HamburgerMenu"));
+const Newspages = lazy(()=> import("./pages/Newspages"));
 
 import ScrollToTop from "./js/ScrollToTop";
 
@@ -95,6 +96,7 @@ export default function App() {
 				import("./pages/Escrow_Info"),
 				import("./pages/ListingGuideline"),
 				import("./components/HamburgerMenu"),
+				import("./pages/Newspages"),
 			]).catch(() => {
 				// 靜默失敗即可，避免打擾使用者
 			});
@@ -141,6 +143,7 @@ export default function App() {
 						<Route path="/Escrow_Info" element={<EscrowInfo />} />
 						<Route path="/ListingGuideline" element={<ListingGuideline />} />
 						<Route path="/hamburgerMenu" element={<HamburgerMenu />} />
+						<Route path="/Newspages" element={<Newspages />} />
 					</Routes>
 				</Suspense>
 
