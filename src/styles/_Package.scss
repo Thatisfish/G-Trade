@@ -135,6 +135,15 @@
 					left: 43.5%;
 					animation: arrow 2s ease-in-out;
 					animation-iteration-count: infinite;
+					display: flex;
+					flex-direction: column;
+					text-align: center;
+					gap: 10px;
+
+					p {
+						font-weight: 300;
+						color: #f00000;
+					}
 				}
 
 				@keyframes arrow {

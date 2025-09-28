@@ -199,6 +199,7 @@ const Package = () => {
                                 {/* 判斷是最後一張的時候箭頭消失 */}
                                 {currentStep.image !== c_package_13 && (
                                     <div className='c_packArrow'>
+                                        <p>scroll</p>
                                         <img src={c_arrow} alt="" />
                                     </div>
                                 )}

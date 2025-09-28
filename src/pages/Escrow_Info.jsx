@@ -39,9 +39,10 @@ const Escrow_Info = () => {
                     </div>
                     <img className='B_EsArrow1' src={B_ESImg9} alt='' />
                     <div className='B_EsItem'>
+                        <img className='B_EsImgF up' src={B_ESImg4} alt="" />
                         <img className='B_EsImg2' src={B_ESImg5} alt="" />
                         <OuterFrame textClass='B_EsF' text="平台暫時保管款項" />
-                        <img className='B_EsImgF' src={B_ESImg4} alt="" />
+                        <img className='B_EsImgF down' src={B_ESImg4} alt="" />
                     </div>
                     <img className='B_EsArrow2' src={B_ESImg10} alt='' />
                     <div className='B_EsItem'>
@@ -51,8 +52,9 @@ const Escrow_Info = () => {
                     </div>
                     <img className='B_EsArrow3' src={B_ESImg9} alt='' />
                     <div className='B_EsItem2'>
+                        <img className='B_EsImgS payUp' src={B_ESImg8} alt="" />
                         <OuterFrame textClass='B_EsF' text="平台將款項撥付賣家" />
-                        <img className='B_EsImgS' src={B_ESImg8} alt="" />
+                        <img className='B_EsImgS payDown' src={B_ESImg8} alt="" />
                         <p>※如遇商品爭議，可透過客服中心提出申訴 。</p>
                     </div>
                 </section>
