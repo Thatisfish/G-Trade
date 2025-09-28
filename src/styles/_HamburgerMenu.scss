@@ -34,21 +34,25 @@
 	height: 100vh;
 	background: #000;
 	z-index: 1000;
-	transform: translateX(100%);
-	transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	// transform: translateX(100%);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.4s ease, visibility 0.4s ease;
 	overflow-y: auto;
 
+	&.active {
+		opacity: 1;
+		visibility: visible;
+	}
+
 }
 
-.modal.active {
-	transform: translateX(0);
-}
 
 /*關閉按鈕 */
 .closeBtn {
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 29px;
+    right: -54px;
 	background: transparent;
 	border: none;
 	color: white;
@@ -143,12 +147,9 @@
 	width: auto;
 	position: relative;
 	flex-direction: column;
-	/* 支援垂直下拉 */
 	overflow: visible;
-	/* 讓下拉選單可見 */
 	display: flex;
 	overflow: hidden;
-	// margin-bottom: 6px;
 }
 
 .menuItem {
@@ -201,7 +202,6 @@
 	font-size: 1.5rem;
 	font-weight: 500;
 	transition: all 0.3s ease;
-	/* 改為 all 以包含字體大小變化 */
 	z-index: 2;
 
 }
@@ -215,7 +215,6 @@
 .menuItem2:hover .menu_item_item {
 	opacity: 1;
 	max-height: 200px;
-	/* 根據內容調整 */
 	transform: translateY(0);
 	padding-bottom: 30px;
 }

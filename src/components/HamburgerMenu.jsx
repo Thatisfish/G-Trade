@@ -38,7 +38,7 @@ const HamburgerMenu = ({ isOpen, onClose, onOpenLogin }) => {
 		onClose();
 	};
 
-	if (!isOpen) return null; // 不顯示時直接返回 null
+	
 
 	return (
 		<>
