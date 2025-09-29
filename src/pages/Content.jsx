@@ -4,14 +4,14 @@ import Sidebar from '../components/Sidebar'
 
 function Content() {
     return (
-        <main className="J_ContentPage">
-            <h1 className="J_ContentTitle">聯絡我們</h1>
-
-            <div className="J_ContentContainer">
+        <main className="J_content">
 
                 <Sidebar />
 
+                <div className="J_layout">
+
                 <div className="J_ContentForm">
+            <h1 className="J_ContentTitle">聯絡我們</h1>
                     <form
                         name="contactform"
                         id="contactform"
@@ -30,14 +30,17 @@ function Content() {
                             autoFocus
                         />
 
-                        <label htmlFor="tel">聯絡電話：</label>
+                        <label htmlFor="tel">*聯絡電話：</label>
                         <input
                             type="tel"
                             name="tel"
                             id="tel"
                             maxLength={10}
-                            title="聯絡電話欄位"
+                            title="聯絡電話欄位，請輸入 9~10 位數字"
                             placeholder="例如：0987654321"
+                            inputMode="tel"
+                            pattern="[0-9]{9,10}"
+                            required
                         />
 
                         <label htmlFor="email">*Email：</label>
@@ -58,13 +61,12 @@ function Content() {
                             placeholder="請輸入您的意見"
                         />
 
-                        <button className="btn-animat" type="submit">
+                        <button className="J_btn-animat" type="submit">
                             <span>送出</span>
                         </button>
                     </form>
                 </div>
-
-            </div>
+                </div>
         </main>
     )
 }
