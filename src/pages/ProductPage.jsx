@@ -20,8 +20,17 @@ const mockProduct = {
 	],
 	recommendations: [
 		{ id: "ps5-slim", title: "PS5 Slim 光碟版", price: 12990, thumb: "/img/r/ps5.jpg" }
+	],
+	qa: [
+		{
+			user: "@fun31**56",
+			time: "2025.07.16 23:54:16",
+			content: "您好，請問還有貨嗎？",
+			answer: "您好，有需要可以直接下單，謝謝。",
+			answerTime: "2025.07.17 00:20:18"
+		}
 	]
-}
+};
 
 const ProductPage = () => {
 	const { id } = useParams()
@@ -59,7 +68,7 @@ const ProductPage = () => {
 			{/* V 問與答 */}
 			<section className="product__qa section">
 				<div className="top_decorate2"></div>
-				<ProductQa qa={product.qa} />
+				<ProductQa productId={product.id} initialQa={product.qa || []} />
 				<div className="down_decorate2"></div>
 			</section>
 			{/* V 你可能有興趣的商品 */}

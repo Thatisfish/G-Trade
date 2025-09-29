@@ -41,8 +41,13 @@
 
 }
 
+.section {
+	background: #fffefd8a;
+}
+
 /*------------------------ 商品簡介 ------------------------*/
 .product__info {
+
 
 	// margin-bottom: 100px;
 	.product-page {
@@ -404,9 +409,6 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	background: #fffefd8a;
-
-
 
 	.seller {
 		margin: 10px 0;
@@ -643,7 +645,7 @@
 
 	.detail {
 		background-color: #fff;
-		border: 5px solid #000; // 黑色外框
+		border: 1px solid #CCCCCC; // 黑色外框
 		padding: 40px;
 		width: 80%;
 		line-height: 1.6; // 行高讓文字比較好讀
@@ -705,14 +707,27 @@
 		flex-direction: column;
 		align-items: center;
 
+		/* 空清單提示（有用到時才會出現，不影響其餘區塊） */
+		&_empty {
+			width: 80%;
+			margin-bottom: 16px;
+			padding: 12px;
+			color: #666;
+			background: #fafafa;
+			border: 1px dashed rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+			text-align: center;
+		}
+
 		&_item {
 			background-color: #fff;
-			border: 5px solid #000; // 黑色外框
+			border: 1px solid #CCCCCC; // 黑色外框
 			padding: 40px;
 			height: 70%;
 			width: 80%;
 			line-height: 1.6; // 行高讓文字比較好讀
 			min-height: 300px;
+			margin-bottom: 20px;
 
 			.qa_header {
 				display: flex;
@@ -742,6 +757,16 @@
 			.qa_answer {
 				display: flex;
 				margin: 50px 20px;
+				justify-content: space-between;
+
+				.qa_ans {
+					display: flex;
+				}
+
+				.qa_time {
+					color: #808080;
+					font-size: 14px;
+				}
 
 				.qa_answer-label {
 					color: #808080;
@@ -756,10 +781,21 @@
 			width: 80%;
 			margin-top: 70px;
 
-			textarea {
+			/* 和元件 className 對齊：qa_askbox */
+			.qa_askbox {
 				height: 250px;
 				margin-bottom: 20px;
 				padding: 20px;
+				display: block;
+				border: 2px solid #cacaca;
+				border-radius: 6px;
+				resize: vertical;
+
+				&:focus {
+					outline: none;
+					border-color: #555;
+					box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+				}
 			}
 
 			.qa_title,
@@ -770,12 +806,6 @@
 			.qa_policy {
 				color: #808080;
 				margin-bottom: 15px;
-			}
-
-			.askbox {
-				display: block;
-				border: 2px solid #cacaca;
-				height: 200px;
 			}
 
 			.allCaptcha {
@@ -859,7 +889,7 @@
 		}
 	}
 
-	@media(max-width:768px) {
+	@media (max-width: 768px) {
 		margin: 0;
 		padding: 70px 0;
 
@@ -874,7 +904,7 @@
 		}
 	}
 
-	@media(max-width:640px) {
+	@media (max-width: 640px) {
 		.qa {
 			.qa_item {
 				padding: 30px clamp(10px, 5vw, 30px) 20px;
@@ -886,7 +916,7 @@
 		}
 	}
 
-	@media(max-width:520px) {
+	@media (max-width: 520px) {
 		margin: 0 0 0;
 
 		.qa {
@@ -938,6 +968,7 @@
 		pointer-events: none;
 	}
 }
+
 
 /*------------------------ 你可能有興趣的商品 ------------------------*/
 .product__recommend {
