@@ -7,7 +7,7 @@ const MENU = [
 	{ path: '/Orders', label: "我的訂單", icon: "📦" },
 	{ path: '/Coupon', label: "優惠券匣", icon: "🎟️" },
 	{ path: '/Real_name', label: "實名認證", icon: "✅" },
-	{ path: '/', label: "客服中心", icon: "💬" },
+	{ path: '/Content', label: "客服中心", icon: "💬" },
 ];
 
 const Sidebar = () => {

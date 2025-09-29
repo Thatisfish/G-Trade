@@ -29,6 +29,7 @@ const ListingGuideline = lazy(() => import("./pages/ListingGuideline"));
 const HamburgerMenu = lazy(() => import("./components/HamburgerMenu"));
 const Newspages = lazy(()=> import("./pages/Newspages"));
 const Coupon = lazy(() => import("./pages/Coupon"));
+const Content = lazy(() => import("./pages/Content"));
 
 import ScrollToTop from "./js/ScrollToTop";
 
@@ -94,6 +95,7 @@ export default function App() {
 				import("./pages/Orders"),
 				import("./pages/Coupon"),
 				import("./pages/Reviewpage"),
+				import("./pages/Content"),
 				import("./pages/ProductPage"),
 				import("./pages/Escrow_Info"),
 				import("./pages/ListingGuideline"),
@@ -142,6 +144,7 @@ export default function App() {
 						<Route path="/Orders" element={<Orders />} />
 						<Route path="/Coupon" element={<Coupon />} />
 						<Route path="/Reviewpage" element={<Reviewpage />} />
+						<Route path="/Content" element={<Content />} />
 						<Route path="/ProductPage" element={<ProductPage />} />
 						<Route path="/Escrow_Info" element={<EscrowInfo />} />
 						<Route path="/ListingGuideline" element={<ListingGuideline />} />
