@@ -3,35 +3,42 @@
 	opacity: 0;
 	pointer-events: none;
 	transform: translateY(-12px) scale(0.98);
-	transition: opacity 0.18s, transform 0.18s cubic-bezier(.4,0,.2,1);
+	transition: opacity 0.18s, transform 0.18s cubic-bezier(.4, 0, .2, 1);
 	position: absolute;
 	left: 0;
 	top: 100%;
 	width: 100%;
 	z-index: 10;
 }
+
 .J_review-float.is-open {
 	opacity: 1;
 	pointer-events: auto;
 	transform: translateY(0) scale(1);
 }
+
 // Modal 浮現動畫仿 bell 通知
 .J_modal-overlay {
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.18s ease;
 	position: fixed;
-	top: 0; left: 0; right: 0; bottom: 0;
-	background: rgba(0,0,0,0.4);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.4);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	z-index: 9999;
 }
+
 .J_modal-overlay.is-open {
 	opacity: 1;
 	pointer-events: auto;
 }
+
 .J_modal-content {
 	background: #fff;
 	border-radius: 12px;
@@ -42,18 +49,22 @@
 	overflow-y: auto;
 	position: relative;
 	transform: translateY(-16px) scale(0.98);
-	transition: transform 0.18s cubic-bezier(.4,0,.2,1);
+	transition: transform 0.18s cubic-bezier(.4, 0, .2, 1);
 }
+
 .J_modal-overlay.is-open .J_modal-content {
 	transform: translateY(0) scale(1);
 }
+
 .J_triangle.is-open {
 	transform: rotate(90deg);
 	transition: transform 0.2s;
 }
+
 .J_triangle {
 	transition: transform 0.2s;
 }
+
 /* Content */
 .J_content {
 	display: flex;
@@ -61,9 +72,9 @@
 	padding: 80px 50px 30px;
 	gap: 100px;
 
-	
 
-	.J_layout{
+
+	.J_layout {
 		padding-top: 65px;
 	}
 }
@@ -88,12 +99,20 @@
 		background: none;
 		cursor: pointer;
 		font-weight: 600;
+
+		&:hover {
+			/* 只在下方顯示陰影：水平偏移 0，垂直偏移較大，較柔和的透明度 */
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+		}
 	}
 
 	.active {
 		color: #d00;
 		border-color: #d00;
 	}
+
+
+
 }
 
 /* OrderCard */
@@ -164,6 +183,15 @@
 
 					}
 
+					&:hover {
+						box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+					}
+
+					&:active {
+						background-color: #fff;
+						color: #DE1A10;
+					}
+
 				}
 
 				.J_RB2 {
@@ -191,6 +219,15 @@
 					.J_Checkout {
 						width: 85%;
 
+					}
+
+					&:hover {
+						box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+					}
+
+					&:active {
+						background-color: #fff;
+						color: #DE1A10;
 					}
 
 				}
@@ -280,8 +317,20 @@
 		flex-direction: column;
 		align-items: flex-start;
 
+
+
 		.J_stars {
 			margin-bottom: .5rem;
+
+			span {
+				font-size: 14px;
+			}
+
+			button {
+				border: none;
+				background-color: white;
+				width: 40px;
+			}
 		}
 
 		textarea {
@@ -326,6 +375,7 @@
 		align-items: center;
 
 
+
 	}
 
 	.J_reviweBtn button {
@@ -336,35 +386,50 @@
 		padding: 8px 32px;
 		font-size: 16px;
 		cursor: pointer;
+
+		&:hover {
+			box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+		}
+
+		&:active {
+			background-color: #fff;
+			color: #DE1A10;
+		}
 	}
 
 	.J_modal-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-.J_modal-content {
-  background: #fff;
-  border-radius: 12px;
-  padding: 32px 24px;
-  min-width: 320px;
-  max-width: 90vw;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-}
-.J_modal-close {
-  position: absolute;
-  top: 12px; right: 12px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.4);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 9999;
+	}
+
+	.J_modal-content {
+		background: #fff;
+		border-radius: 12px;
+		padding: 32px 24px;
+		min-width: 320px;
+		max-width: 90vw;
+		max-height: 90vh;
+		overflow-y: auto;
+		position: relative;
+	}
+
+	.J_modal-close {
+		position: absolute;
+		top: 12px;
+		right: 12px;
+		background: none;
+		border: none;
+		font-size: 20px;
+		cursor: pointer;
+	}
 
 }
 
@@ -387,13 +452,14 @@
 		align-items: center;
 		gap: 0;
 
-		
+
 
 	}
 
 	.J_content .J_layout {
 		padding: 0;
 	}
+
 	// 右邊區塊寬度設定
 	.J_layout {
 		max-width: 840px;
@@ -548,7 +614,7 @@
 		display: flex;
 		flex-direction: column;
 
-		
+
 
 
 
@@ -675,6 +741,7 @@
 
 
 }
+
 @media (max-width:900px) {
 
 	.J_content {
@@ -691,9 +758,9 @@
 	.J_content {
 		padding: 80px 12px 24px 12px;
 		flex-direction: column;
-		gap:0px;
+		gap: 0px;
 
-		
+
 
 	}
 
@@ -761,10 +828,10 @@
 		width: 100%;
 		box-sizing: border-box;
 
-		.J_ordercardLeft{
+		.J_ordercardLeft {
 			align-self: flex-start;
 		}
-		
+
 
 		img {
 			width: 120px;
@@ -798,8 +865,9 @@
 				.J_order-actions {
 					margin-left: auto;
 					display: flex;
-					gap: clamp(4px, 1.5vw, 25px);;
-					
+					gap: clamp(4px, 1.5vw, 25px);
+					;
+
 
 					.J_RB1 {
 						background: #DE1A10;
@@ -885,7 +953,7 @@
 		flex-direction: column;
 		align-items: center;
 
-		
+
 
 		border: 1px solid #C8C8C8;
 		background: #FFF;
@@ -940,18 +1008,36 @@
 			min-width: 350px; // 評價區寬度，可依需求調整
 			max-width: 450px;
 
+			// display: flex;
+			// flex-direction: column;
+			// align-items: flex-start;
+
 			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
+			width: 100%;
+			justify-content: center;
+			align-items: center;
 
 			.J_stars {
 				margin-bottom: .5rem;
+
+				span {
+					font-size: 14px;
+				}
+
+				button {
+					border: none;
+					background-color: white;
+					width: 25px;
+					svg{width: 20px; height: 20px;}
+				}
 			}
 
 			textarea {
-				width: 100%;
-				min-height: 60px;
+				// width: 100%;
+				min-height: 90px;
+				width: 160px;
 				margin-bottom: .5rem;
+
 			}
 
 			.J_checkoutBtn {
