@@ -18,17 +18,33 @@ const ListingGuideline = () => {
     const [dinoFrame, setDinoFrame] = useState(0)
     const [isJump, setIsJump] = useState(false)
     const [isHidden, setIsHidden] = useState(false)
+    const [obstacles, setObstacles] = useState([0.3, 0.75])
     const dinoRef = useRef(null)
     const obstacleRefs = useRef([])
 
-    const gameWidth = 600
-    const dinoWidth = 60
+    const gameWidth = 1.0  // 100%
+    const dinoWidth = 0.12   // 恐龍12%
+
+    // 監聽螢幕寬度變化，調整障礙物數量
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 1400) {
+                setObstacles([0.3, 0.75]) // 兩個障礙物
+            } else  {
+                setObstacles([0.6]) // 只保留一個障礙物在中間
+            }
+        }
+
+        handleResize() // 初始化
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     useEffect(() => {
         const interval = setInterval(() => {
             setDinoFrame(prevFrame => (prevFrame === 0 ? 1 : 0)) // 交換恐龍模式
             setDinoX(prev => {
-                const next = prev + 7
+                const next = prev + 0.02  // 右移2%
                 if (next > gameWidth && !isHidden) {
                     setIsHidden(true) // +hidden class
                     setIsJump(false)
@@ -44,16 +60,18 @@ const ListingGuideline = () => {
                 if (isHidden) return prev
                 return next
             })
+
             // 碰撞偵測
             obstacleRefs.current.forEach(obstacle => {
                 if (!obstacle) return
-                const obstacleX = obstacle.offsetLeft
-                const obstacleWidth = obstacle.offsetWidth
+                const obstacleLeft = parseFloat(obstacle.style.left) / 100
+                const obstacleWidth = obstacle.offsetWidth / obstacle.parentElement.offsetWidth
 
                 if (
-                    dinoX + dinoWidth + 10 > obstacleX &&
-                    dinoX < obstacleX + obstacleWidth &&
-                    !isJump) {
+                    dinoX + dinoWidth > obstacleLeft &&
+                    dinoX < obstacleLeft + obstacleWidth &&
+                    !isJump
+                ) {
                     setIsJump(true)
                     setTimeout(() => setIsJump(false), 2200)
                 }
@@ -80,16 +98,16 @@ const ListingGuideline = () => {
                                 className={`c_list_dinosaur ${isJump ? 'jump' : ""} ${isHidden ? 'hidden' : ''}`}
                                 src={dinoFrame === 0 ? c_list_dinosaur : c_list_dinosaur2}
                                 alt="恐龍"
-                                style={{ left: `${dinoX}px` }}
+                                style={{ left: `${dinoX * 100}%` }}
                             />
-                            {[150, 400].map((pos, index) => (
+                            {obstacles.map((pos, index) => (
                                 <img
                                     key={index}
                                     ref={el => (obstacleRefs.current[index] = el)}
                                     className='c_list_tree'
                                     src={c_list_tree}
                                     alt="障礙物"
-                                    style={{ left: `${pos}px` }}
+                                    style={{ left: `${pos * 100}%` }}
                                 />
                             ))}
                         </div>
@@ -102,14 +120,14 @@ const ListingGuideline = () => {
                 <div className='c_listA'>
                     <div className='c_list_2'>
                         <img src={c_list_2} alt="" />
-                        <span className='c_listLine1'></span>
+                        {/* <span className='c_listLine1'></span>
                         <span className='c_listLine2'></span>
-                        <span className='c_listLine3'></span>
+                        <span className='c_listLine3'></span> */}
                     </div>
                     <div className='c_listOutBox'>
                         <div className='c_listDirebox1'>
                             <p className='c_listTitle'><span className='c_listNum'>01</span><br />放置帳號手寫字條 </p>
-                            <p className='c_lisrDirections'>請在商品旁放置手寫的帳號名稱字卡（使用紙張書寫賣場帳號），以驗證商品為本人持有。</p>
+                            <p className='c_listDirections'>請在商品旁放置手寫的帳號名稱字卡（使用紙張書寫賣場帳號），以驗證商品為本人持有。</p>
                             <img className='c_list_6' src={c_list_6} alt="" />
                         </div>
                         <div className='c_listBubble'>
@@ -117,7 +135,7 @@ const ListingGuideline = () => {
                         </div>
                         <div className='c_listDirebox2'>
                             <p className='c_listTitle'><span className='c_listNum'>02</span><br />商品照越詳細越好</p>
-                            <p className='c_lisrDirections'>上傳多張詳細的商品照，如各個角度的商品外觀，或清楚的二手商品使用痕跡，方便買家評估同時也避免日後的交易糾紛。 </p>
+                            <p className='c_listDirections'>上傳多張詳細的商品照，如各個角度的商品外觀，或清楚的二手商品使用痕跡，方便買家評估同時也避免日後的交易糾紛。 </p>
                             <img className='c_list_7' src={c_list_7} alt="" />
                         </div>
                         <div className='c_listDirebox3'>
@@ -132,7 +150,7 @@ const ListingGuideline = () => {
                             <OuterFrame textClass="c_listTxt" text="不使用與商品無關的關鍵字，清楚描述商品內容、使用狀況、是否含原包裝...等情況；上架時選擇正確的分類與分級。" />
                         </div>
                     </div>
-                    <div className='c_lisrCorrBox'>
+                    <div className='c_listCorrBox'>
                         <div className='c_listCorrect'>
                             <img className='c_listIcon' src={c_list_3} alt="" />
                             <ul>

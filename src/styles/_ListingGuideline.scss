@@ -5,16 +5,29 @@
 	flex-direction: column;
 	align-items: center;
 
+	@media (max-width: 1024px) {
+		margin: 0 20px 100px;
+	}
 
 	.c_listTop {
 		width: 65%;
-		height: 100vh;
+
+		@media (max-width: 1024px) {
+			width: 80%;
+			height: auto;
+		}
 
 		.c_listHead {
 			display: flex;
 			justify-content: space-between;
 			align-items: flex-end;
 			color: #333;
+
+			@media (max-width: 1024px) {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+			}
 
 			.c_listMark {
 				display: grid;
@@ -23,19 +36,49 @@
 				h2 {
 					font-size: 64px;
 					letter-spacing: .1em;
+					white-space: nowrap;
+
+					@media (max-width:1024px) {
+						font-size: 48px;
+					}
+
+					@media (max-width:640px) {
+						font-size: 36px;
+					}
 
 					span {
 						font-size: 48px;
+
+						@media (max-width:1024px) {
+							font-size: 36px;
+						}
+
+						@media (max-width:640px) {
+							font-size: 24px;
+						}
 					}
 				}
 
 				small {
 					font-size: 24px;
+
+					@media (max-width:1024px) {
+						font-size: 18px;
+					}
 				}
 			}
 
 			.c_listSlogan {
 				font-size: 28px;
+
+				@media (max-width:1024px) {
+					font-size: 22px;
+					font-weight: 400;
+				}
+
+				@media (max-width:640px) {
+					font-size: 18px;
+				}
 			}
 		}
 
@@ -47,8 +90,18 @@
 			position: relative;
 			overflow: hidden;
 
+			@media (max-width:1024px) {
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				margin-top: 70px;
+			}
+
+			@media (max-width:640px) {
+				margin-top: 50px;
+			}
+
 			&::after {
-				// border-bottom: #222 solid 1px;
 				content: '';
 				position: absolute;
 				bottom: 0;
@@ -56,16 +109,23 @@
 				width: 80%;
 				height: 3px;
 				background: #444;
+				@media (max-width:1024px) {
+					width: 100%;
+				}
 			}
 
 
 			.c_listPicBox {
 				position: relative;
+				display: flex;
+				min-width: 200px;
 				width: 100%;
 				max-width: 600px;
 				height: 200px;
 
-				// overflow: hidden;
+				@media (max-width:1024px) {
+					order: 2;
+				}
 
 				@keyframes dinoJump {
 					0% {
@@ -73,44 +133,66 @@
 					}
 
 					8% {
-						transform: translateY(-60px);
+						transform: translateY(-40%);
 					}
 
 					30% {
-						transform: translateY(-80px);
+						transform: translateY(-55%);
 					}
 
-					// 滯空最高點
 					100% {
 						transform: translateY(0);
 					}
 				}
 
+				@keyframes dinoJump2 {
+					0% {
+						transform: translateY(0);
+					}
+
+					8% {
+						transform: translateY(-50%);
+					}
+
+					30% {
+						transform: translateY(-65%);
+					}
+
+					100% {
+						transform: translateY(0);
+					}
+				}
+
+
 				.c_list_dinosaur {
 					position: absolute;
-					width: 70px;
+					width: 12%;
+					min-width: 40px;
 					height: auto;
 					bottom: 0;
 					transition: left 0.05s linear, bottom 0.5s ease, opacity 0.3s ease;
 					opacity: 1;
-					// visibility: visible;
+
+
 
 					&.hidden {
 						opacity: 0;
 						transition: opacity 0.3s ease;
-						// transition-delay: 0.3s;
-						// visibility: hidden;
 					}
 
 					&.jump {
-						// bottom: 80px;
 						animation: dinoJump 2.2s ease-in-out;
+
+						@media (max-width:1550px) {
+							animation: dinoJump2 2.2s ease-in-out;
+						}
 					}
 				}
 
 				.c_list_tree {
 					position: absolute;
-					width: 40px;
+					width: 7%;
+					min-width: 30px;
 					height: auto;
 					bottom: 0px;
 				}
@@ -121,17 +203,34 @@
 				align-items: center;
 				justify-content: end;
 
+				@media (max-width:1024px) {
+					order: 1;
+					flex-direction: column;
+					gap: 70px;
+				}
+
 				.c_list_1 {
-					width: auto;
-					height: 350px;
+					max-width: 250px;
+					min-width: 100px;
+					height: auto;
 					margin-right: 50px;
 
+					@media (max-width:1024px) {
+						order: 2;
+					}
 				}
 
 				.c_listIntro {
 					width: 250px;
+					min-width: 150px;
 					color: #222;
 					font-size: 16px;
+
+					@media (max-width:1024px) {
+						order: 1;
+						width: 60vw;
+						text-align: center;
+					}
 				}
 			}
 		}
@@ -140,41 +239,53 @@
 	.c_listA {
 		width: 65%;
 		position: relative;
+		margin-top: 150px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@media (max-width:1024px) {
+			width: 80%;
+		}
 
 		.c_list_2 {
 			position: absolute;
 			pointer-events: none; // 被穿透
-			left: 49.3%;
+			left: 48.5%;
 			z-index: -1;
+
+			@media (max-width:1350px) {
+				display: none;
+			}
 
 			img {
 				height: 1250px;
 				width: auto;
 			}
 
-			span {
-				position: absolute;
-				width: 200px;
-				height: 6px;
-				background: #DEDADA;
-			}
+			// span {
+			// 	position: absolute;
+			// 	height: 6px;
+			// 	background: #DEDADA;
+			// 	max-width: 180px;
+			// 	min-width: 100px;
+			// }
 
-			.c_listLine1 {
-				left: -600%;
-				top: 5.5%;
-			}
+			// .c_listLine1 {
+			// 	left: -150px;
+			// 	top: 70px;
+			// }
 
-			.c_listLine2 {
-				left: 130%;
-				top: 54%;
-				width: 180px;
-			}
+			// .c_listLine2 {
+			// 	left: 60px;
+			// 	top: 610px;
 
-			.c_listLine3 {
-				left: -530%;
-				top: 97%;
-				width: 175px;
-			}
+			// }
+
+			// .c_listLine3 {
+			// 	left: -150px;
+			// 	top: 1130px;
+			// }
 		}
 
 		.c_listTitle {
@@ -182,31 +293,64 @@
 			line-height: 120%;
 			color: #FF0C00;
 			margin-bottom: 30px;
+			white-space: nowrap;
+
+			@media (max-width:768px) {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
 
 			.c_listNum {
 				color: #D5140B;
 				font-weight: 600;
 			}
+
+			@media (max-width:1024px) {
+				font-size: 32px;
+			}
 		}
 
-		.c_lisrDirections {
+		.c_listDirections {
 			font-size: 20px;
 			margin-bottom: 50px;
 		}
 
 		.c_listTxt {
 			font-size: 18px;
+			box-sizing: border-box;
 		}
 
 		.c_listOutBox {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-rows: repeat(1, 1fr);
+			gap: 30px;
+			max-width: 1000px;
+
+			@media (max-width:768px) {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+				.c_list_6,
+				.c_list_7 {
+					max-width: 260px;
+				}
+
+			}
 
 			.c_listDirebox1 {
-				display: grid;
+				display: flex;
+				flex-direction: column;
 				align-items: flex-start;
-				width: 60%;
+				max-width: 60%;
+				min-width: 320px;
+
+				@media (max-width:768px) {
+					align-items: center;
+				}
 			}
 
 			.c_listBubble {
@@ -216,58 +360,85 @@
 				grid-row: 1;
 				grid-column: 2;
 				width: 70%;
+
+				@media (max-width:768px) {
+					display: none;
+				}
 			}
 
+
 			.c_listDirebox2 {
-				display: grid;
+				display: flex;
+				flex-direction: column;
 				align-items: end;
 				justify-self: end;
 				width: 60%;
+				min-width: 320px;
 				grid-row: 2;
 				grid-column: 2;
+
+				@media (max-width:768px) {
+					align-items: center;
+				}
 			}
 
 			.c_listDirebox3 {
-				display: grid;
+				display: flex;
+				flex-direction: column;
 				grid-row: 3;
 				grid-column: 1 / span 2;
+
+				@media (max-width:768px) {
+					align-items: center;
+				}
 
 				.c_listRun {
 					display: flex;
 					align-items: end;
-					justify-content: center;
-					gap: 150px;
-					margin-top: 80px;
+					justify-content: space-between;
+					margin: 80px 50px 0;
+
+					@media (max-width:1024px) {
+						margin: 10px 50px 0;
+					}
+
+					@media (max-width:640px) {
+						display: none;
+					}
 
 					.c_list_dinosaur2 {
-						width: 60px;
+						width: 11%;
 						height: auto;
 					}
 
 					.c_list_tree1 {
-						width: 40px;
+						width: 8%;
 						height: auto;
 					}
 
 					.c_list_tree2 {
-						width: 30px;
+						width: 5%;
 						height: auto;
 					}
 
 					.c_list_tree3 {
-						width: 70px;
+						width: 12%;
 						height: auto;
 					}
 				}
 			}
 		}
 
-		.c_lisrCorrBox {
+		.c_listCorrBox {
 			display: flex;
 			justify-content: center;
 			align-items: start;
 			gap: 70px;
 			margin-top: 100px;
+
+			@media (max-width:1024px) {
+				flex-direction: column;
+			}
 
 			.c_listCorrect {
 				display: flex;
@@ -275,7 +446,7 @@
 				align-items: center;
 
 				.c_listIcon {
-					height: 100px;
+					min-height: 5%;
 					width: auto;
 					margin-bottom: 30px;
 				}

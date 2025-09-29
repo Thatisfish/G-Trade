@@ -65,6 +65,7 @@
             small {
                 font-size: 24px;
                 width: 100%;
+                color: #333333;
 
                 @media (max-width: 1024px) {
                     font-size: 18px;
@@ -78,6 +79,7 @@
 
         .B_p {
             font-size: 28px;
+            color: #333333;
 
             @media (max-width: 1024px) {
                 font-size: 22px;
@@ -345,7 +347,6 @@
 
         .B_div4 {
             display: flex;
-            // flex-direction: row;
             justify-content: center;
             align-items: center;
             margin-bottom: 100px;

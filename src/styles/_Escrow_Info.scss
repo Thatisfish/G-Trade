@@ -79,10 +79,12 @@
                 white-space: nowrap;
                 font-size: 28px;
                 margin-top: 90px;
+                color: #333333;
 
                 @media (max-width: 1024px) {
                     font-size: 22px;
                     font-weight: 400;
+                    margin-top: 0;
                 }
 
                 @media (max-width:640px) {
@@ -107,17 +109,20 @@
 
             @media (max-width:640px) {
                 margin-top: 50px;
-
             }
 
             p {
                 width: 240px;
                 min-width: 150px;
-
+                color: #222222;
                 @media (max-width:1024px) {
                     text-align: center;
                     font-size: 18px;
                     width: 60vw;
+                }
+
+                @media (max-width:640px) {
+                    font-size: 14px;
                 }
             }
 
