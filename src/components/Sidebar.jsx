@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const MENU = [
 	{ path: '/Collect', label: "收藏清單", icon: "📁" },
 	{ path: '/Orders', label: "我的訂單", icon: "📦" },
-	{ path: '/#', label: "優惠券匣", icon: "🎟️" },
+	{ path: '/Coupon', label: "優惠券匣", icon: "🎟️" },
 	{ path: '/Real_name', label: "實名認證", icon: "✅" },
 	{ path: '/', label: "客服中心", icon: "💬" },
 ];

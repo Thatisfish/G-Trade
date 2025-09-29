@@ -1,0 +1,48 @@
+.coupon-card {
+    display: flex; // 左右分割佈局
+    width: 100%; 
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    overflow: hidden; 
+    position: relative;
+    transition: transform 0.3s ease; 
+    
+    &:hover {
+        transform: translateY(-2px); 
+    }
+
+  
+}
+
+// 左側紅色標籤 (桌面版樣式)
+.coupon-card-tag {
+    background-color: #c9302c; 
+    color: white;
+    width: 30%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    writing-mode: vertical-rl; 
+    text-orientation: upright;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0;
+    border-radius: 8px 0 0 8px; 
+}
+
+// 右側內容
+.coupon-card-content {
+    padding: 20px;
+    width: 70%; 
+}
+
+// 內部文字樣式 (保持不變)
+.coupon-title { font-size: 16px; color: #666; margin-bottom: 5px; }
+.coupon-discount { font-size: 32px; font-weight: 900; color: #333; margin-bottom: 10px; }
+.coupon-info { font-size: 14px; color: #999; margin-bottom: 5px; }
+.coupon-period { font-size: 14px; color: #c9302c; font-weight: bold; }
+
+
