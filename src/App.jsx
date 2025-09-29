@@ -28,6 +28,7 @@ const EscrowInfo = lazy(() => import("./pages/Escrow_Info"));
 const ListingGuideline = lazy(() => import("./pages/ListingGuideline"));
 const HamburgerMenu = lazy(() => import("./components/HamburgerMenu"));
 const Newspages = lazy(()=> import("./pages/Newspages"));
+const Coupon = lazy(() => import("./pages/Coupon"));
 
 import ScrollToTop from "./js/ScrollToTop";
 
@@ -91,6 +92,7 @@ export default function App() {
 				import("./pages/Package"),
 				import("./pages/Real_name"),
 				import("./pages/Orders"),
+				import("./pages/Coupon"),
 				import("./pages/Reviewpage"),
 				import("./pages/ProductPage"),
 				import("./pages/Escrow_Info"),
@@ -138,6 +140,7 @@ export default function App() {
 						<Route path="/RealN_Info" element={<RealN_Info />} />
 						<Route path="/Package" element={<Package />} />
 						<Route path="/Orders" element={<Orders />} />
+						<Route path="/Coupon" element={<Coupon />} />
 						<Route path="/Reviewpage" element={<Reviewpage />} />
 						<Route path="/ProductPage" element={<ProductPage />} />
 						<Route path="/Escrow_Info" element={<EscrowInfo />} />
