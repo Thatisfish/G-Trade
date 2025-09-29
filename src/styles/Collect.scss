@@ -1,10 +1,17 @@
-@use './AllTypeCards.scss' as *;
+@use './CollectCard.scss' as *;
 
 .y_Collect {
   display: flex;
   justify-content: center;
   padding: 80px 10px 30px;
   gap: 100px;
+
+  @media (max-width:1024px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
 
   .c_phSidebar {
     z-index: 3;
@@ -73,17 +80,22 @@
 
   // RWD：平板以下（≤1024px）  
   @media screen and (max-width: 1024px) {
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
+    & {
+      padding: 80px 10px 30px;
+      margin: 0;
+      width: 100%;
 
-      a {
-        max-width: 100px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    
+      min-width: 0;
+      overflow-x: hidden;
+    }
+
+    a {
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
 
     .collect_header {
       margin-top: 20px;
@@ -103,32 +115,38 @@
     }
 
     .y_cardbox {
-      grid-template-columns: 1fr;
+      // grid-template-columns: 1fr;
       gap: 12px;
       padding: 0 8px 24px;
+      min-width: 0;
+      width: 100%;
+      min-width: 0;
+      overflow-x: hidden ;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .selectable_card {
+
       // 橫式卡片顯示
-      .B_info-card {
+      .y_info-card {
         display: flex;
         flex-direction: row;
         align-items: center;
         width: 100%;
-        max-width: 680px;
+        max-width: 100%;
         height: 170px;
         border-radius: 10px;
         margin: 0 auto;
       }
 
-      .B_info-img {
+      .y_info-img {
         width: 50%;
         height: 100%;
         object-fit: cover;
         border-radius: 0;
       }
 
-      .B_info-content {
+      .y_info-content {
         flex: 1;
         padding: 8px 12px;
         display: flex;
@@ -136,12 +154,27 @@
         justify-content: space-between;
       }
 
-      .B_info-tag {
+      .y_info-tag {
         top: 8px;
         left: 8px;
         font-size: 12px;
         padding: 4px 8px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .y_Collect {
+    padding: 80px 10px 30px;
+    width: 100%;
+  }
+
+  .y_cardbox {
+    min-width: 0 ;
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 100%;
+    width: 100%;
+    padding: 0 5px 24px;
   }
 }
