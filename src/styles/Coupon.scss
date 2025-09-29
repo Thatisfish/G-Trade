@@ -1,5 +1,5 @@
 // 1. 外層容器佈局：控制 Sidebar 和內容並排
-.coupon-page-layout {
+.y_coupon-page-layout {
     display: flex;
     max-width: 1200px;
     margin: 0 auto;
@@ -19,7 +19,7 @@
 }
 
 // 2. 優惠券列表容器：控制內容的置中
-.coupon-list-container {
+.y_coupon-list-container {
     // 讓內容區塊自動填滿剩餘空間
     flex-grow: 1;
     padding-left: 40px;
@@ -39,7 +39,7 @@
 @media (max-width: 1024px) {
    
 
- .coupon-list-container {
+ .y_coupon-list-container {
         flex-grow: initial; // 不再需要伸展
         width: 100%; // 內容區塊佔滿父容器
         padding-left: 0; // ⚡ 移除與 Sidebar 的間距 ⚡
@@ -50,7 +50,7 @@
     }
     
     
-    .coupon-list-container .coupon-card {
+    .y_coupon-list-container .coupon-card {
         max-width: 100%; // ⚡ 允許卡片佔滿容器，實現等比例縮放 ⚡
     }
 }

@@ -18,13 +18,13 @@ const Coupon = () => {
   return (
     <main>
         {/* 外層容器：新增一個 class 名稱 */}
-        <div className="coupon-page-layout"> 
+        <div className="y_coupon-page-layout"> 
             
             {/* 左側：側邊欄 (保持不變) */}
             <Sidebar/>
             
             {/* 右側：優惠券列表容器 (使用 class 名稱) */}
-            <div className="coupon-list-container"> 
+            <div className="y_coupon-list-container"> 
                 
                 <div className='y_coupon_card_box'>
                 {/* 使用 map 迴圈渲染多張優惠券卡片 */}
