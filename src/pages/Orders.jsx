@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import OrderCard from '../components/OrderCard'
 import ReviewCard from '../components/ReviewCard'
+import Pagination from '../components/Pagination'
 import '../styles/_Orders.scss'
 
 // 圖片兩張
@@ -38,6 +39,26 @@ const mockOrders = [
 		status: '已完成',
 		img: ordersImg,
 	},
+
+	{
+		id: "C2025080501",
+		shop: '@GAME_1318',
+		title: "附硬殼包+玻璃貼+TPU材質透明殼【Switch2主機 NS2主機】",
+		date: "2025-08-05",
+		price: 999,
+		status: "未出貨",
+		img: ordersImg,
+	},
+
+	{
+		id: "C2025080501",
+		shop: '@GAME_1318',
+		title: "附硬殼包+玻璃貼+TPU材質透明殼【Switch2主機 NS2主機】",
+		date: "2025-08-05",
+		price: 999,
+		status: "未出貨",
+		img: ordersImg,
+	},
 ]
 
 const tabs = ['訂單摘要', '未出貨', '已到貨', '完成訂單', '商品退換']
@@ -45,11 +66,23 @@ const tabs = ['訂單摘要', '未出貨', '已到貨', '完成訂單', '商品�
 const Orders = () => {
 	const [tab, setTab] = useState('訂單摘要')
 
+	// pagination state
+	const [currentPage, setCurrentPage] = useState(1)
+	const perPage = 3
+	const totalPages = Math.max(1, Math.ceil(mockOrders.length / perPage))
+
+	const handlePageChange = (page) => {
+		setCurrentPage(page)
+	}
+
+	const start = (currentPage - 1) * perPage
+	const pagedOrders = mockOrders.slice(start, start + perPage)
+
 	return (
 		<main className="J_content">
 			<Sidebar />
 			<div className="J_layout">
-				
+                
 
 				{/* OrderTabs */}
 				<div className="J_ordertabs">
@@ -62,16 +95,18 @@ const Orders = () => {
 
 				{/* Orders */}
 				<div className="J_orders">
-					{mockOrders.map(order => (
-						<OrderCard key={order.id} {...order} />
+					{pagedOrders.map((order, idx) => (
+						<OrderCard key={`${order.id}-${start + idx}`} {...order} />
 					))}
 				</div>
 
 				{/* Review */}
 				{/* <ReviewCard /> */}
 
-				{/* Pagination */}
-				<div className="J_pagination">« ‹ 1 2 3 4 › »</div>
+				{/* Pagination (use component) */}
+				<div className="J_pagination">
+					<Pagination totalPages={totalPages} onPageChange={handlePageChange} />
+				</div>
 			</div>
 		</main>
 	)

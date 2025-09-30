@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReviewCard from './ReviewCard';
 
 
@@ -7,6 +7,15 @@ export default function OrderCard({ id, shop, title, price, date, status, img })
   const [showReview, setShowReview] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  // lock body scroll while modal is open to avoid layout/scrollbar shift
+  useEffect(() => {
+    if (showConfirmModal) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = prev; };
+    }
+    return undefined;
+  }, [showConfirmModal]);
   return (
     <>
       <div className="J_ordercard">
@@ -33,7 +42,7 @@ export default function OrderCard({ id, shop, title, price, date, status, img })
             <p>下單日期: {date}</p>
             {status === "已完成" && (
               <div className="J_order-actions" style={{position: 'relative'}}>
-                {/* <button>確認收款</button> */}
+                {/* <button>確認收貨</button> */}
                 {!confirmed && (
                 <button
                   className="J_RB1"
@@ -74,7 +83,26 @@ export default function OrderCard({ id, shop, title, price, date, status, img })
           <div style={{position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.4)'}} onClick={() => setShowConfirmModal(false)} />
           <div style={{background: '#fff', padding: 20, borderRadius: 8, zIndex: 10000, minWidth: 260, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center'}}>
             <p style={{marginBottom: 12}}>已確認收貨</p>
-            <button onClick={() => setShowConfirmModal(false)} style={{background: '#DE1A10', color: '#fff', border: 'none', padding: '8px 12px', borderRadius: 6, display: 'inline-block', margin: 0}}>關閉</button>
+            <button
+              type="button"
+              onMouseDown={(e) => e.preventDefault()} /* prevent focus jump on mousedown */
+              onClick={() => setShowConfirmModal(false)}
+              aria-label="關閉已確認收貨視窗"
+              style={{
+                background: '#DE1A10',
+                color: '#fff',
+                border: 'none',
+                padding: '8px 12px',
+                borderRadius: 6,
+                display: 'inline-block',
+                margin: 0,
+                cursor: 'pointer',
+                outline: 'none',
+                WebkitTapHighlightColor: 'transparent'
+              }}
+            >
+              關閉
+            </button>
           </div>
         </div>
       )}
