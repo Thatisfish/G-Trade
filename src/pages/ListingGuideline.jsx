@@ -30,8 +30,10 @@ const ListingGuideline = () => {
         const handleResize = () => {
             if (window.innerWidth > 1400) {
                 setObstacles([0.3, 0.75]) // 兩個障礙物
-            } else  {
+            } else if (window.innerWidth > 1024 && window.innerWidth < 1400) {
                 setObstacles([0.6]) // 只保留一個障礙物在中間
+            } else {
+                setObstacles([0.3, 0.75])
             }
         }
 
@@ -44,7 +46,7 @@ const ListingGuideline = () => {
         const interval = setInterval(() => {
             setDinoFrame(prevFrame => (prevFrame === 0 ? 1 : 0)) // 交換恐龍模式
             setDinoX(prev => {
-                const next = prev + 0.02  // 右移2%
+                const next = prev + 0.018  // 右移2%
                 if (next > gameWidth && !isHidden) {
                     setIsHidden(true) // +hidden class
                     setIsJump(false)
@@ -73,7 +75,7 @@ const ListingGuideline = () => {
                     !isJump
                 ) {
                     setIsJump(true)
-                    setTimeout(() => setIsJump(false), 2200)
+                    setTimeout(() => setIsJump(false), 1800)
                 }
             })
         }, 100)
@@ -120,9 +122,6 @@ const ListingGuideline = () => {
                 <div className='c_listA'>
                     <div className='c_list_2'>
                         <img src={c_list_2} alt="" />
-                        {/* <span className='c_listLine1'></span>
-                        <span className='c_listLine2'></span>
-                        <span className='c_listLine3'></span> */}
                     </div>
                     <div className='c_listOutBox'>
                         <div className='c_listDirebox1'>
