@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/_Content.scss'
 import Sidebar from '../components/Sidebar'
 
 function Content() {
+    const navigate = useNavigate()
+    const [showConfirm, setShowConfirm] = useState(false)
     return (
         <main className="J_content">
 
@@ -18,6 +21,18 @@ function Content() {
                         action=""
                         method="post"
                         acceptCharset="UTF-8"
+                        onSubmit={(e) => {
+                            e.preventDefault()
+                            // show confirmation modal
+                            setShowConfirm(true)
+                            // clear form fields
+                            try { e.target.reset() } catch (err) {}
+                            // after short delay, hide modal and navigate back to Content
+                            setTimeout(() => {
+                                setShowConfirm(false)
+                                navigate('/Content')
+                            }, 1600)
+                        }}
                     >
                         <label htmlFor="username">*姓名：</label>
                         <input
@@ -61,11 +76,21 @@ function Content() {
                             placeholder="請輸入您的意見"
                         />
 
-                        <button className="J_btn-animat" type="submit">
+                        <button className="J_btn-animat J_ContentBTN" type="submit">
                             <span>送出</span>
                         </button>
                     </form>
                 </div>
+                {/* 提交後的確認視窗 */}
+                {showConfirm && (
+                    <div style={{position: 'fixed', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999}}>
+                        <div style={{position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.4)'}} onClick={() => { setShowConfirm(false); navigate('/Content') }} />
+                        <div style={{background: '#fff', padding: 20, borderRadius: 8, zIndex: 10000, minWidth: 260, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center'}}>
+                            <p style={{marginBottom: 12}}>已收到您的訊息，客服人員將會回覆您</p>
+                            <button className='J_ContentBTN' type="button" onClick={() => { setShowConfirm(false); navigate('/Content') }} style={{background: '#DE1A10', color: '#fff', border: 'none', padding: '8px 12px', borderRadius: 6}}>確認</button>
+                        </div>
+                    </div>
+                )}
                 </div>
         </main>
     )
