@@ -206,6 +206,11 @@
 		pointer-events: none;
 		transition: opacity .18s ease, transform .18s ease;
 
+		@media (max-width:640px) {
+			width: 340px;
+			right: -50%;
+		}
+
 		&.is-open {
 			opacity: 1;
 			transform: translateY(0) scale(1);
@@ -254,6 +259,10 @@
 		padding: 10px;
 		margin: 0;
 		list-style: none;
+
+		@media (max-width:640px) {
+			max-height: 320px;
+		}
 
 		.bell__item {
 			display: flex;

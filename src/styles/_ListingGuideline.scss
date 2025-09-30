@@ -109,6 +109,7 @@
 				width: 80%;
 				height: 3px;
 				background: #444;
+
 				@media (max-width:1024px) {
 					width: 100%;
 				}
@@ -124,45 +125,10 @@
 				height: 200px;
 
 				@media (max-width:1024px) {
+					justify-content: end;
+					align-items: center;
 					order: 2;
 				}
-
-				@keyframes dinoJump {
-					0% {
-						transform: translateY(0);
-					}
-
-					8% {
-						transform: translateY(-40%);
-					}
-
-					30% {
-						transform: translateY(-55%);
-					}
-
-					100% {
-						transform: translateY(0);
-					}
-				}
-
-				@keyframes dinoJump2 {
-					0% {
-						transform: translateY(0);
-					}
-
-					8% {
-						transform: translateY(-50%);
-					}
-
-					30% {
-						transform: translateY(-65%);
-					}
-
-					100% {
-						transform: translateY(0);
-					}
-				}
-
 
 				.c_list_dinosaur {
 					position: absolute;
@@ -173,18 +139,16 @@
 					transition: left 0.05s linear, bottom 0.5s ease, opacity 0.3s ease;
 					opacity: 1;
 
-
-
 					&.hidden {
 						opacity: 0;
 						transition: opacity 0.3s ease;
 					}
 
 					&.jump {
-						animation: dinoJump 2.2s ease-in-out;
+						animation: dinoJump 1.8s ease-in-out;
 
 						@media (max-width:1550px) {
-							animation: dinoJump2 2.2s ease-in-out;
+							animation: dinoJump2 1.8s ease-in-out;
 						}
 					}
 				}
@@ -206,7 +170,8 @@
 				@media (max-width:1024px) {
 					order: 1;
 					flex-direction: column;
-					gap: 70px;
+					gap: 30px;
+
 				}
 
 				.c_list_1 {
@@ -216,7 +181,7 @@
 					margin-right: 50px;
 
 					@media (max-width:1024px) {
-						order: 2;
+						display: none;
 					}
 				}
 
@@ -227,7 +192,6 @@
 					font-size: 16px;
 
 					@media (max-width:1024px) {
-						order: 1;
 						width: 60vw;
 						text-align: center;
 					}
@@ -251,7 +215,7 @@
 		.c_list_2 {
 			position: absolute;
 			pointer-events: none; // 被穿透
-			left: 48.5%;
+			left: 50.5%;
 			z-index: -1;
 
 			@media (max-width:1350px) {
@@ -260,32 +224,8 @@
 
 			img {
 				height: 1250px;
-				width: auto;
+				width: 20px;
 			}
-
-			// span {
-			// 	position: absolute;
-			// 	height: 6px;
-			// 	background: #DEDADA;
-			// 	max-width: 180px;
-			// 	min-width: 100px;
-			// }
-
-			// .c_listLine1 {
-			// 	left: -150px;
-			// 	top: 70px;
-			// }
-
-			// .c_listLine2 {
-			// 	left: 60px;
-			// 	top: 610px;
-
-			// }
-
-			// .c_listLine3 {
-			// 	left: -150px;
-			// 	top: 1130px;
-			// }
 		}
 
 		.c_listTitle {
@@ -461,5 +401,41 @@
 				}
 			}
 		}
+	}
+}
+
+@keyframes dinoJump {
+	0% {
+		transform: translateY(0);
+	}
+
+	8% {
+		transform: translateY(-40%);
+	}
+
+	30% {
+		transform: translateY(-70%);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes dinoJump2 {
+	0% {
+		transform: translateY(0);
+	}
+
+	8% {
+		transform: translateY(-50%);
+	}
+
+	35% {
+		transform: translateY(-80%);
+	}
+
+	100% {
+		transform: translateY(0);
 	}
 }
