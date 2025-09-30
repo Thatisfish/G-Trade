@@ -2,16 +2,27 @@ import { useState, useRef, useEffect } from "react";
 
 export default function BellPopover() {
 	/* 計算未讀數 */
-	const notices = [
-		{ id: 1, text: "您所收藏的商品「九成新 Switch主機 黑色版」有價格更新！", date: "2025-08-06", unread: true },
-		{ id: 2, text: "您追蹤的賣場「Ssp**5」有新商品上架！", date: "2025-08-06", unread: true },
+	const [notices, setNotices] = useState([
+		{ id: 1, text: "您所收藏的商品「九成新 Switch主機 黑色版」有價格更新！", date: "2025-08-06", unread: true, disabled: false },
+		{ id: 2, text: "您追蹤的賣場「Ssp**5」有新商品上架！", date: "2025-08-06", unread: true, disabled: false },
 		{ id: 3, text: "您所收藏的商品「咚奇剛蕉力全開+咚奇剛amiibo」有價格更新", date: "2025-05-16", unread: false, disabled: true }
-	];
+	]);
 	const unreadCount = notices.filter(n => n.unread).length;
 
 	const [open, setOpen] = useState(false);
 	const btnRef = useRef(null);
 	const panelRef = useRef(null);
+
+	// 訊息強迫症福音
+	const readed = (id) => {
+		setNotices(prev =>
+			prev.map(n =>   // 檢查每筆通知 未讀&可點
+				n.id === id && n.unread && !n.disabled    // disabled不等false的時候可以用
+					? { ...n, unread: false, disabled: true }  // 已讀灰階
+					: n
+			)
+		)
+	}
 
 	// 點擊外部關閉（click outside／點外關閉）
 	useEffect(() => {
@@ -59,6 +70,7 @@ export default function BellPopover() {
 						<li
 							key={n.id}
 							className={`bell__item ${n.unread ? "is-unread" : ""} ${n.disabled ? "is-disabled" : ""}`}
+							onClick={() => readed(n.id)}
 						>
 							<div className="bdt">
 								<div className="bell__dot" />
