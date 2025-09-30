@@ -17,6 +17,14 @@
 		display: flex;
 		margin-bottom: 20px;
 
+		.angleBracket {
+			margin: 0 5px;
+		}
+
+		.breadcrumb__item {
+			display: flex;
+		}
+
 		@media(max-width: 640px) {
 			display: none;
 		}
@@ -896,6 +904,19 @@
 		.qa {
 			.qa_item {
 				width: 90%;
+
+				.qa_answer {
+					flex-direction: column;
+
+					.qa_time {
+						padding-left: 50px;
+					}
+				}
+
+				// .qa_time {
+				// 	display: block;
+				// 	width: 100%;
+				// }
 			}
 
 			.qa_ask {
