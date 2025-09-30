@@ -232,6 +232,17 @@
 						color: #DE1A10;
 					}
 
+					&.is-reviewed {
+						background: #c0bebe; /* 灰色背景 */
+						color: #4e4d4d;
+						cursor: default;
+						pointer-events: none; /* 禁止點擊 */
+						/* 隱藏三角形 */
+						svg.J_triangle { display: none; }
+						border-color: #635e5e;
+						border: solid 2px;
+					}
+
 				}
 			}
 		}
@@ -730,6 +741,7 @@
 
 				}
 
+
 			}
 		}
 
@@ -944,6 +956,10 @@
 						.J_Checkout {
 							width: 85%;
 
+						}
+
+						&.is-reviewed {
+						padding: 0;
 						}
 
 					}

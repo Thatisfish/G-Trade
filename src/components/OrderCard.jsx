@@ -6,6 +6,7 @@ import ReviewCard from './ReviewCard';
 export default function OrderCard({ id, shop, title, price, date, status, img }) {
   const [showReview, setShowReview] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
+  const [reviewed, setReviewed] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   // lock body scroll while modal is open to avoid layout/scrollbar shift
   useEffect(() => {
@@ -62,16 +63,22 @@ export default function OrderCard({ id, shop, title, price, date, status, img })
                   </span>
                 </button>
                 {/* <button>給評</button> */}
-                <button className="J_RB2" onClick={() => setShowReview(v => !v)}>
+                <button
+                  className={`J_RB2${reviewed ? ' is-reviewed' : ''}`}
+                  type="button"
+                  onClick={() => { if (reviewed) return; setShowReview(v => !v); }}
+                  aria-pressed={showReview}
+                >
                   <span className="J_checkoutContent">
-                    <span className="J_Checkout">給評</span>
+                    <span className="J_Checkout">{reviewed ? '已完成評價' : '給評'}</span>
+                    {/* triangle 隱藏交由 CSS 處理 when reviewed */}
                     <svg className={`J_triangle${showReview ? ' is-open' : ''}`} xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 8 8" fill="none">
                       <path d="M7.5 4L0.75 7.89711V0.102886L7.5 4Z" fill="white" />
                     </svg>
                   </span>
                 </button>
                 <div className={`J_review-float${showReview ? ' is-open' : ''}`}>
-                  <ReviewCard onSubmit={() => setShowReview(false)} />
+                  <ReviewCard onSubmit={() => { setShowReview(false); setReviewed(true); }} />
                 </div>
               </div>
             )}
