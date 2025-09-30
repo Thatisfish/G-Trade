@@ -42,14 +42,17 @@ export default function OrderCard({ id, shop, title, price, date, status, img })
             <p>下單日期: {date}</p>
             {status === "已完成" && (
               <div className="J_order-actions" style={{position: 'relative'}}>
-                {/* <button>確認收貨</button> */}
-                {!confirmed && (
+                {/* 保留按鈕 DOM 但用 visibility 隱藏，避免移除元素造成寬度/排版變化 */}
                 <button
                   className="J_RB1"
+                  type="button"
                   onClick={() => {
+                    if (confirmed) return; // already confirmed, ignore
                     setConfirmed(true);
                     setShowConfirmModal(true);
                   }}
+                  style={{ visibility: confirmed ? 'hidden' : 'visible', pointerEvents: confirmed ? 'none' : 'auto' }}
+                  aria-hidden={confirmed}
                 >
                   <span className="J_checkoutContent">
                     <span className="J_Checkout">確認收貨</span>
@@ -58,7 +61,6 @@ export default function OrderCard({ id, shop, title, price, date, status, img })
                     </svg>
                   </span>
                 </button>
-                )}
                 {/* <button>給評</button> */}
                 <button className="J_RB2" onClick={() => setShowReview(v => !v)}>
                   <span className="J_checkoutContent">

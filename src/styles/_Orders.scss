@@ -160,7 +160,8 @@
 				.J_RB1 {
 					background: #DE1A10;
 					color: white;
-					width: 180px;
+					width: 180px; // 固定寬度以避免 layout shift
+					flex: 0 0 180px; // 不允許縮放或收縮
 					font-size: 16px;
 
 					border-color: #A12424;
@@ -197,7 +198,8 @@
 				.J_RB2 {
 					background: #DE1A10;
 					color: white;
-					width: 180px;
+					width: 180px; // 固定寬度以避免 layout shift
+					flex: 0 0 180px;
 					font-size: 16px;
 
 					border-color: #A12424;
@@ -553,6 +555,7 @@
 						background: #DE1A10;
 						color: white;
 						width: 150px;
+						flex: 0 0 150px;
 						font-size: 14px;
 
 						border-color: #A12424;
@@ -580,6 +583,7 @@
 						background: #DE1A10;
 						color: white;
 						width: 150px;
+						flex: 0 0 150px;
 						font-size: 14px;
 
 						border-color: #A12424;
@@ -892,6 +896,7 @@
 						background: #DE1A10;
 						color: white;
 						width: 95px;
+						flex: 0 0 95px;
 						font-size: 14px;
 
 						border-color: #A12424;
@@ -918,6 +923,7 @@
 						background: #DE1A10;
 						color: white;
 						width: 95px;
+						flex: 0 0 95px;
 						font-size: 14px;
 
 						border-color: #A12424;
