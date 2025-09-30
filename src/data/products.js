@@ -188,6 +188,237 @@ export const PRODUCTS = [
 		sellerDesc: "以修理與拆件為主，出售零件與故障機。",
 		detailContent: "機體可開機但會自動重啟，螢幕正常，建議當作零件機處理。",
 		qa: []
+	},
+	{
+		id: "nsw-game-zelda",                      // id（識別碼）
+		thumb: SidePicture2,                         // thumb（縮圖）
+		category: "遊戲",                           // category（分類）
+		platform: "Switch",                        // platform（平台）
+		mainImage: [SidePicture2, SidePicture2],       // mainImage（主要圖片陣列）
+		productTitle: "薩爾達：王國之淚（繁體中文）", // productTitle（商品名稱）
+		productMeta: "2025-06-01",                 // productMeta（上架日期）
+		originalPrice: 1590,                       // originalPrice（原價）
+		salePrice: 1290,                           // salePrice（特價）
+		productStatus: "very_good",                // productStatus（商品狀態） // very_good（良好）
+		st: {
+			status: "良好",
+			note: "【二手】卡帶讀取正常，外盒輕微磨痕；無序號卡，無任何 DLC（可下載內容）。",
+			location: "台北市 大同區",
+			shipping: "宅配 / 面交可",
+			payment: "匯款 / 面交現金"
+		},
+		sellerAvatar: USG,
+		sellerName: "遊玩人間小賣家",
+		sellerScore: 4.8,
+		sellerCount: 42,
+		sellerLocation: "台北市 / 大同區",
+		sellerTags: ["fastShip", "wellPacked"],
+		sellerDesc: "二手實體片收藏轉售，清潔後出貨，附簡易防撞包材。",
+		detailContent: "【二手】已測試遊玩 30 分鐘以上，無讀取異常；盒況 8/10，無紙本說明書。",
+		qa: []
+	},
+
+	{
+		id: "nsw-joycon-left",                     // id（識別碼）
+		thumb: SidePicture1,                            // thumb（縮圖）
+		category: "配件",                           // category（分類）
+		platform: "Switch",                        // platform（平台）
+		mainImage: [SidePicture1, SidePicture1],             // mainImage（主要圖片陣列）
+		productTitle: "Joy-Con 左手（輕微漂移）",    // productTitle（商品名稱）
+		productMeta: "2025-03-20",
+		originalPrice: 1200,
+		salePrice: 800,
+		productStatus: "good",                     // good（尚可）
+		st: {
+			status: "尚可",
+			note: "【二手】類比搖桿有輕微漂移，已做酒精清潔但未更換套件；外觀 7/10。",
+			location: "新北市 三重區",
+			shipping: "宅配 / 面交",
+			payment: "轉帳 / 面交"
+		},
+		sellerAvatar: G1,
+		sellerName: "配件達人",
+		sellerScore: 4.5,
+		sellerCount: 210,
+		sellerLocation: "新北市 / 三重區",
+		sellerTags: ["warranty"],
+		sellerDesc: "二手主機與配件為主，提供 3 日鑑賞（不含人為損壞）。",
+		detailContent: "【二手】功能正常，偶有微幅飄移；隨機出貨同色系腕帶一條，無原盒。",
+		qa: []
+	},
+
+	{
+		id: "ps-for-parts",
+		thumb: SidePicture2,
+		category: "主機",
+		platform: "PS",
+		mainImage: [SidePicture2, SidePicture2],
+		productTitle: "PS4 Slim（光碟機讀取異常）",
+		productMeta: "2024-12-05",
+		originalPrice: 2490,
+		salePrice: null,
+		productStatus: "acceptable",               // acceptable（正常）
+		st: {
+			status: "正常",
+			note: "【二手】可進系統，光碟機偶發無法吸入／讀不到；外觀掉漆處散見。",
+			location: "台中市 北區",
+			shipping: "面交優先 / 宅配可談",
+			payment: "面交現金"
+		},
+		sellerAvatar: S8,
+		sellerName: "主機倉庫",
+		sellerScore: 3.9,
+		sellerCount: 88,
+		sellerLocation: "台中市 / 北區",
+		sellerTags: ["partsOnly"],
+		sellerDesc: "專營二手主機與故障機，售出不退；歡迎現場驗機。",
+		detailContent: "【二手】機身螺絲少一；USB、HDMI 輸出正常；建議當拆件機處理。",
+		qa: []
+	},
+
+	{
+		id: "ps-game-fifa",
+		thumb: SidePicture1,
+		category: "遊戲",
+		platform: "PS",
+		mainImage: [SidePicture1],
+		productTitle: "FIFA 24（亞區片）",
+		productMeta: "2025-01-18",
+		originalPrice: 1290,
+		salePrice: 990,
+		productStatus: "like_new",                 // like_new（近全新）
+		st: {
+			status: "近全新",
+			note: "【二手】僅試玩一次；碟片無刮，盒況 9/10；不含任何數位兌換碼。",
+			location: "高雄市 鼓山區",
+			shipping: "宅配 / 面交",
+			payment: "轉帳 / 面交"
+		},
+		sellerAvatar: SP,
+		sellerName: "運動遊戲迷",
+		sellerScore: 4.9,
+		sellerCount: 64,
+		sellerLocation: "高雄市 / 鼓山區",
+		sellerTags: ["mintCondition"],
+		sellerDesc: "二手實體片轉售，保存良好，出貨前再檢查一次。",
+		detailContent: "【二手】光碟讀取正常；封面紙卡完整無潮；無 DLC（可下載內容）。",
+		qa: []
+	},
+
+	{
+		id: "ps-dualsense-case",
+		thumb: SidePicture2,
+		category: "配件",
+		platform: "PS",
+		mainImage: [SidePicture2, SidePicture2],
+		productTitle: "DualSense 搖桿（白）附矽膠套",
+		productMeta: "2025-07-05",
+		originalPrice: 1290,
+		salePrice: 990,
+		productStatus: "very_good",                // very_good（良好）
+		st: {
+			status: "良好",
+			note: "【二手】使用時數約 50 小時；按鍵回饋正常；附二手矽膠保護套與 Type-C（傳輸線）。",
+			location: "台南市 中西區",
+			shipping: "宅配 / 面交",
+			payment: "匯款 / 面交"
+		},
+		sellerAvatar: WB,
+		sellerName: "配件小鋪",
+		sellerScore: 5.0,
+		sellerCount: 320,
+		sellerLocation: "台南市 / 中西區",
+		sellerTags: ["tested", "fastShip"],
+		sellerDesc: "二手周邊清倉；皆完成基本功能測試，無店保。",
+		detailContent: "【二手】外殼細紋、無裂；震動與自適應板機正常；無原盒與說明書。",
+		qa: []
+	},
+
+	{
+		id: "xb-for-parts",
+		thumb: SidePicture1,
+		category: "主機",
+		platform: "Xbox",
+		mainImage: [SidePicture1, SidePicture1],
+		productTitle: "Xbox One（散熱風扇異常）",
+		productMeta: "2024-11-02",
+		originalPrice: 1990,
+		salePrice: null,
+		productStatus: "acceptable",               // acceptable（正常）
+		st: {
+			status: "正常",
+			note: "【二手】上電可進系統；風扇異音且溫度偏高；建議維修後使用。",
+			location: "桃園市 中壢區",
+			shipping: "面交 / 宅配可談",
+			payment: "面交現金"
+		},
+		sellerAvatar: USG,
+		sellerName: "老玩家拆機",
+		sellerScore: 4.0,
+		sellerCount: 98,
+		sellerLocation: "桃園市 / 中壢區",
+		sellerTags: ["partsOnly"],
+		sellerDesc: "二手主機拆機件供應；售出不退，歡迎行前問答。",
+		detailContent: "【二手】外殼多處磨痕；USB/HDMI 正常；Wi-Fi（無線網路）可連。",
+		qa: []
+	},
+
+	{
+		id: "xb-game-halo",
+		thumb: SidePicture2,
+		category: "遊戲",
+		platform: "Xbox",
+		mainImage: [SidePicture2],
+		productTitle: "Halo Infinite（光碟版）",
+		productMeta: "2025-02-14",
+		originalPrice: 1390,
+		salePrice: 1090,
+		productStatus: "very_good",                // very_good（良好）
+		st: {
+			status: "良好",
+			note: "【二手】碟片無刮；外盒角落小凹痕；不含任何數位權利（如首發特典）。",
+			location: "台中市 西屯區",
+			shipping: "宅配 / 面交",
+			payment: "轉帳 / 面交"
+		},
+		sellerAvatar: G1,
+		sellerName: "光碟收藏家",
+		sellerScore: 4.7,
+		sellerCount: 77,
+		sellerLocation: "台中市 / 西屯區",
+		sellerTags: ["collector"],
+		sellerDesc: "收藏輪替釋出，皆為二手實體片，清潔拭鏡布處理後寄送。",
+		detailContent: "【二手】已全破；封面紙卡無泛黃；不含 DLC（可下載內容）。",
+		qa: []
+	},
+
+	{
+		id: "xb-headset-wireless",
+		thumb: SidePicture1,
+		category: "配件",
+		platform: "Xbox",
+		mainImage: [SidePicture1, SidePicture1],
+		productTitle: "Xbox 無線耳機（含充電座）",
+		productMeta: "2025-08-10",
+		originalPrice: 2990,
+		salePrice: 2390,
+		productStatus: "like_new",                 // like_new（近全新）
+		st: {
+			status: "近全新",
+			note: "【二手】實際使用不到 10 小時；耳罩無脫皮；含二手充電座與 USB-C（傳輸線）。",
+			location: "基隆市 仁愛區",
+			shipping: "宅配 / 面交",
+			payment: "匯款 / 面交"
+		},
+		sellerAvatar: S8,
+		sellerName: "耳機控",
+		sellerScore: 4.6,
+		sellerCount: 140,
+		sellerLocation: "基隆市 / 仁愛區",
+		sellerTags: ["boxed", "fastShip"],
+		sellerDesc: "音訊周邊二手整理出售，皆已完成配對測試。",
+		detailContent: "【二手】藍牙（Bluetooth 藍牙）連線穩定；電池健康 95%（系統顯示）；外盒邊角磨痕。",
+		qa: []
 	}
 ];
 
