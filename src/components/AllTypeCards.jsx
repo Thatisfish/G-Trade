@@ -4,7 +4,7 @@ import '../styles/_AllTypeCards.scss'
 
 /**
  * AllTypeCards
- * - 傳入 linkTo 時：最外層用 <Link>（英文 link 連結）
+ * - 傳入 linkTo 時：最外層用 <Link>
  * - 沒傳 linkTo 時：最外層用 <div>
  * - 內部不要再放任何 <Link>/<a>，避免 a 裡面包 a
  */
@@ -16,14 +16,15 @@ const AllTypeCards = ({
 	priceNow,
 	priceOld,
 	size = 'medium',
-	linkTo,             // ✅ 新增：連結目標
-	wrapperClass = '',  // ✅ 新增：外層 class
-	ariaLabel           // ✅ 新增：無障礙（accessibility 無障礙）
+	linkTo,             // 連結目標
+	wrapperClass = '',  // 額外 class
+	ariaLabel           // 無障礙用 aria-label
 }) => {
 	const Wrapper = linkTo ? Link : 'div'
+	const className = `${wrapperClass} B_info-card ${size}`.trim()
 	const wrapperProps = linkTo
-		? { to: linkTo, className: `${wrapperClass} B_info-card ${size}`, 'aria-label': ariaLabel }
-		: { className: `${wrapperClass} B_info-card ${size}`, 'aria-label': ariaLabel }
+		? { to: linkTo, className, 'aria-label': ariaLabel }
+		: { className, 'aria-label': ariaLabel }
 
 	return (
 		<Wrapper {...wrapperProps}>
@@ -40,4 +41,5 @@ const AllTypeCards = ({
 		</Wrapper>
 	)
 }
+
 export default AllTypeCards

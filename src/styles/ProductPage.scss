@@ -15,17 +15,38 @@
 
 	.breadcrumb {
 		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
 		margin-bottom: 20px;
+		gap: 6px;
+
+		a {
+			color: #666666;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 
 		.angleBracket {
 			margin: 0 5px;
+			color: #9aa0a6;
+			user-select: none;
 		}
 
 		.breadcrumb__item {
 			display: flex;
+			align-items: center;
+			gap: 6px;
 		}
 
-		@media(max-width: 640px) {
+		.is-current {
+			color: #333;
+			font-weight: 700;
+		}
+
+		@media (max-width: 640px) {
 			display: none;
 		}
 	}

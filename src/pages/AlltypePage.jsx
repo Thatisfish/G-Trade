@@ -1,7 +1,7 @@
 // src/pages/AlltypePage.jsx
 import "../styles/Alltype.scss";
 import { useMemo, useState, useEffect } from "react";
-import { NavLink, useParams, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, useParams, Navigate, useNavigate, useLocation } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -13,7 +13,7 @@ import { PRODUCTS } from "../data/products.js";
 import AllTypeCards from "../components/AllTypeCards.jsx";
 import Paginations from "../components/Pagination.jsx";
 
-// === 橫幅（banner 橫幅）設定（config 設定）===
+// === 橫幅設定 ===
 import SwBanner1 from "../images/banner_pokemon.avif";
 import SwBanner2 from "../images/Alltype_SW/Alltype_banner02.avif";
 import SwBanner3 from "../images/Alltype_SW/Alltype_banner03.avif";
@@ -35,7 +35,7 @@ const PLATFORM_LABEL = {
 	Xbox: "Xbox",
 };
 
-// 分類（category 類別）：UI 顯示 ↔ URL slug（網址代稱）
+// 分類：UI 顯示 ↔ URL slug
 const TABS = ["全部", "主機", "遊戲", "配件"];
 const CAT_TO_SLUG = { 全部: "all", 主機: "console", 遊戲: "game", 配件: "accessory" };
 const SLUG_TO_CAT = { all: "全部", console: "主機", game: "遊戲", accessory: "配件" };
@@ -43,14 +43,14 @@ const SLUG_TO_CAT = { all: "全部", console: "主機", game: "遊戲", accessor
 const VALID_PLATFORMS = ["Switch", "PS", "Xbox"];
 const VALID_CATEGORY_SLUGS = ["all", "console", "game", "accessory"];
 
-// 取卡片需要的最小欄位
+// 取卡片需要的欄位
 const pickId = (p) => p?.id ?? p?.slug ?? p?.productId ?? p?.pid ?? null;
 const toCardItem = (p) => {
 	const id = pickId(p);
 	return {
 		id,
 		image: Array.isArray(p.mainImage) ? p.mainImage[0] : p.mainImage,
-		category: p.category, // 中文分類（主機/遊戲/配件）
+		category: p.category,
 		title: p.productTitle,
 		seller: p.sellerName || "",
 		priceNow: (p.salePrice ?? p.originalPrice)?.toString?.() ?? "",
@@ -60,14 +60,15 @@ const toCardItem = (p) => {
 };
 
 export default function AlltypePage() {
-	// 從路由取平台與分類
+	// 路由參數
 	const { platform, category } = useParams();
 	const navigate = useNavigate();
+	const location = useLocation();
 
 	const PLATFORM = decodeURIComponent(platform || "");
 	if (!VALID_PLATFORMS.includes(PLATFORM)) return <Navigate to="/alltype/Switch/all" replace />;
 
-	// 沒帶分類就導向該平台的 all
+	// 沒帶分類就導向 all（不捲動）
 	useEffect(() => {
 		if (!category) {
 			navigate(`/alltype/${PLATFORM}/all`, { replace: true, state: { noScroll: true } });
@@ -78,7 +79,7 @@ export default function AlltypePage() {
 	const currentCategorySlug = VALID_CATEGORY_SLUGS.includes(category || "") ? category : "all";
 	const currentCategoryName = SLUG_TO_CAT[currentCategorySlug] || "全部";
 
-	// 依平台過濾清單
+	// 該平台清單
 	const list = useMemo(() => {
 		const arr = PRODUCTS.filter((p) => p.platform === PLATFORM).map(toCardItem);
 		const bad = arr.filter((x) => !x.id);
@@ -86,21 +87,19 @@ export default function AlltypePage() {
 		return arr.filter((x) => !!x.id);
 	}, [PLATFORM]);
 
-	// 統計分類數量
+	// 統計分類數
 	const counts = useMemo(() => {
 		return list.reduce(
 			(acc, p) => {
 				acc["全部"]++;
-				if (TABS.includes(p.category)) {
-					acc[p.category] = (acc[p.category] || 0) + 1;
-				}
+				if (TABS.includes(p.category)) acc[p.category] = (acc[p.category] || 0) + 1;
 				return acc;
 			},
 			{ 全部: 0, 主機: 0, 遊戲: 0, 配件: 0 }
 		);
 	}, [list]);
 
-	// 依目前分類篩選
+	// 依分類篩選
 	const filtered = useMemo(() => {
 		return currentCategoryName === "全部" ? list : list.filter((p) => p.category === currentCategoryName);
 	}, [list, currentCategoryName]);
@@ -109,8 +108,7 @@ export default function AlltypePage() {
 	const [currentPage, setCurrentPage] = useState(1);
 	useEffect(() => {
 		setCurrentPage(1);
-		const el = document.querySelector(".B_item");
-		if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+		// 移除舊版自動捲動，改由精準滾動控制
 	}, [currentCategorySlug, PLATFORM]);
 
 	const ITEMS_PER_PAGE = 12;
@@ -123,7 +121,8 @@ export default function AlltypePage() {
 
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
-		document.querySelector(".B_item")?.scrollIntoView({ behavior: "smooth", block: "start" });
+		// 分頁時如需捲動可自行開啟（或保持不動）
+		// document.getElementById("B_item")?.scrollIntoView({ behavior: "smooth", block: "start" });
 	};
 
 	// 切換分類
@@ -140,6 +139,40 @@ export default function AlltypePage() {
 
 	const banners = BANNERS[PLATFORM] || [];
 	const otherPlatforms = VALID_PLATFORMS.filter((p) => p !== PLATFORM);
+
+	// ===== 精準滾動（支援 #hash，含 offset 與重試）=====
+	const SCROLL_OFFSET = (() => {
+		const navH = document.querySelector(".navbar, .site-header")?.offsetHeight || 0;
+		return Math.max(80, navH + 12);
+	})();
+
+	const scrollToHash = (hash) => {
+		if (!hash) return;
+		const id = hash.replace(/^#/, "");
+		let tries = 0;
+
+		const tryScroll = () => {
+			const el = document.getElementById(id);
+			if (el) {
+				const top = el.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+				window.scrollTo({ top, behavior: "smooth" });
+				return;
+			}
+			if (tries < 20) {
+				tries += 1;
+				setTimeout(tryScroll, 60);
+			}
+		};
+
+		setTimeout(tryScroll, 0);
+	};
+
+	useEffect(() => {
+		// 只有帶 hash 才捲動；沒有 hash 就不動（避免每次都往下跑）
+		if (location.hash) {
+			scrollToHash(location.hash);
+		}
+	}, [location.key, location.hash]);
 
 	return (
 		<>
@@ -166,8 +199,8 @@ export default function AlltypePage() {
 					</Swiper>
 				</div>
 
-				{/* 平台切換 */}
-				<div className="B_itemTitles">
+				{/* 平台切換（加上 id，供 #B_itemTitles 精準滾動） */}
+				<div id="B_itemTitles" className="B_itemTitles">
 					{otherPlatforms[0] && (
 						<NavLink className="B_itemTitle" to={platformLink(otherPlatforms[0])}>
 							{PLATFORM_LABEL[otherPlatforms[0]]}
@@ -183,7 +216,7 @@ export default function AlltypePage() {
 					)}
 				</div>
 
-				{/* 類別 */}
+				{/* 類別（Tabs） */}
 				<div className="B_category" role="tablist" aria-label="商品分類 (category 類別)">
 					{TABS.map((tab) => {
 						const isActive = currentCategoryName === tab;
@@ -202,8 +235,8 @@ export default function AlltypePage() {
 					})}
 				</div>
 
-				{/* 卡片 */}
-				<div className="B_item">
+				{/* 卡片清單（加上 id，供 #B_item 精準滾動） */}
+				<div id="B_item" className="B_item">
 					{currentItems.map((item) => (
 						<AllTypeCards
 							key={item.id}
