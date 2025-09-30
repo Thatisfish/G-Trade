@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import sellerImg from '../images/orderImg2.webp'
 
 export default function ReviewCard({ onSubmit }) {
 	const [rating, setRating] = useState(0);
  	const [hover, setHover] = useState(0);
+	const [comment, setComment] = useState('')
+	const [images, setImages] = useState([]) // { file, url }
+    const fileInputRef = useRef(null)
+    const imagesRef = useRef([])
+
+	useEffect(() => {
+		// revoke any remaining object URLs on unmount
+		return () => {
+			imagesRef.current.forEach(img => URL.revokeObjectURL(img.url))
+		}
+	}, [])
 
 	const handleSubmit = () => {
 		if (onSubmit) onSubmit(rating);
@@ -49,7 +60,53 @@ export default function ReviewCard({ onSubmit }) {
 									)
 								})}
 							</div>
-							<textarea placeholder="商品符合照片描述，且問問題賣家都很詳細說明，推推!" />
+							<textarea
+								placeholder="商品符合照片描述，且問問題賣家都很詳細說明，推推!"
+								value={comment}
+								onChange={(e) => setComment(e.target.value)}
+							/>
+
+							{/* 圖片上傳 */}
+							<div className="J_imageUpload">
+								{/* 隱藏原生 input，使用自訂按鈕觸發，避免顯示「未選擇任何檔案」文字 */}
+								<input
+									ref={fileInputRef}
+									style={{ display: 'none' }}
+									type="file"
+									accept="image/*"
+									multiple
+									onChange={(e) => {
+										const files = Array.from(e.target.files || [])
+										const newImgs = files.map(f => ({ file: f, url: URL.createObjectURL(f) }))
+										setImages(prev => {
+											const next = [...prev, ...newImgs]
+											imagesRef.current = next
+											return next
+										})
+										// reset input so same file can be reselected if removed
+										e.target.value = null
+									}}
+								/>
+								<button type="button" onClick={() => fileInputRef.current?.click()} className="J_uploadBtn">上傳商品照</button>
+								{images.length > 0 && (
+									<div className="J_imagePreviews">
+										{images.map((img, idx) => (
+											<div key={idx} className="J_previewItem">
+												<img src={img.url} alt={`preview-${idx}`} />
+												<button type="button" onClick={() => {
+													// revoke and remove
+													URL.revokeObjectURL(img.url)
+													setImages(prev => {
+														const next = prev.filter((_, i) => i !== idx)
+														imagesRef.current = next
+														return next
+													})
+												}}>移除照片</button>
+											</div>
+										))}
+									</div>
+								)}
+							</div>
 
 
 
