@@ -1,12 +1,16 @@
-// ScrollToTop.jsx
+// src/js/ScrollToTop.jsx
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function ScrollToTop({ selector, behavior = "auto" }) {
-	const { pathname, search, hash, key } = useLocation();
+	const { pathname, search, hash, key, state } = useLocation();
 
 	useEffect(() => {
-		// 若有 #hash，讓瀏覽器處理錨點，不強制回頂
+		// ✅ 這次導航要求不要自動回頂（per-navigation flag 英文/每次導航旗標）
+		// 例如：navigate(url, { state: { noScroll: true } })
+		if (state?.noScroll) return;
+
+		// 若有 #hash（雜湊錨點），交給瀏覽器，不強制回頂
 		if (hash) return;
 
 		// 找真正在滾動的容器：優先 selector，其次 scrollingElement，再來 body/html
@@ -34,7 +38,7 @@ export default function ScrollToTop({ selector, behavior = "auto" }) {
 
 			// 同時設置多個來源，最大化相容性
 			if (typeof target.scrollTo === "function") {
-				target.scrollTo({ top: 0, left: 0, behavior });
+				target.scrollTo({ top: 0, left: 0, behavior }); // behavior: "auto" | "smooth"
 			}
 			target.scrollTop = 0;
 			document.documentElement.scrollTop = 0; // 兼容某些瀏覽器
@@ -53,7 +57,7 @@ export default function ScrollToTop({ selector, behavior = "auto" }) {
 
 		// 不需要清理；這是一次性行為
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [key, pathname, search, hash, selector, behavior]); // 監聽 key，可捕捉同路徑切換
+	}, [key, pathname, search, hash, selector, behavior, state]); // 監聽 state，支援 noScroll
 
 	return null;
 }

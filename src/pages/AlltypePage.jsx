@@ -1,7 +1,7 @@
 // src/pages/AlltypePage.jsx
 import "../styles/Alltype.scss";
 import { useMemo, useState, useEffect } from "react";
-import { Link, NavLink, useParams, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, useParams, Navigate, useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -50,7 +50,7 @@ const toCardItem = (p) => {
 	return {
 		id,
 		image: Array.isArray(p.mainImage) ? p.mainImage[0] : p.mainImage,
-		category: p.category, // 你現有為中文（主機/遊戲/配件）
+		category: p.category, // 中文分類（主機/遊戲/配件）
 		title: p.productTitle,
 		seller: p.sellerName || "",
 		priceNow: (p.salePrice ?? p.originalPrice)?.toString?.() ?? "",
@@ -60,25 +60,25 @@ const toCardItem = (p) => {
 };
 
 export default function AlltypePage() {
-	// 從路由取平台與分類（category 英文/分類：可選）
-	const { platform, category } = useParams(); // platform: Switch|PS|Xbox；category: all|console|game|accessory（或 undefined）
+	// 從路由取平台與分類
+	const { platform, category } = useParams();
 	const navigate = useNavigate();
 
 	const PLATFORM = decodeURIComponent(platform || "");
 	if (!VALID_PLATFORMS.includes(PLATFORM)) return <Navigate to="/alltype/Switch/all" replace />;
 
-	// 沒帶分類就導向該平台的 all（全部）
+	// 沒帶分類就導向該平台的 all
 	useEffect(() => {
 		if (!category) {
-			navigate(`/alltype/${PLATFORM}/all`, { replace: true });
+			navigate(`/alltype/${PLATFORM}/all`, { replace: true, state: { noScroll: true } });
 		}
 	}, [category, PLATFORM, navigate]);
 
-	// 目前分類（中文顯示用）
+	// 目前分類
 	const currentCategorySlug = VALID_CATEGORY_SLUGS.includes(category || "") ? category : "all";
 	const currentCategoryName = SLUG_TO_CAT[currentCategorySlug] || "全部";
 
-	// 依平台過濾整體清單
+	// 依平台過濾清單
 	const list = useMemo(() => {
 		const arr = PRODUCTS.filter((p) => p.platform === PLATFORM).map(toCardItem);
 		const bad = arr.filter((x) => !x.id);
@@ -86,7 +86,7 @@ export default function AlltypePage() {
 		return arr.filter((x) => !!x.id);
 	}, [PLATFORM]);
 
-	// 統計各分類數量（顯示「全部(4) 主機(3) …」）
+	// 統計分類數量
 	const counts = useMemo(() => {
 		return list.reduce(
 			(acc, p) => {
@@ -100,16 +100,17 @@ export default function AlltypePage() {
 		);
 	}, [list]);
 
-	// 依目前分類再篩一次
+	// 依目前分類篩選
 	const filtered = useMemo(() => {
 		return currentCategoryName === "全部" ? list : list.filter((p) => p.category === currentCategoryName);
 	}, [list, currentCategoryName]);
 
-	// 分頁（pagination 英文/分頁）
+	// 分頁
 	const [currentPage, setCurrentPage] = useState(1);
 	useEffect(() => {
-		// 當分類（從網址）變動時，回到第一頁
 		setCurrentPage(1);
+		const el = document.querySelector(".B_item");
+		if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 	}, [currentCategorySlug, PLATFORM]);
 
 	const ITEMS_PER_PAGE = 12;
@@ -122,20 +123,23 @@ export default function AlltypePage() {
 
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
-		document.querySelector(".B_item")?.scrollIntoView({ behavior: "smooth" });
+		document.querySelector(".B_item")?.scrollIntoView({ behavior: "smooth", block: "start" });
 	};
 
-	// 切換分類 → 改 URL（path 英文/路徑）
+	// 切換分類
 	const goCategory = (tabName) => {
 		const slug = CAT_TO_SLUG[tabName] || "all";
-		navigate(`/alltype/${PLATFORM}/${slug}`);
-		// currentPage 會在 useEffect 被歸 1
+		navigate(`/alltype/${PLATFORM}/${slug}`, { state: { noScroll: true } });
 	};
 
-	// 平台切換時，沿用目前 category slug
-	const platformLink = (p) => `/alltype/${p}/${currentCategorySlug}`;
+	// 平台切換
+	const platformLink = (p) => ({
+		pathname: `/alltype/${p}/${currentCategorySlug}`,
+		state: { noScroll: true }
+	});
 
 	const banners = BANNERS[PLATFORM] || [];
+	const otherPlatforms = VALID_PLATFORMS.filter((p) => p !== PLATFORM);
 
 	return (
 		<>
@@ -145,7 +149,7 @@ export default function AlltypePage() {
 			</Helmet>
 
 			<div className="B_content">
-				{/* 橫幅（banner 橫幅） */}
+				{/* 橫幅 */}
 				<div className="B_banner">
 					<Swiper
 						spaceBetween={30}
@@ -162,15 +166,24 @@ export default function AlltypePage() {
 					</Swiper>
 				</div>
 
-				{/* 平台切換（tabs 分頁） */}
+				{/* 平台切換 */}
 				<div className="B_itemTitles">
-					<NavLink className="B_itemTitle" to={platformLink("PS")}>PS系列</NavLink>
+					{otherPlatforms[0] && (
+						<NavLink className="B_itemTitle" to={platformLink(otherPlatforms[0])}>
+							{PLATFORM_LABEL[otherPlatforms[0]]}
+						</NavLink>
+					)}
+
 					<p className="B_name">{PLATFORM_LABEL[PLATFORM]}</p>
-					<NavLink className="B_itemTitle" to={platformLink("Xbox")}>Xbox</NavLink>
-					<NavLink className="B_itemTitle" to={platformLink("Switch")}>Switch</NavLink>
+
+					{otherPlatforms[1] && (
+						<NavLink className="B_itemTitle" to={platformLink(otherPlatforms[1])}>
+							{PLATFORM_LABEL[otherPlatforms[1]]}
+						</NavLink>
+					)}
 				</div>
 
-				{/* 類別（category 類別 → 會改 URL path 英文/路徑） */}
+				{/* 類別 */}
 				<div className="B_category" role="tablist" aria-label="商品分類 (category 類別)">
 					{TABS.map((tab) => {
 						const isActive = currentCategoryName === tab;
@@ -189,7 +202,7 @@ export default function AlltypePage() {
 					})}
 				</div>
 
-				{/* 卡片（card 卡片） */}
+				{/* 卡片 */}
 				<div className="B_item">
 					{currentItems.map((item) => (
 						<AllTypeCards
