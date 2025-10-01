@@ -28,6 +28,15 @@ const AllNotify = () => {
         sessionStorage.setItem("notices", JSON.stringify(notices));
     }, [notices]);
 
+    useEffect(() => {
+        function syncNotices() {
+            const updated = JSON.parse(sessionStorage.getItem("notices") || "[]");
+            setNotices(updated);
+        }
+        window.addEventListener("notice-update", syncNotices); // 監聽自訂事件
+        return () => window.removeEventListener("notice-update", syncNotices);
+    }, []);
+
     // 單筆已讀
     const readed = (id) => {
         const updated = notices.map(n =>  // 檢查每筆通知 未讀&可點
@@ -37,7 +46,7 @@ const AllNotify = () => {
         );
         setNotices(updated);
         sessionStorage.setItem("notices", JSON.stringify(updated));
-        window.dispatchEvent(new Event("storage")); // 通知 BellPopover
+        window.dispatchEvent(new Event("notice-update")); // 通知 BellPopover
     };
     // 全部已讀
     const markAllAsRead = () => {
@@ -48,7 +57,7 @@ const AllNotify = () => {
         );
         setNotices(updated);
         sessionStorage.setItem("notices", JSON.stringify(updated));
-        window.dispatchEvent(new Event("storage")); // 通知 BellPopover
+        window.dispatchEvent(new Event("notice-update")); // 通知 BellPopover
     };
 
     const handleItemClick = (n) => {

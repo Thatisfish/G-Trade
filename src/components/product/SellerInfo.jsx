@@ -1,10 +1,13 @@
 // src/components/product/SellerInfo.jsx
-import React from "react";
+import React, { useState } from "react";
 import check from "../../images/ProductPage/check.svg";
 import fastShip from "../../images/ProductPage/fastShip.svg";
 import quickReply from "../../images/ProductPage/quickReply.svg";
 import fallbackAvatar from "../../images/ProductPage/user.jpg";
 import star from "../../images/ProductPage/star.svg";
+import { addNoticeFollow } from "../../components/Navbar/BellPopover"
+import { PRODUCTS } from '../../data/products.js'
+
 
 const TAG_ICON = {
 	check,
@@ -13,6 +16,7 @@ const TAG_ICON = {
 };
 
 const SellerInfo = ({
+	productId,
 	sellerAvatar,
 	sellerName,
 	sellerScore,
@@ -22,6 +26,10 @@ const SellerInfo = ({
 	sellerDesc
 }) => {
 	const avatarSrc = sellerAvatar || fallbackAvatar;
+	const [follow, setFollow] = useState(() => {
+		const stored = sessionStorage.getItem(`follow-${sellerName}`);
+		return stored === 'true';  // 預設false
+	});
 
 	return (
 		<>
@@ -55,7 +63,17 @@ const SellerInfo = ({
 				</div>
 
 				<div className="seller__actions">
-					<button className="btn">追蹤+</button>
+					<button className="btn"
+						onClick={() => setFollow(
+							prev => {
+								const next = !prev;
+								sessionStorage.setItem(`follow-${sellerName}`, next) // 儲存狀態
+								if (next) {
+									addNoticeFollow(sellerName, productId)
+								}
+								return next;
+							})}>{follow ? '追蹤中' : '追蹤+'}
+					</button>
 					<button className="btn">聊聊</button>
 				</div>
 			</div>
@@ -81,7 +99,17 @@ const SellerInfo = ({
 				</div>
 
 				<div className="seller__actions">
-					<button className="btn">追蹤+</button>
+					<button className="btn"
+						onClick={() => setFollow(
+							prev => {
+								const next = !prev;
+								sessionStorage.setItem(`follow-${sellerName}`, next) // 儲存狀態
+								if (next) {
+									addNoticeFollow(sellerName, productId)
+								}
+								return next;
+							})}>{follow ? '追蹤中' : '追蹤+'}
+					</button>
 					<button className="btn">聊聊</button>
 				</div>
 			</div>

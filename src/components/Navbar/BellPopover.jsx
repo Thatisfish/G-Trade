@@ -2,13 +2,39 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTS } from '../../data/products.js'
 
+// 賣場追蹤後，新增提醒在第一筆
+export function addNoticeFollow(sellerName) {
+	const full = JSON.parse(sessionStorage.getItem('notices') || '[]');
+
+	// 避免同賣場重複加入
+	if (full.some(n => n.text.includes(sellerName))) return;
+	// 用sellerName找出商品
+	const product = PRODUCTS.find(p => p.sellerName === sellerName);
+	if (!product) return;
+
+	const newNotice = {
+		id: `seller-${product.id}-${Date.now()}`,
+		text: `您追蹤的賣場「${sellerName}」有新商品上架！`,
+		date: new Date().toISOString().split("T")[0],
+		unread: true,
+		disabled: false,
+		linkTo: `/product/${encodeURIComponent(product.id)}`
+	};
+	// 加新通知
+	const update = [newNotice, ...full].slice(0, 30);
+	sessionStorage.setItem('notices', JSON.stringify(update));
+	window.dispatchEvent(new Event('notice-update'));
+}
+
+
+
 export default function BellPopover() {
 	/* 計算未讀數 */
 	const [notices, setNotices] = useState(() => {
 		const stored = sessionStorage.getItem("notices");
 		if (stored) return JSON.parse(stored);
 
-		// fallback：初始化 10 筆，並儲存一次
+		// fallback：初始化 10 筆，但不覆蓋 sessionStorage
 		const initial = PRODUCTS.slice(0, 10).map((p, i) => {
 			const isShopNotice = i % 3 === 0;
 			return {
@@ -22,7 +48,9 @@ export default function BellPopover() {
 				linkTo: `/product/${encodeURIComponent(p.id || i)}`
 			};
 		});
-		sessionStorage.setItem("notices", JSON.stringify(initial));
+		if (!sessionStorage.getItem('notices')) {
+			sessionStorage.setItem('notices', JSON.stringify(initial));
+		}
 		return initial; // 只顯示前 3 筆
 	});
 
@@ -43,7 +71,7 @@ export default function BellPopover() {
 		);
 		sessionStorage.setItem("notices", JSON.stringify(updated));
 		setNotices(updated);
-		window.dispatchEvent(new Event("storage")); // 通知同步
+		window.dispatchEvent(new Event("notice-update")); // 通知同步
 	};
 	// 點擊外部關閉（click outside／點外關閉）
 	useEffect(() => {
@@ -68,8 +96,8 @@ export default function BellPopover() {
 			const updated = JSON.parse(sessionStorage.getItem("notices") || "[]");
 			setNotices(updated);
 		}
-		window.addEventListener("storage", syncNotices);
-		return () => window.removeEventListener("storage", syncNotices);
+		window.addEventListener("notice-update", syncNotices);
+		return () => window.removeEventListener("notice-update", syncNotices);
 	}, []);
 
 	// 觸發li連結
