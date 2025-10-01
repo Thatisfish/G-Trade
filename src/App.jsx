@@ -29,6 +29,7 @@ const ListingGuideline = lazy(() => import("./pages/ListingGuideline"));
 const Newspages = lazy(() => import("./pages/Newspages"));
 const Coupon = lazy(() => import("./pages/Coupon"));
 const Content = lazy(() => import("./pages/Content"));
+const AllNotify = lazy(() => import("./pages/AllNotify"));
 
 import ScrollToTop from "./js/ScrollToTop";
 
@@ -90,6 +91,7 @@ export default function App() {
 				import("./pages/Escrow_Info"),
 				import("./pages/ListingGuideline"),
 				import("./pages/Newspages"),
+				import("./pages/AllNotify"),
 			]).catch(() => {
 				// 靜默失敗即可
 			});
@@ -138,6 +140,7 @@ export default function App() {
 							<Route path="/ListingGuideline" element={<ListingGuideline />} />
 							<Route path="/hamburgerMenu" element={<HamburgerMenu />} />
 							<Route path="/Newspages" element={<Newspages />} />
+							<Route path="/AllNotify" element={<AllNotify />} />
 						</Routes>
 					</Suspense>
 
