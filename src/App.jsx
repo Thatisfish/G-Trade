@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate, Navigate } from "react-router-dom";
 import { HelmetProvider } from "@dr.pogodin/react-helmet";
 import { Suspense, lazy } from "react";
+import FloatChat, { ChatProvider } from "./components/FloatChat";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./components/Login"; // login（登入）元件
@@ -107,48 +108,51 @@ export default function App() {
 
 	return (
 		<>
-			<HelmetProvider>
-				<Navbar theme={theme} onOpenLogin={openLogin} />
+			<ChatProvider>
+				<HelmetProvider>
+					<Navbar theme={theme} onOpenLogin={openLogin} />
 
-				<div className={isHome ? "home-bg" : ""}>
-					{!isHome && <div className="red-banner"></div>}
-					{showLogin && <Login onClose={closeLogin} onRegister={goRegister} />}
+					<div className={isHome ? "home-bg" : ""}>
+						{!isHome && <div className="red-banner"></div>}
+						{showLogin && <Login onClose={closeLogin} onRegister={goRegister} />}
 
-					<ScrollToTop />
+						<ScrollToTop />
 
-					{/* 用 Suspense（暫掛）提供載入中的 fallback（後備畫面） */}
-					<Suspense fallback={<div className="page-loading">載入中…</div>}>
-						<Routes>
-							<Route path="/" element={<Home />} />
-							<Route path="/New_info" element={<New_info />} />
-							<Route path="/alltype" element={<Navigate to="/alltype/switch/all" replace />} />
-							<Route path="/alltype/:platform" element={<AlltypePage />} />
-							<Route path="/alltype/:platform/:category" element={<AlltypePage />} />
-							<Route path="/Shopping_cart" element={<Shopping_cart />} />
-							<Route path="/Register" element={<Register />} />
-							<Route path="/Collect" element={<Collect />} />
-							<Route path="/Real_name" element={<Real_name />} />
-							<Route path="/RealN_Info" element={<RealN_Info />} />
-							<Route path="/Package" element={<Package />} />
-							<Route path="/Orders" element={<Orders />} />
-							<Route path="/Coupon" element={<Coupon />} />
-							<Route path="/search" element={<SearchPage />} />
-							<Route path="/Reviewpage" element={<Reviewpage />} />
-							<Route path="/Content" element={<Content />} />
-							{/* ✅ 動態商品頁（dynamic product page） */}
-							<Route path="/product/:id" element={<ProductPage />} />
-							{/* 其他頁面 */}
-							<Route path="/Escrow_Info" element={<EscrowInfo />} />
-							<Route path="/ListingGuideline" element={<ListingGuideline />} />
-							<Route path="/hamburgerMenu" element={<HamburgerMenu />} />
-							<Route path="/Newspages" element={<Newspages />} />
-							<Route path="/AllNotify" element={<AllNotify />} />
-						</Routes>
-					</Suspense>
+						{/* 用 Suspense（暫掛）提供載入中的 fallback（後備畫面） */}
+						<Suspense fallback={<div className="page-loading">載入中…</div>}>
+							<Routes>
+								<Route path="/" element={<Home />} />
+								<Route path="/New_info" element={<New_info />} />
+								<Route path="/alltype" element={<Navigate to="/alltype/switch/all" replace />} />
+								<Route path="/alltype/:platform" element={<AlltypePage />} />
+								<Route path="/alltype/:platform/:category" element={<AlltypePage />} />
+								<Route path="/Shopping_cart" element={<Shopping_cart />} />
+								<Route path="/Register" element={<Register />} />
+								<Route path="/Collect" element={<Collect />} />
+								<Route path="/Real_name" element={<Real_name />} />
+								<Route path="/RealN_Info" element={<RealN_Info />} />
+								<Route path="/Package" element={<Package />} />
+								<Route path="/Orders" element={<Orders />} />
+								<Route path="/Coupon" element={<Coupon />} />
+								<Route path="/search" element={<SearchPage />} />
+								<Route path="/Reviewpage" element={<Reviewpage />} />
+								<Route path="/Content" element={<Content />} />
+								{/* ✅ 動態商品頁（dynamic product page） */}
+								<Route path="/product/:id" element={<ProductPage />} />
+								{/* 其他頁面 */}
+								<Route path="/Escrow_Info" element={<EscrowInfo />} />
+								<Route path="/ListingGuideline" element={<ListingGuideline />} />
+								<Route path="/hamburgerMenu" element={<HamburgerMenu />} />
+								<Route path="/Newspages" element={<Newspages />} />
+								<Route path="/AllNotify" element={<AllNotify />} />
+							</Routes>
+						</Suspense>
 
-					<Footer theme={theme} onOpenLogin={openLogin} />
-				</div>
-			</HelmetProvider>
+						<Footer theme={theme} onOpenLogin={openLogin} />
+						<FloatChat />
+					</div>
+				</HelmetProvider>
+			</ChatProvider>
 		</>
 	);
 }

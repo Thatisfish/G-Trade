@@ -7,7 +7,7 @@ import fallbackAvatar from "../../images/ProductPage/user.jpg";
 import star from "../../images/ProductPage/star.svg";
 import { addNoticeFollow } from "../../components/Navbar/BellPopover"
 import { PRODUCTS } from '../../data/products.js'
-
+import { useChat } from "../FloatChat.jsx";
 
 const TAG_ICON = {
 	check,
@@ -25,6 +25,7 @@ const SellerInfo = ({
 	sellerTags = [],
 	sellerDesc
 }) => {
+	const { openChat } = useChat();
 	const avatarSrc = sellerAvatar || fallbackAvatar;
 	const [follow, setFollow] = useState(() => {
 		const stored = sessionStorage.getItem(`follow-${sellerName}`);
@@ -74,7 +75,7 @@ const SellerInfo = ({
 								return next;
 							})}>{follow ? '追蹤中' : '追蹤+'}
 					</button>
-					<button className="btn">聊聊</button>
+					<button className="btn" onClick={() => openChat(sellerName, productId)}>聊聊</button>
 				</div>
 			</div>
 
@@ -110,7 +111,7 @@ const SellerInfo = ({
 								return next;
 							})}>{follow ? '追蹤中' : '追蹤+'}
 					</button>
-					<button className="btn">聊聊</button>
+					<button className="btn" onClick={() => openChat(sellerName, productId)}>聊聊</button>
 				</div>
 			</div>
 		</>
