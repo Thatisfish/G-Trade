@@ -3,6 +3,7 @@ import "../styles/_Real_name.scss"
 import Sidebar from '../components/Sidebar'
 import c_plus from "../images/Regform_icon/c_plus.png"
 import verify from "../images/Regform_icon/c_verify.avif"
+import { Helmet } from '@dr.pogodin/react-helmet'
 
 
 const Real_name = () => {
@@ -79,6 +80,10 @@ const Real_name = () => {
 		}
 		return (
 			<>
+				<Helmet>
+					<title>遊玩人間市集 ｜ 實名認證 </title>
+					<meta name="description" content="歡迎來到遊玩人間市集，探索各式二手遊戲商品。" />
+				</Helmet>
 				<div className='c_uploadCase'>
 					<div className={`c_upLoadFrame ${imgPreview ? 'hasImgPreview' : ''}`}>
 						{imgPreview ? (

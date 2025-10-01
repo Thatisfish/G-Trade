@@ -8,7 +8,6 @@ import Logo_r from '../images/logo_red.avif';
 import BellPopover from './Navbar/BellPopover'
 import Cart from '../images/icon/icon-Shopping_cart_gray.svg'
 import Home from '../images/icon/icon-home_gray.svg'
-import Bell from '../images/icon/icon_bell_gray.svg'
 import Member from '../images/icon/icon-member_gray.svg'
 import HamburgerMenu from './HamburgerMenu';
 
@@ -76,9 +75,9 @@ export default function Navbar({ theme, onOpenLogin }) {
 					<ul className="menu">
 						<li><Link to="/New_info">最新消息</Link></li>
 						<li><Link to="/#newup">熱門商品</Link></li>
-						<li><Link to="/Alltype">Switch</Link></li>
-						<li><Link to="/Alltype_PS">PS系列</Link></li>
-						<li><Link to="/Alltype_Xbox">Xbox系列</Link></li>
+						<li><Link to="/alltype/Switch">Switch</Link></li>
+						<li><Link to="/alltype/PS">PS系列</Link></li>
+						<li><Link to="/alltype/Xbox">Xbox</Link></li>
 					</ul>
 
 					<ul className="nav-icon">

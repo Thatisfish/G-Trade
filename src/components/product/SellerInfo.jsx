@@ -1,64 +1,92 @@
-import React from 'react'
-import check from '../../images/ProductPage/check.svg'
-import fastShip from '../../images/ProductPage/fastShip.svg'
-import quickReply from '../../images/ProductPage/quickReply.svg'
-import user from '../../images/ProductPage/user.jpg'
-import star from '../../images/ProductPage/star.svg'
-const SellerInfo = () => {
+// src/components/product/SellerInfo.jsx
+import React from "react";
+import check from "../../images/ProductPage/check.svg";
+import fastShip from "../../images/ProductPage/fastShip.svg";
+import quickReply from "../../images/ProductPage/quickReply.svg";
+import fallbackAvatar from "../../images/ProductPage/user.jpg";
+import star from "../../images/ProductPage/star.svg";
+
+const TAG_ICON = {
+	check,
+	fastShip,
+	quickReply
+};
+
+const SellerInfo = ({
+	sellerAvatar,
+	sellerName,
+	sellerScore,
+	sellerCount,
+	sellerLocation,
+	sellerTags = [],
+	sellerDesc
+}) => {
+	const avatarSrc = sellerAvatar || fallbackAvatar;
+
 	return (
 		<>
 			<div className="seller seller-pc">
 				<div className="seller__profile">
-					<img src={user} alt="賣家頭像" className="seller__avatar" />
-					<p className="seller__name">@fun31**56</p>
+					<img src={avatarSrc} alt="賣家頭像" className="seller__avatar" />
+					<p className="seller__name">{sellerName}</p>
 				</div>
-				<div className='seller__rwd'>
+
+				<div className="seller__rwd">
 					<div className="seller__stats">
 						<div className="seller__rating">
-							<span className="seller__score">4.8</span>
-							<img src={star} alt="" />
-							<span className="seller__count">(5188則評價)</span>
+							<span className="seller__score">{sellerScore?.toFixed?.(1) ?? sellerScore}</span>
+							<img src={star} alt="評分星等" />
+							<span className="seller__count">({sellerCount}則評價)</span>
 						</div>
-						<p className="seller__location">台北市/萬華區</p>
+
+						<p className="seller__location">{sellerLocation}</p>
+
 						<div className="seller__tags">
-							<img src={check} alt="" />
-							<img src={fastShip} alt="" />
-							<img src={quickReply} alt="" />
+							{sellerTags.map((t) => {
+								const icon = TAG_ICON[t];
+								return icon ? <img key={t} src={icon} alt={t} /> : null;
+							})}
 						</div>
 					</div>
+
 					<div className="seller__desc">
-						<p>
-							個人賣場，商品多九成新，基本上24小時內回覆，歡迎使用留言提問及聊聊^^
-						</p>
+						<p>{sellerDesc}</p>
 					</div>
 				</div>
+
 				<div className="seller__actions">
 					<button className="btn">追蹤+</button>
 					<button className="btn">聊聊</button>
 				</div>
 			</div>
+
+			{/* 行動版 */}
 			<div className="seller seller-mobile">
-				<img src={user} alt="賣家頭像" className="seller__avatar" />
+				<img src={avatarSrc} alt="賣家頭像" className="seller__avatar" />
 				<div className="scenter">
-					<p className="seller__name">@fun31**56</p>
+					<p className="seller__name">{sellerName}</p>
+
 					<div className="seller__rating">
-						<span className="seller__score">4.8</span>
-						<img src={star} alt="" />
-						<span className="seller__count">(5188則評價)</span>
+						<span className="seller__score">{sellerScore?.toFixed?.(1) ?? sellerScore}</span>
+						<img src={star} alt="評分星等" />
+						<span className="seller__count">({sellerCount}則評價)</span>
 					</div>
+
 					<div className="seller__tags">
-						<img src={check} alt="" />
-						<img src={fastShip} alt="" />
-						<img src={quickReply} alt="" />
+						{sellerTags.map((t) => {
+							const icon = TAG_ICON[t];
+							return icon ? <img key={t} src={icon} alt={t} /> : null;
+						})}
 					</div>
 				</div>
+
 				<div className="seller__actions">
 					<button className="btn">追蹤+</button>
 					<button className="btn">聊聊</button>
 				</div>
 			</div>
 		</>
-	)
-}
+	);
+};
 
-export default SellerInfo
+export default SellerInfo;

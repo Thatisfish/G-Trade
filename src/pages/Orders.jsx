@@ -8,6 +8,7 @@ import '../styles/_Orders.scss'
 // 圖片兩張
 import ordersImg from '../images/orderImg1.svg'
 import sellerImg from '../images/orderImg2.webp'
+import { Helmet } from '@dr.pogodin/react-helmet'
 
 const mockOrders = [
 	{
@@ -79,36 +80,42 @@ const Orders = () => {
 	const pagedOrders = mockOrders.slice(start, start + perPage)
 
 	return (
-		<main className="J_content">
-			<Sidebar />
-			<div className="J_layout">
-                
+		<>
+			<Helmet>
+				<title>{`遊玩人間市集 ｜ 我的訂單`}</title>
+				<meta name="description" content="歡迎來到遊玩人間市集，探索各式二手遊戲商品。" />
+			</Helmet>
+			<main className="J_content">
+				<Sidebar />
+				<div className="J_layout">
 
-				{/* OrderTabs */}
-				<div className="J_ordertabs">
-					{tabs.map(t => (
-						<button key={t} className={t === tab ? 'active' : ''} onClick={() => setTab(t)}>
-							{t}
-						</button>
-					))}
+
+					{/* OrderTabs */}
+					<div className="J_ordertabs">
+						{tabs.map(t => (
+							<button key={t} className={t === tab ? 'active' : ''} onClick={() => setTab(t)}>
+								{t}
+							</button>
+						))}
+					</div>
+
+					{/* Orders */}
+					<div className="J_orders">
+						{pagedOrders.map((order, idx) => (
+							<OrderCard key={`${order.id}-${start + idx}`} {...order} />
+						))}
+					</div>
+
+					{/* Review */}
+					{/* <ReviewCard /> */}
+
+					{/* Pagination (use component) */}
+					<div className="J_pagination">
+						<Pagination totalPages={totalPages} onPageChange={handlePageChange} />
+					</div>
 				</div>
-
-				{/* Orders */}
-				<div className="J_orders">
-					{pagedOrders.map((order, idx) => (
-						<OrderCard key={`${order.id}-${start + idx}`} {...order} />
-					))}
-				</div>
-
-				{/* Review */}
-				{/* <ReviewCard /> */}
-
-				{/* Pagination (use component) */}
-				<div className="J_pagination">
-					<Pagination totalPages={totalPages} onPageChange={handlePageChange} />
-				</div>
-			</div>
-		</main>
+			</main>
+		</>
 	)
 }
 

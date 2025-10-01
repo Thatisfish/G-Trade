@@ -1,15 +1,15 @@
 // src/components/NewsCard.jsx
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NewsCard = ({ img, title, content, link = '#' }) => {
 	return (
-		<a href={link} className="news-card">
+		<Link to={link} className="news-card">
 			<img src={img} alt={title} />
 			<div className="newfont">
 				<h4>{title}</h4>
 				<p>{content}</p>
 			</div>
-		</a>
+		</Link>
 	);
 };
 
