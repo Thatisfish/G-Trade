@@ -40,7 +40,7 @@ export default function ReviewCard({ onSubmit }) {
 						{/* 右半邊評價表單 */}
 						<div className="J_reviewform">
 
-							<div className="J_stars" onMouseLeave={() => setHover(0)}>
+							<div className="J_stars" onMouseLeave={() => { if (rating === 0) setHover(0) }}>
 								<span>評價</span>
 								{[1,2,3,4,5].map(i => {
 									const isLit = hover ? i <= hover : i <= rating;
@@ -50,9 +50,9 @@ export default function ReviewCard({ onSubmit }) {
 											key={i}
 											type="button"
 											aria-label={`${i} 星`}
-											onMouseEnter={() => setHover(i)}
-											onClick={() => setRating(i)}
-											onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setRating(i); } }}
+											onMouseEnter={() => { if (rating === 0) setHover(i) }}
+											onClick={() => { setRating(i); setHover(0); }}
+											onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setRating(i); setHover(0); } }}
 											className="J_star-btn"
 										>
 											<svg xmlns="http://www.w3.org/2000/svg" width="31" height="29" viewBox="0 0 31 29" fill="none">
