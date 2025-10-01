@@ -173,9 +173,9 @@ body,
 	position: absolute;
 	transition: 0.3s;
 
-	&:hover {
-		transform: scale(1.1) rotate(0deg);
-	}
+	// &:hover {
+	// 	transform: scale(1.1) rotate(0deg);
+	// }
 }
 
 // 每個字母個別設定位置、角度、層級
@@ -183,25 +183,48 @@ body,
 	top: 130px;
 	left: 5%;
 	z-index: 1;
+	animation: float1 4s ease-in-out infinite;
 }
 
 .a {
 	top: 294px;
 	left: 19%;
 	z-index: 2;
+	animation: float2 3.5s ease-in-out infinite;
 }
 
 .m {
 	top: 129px;
 	left: 57.7%;
 	z-index: 3;
+	animation: float3 3s ease-in-out infinite;
 }
 
 .e {
-	// top: clamp(270px, 20vw, 300px);
 	top: 300px;
 	left: clamp(70%, 72vw, 73%);
 	z-index: 4;
+	animation: float4 4.5s ease-in-out infinite;
+}
+
+@keyframes float1 {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-15px); }
+}
+
+@keyframes float2 {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-25px); }
+}
+
+@keyframes float3 {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-20px); }
+}
+
+@keyframes float4 {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-18px); }
 }
 
 @media(max-width: 900px) {
@@ -906,7 +929,9 @@ body,
 			}
 
 			img {
-				width: 26vw;
+				width: 233px;
+				object-fit: contain;
+			
 			}
 
 			&::after {

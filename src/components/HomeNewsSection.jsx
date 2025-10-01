@@ -1,5 +1,6 @@
 // src/components/HomeNews.jsx
 import React from 'react';
+// import '../styles/_HomeNewsSection.scss'
 import NewsCard from './NewsCard';
 import { newsData } from '../data/NewsData';
 
@@ -12,7 +13,7 @@ const HomeNews = () => {
 					img={item.img}
 					title={item.title}
 					content={item.content}
-					link={`/news/${item.id}`}
+					link={item.link}
 				/>
 			))}
 		</div>
