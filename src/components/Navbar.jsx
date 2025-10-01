@@ -29,14 +29,17 @@ export default function Navbar({ theme, onOpenLogin }) {
 	const showDetailBar = isDetailRoute && lte640;
 
 	useEffect(() => {
-		const el = document.body; // ✅ 你的情況是 body 在滾動
-		if (!el) return;
-		const handleScroll = () => setScrolled(el.scrollTop > 0);
-		handleScroll();
-		el.addEventListener('scroll', handleScroll, { passive: true });
+		const handleScroll = () => {
+			const scrollY = window.scrollY || document.documentElement.scrollTop;
+			setScrolled(scrollY > 0);
+		};
+
+		handleScroll(); // 初始化一次
+		window.addEventListener('scroll', handleScroll, { passive: true });
 		window.addEventListener('resize', handleScroll);
+
 		return () => {
-			el.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('scroll', handleScroll);
 			window.removeEventListener('resize', handleScroll);
 		};
 	}, []);

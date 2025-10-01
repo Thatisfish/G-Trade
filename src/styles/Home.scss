@@ -532,11 +532,21 @@ body,
 		cursor: pointer;
 		font-weight: 400;
 		letter-spacing: 1px;
-		color: #fff;
-		border: 3px solid #4C4C4C;
+		background-color: #fff;
+		border: solid 2px #A12424;
+		color: #DE1A10;
 		border-radius: 999px;
-		background: linear-gradient(#B7B7B7, #858585, #595959, #4C4C4C);
 		width: 220px;
+
+		&:hover {
+			box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+		}
+
+		&:active {
+			background-color: #DE1A10;
+			border: solid 2px #A12424;
+			color: #FCFAFF;
+		}
 	}
 
 	@media(max-width: 900px) {
@@ -553,7 +563,7 @@ body,
 
 	.modal-overlay {
 		position: absolute;
-		top: 32.5%;
+		top: 35%;
 		width: auto;
 		padding: 50px;
 		border-radius: 20px;
@@ -609,32 +619,6 @@ body,
 							border-radius: 20px;
 						}
 					}
-				}
-			}
-
-			.close-btn {
-				cursor: pointer;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				margin: 0 10px;
-				padding: 1px 10px;
-				border-radius: 999px;
-				background-color: #DE1A10;
-				border: solid 2px #A12424;
-				color: #FCFAFF;
-				font-size: 14px;
-				font-weight: 600;
-				line-height: 30px;
-				transition: backgroundColor 0.2 ease, color 0.2 ease, box-shadow 0.2 ease;
-
-				&:hover {
-					box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
-				}
-
-				&:active {
-					background-color: #fff;
-					color: #DE1A10;
 				}
 			}
 		}

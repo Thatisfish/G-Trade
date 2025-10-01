@@ -61,7 +61,7 @@ export default function BellPopover() {
 		document.addEventListener("mousedown", onDocClick);
 		return () => document.removeEventListener("mousedown", onDocClick);
 	}, [open]);
-	
+
 	// 監聽 storage 事件 → 其他地方修改 sessionStorage 時同步
 	useEffect(() => {
 		function syncNotices() {
@@ -75,6 +75,7 @@ export default function BellPopover() {
 	// 觸發li連結
 	const handleItemClick = (n) => {
 		readed(n.id);  // 更新通知狀態
+		setOpen(false);
 		setTimeout(() => {
 			navigate(n.linkTo);  // 手動導航到通知的連結
 		}, 100);
@@ -102,7 +103,11 @@ export default function BellPopover() {
 			>
 				<div className="bell__panelHeader">
 					<p>通知</p>
-					<span onClick={() => navigate("/AllNotify")}>查看所有通知</span>
+					<span
+						onClick={() => {
+							setOpen(false);;
+							navigate("/AllNotify")
+						}}>查看所有通知</span>
 				</div>
 				<ul className="bell__list">
 					{notices.slice(0, 3).map(n => (

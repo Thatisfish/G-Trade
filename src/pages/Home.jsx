@@ -16,11 +16,24 @@ import special04 from '../images/home/special04.svg'
 import ArrowLeft from '../images/home/arrow-left.svg';
 import ArrowDown from '../images/home/arrow-down.svg';
 import { Helmet } from '@dr.pogodin/react-helmet';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
 	const navigate = useNavigate();
 	const [showModal, setShowModal] = useState(false);
+	const modalRef = useRef(null); // 判斷是否在modal裡
+
+	// 點外部關閉
+	useEffect(() => {
+		const handleClickOutside = (e) => {
+			const clickBtn = e.target.closest('.view-all-button');
+			if (showModal && modalRef.current && !modalRef.current.contains(e.target) && !clickBtn) {
+				setShowModal(false);
+			}
+		};
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => document.removeEventListener('mousedown', handleClickOutside);
+	}, [showModal]);
 
 	const goPlatform = (platform) => {
 		setShowModal(false); // 關閉彈窗
@@ -86,12 +99,12 @@ export default function Home() {
 						<h2 className="section-title">熱門商品</h2>
 						<InforCard />
 						<button className="view-all-button"
-							onClick={() => setShowModal(true)}>
+							onClick={() => setShowModal(prev => !prev)}>
 							查看所有商品</button>
 						{/* Modal 懸浮視窗 */}
 						{showModal && (
-							<div className="modal-overlay" onClick={() => setShowModal(false)}>
-								<div className="modal-content" onClick={(e) => e.stopPropagation()}>
+							<div className="modal-overlay">
+								<div className="modal-content" ref={modalRef}>
 									<div className="platform-cards">
 										<div className="platform-card" onClick={() => goPlatform("Switch")}>
 											<div className='c_imgBox'><img src="./Card_Image/item_switch01.avif" alt="" />
@@ -106,7 +119,6 @@ export default function Home() {
 											</div><p>Xbox</p>
 										</div>
 									</div>
-									<button className="close-btn" onClick={() => setShowModal(false)}>關閉</button>
 								</div>
 							</div>
 						)}

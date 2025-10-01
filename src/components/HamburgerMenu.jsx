@@ -13,18 +13,21 @@ const HamburgerMenu = ({ isOpen, onClose, onOpenLogin }) => {
 			}
 		};
 
+		const originalOverflow = document.body.style.overflow;
+
 		if (isOpen) {
 			document.addEventListener('keydown', handleEscKey);
-			document.body.style.overflow = 'hidden'; // 防止背景滾動
+			document.body.style.overflow = 'hidden';
 		} else {
-			document.body.style.overflow = 'auto';
+			document.body.style.overflow = originalOverflow || '';
 		}
 
 		return () => {
 			document.removeEventListener('keydown', handleEscKey);
-			document.body.style.overflow = 'auto';
+			document.body.style.overflow = originalOverflow || '';
 		};
 	}, [isOpen, onClose]);
+
 
 	// 點擊遮罩關閉
 	const handleOverlayClick = (e) => {
