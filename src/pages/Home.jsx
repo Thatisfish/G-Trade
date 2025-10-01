@@ -94,15 +94,15 @@ export default function Home() {
 								<div className="modal-content" onClick={(e) => e.stopPropagation()}>
 									<div className="platform-cards">
 										<div className="platform-card" onClick={() => goPlatform("Switch")}>
-											<div className='c_imgBox'><img src="/src/images/ProductPage/SidePicture2.jpg" alt="" />
+											<div className='c_imgBox'><img src="./Card_Image/item_switch01.avif" alt="" />
 											</div><p>Switch</p>
 										</div>
 										<div className="platform-card" onClick={() => goPlatform("PS")}>
-											<div className='c_imgBox'><img src="/src/images/Alltype_PS/Alltype_PS_item09.avif" alt="" />
+											<div className='c_imgBox'><img src="./psg.avif" alt="" />
 											</div><p>PS系列</p>
 										</div>
 										<div className="platform-card" onClick={() => goPlatform("Xbox")}>
-											<div className='c_imgBox'><img src="/src/images/Alltype_Xbox/Alltype_Xbox_item06.avif" alt="" />
+											<div className='c_imgBox'><img src="./xbg.avif" alt="" />
 											</div><p>Xbox</p>
 										</div>
 									</div>
