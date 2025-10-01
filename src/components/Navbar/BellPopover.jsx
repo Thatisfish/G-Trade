@@ -61,7 +61,9 @@ export default function BellPopover() {
 	// 觸發li連結
 	const handleItemClick = (n) => {
 		readed(n.id);  // 更新通知狀態
-		navigate(n.linkTo);  // 手動導航到通知的連結
+		setTimeout(() => {
+			navigate(n.linkTo);  // 手動導航到通知的連結
+		}, 100);
 	};
 
 	return (
@@ -86,7 +88,7 @@ export default function BellPopover() {
 			>
 				<div className="bell__panelHeader">
 					<p>通知</p>
-					<span onClick={() => navigate("/AllNotify")}>查看所有通知</span>
+					<span onClick={() => navigate("./AllNotify")}>查看所有通知</span>
 				</div>
 				<ul className="bell__list">
 					{notices.map(n => (

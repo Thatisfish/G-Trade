@@ -1,4 +1,5 @@
 import React from 'react'
+import "../styles/AllNotify.scss"
 
 const AllNotify = () => {
     return (
