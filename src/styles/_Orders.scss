@@ -42,7 +42,7 @@
 .J_modal-content {
 	background: #fff;
 	border-radius: 12px;
-	padding: 32px 24px;
+	// padding: 32px 24px;
 	min-width: 320px;
 	max-width: 90vw;
 	max-height: 90vh;
@@ -274,9 +274,9 @@
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-	margin-top: 2rem;
+	// margin-top: 2rem;
 
-	border: 1px solid #C8C8C8;
+	// border: 1px solid #C8C8C8;
 	background: #FFF;
 	padding: 33px 53px;
 	border-radius: 20px;
@@ -286,7 +286,7 @@
 		justify-content: space-between;
 		align-items: flex-start;
 		flex-direction: column;
-		gap: 2rem; // 左右間距
+		gap: 12px; // 左右間距
 		// margin-left: auto;
 
 		.J_reviewCardContent {
@@ -353,9 +353,49 @@
 		}
 
 		.J_imageUpload {
-			img {
-				padding: 10px 0;
-			}
+				img {
+					padding: 10px 0;
+				}
+
+				/* 圖片預覽縮圖樣式，固定為 240x240 且保持比例（不變形） */
+					.J_imagePreviews {
+						display: grid;
+						grid-template-columns: repeat(3, 90px); /* 一行 3 張 */
+						/* allow rows to size to content so the remove button won't be overlapped */
+						grid-auto-rows: auto;
+						column-gap: 10px; /* 圖片左右間距 10px */
+						.J_previewItem {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							min-height: 120px; /* reserve space for image + remove button */
+							img {
+								width: 90px;
+								height: 90px;
+								object-fit: cover; /* 保持比例且裁切填滿方框 */
+								border-radius: 6px;
+							}
+							button {
+								background: transparent;
+								border: none;
+								color: #DE1A10;
+								cursor: pointer;
+								// margin-top: 8px;
+								padding: 0;
+							}
+						}
+					}
+
+					.J_uploadMeta {
+						display: flex;
+						flex-direction: column;
+						gap: 6px;
+						margin-top: 8px;
+						.J_uploadCount {
+							font-size: 13px;
+							color: #666;
+						}
+					}
 
 			button {
 				background: #DE1A10;
@@ -445,7 +485,7 @@
 	.J_modal-content {
 		background: #fff;
 		border-radius: 12px;
-		padding: 32px 24px;
+		// padding: 32px 24px;
 		min-width: 320px;
 		max-width: 90vw;
 		max-height: 90vh;
@@ -652,16 +692,16 @@
 
 
 
-		border: 1px solid #C8C8C8;
+		// border: 1px solid #C8C8C8;
 		background: #FFF;
-		padding: 12px 12px;
+		padding: 24px 30px;
 
 		.J_reviewSection {
 			display: flex;
 			justify-content: space-between;
 			align-items: flex-start;
 			flex-direction: column;
-			gap: 2rem; // 左右間距
+			gap: 12px; // 左右間距
 			// margin-left: auto;
 
 			.J_reviewCardContent {
@@ -996,7 +1036,7 @@
 
 
 
-		border: 1px solid #C8C8C8;
+		// border: 1px solid #C8C8C8;
 		background: #FFF;
 		padding: 12px 12px;
 
@@ -1005,7 +1045,7 @@
 			justify-content: space-between;
 			align-items: flex-start;
 			flex-direction: column;
-			gap: 2rem; // 左右間距
+			gap: 10px; // 左右間距
 			// margin-left: auto;
 
 			.J_reviewCardContent {
@@ -1065,22 +1105,34 @@
 					font-size: 14px;
 				}
 
+						/* mobile override for image previews: keep 90x90 */
+						.J_imagePreviews .J_previewItem img {
+							width: 90px;
+							height: 90px;
+						}
+
+						/* mobile preview item spacing */
+						.J_imagePreviews .J_previewItem {
+							min-height: 110px;
+							margin-bottom: 4px;
+						}
+
 				button {
 					border: none;
 					background-color: white;
-					width: 25px;
+					width: 40px;
 
-					svg {
-						width: 20px;
-						height: 20px;
-					}
+					// svg {
+					// 	width: 20px;
+					// 	height: 20px;
+					// }
 				}
 			}
 
 			textarea {
-				// width: 100%;
+				width: 100%;
 				min-height: 90px;
-				width: 160px;
+				// width: 160px;
 				margin-bottom: .5rem;
 
 			}

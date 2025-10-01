@@ -7,7 +7,7 @@ export default function ReviewCard({ onSubmit }) {
 	const [comment, setComment] = useState('')
 	const [images, setImages] = useState([]) // { file, url }
     const fileInputRef = useRef(null)
-    const imagesRef = useRef([])
+	const imagesRef = useRef([])
 
 	useEffect(() => {
 		// revoke any remaining object URLs on unmount
@@ -15,6 +15,8 @@ export default function ReviewCard({ onSubmit }) {
 			imagesRef.current.forEach(img => URL.revokeObjectURL(img.url))
 		}
 	}, [])
+
+	// uploadNotice removed: use alert() only when exceeding limit
 
 	const handleSubmit = () => {
 		if (onSubmit) onSubmit(rating);
@@ -77,17 +79,32 @@ export default function ReviewCard({ onSubmit }) {
 									multiple
 									onChange={(e) => {
 										const files = Array.from(e.target.files || [])
-										const newImgs = files.map(f => ({ file: f, url: URL.createObjectURL(f) }))
+										const currentCount = imagesRef.current.length || 0
+										const remaining = 9 - currentCount
+										if (remaining <= 0) {
+											alert('最多只能上傳 9 張照片')
+											// reset input
+											e.target.value = null
+											return
+										}
+										const toAdd = files.slice(0, remaining)
+										const newImgs = toAdd.map(f => ({ file: f, url: URL.createObjectURL(f) }))
 										setImages(prev => {
 											const next = [...prev, ...newImgs]
 											imagesRef.current = next
 											return next
 										})
+										if (files.length > remaining) {
+											alert(`已達上限 9 張，僅上傳前 ${remaining} 張`)
+										}
 										// reset input so same file can be reselected if removed
 										e.target.value = null
 									}}
 								/>
 								<button type="button" onClick={() => fileInputRef.current?.click()} className="J_uploadBtn">上傳商品照</button>
+								<div className="J_uploadMeta">
+									<span className="J_uploadCount">已上傳 {images.length} / 9</span>
+								</div>
 								{images.length > 0 && (
 									<div className="J_imagePreviews">
 										{images.map((img, idx) => (
