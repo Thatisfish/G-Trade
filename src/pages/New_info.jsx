@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from '@dr.pogodin/react-helmet';
 
 
+
 const c_data = [
 	{
 		id: 1,
@@ -97,14 +98,14 @@ const c_data = [
 
 const CNewCard = ({ img, title, content, link = '#' }) => {
 	return (
-		<div className="new-card">
+		<Link to={link} className="new-card">
 			<img src={img} alt={title} />
 			<div className="newfont">
 				<h4>{title}</h4>
 				<p>{content}</p>
-				<Link to={link} className='C_readMore'>Read more</Link>
+				<div className='C_readMore'>Read more</div>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

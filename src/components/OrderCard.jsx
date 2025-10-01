@@ -8,15 +8,16 @@ export default function OrderCard({ id, shop, title, price, date, status, img })
   const [confirmed, setConfirmed] = useState(false);
   const [reviewed, setReviewed] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-  // lock body scroll while modal is open to avoid layout/scrollbar shift
+  // lock body scroll while any modal (confirm or review) is open to avoid layout/scrollbar shift
   useEffect(() => {
-    if (showConfirmModal) {
+    const active = showConfirmModal || showReview;
+    if (active) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       return () => { document.body.style.overflow = prev; };
     }
     return undefined;
-  }, [showConfirmModal]);
+  }, [showConfirmModal, showReview]);
   return (
     <>
       <div className="J_ordercard">
@@ -77,9 +78,7 @@ export default function OrderCard({ id, shop, title, price, date, status, img })
                     </svg>
                   </span>
                 </button>
-                <div className={`J_review-float${showReview ? ' is-open' : ''}`}>
-                  <ReviewCard onSubmit={() => { setShowReview(false); setReviewed(true); }} />
-                </div>
+                {/* ReviewCard used to float under the button; now we show it in a centered modal (rendered below) */}
               </div>
             )}
           </div>
@@ -112,6 +111,15 @@ export default function OrderCard({ id, shop, title, price, date, status, img })
             >
               關閉
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Review modal centered on screen */}
+      {showReview && (
+        <div className={`J_modal-overlay is-open`} onClick={() => setShowReview(false)}>
+          <div className="J_modal-content" onClick={(e) => e.stopPropagation()}>
+            <ReviewCard onSubmit={() => { setShowReview(false); setReviewed(true); }} />
           </div>
         </div>
       )}

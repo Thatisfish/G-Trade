@@ -7,7 +7,7 @@ export default function ReviewCard({ onSubmit }) {
 	const [comment, setComment] = useState('')
 	const [images, setImages] = useState([]) // { file, url }
     const fileInputRef = useRef(null)
-    const imagesRef = useRef([])
+	const imagesRef = useRef([])
 
 	useEffect(() => {
 		// revoke any remaining object URLs on unmount
@@ -15,6 +15,8 @@ export default function ReviewCard({ onSubmit }) {
 			imagesRef.current.forEach(img => URL.revokeObjectURL(img.url))
 		}
 	}, [])
+
+	// uploadNotice removed: use alert() only when exceeding limit
 
 	const handleSubmit = () => {
 		if (onSubmit) onSubmit(rating);
@@ -38,7 +40,7 @@ export default function ReviewCard({ onSubmit }) {
 						{/* 右半邊評價表單 */}
 						<div className="J_reviewform">
 
-							<div className="J_stars" onMouseLeave={() => setHover(0)}>
+							<div className="J_stars" onMouseLeave={() => { if (rating === 0) setHover(0) }}>
 								<span>評價</span>
 								{[1,2,3,4,5].map(i => {
 									const isLit = hover ? i <= hover : i <= rating;
@@ -48,9 +50,9 @@ export default function ReviewCard({ onSubmit }) {
 											key={i}
 											type="button"
 											aria-label={`${i} 星`}
-											onMouseEnter={() => setHover(i)}
-											onClick={() => setRating(i)}
-											onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setRating(i); } }}
+											onMouseEnter={() => { if (rating === 0) setHover(i) }}
+											onClick={() => { setRating(i); setHover(0); }}
+											onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setRating(i); setHover(0); } }}
 											className="J_star-btn"
 										>
 											<svg xmlns="http://www.w3.org/2000/svg" width="31" height="29" viewBox="0 0 31 29" fill="none">
@@ -77,17 +79,32 @@ export default function ReviewCard({ onSubmit }) {
 									multiple
 									onChange={(e) => {
 										const files = Array.from(e.target.files || [])
-										const newImgs = files.map(f => ({ file: f, url: URL.createObjectURL(f) }))
+										const currentCount = imagesRef.current.length || 0
+										const remaining = 9 - currentCount
+										if (remaining <= 0) {
+											alert('最多只能上傳 9 張照片')
+											// reset input
+											e.target.value = null
+											return
+										}
+										const toAdd = files.slice(0, remaining)
+										const newImgs = toAdd.map(f => ({ file: f, url: URL.createObjectURL(f) }))
 										setImages(prev => {
 											const next = [...prev, ...newImgs]
 											imagesRef.current = next
 											return next
 										})
+										if (files.length > remaining) {
+											alert(`已達上限 9 張，僅上傳前 ${remaining} 張`)
+										}
 										// reset input so same file can be reselected if removed
 										e.target.value = null
 									}}
 								/>
 								<button type="button" onClick={() => fileInputRef.current?.click()} className="J_uploadBtn">上傳商品照</button>
+								<div className="J_uploadMeta">
+									<span className="J_uploadCount">已上傳 {images.length} / 9</span>
+								</div>
 								{images.length > 0 && (
 									<div className="J_imagePreviews">
 										{images.map((img, idx) => (

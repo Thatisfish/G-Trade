@@ -1,5 +1,5 @@
 import '../styles/Home.scss'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import InforCard from '../components/Inforcard'
 import G from '../images/home/G.webp'
 import A from '../images/home/A.webp'
@@ -16,8 +16,16 @@ import special04 from '../images/home/special04.svg'
 import ArrowLeft from '../images/home/arrow-left.svg';
 import ArrowDown from '../images/home/arrow-down.svg';
 import { Helmet } from '@dr.pogodin/react-helmet';
+import { useState } from 'react';
 
 export default function Home() {
+	const navigate = useNavigate();
+	const [showModal, setShowModal] = useState(false);
+
+	const goPlatform = (platform) => {
+		setShowModal(false); // 關閉彈窗
+		navigate(`/alltype/${platform}/all`);
+	};
 	return (
 		<>
 			<Helmet>
@@ -77,7 +85,31 @@ export default function Home() {
 					<div id="newup" className='newup'>
 						<h2 className="section-title">熱門商品</h2>
 						<InforCard />
-						<button className="view-all-button">查看所有商品</button>
+						<button className="view-all-button"
+							onClick={() => setShowModal(true)}>
+							查看所有商品</button>
+						{/* Modal 懸浮視窗 */}
+						{showModal && (
+							<div className="modal-overlay" onClick={() => setShowModal(false)}>
+								<div className="modal-content" onClick={(e) => e.stopPropagation()}>
+									<div className="platform-cards">
+										<div className="platform-card" onClick={() => goPlatform("Switch")}>
+											<div className='c_imgBox'><img src="/src/images/ProductPage/SidePicture2.jpg" alt="" />
+											</div><p>Switch</p>
+										</div>
+										<div className="platform-card" onClick={() => goPlatform("PS")}>
+											<div className='c_imgBox'><img src="/src/images/Alltype_PS/Alltype_PS_item09.avif" alt="" />
+											</div><p>PS系列</p>
+										</div>
+										<div className="platform-card" onClick={() => goPlatform("Xbox")}>
+											<div className='c_imgBox'><img src="/src/images/Alltype_Xbox/Alltype_Xbox_item06.avif" alt="" />
+											</div><p>Xbox</p>
+										</div>
+									</div>
+									<button className="close-btn" onClick={() => setShowModal(false)}>關閉</button>
+								</div>
+							</div>
+						)}
 					</div>
 					<div className='special'>
 						{/* 左邊的手 */}

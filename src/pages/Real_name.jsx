@@ -104,7 +104,7 @@ const Real_name = () => {
 	return (
 		<>
 			<main className='c_realMain'>
-				<Sidebar className="c_sidebar" />
+				<Sidebar />
 				<div className='c_realOutside'>
 					<div className='c_realBox'>
 						{verifying ? (
