@@ -1,27 +1,30 @@
 import { useState, useRef, useEffect } from "react";
-import { data, Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { PRODUCTS } from '../../data/products.js'
 
 export default function BellPopover() {
 	/* 計算未讀數 */
-	// const [notices, setNotices] = useState([
-	// 	{ id: 1, text: "您所收藏的商品「九成新 Switch主機 黑色版」有價格更新！", date: "2025-08-06", unread: true, disabled: false },
-	// 	{ id: 2, text: "您追蹤的賣場「Ssp**5」有新商品上架！", date: "2025-08-06", unread: true, disabled: false },
-	// 	{ id: 3, text: "您所收藏的商品「咚奇剛蕉力全開+咚奇剛amiibo」有價格更新", date: "2025-05-16", unread: false, disabled: true }
-	// ]);
 	const [notices, setNotices] = useState(() => {
-		return PRODUCTS.slice(0, 3).map((p, i) => {
-			const isShopNotice = i % 2 === 0; // 偶數筆資料換成賣場通知
+		const stored = sessionStorage.getItem("notices");
+		if (stored) return JSON.parse(stored);
+
+		// fallback：初始化 10 筆，並儲存一次
+		const initial = PRODUCTS.slice(0, 10).map((p, i) => {
+			const isShopNotice = i % 3 === 0;
 			return {
 				id: p.id || i,
-				text: isShopNotice ? `您所收藏的商品「${p.productTitle}」有價格更新！` : `您追蹤的賣場「${p.sellerName}」有新商品上架！`,
+				text: isShopNotice
+					? `您所收藏的商品「${p.productTitle}」有價格更新！`
+					: `您追蹤的賣場「${p.sellerName}」有新商品上架！`,
 				date: new Date().toISOString().split("T")[0],
 				unread: true,
 				disabled: false,
 				linkTo: `/product/${encodeURIComponent(p.id || i)}`
 			};
 		});
-	}, []);
+		sessionStorage.setItem("notices", JSON.stringify(initial));
+		return initial; // 只顯示前 3 筆
+	});
 
 	const unreadCount = notices.filter(n => n.unread).length;
 
@@ -32,15 +35,16 @@ export default function BellPopover() {
 
 	// 訊息強迫症福音
 	const readed = (id) => {
-		setNotices(prev =>
-			prev.map(n =>   // 檢查每筆通知 未讀&可點
-				n.id === id && n.unread && !n.disabled    // disabled不等false的時候可以用
-					? { ...n, unread: false, disabled: true }  // 已讀灰階
-					: n
-			)
-		)
-	}
-
+		const full = JSON.parse(sessionStorage.getItem("notices") || "[]");
+		const updated = full.map(n =>
+			n.id === id && n.unread && !n.disabled
+				? { ...n, unread: false, disabled: true }
+				: n
+		);
+		sessionStorage.setItem("notices", JSON.stringify(updated));
+		setNotices(updated);
+		window.dispatchEvent(new Event("storage")); // 通知同步
+	};
 	// 點擊外部關閉（click outside／點外關閉）
 	useEffect(() => {
 		function onDocClick(e) {
@@ -57,6 +61,16 @@ export default function BellPopover() {
 		document.addEventListener("mousedown", onDocClick);
 		return () => document.removeEventListener("mousedown", onDocClick);
 	}, [open]);
+	
+	// 監聽 storage 事件 → 其他地方修改 sessionStorage 時同步
+	useEffect(() => {
+		function syncNotices() {
+			const updated = JSON.parse(sessionStorage.getItem("notices") || "[]");
+			setNotices(updated);
+		}
+		window.addEventListener("storage", syncNotices);
+		return () => window.removeEventListener("storage", syncNotices);
+	}, []);
 
 	// 觸發li連結
 	const handleItemClick = (n) => {
@@ -88,10 +102,10 @@ export default function BellPopover() {
 			>
 				<div className="bell__panelHeader">
 					<p>通知</p>
-					<span onClick={() => navigate("./AllNotify")}>查看所有通知</span>
+					<span onClick={() => navigate("/AllNotify")}>查看所有通知</span>
 				</div>
 				<ul className="bell__list">
-					{notices.map(n => (
+					{notices.slice(0, 3).map(n => (
 						<li
 							key={n.id}
 							className={`bell__item ${n.unread ? "is-unread" : ""} ${n.disabled ? "is-disabled" : ""}`}

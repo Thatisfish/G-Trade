@@ -1,13 +1,20 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "../styles/_Sidebar.scss";
 import { useEffect, useState } from "react";
+import { FaHeart } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
+import { FaTicketAlt } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
+import { AiFillCustomerService } from "react-icons/ai";
+import { HiSpeakerphone } from "react-icons/hi";
 
 const MENU = [
-	{ path: '/Collect', label: "收藏清單", icon: "📁" },
-	{ path: '/Orders', label: "我的訂單", icon: "📦" },
-	{ path: '/Coupon', label: "優惠券匣", icon: "🎟️" },
-	{ path: '/Real_name', label: "實名認證", icon: "✅" },
-	{ path: '/Content', label: "客服中心", icon: "💬" },
+	{ path: '/AllNotify', label: "所有通知", icon: <HiSpeakerphone /> },
+	{ path: '/Collect', label: "收藏清單", icon: <FaHeart /> },
+	{ path: '/Orders', label: "我的訂單", icon: <FaCartShopping /> },
+	{ path: '/Coupon', label: "優惠券匣", icon: <FaTicketAlt /> },
+	{ path: '/Real_name', label: "實名認證", icon: <FaCheckCircle /> },
+	{ path: '/Content', label: "客服中心", icon: <AiFillCustomerService /> },
 ];
 
 const Sidebar = () => {
