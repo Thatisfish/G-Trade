@@ -38,7 +38,7 @@ const HamburgerMenu = ({ isOpen, onClose, onOpenLogin }) => {
 		onClose();
 	};
 
-	
+
 
 	return (
 		<>
