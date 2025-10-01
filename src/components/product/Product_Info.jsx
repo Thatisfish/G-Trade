@@ -1,3 +1,4 @@
+// src/components/product/Product_Info.jsx
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -5,7 +6,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // 從資料層引入狀態對照表（map 對照）
-// 若 productStatus 是字串（e.g. "like_new"），用它來取得 { label, image }
 import { PRODUCT_STATUS_MAP } from "../../data/products";
 
 const ProductInfo = ({
@@ -15,7 +15,10 @@ const ProductInfo = ({
 	originalPrice,
 	salePrice,
 	productStatus, // 可能是 string（字串 key）或 { key, label, icon } 物件
-	st = {}
+	st = {},
+	// ⬇️ 新增：由父層傳入的事件（handlers 處理器）
+	onAddToCart = () => { }, // Add to Cart（加入購物車）
+	onBuyNow = () => { } // Buy Now（直接購買）
 }) => {
 	// 圖片列表（最多 4 張）
 	const photos = (mainImage || []).slice(0, 4).map((src, i) => ({
@@ -86,14 +89,33 @@ const ProductInfo = ({
 
 					<div className="product-actions">
 						<button
+							type="button"
 							className={`btn-fav ${isFav ? "active" : ""}`}
 							onClick={() => setIsFav(!isFav)}
-							aria-label="加入收藏"
+							aria-label="加入收藏（Add to favorites 加入收藏）"
 						>
 							<span className="heart"></span>
 						</button>
-						<button className="btn-cart btn">加入購物車</button>
-						<button className="btn-buy btn">直接購買</button>
+
+						{/* ✅ 綁定加入購物車 */}
+						<button
+							type="button"
+							className="btn-cart btn"
+							onClick={onAddToCart}
+							aria-label="加入購物車（Add to Cart 加入購物車）"
+						>
+							加入購物車
+						</button>
+
+						{/* 可選：直接購買 */}
+						<button
+							type="button"
+							className="btn-buy btn"
+							onClick={onBuyNow}
+							aria-label="直接購買（Buy Now 直接購買）"
+						>
+							直接購買
+						</button>
 					</div>
 
 					{statusIcon && (
@@ -160,6 +182,28 @@ const ProductInfo = ({
 							<li><p className="st">運送服務：</p>{st.shipping || "-"}</li>
 							<li><p className="st">付款方式：</p>{st.payment || "-"}</li>
 						</ul>
+					</div>
+
+					{/* ✅ 行動版 CTA（可選） */}
+					<div className="mobile_actions" style={{ display: "flex", gap: 8, marginTop: 12 }}>
+						<button
+							type="button"
+							className="btn-cart btn"
+							onClick={onAddToCart}
+							aria-label="加入購物車（Add to Cart 加入購物車）"
+							style={{ flex: 1 }}
+						>
+							加入購物車
+						</button>
+						<button
+							type="button"
+							className="btn-buy btn"
+							onClick={onBuyNow}
+							aria-label="直接購買（Buy Now 直接購買）"
+							style={{ flex: 1 }}
+						>
+							直接購買
+						</button>
 					</div>
 				</div>
 			</div>

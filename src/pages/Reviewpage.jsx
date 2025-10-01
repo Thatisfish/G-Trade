@@ -12,7 +12,7 @@ import SWP2 from '../images/Card_Image/switch_pro2.webp'
 import SW2 from '../images/Card_Image/switch2.webp'
 import SWB from '../images/Card_Image/item_switch01.avif'
 import PS5 from '../images/Card_Image/ps5_pro.webp'
-import item12 from '../images/Alltype_Xbox/Alltype_Xbox_item02.avif'
+
 import HOL from '../images/Card_Image/Hollow.webp'
 import AM from '../images/Card_Image/Animal_Crossing_New_Horizons.webp'
 import GB from '../images/Card_Image/photo-1649341566042-8b3f5103c3f3.avif'
@@ -90,7 +90,7 @@ export default function Reviewpage() {
 			id: 8,
 			tag: '限時優惠',
 			category: '主機',
-			image: item12,
+			image: "/Card_Image/item02.avif",
 			title: 'Xbox Series X（1TB）含原廠手把',
 			seller: 'xseries**882712',
 			priceNow: '11900',

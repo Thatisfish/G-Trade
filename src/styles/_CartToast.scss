@@ -1,0 +1,127 @@
+/* =========================
+   CartToast（加入購物車提示）
+   ========================= */
+.cartToast {
+	position: fixed;
+	top: 85px; // 與你的 #topbar 高度一致
+	right: 16px;
+	z-index: 998; // Navbar 999，因此這裡在其下層或不重疊
+	pointer-events: none; // 預設不吃事件，只有卡片本身吃
+	opacity: 0;
+	transform: translateY(-8px);
+	transition: opacity .25s ease, transform .25s ease;
+
+	&.is-show {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	&__card {
+		all: unset;
+		pointer-events: auto;
+		display: grid;
+		grid-template-columns: 64px 1fr auto;
+		align-items: center;
+		gap: 12px;
+		width: min(92vw, 420px);
+		background: rgba(28, 28, 28, .80);
+		color: #fff;
+		border-radius: 14px;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+		padding: 10px;
+		cursor: pointer;
+
+		&:hover .cartToast__cta {
+			text-decoration: underline;
+		}
+	}
+
+	&__media {
+		width: 64px;
+		height: 64px;
+		border-radius: 10px;
+		overflow: hidden;
+		background: #2d2d2d;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		.ph {
+			width: 100%;
+			height: 100%;
+			background:
+				linear-gradient(120deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .22), rgba(255, 255, 255, .08));
+			background-size: 200% 100%;
+			animation: ph-shine 1.2s linear infinite;
+		}
+	}
+
+	&__content {
+		display: grid;
+		gap: 2px;
+
+		.cartToast__title {
+			font-size: 14px;
+			line-height: 1.35;
+			font-weight: 600;
+			color: #fff;
+			max-height: 2.7em;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+		}
+
+		.cartToast__desc {
+			font-size: 12px;
+			color: #c6c6c6;
+		}
+
+		.cartToast__cta {
+			margin-top: 2px;
+			font-size: 12px;
+			color: #ffffff;
+		}
+	}
+
+	&__close {
+		font-size: 18px;
+		line-height: 1;
+		padding: 6px 8px;
+		color: #aaa;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	@keyframes ph-shine {
+		from {
+			background-position: 200% 0;
+		}
+
+		to {
+			background-position: 0 0;
+		}
+	}
+
+	/* 手機微調（避免太靠邊） */
+	@media (max-width: 640px) {
+		right: 10px;
+
+		&__card {
+			grid-template-columns: 56px 1fr auto;
+			padding: 10px;
+			width: min(94vw, 420px);
+		}
+
+		&__media {
+			width: 56px;
+			height: 56px;
+		}
+	}
+}

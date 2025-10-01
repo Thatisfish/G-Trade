@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./components/Login"; // login（登入）元件
 import HamburgerMenu from "./components/HamburgerMenu";
+import SearchPage from "./pages/SearchPage";
 
 
 // Home 保持同步載入（首頁一定會用到）
@@ -129,6 +130,7 @@ export default function App() {
 							<Route path="/Package" element={<Package />} />
 							<Route path="/Orders" element={<Orders />} />
 							<Route path="/Coupon" element={<Coupon />} />
+							<Route path="/search" element={<SearchPage />} />
 							<Route path="/Reviewpage" element={<Reviewpage />} />
 							<Route path="/Content" element={<Content />} />
 							{/* ✅ 動態商品頁（dynamic product page） */}

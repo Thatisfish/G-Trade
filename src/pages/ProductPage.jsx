@@ -1,6 +1,6 @@
 // src/pages/ProductPage.jsx
-import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import ProductInfo from "../components/product/Product_Info";
 import SellerInfo from "../components/product/SellerInfo";
 import ProductDetail from "../components/product/product_detail";
@@ -8,6 +8,12 @@ import ProductQa from "../components/product/Product_qa";
 import ProductRecommend from "../components/product/Product_Recommend";
 import { getProductById } from "../data/products";
 import "../styles/ProductPage.scss";
+import "../styles/_CartToast.scss";
+
+// 購物車提示卡（toast 吐司訊息卡）
+import CartToast from "../components/CartToast";
+// 購物車工具：加入項目（addItem 新增項目）、讀取購物車（getCart 取得購物車）
+import { addItem, getCart, getCount } from "../js/cart";
 
 /**
  * 平台（platform 平台）對應資訊：
@@ -21,19 +27,30 @@ const PLATFORM_INFO = {
 };
 
 const ProductPage = () => {
-	// 路由參數
+	// 路由參數（params 參數）
 	const { id: routeId } = useParams();
 	const productId = decodeURIComponent(routeId || "");
 
 	// 依 id 取得商品
 	const product = getProductById(productId);
 
-	// 標題
+	const navigate = useNavigate();
+
+	// 標題（title 標題）
 	useEffect(() => {
 		document.title = product?.productTitle
 			? `${product.productTitle} ｜ 遊玩人間市集`
 			: "商品不存在 ｜ 遊玩人間市集";
 	}, [product?.productTitle]);
+
+	// ===== 加入購物車提示卡狀態（toast 狀態）=====
+	const [toast, setToast] = useState({
+		show: false,
+		title: "",
+		img: "",
+		qty: 1,
+		count: 0
+	});
 
 	// 找不到商品
 	if (!product) {
@@ -49,13 +66,11 @@ const ProductPage = () => {
 		);
 	}
 
-	// ===== 動態麵包屑（依平台/分類，自動組） =====
+	// ===== 動態麵包屑（breadcrumb 導覽路徑）=====
 	let bc;
 	if (Array.isArray(product.breadcrumb) && product.breadcrumb.length > 0) {
-		// 若資料自帶 breadcrumb，優先使用
 		bc = product.breadcrumb;
 	} else {
-		// 正規化（避免 PS系列 / XBOX / 全形空白等）
 		const normalizePlatform = (v) => {
 			const t = String(v || "").trim();
 			if (t === "PS系列" || t === "PlayStation" || t === "ps" || t === "Ps") return "PS";
@@ -74,17 +89,14 @@ const ProductPage = () => {
 		const platform = normalizePlatform(product.platform);
 		const categoryName = normalizeCategory(product.category);
 
-		// 路由 slug
 		const CAT_TO_SLUG = { "主機": "console", "遊戲": "game", "配件": "accessory", "全部": "all" };
 		const catSlug = CAT_TO_SLUG[categoryName] || "all";
 
-		// 平台層 → /alltype/:platform/all#B_itemTitles
 		const platformCrumb = PLATFORM_INFO[platform] ?? {
 			label: platform || "Switch",
 			to: `/alltype/${encodeURIComponent(platform || "Switch")}/all#B_itemTitles`
 		};
 
-		// 分類層 → /alltype/:platform/:category#B_item
 		const categoryCrumb = {
 			label: categoryName || "全部",
 			to: `/alltype/${encodeURIComponent(platform)}/${catSlug}#B_item`
@@ -93,60 +105,132 @@ const ProductPage = () => {
 		bc = [platformCrumb, categoryCrumb];
 	}
 
+	// ===== 加入購物車（Add to cart 加入購物車）→ 顯示右上提示卡，不立刻導頁 =====
+	const handleAddToCart = (qty = 1) => {
+		try {
+			const firstImg = Array.isArray(product.mainImage) ? product.mainImage[0] : (product.thumb || "");
+			addItem(
+				{
+					id: product.id,
+					title: product.productTitle,
+					price: product.salePrice ?? product.originalPrice ?? 0,
+					img: firstImg
+				},
+				Number(qty) || 1
+			);
+
+			// ✅ 用 getCount() 取總件數（避免任何格式不一致）
+			const totalCount = getCount();
+
+			setToast({
+				show: true,
+				title: product.productTitle,
+				img: firstImg,
+				qty: Number(qty) || 1,
+				count: totalCount
+			});
+		} catch (err) {
+			// 若還是失敗，十之八九是 localStorage 被瀏覽器阻擋或無權限
+			console.error("Add to cart failed（加入購物車失敗）:", err, {
+				addItemType: typeof addItem,
+				getCartType: typeof getCart
+			});
+			alert("加入購物車失敗，請稍後再試。");
+		}
+	};
+
+	// 立即購買（Buy Now 立即購買）
+	const handleBuyNow = (qty = 1) => {
+		try {
+			const firstImg = Array.isArray(product.mainImage) ? product.mainImage[0] : (product.thumb || "");
+			addItem(
+				{
+					id: product.id,
+					title: product.productTitle,
+					price: product.salePrice ?? product.originalPrice ?? 0,
+					img: firstImg
+				},
+				Number(qty) || 1
+			);
+			navigate("/Shopping_cart");
+		} catch (err) {
+			console.error("Buy now failed（立即購買失敗）:", err);
+			alert("處理失敗，請稍後再試。");
+		}
+	};
+
 	return (
-		<div className="product">
-			{/* 麵包屑 */}
-			<nav className="breadcrumb" aria-label="Breadcrumb（導覽路徑）">
-				<Link to="/">首頁</Link>
-				<span className="angleBracket">›</span>
+		<>
+			{/* 右上提示卡（toast 吐司訊息卡）— 位置由 CartToast 的 CSS 控制在 Navbar 下方 */}
+			<CartToast
+				title={toast.title}
+				img={toast.img}
+				qty={toast.qty}
+				count={toast.count}
+				visible={toast.show}
+				onClick={() => navigate("/Shopping_cart")}
+				onClose={() => setToast((t) => ({ ...t, show: false }))}
+				duration={3000}
+			/>
 
-				{bc.map((b, i) => (
-					<span key={`${b.label}-${i}`} className="breadcrumb__item">
-						{b.to ? <Link to={b.to}>{b.label}</Link> : <span>{b.label}</span>}
-						<span className="angleBracket">›</span>
-					</span>
-				))}
+			<div className="product">
+				{/* 麵包屑（breadcrumb 導覽路徑） */}
+				<nav className="breadcrumb" aria-label="Breadcrumb（導覽路徑）">
+					<Link to="/">首頁</Link>
+					<span className="angleBracket">›</span>
 
-				<span className="is-current">{product.productTitle}</span>
-			</nav>
+					{bc.map((b, i) => (
+						<span key={`${b.label}-${i}`} className="breadcrumb__item">
+							{b.to ? <Link to={b.to}>{b.label}</Link> : <span>{b.label}</span>}
+							<span className="angleBracket">›</span>
+						</span>
+					))}
 
-			{/* 商品資訊 */}
-			<section className="product__info section">
-				<ProductInfo {...product} />
-			</section>
+					<span className="is-current">{product.productTitle}</span>
+				</nav>
 
-			{/* 賣家資訊 */}
-			<aside className="product__seller section">
-				<div className="top_decorate"></div>
-				<SellerInfo
-					sellerAvatar={product.sellerAvatar}
-					sellerName={product.sellerName}
-					sellerScore={product.sellerScore}
-					sellerCount={product.sellerCount}
-					sellerLocation={product.sellerLocation}
-					sellerTags={product.sellerTags}
-					sellerDesc={product.sellerDesc}
-				/>
-				<div className="down_decorate"></div>
-			</aside>
+				{/* 商品資訊 */}
+				<section className="product__info section">
+					<ProductInfo
+						{...product}
+						onAddToCart={handleAddToCart}     // 點擊後顯示提示卡（toast 提示卡）
+						onBuyNow={handleBuyNow}           // 仍保留「立即購買」直達購物車
+					/>
+				</section>
 
-			{/* 詳細內容 */}
-			<section className="product__detail section">
-				<ProductDetail detailContent={product.detailContent} />
-			</section>
+				{/* 賣家資訊 */}
+				<aside className="product__seller section">
+					<div className="top_decorate"></div>
+					<SellerInfo
+						sellerAvatar={product.sellerAvatar}
+						sellerName={product.sellerName}
+						sellerScore={product.sellerScore}
+						sellerCount={product.sellerCount}
+						sellerLocation={product.sellerLocation}
+						sellerTags={product.sellerTags}
+						sellerDesc={product.sellerDesc}
+					/>
+					<div className="down_decorate"></div>
+				</aside>
 
-			{/* 問與答（localStorage 鍵名：qa:<productId>） */}
-			<section className="product__qa section">
-				<div className="top_decorate2"></div>
-				<ProductQa productId={product.id} initialQa={product.qa || []} />
-				<div className="down_decorate2"></div>
-			</section>
+				{/* 詳細內容 */}
+				<section className="product__detail section">
+					<ProductDetail detailContent={product.detailContent} />
+				</section>
 
-			{/* 推薦 */}
-			<section className="product__recommend section">
-				<ProductRecommend items={product.recommendItems || []} />
-			</section>
-		</div>
+				{/* 問與答 */}
+				<section className="product__qa section">
+					<div className="top_decorate2"></div>
+					<ProductQa productId={product.id} initialQa={product.qa || []} />
+					<div className="down_decorate2"></div>
+				</section>
+
+				{/* 推薦 */}
+				<section className="product__recommend section">
+					<ProductRecommend items={product.recommendItems || []} />
+				</section>
+			</div>
+		</>
 	);
 };
 

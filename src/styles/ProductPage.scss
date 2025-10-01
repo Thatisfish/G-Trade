@@ -77,8 +77,22 @@
 /*------------------------ 商品簡介 ------------------------*/
 .product__info {
 
-
 	// margin-bottom: 100px;
+	.product__addToCartBtn {
+		margin-top: 16px;
+		padding: 12px 20px;
+		border: none;
+		border-radius: 10px;
+		font-weight: 600;
+		cursor: pointer;
+		background: #E63026;
+		color: #fff;
+
+		&:hover {
+			opacity: .9;
+		}
+	}
+
 	.product-page {
 		display: flex;
 		gap: clamp(10px, 5vw, 120px);
