@@ -282,27 +282,39 @@ export default function AlltypePage() {
 				<div className="B_sortButtons" aria-label="排序控制（sorting）">
 					<button
 						className={sortKey === "price-asc" ? "is-active" : ""}
-						onClick={() => setSortKey("price-asc")}
+						onClick={() => setSortKey(sortKey === "price-asc" ? "default" : "price-asc")}
 					>
 						價格 ↑
 					</button>
 					<button
 						className={sortKey === "price-desc" ? "is-active" : ""}
-						onClick={() => setSortKey("price-desc")}
+						onClick={() => setSortKey(sortKey === "price-desc" ? "default" : "price-desc")}
 					>
 						價格 ↓
 					</button>
 					<button
 						className={sortKey === "date-new" ? "is-active" : ""}
-						onClick={() => setSortKey("date-new")}
+						onClick={() => setSortKey(sortKey === "date-new" ? "default" : "date-new")}
 					>
 						日期 新→舊
 					</button>
 					<button
 						className={sortKey === "date-old" ? "is-active" : ""}
-						onClick={() => setSortKey("date-old")}
+						onClick={() => setSortKey(sortKey === "date-old" ? "default" : "date-old")}
 					>
 						日期 舊→新
+					</button>
+					<button
+						className={sortKey === "score-desc" ? "is-active" : ""}
+						onClick={() => setSortKey(sortKey === "score-desc" ? "default" : "score-desc")}
+					>
+						評分 高→低
+					</button>
+					<button
+						className={sortKey === "score-asc" ? "is-active" : ""}
+						onClick={() => setSortKey(sortKey === "score-asc" ? "default" : "score-asc")}
+					>
+						評分 低→高
 					</button>
 				</div>
 
