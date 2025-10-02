@@ -21,6 +21,9 @@ function Shopping_cart() {
 	const [items, setItems] = useState([]);
 	const [selectedIds, setSelectedIds] = useState(new Set());
 	const [selectedShippingPrice, setSelectedShippingPrice] = useState(0);
+	const [selectedShippingId, setSelectedShippingId] = useState(null);
+	const [selectedPaymentId, setSelectedPaymentId] = useState(null);
+	const [isCheckingOut, setIsCheckingOut] = useState(false);
 
 	// 讀取購物車（封裝成函式，方便重用）
 	const loadCart = useCallback(() => {
@@ -135,6 +138,30 @@ function Shopping_cart() {
 	const shippingPrice = Number(selectedShippingPrice) || 0;
 	const totalPrice = productPrice + shippingPrice;
 
+	// Checkout handler
+	const canCheckout = selectedIds.size > 0 && selectedShippingId && selectedPaymentId;
+
+	const handleCheckout = async () => {
+		if (!canCheckout) return;
+		setIsCheckingOut(true);
+		// 模擬 loading 1.5 秒
+		await new Promise(r => setTimeout(r, 1500));
+		// 結帳完成：移除已勾選的商品
+		selectedIds.forEach(id => {
+			removeItem(id);
+		});
+		// 重新載入購物車
+		loadCart();
+		// 重設勾選、運送、付款
+		setSelectedIds(new Set());
+		setSelectedShippingId(null);
+		setSelectedShippingPrice(0);
+		setSelectedPaymentId(null);
+		setIsCheckingOut(false);
+		// 顯示通知
+		alert('已完成結帳');
+	};
+
 	// 清空（clear 清空）
 	const handleClear = () => {
 		if (confirm("確定要清空購物車嗎？（This will remove all items 全部刪除）")) {
@@ -160,7 +187,7 @@ function Shopping_cart() {
 				<meta name="description" content="歡迎來到遊玩人間市集，探索各式二手遊戲商品。" />
 			</Helmet>
 
-			<div className="J_cartPage">
+			<div className={`J_cartPage ${isCheckingOut ? 'is-loading' : ''}`}>
 				<h1 className="J_cartTitle">購物車</h1>
 
 				<div className="J_cartContainer">
@@ -224,7 +251,7 @@ function Shopping_cart() {
 								<img src={cart} alt="購物車（Cart 購物車）" />
 								運送方式
 							</h2>
-							<ShippingOptions onSelect={(p) => setSelectedShippingPrice(p)} />
+									<ShippingOptions onSelect={({ id, price }) => { setSelectedShippingId(id); setSelectedShippingPrice(price); }} selected={selectedShippingId} />
 						</section>
 
 						{/* 付款方式（Payment 付款） */}
@@ -233,7 +260,7 @@ function Shopping_cart() {
 								<img src={money} alt="金錢（Money 金錢）" />
 								付款方式
 							</h2>
-							<PaymentOptions />
+							<PaymentOptions onSelect={(id) => setSelectedPaymentId(id)} selected={selectedPaymentId} />
 						</section>
 
 						{/* 備註（Notes 備註） */}
@@ -250,11 +277,22 @@ function Shopping_cart() {
 							productPrice={productPrice}
 							shippingPrice={shippingPrice}
 							totalPrice={totalPrice}
+							disabled={!canCheckout}
+							isLoading={isCheckingOut}
+							onCheckout={handleCheckout}
 						// onCheckout={() => alert("尚未串接結帳流程（Checkout flow 待串接）")}
 						/>
 					</div>
 				</div>
 			</div>
+
+			{isCheckingOut && (
+				<div className="J_checkoutLoader" role="status" aria-live="polite">
+					<div className="dot"></div>
+					<div className="dot"></div>
+					<div className="dot"></div>
+				</div>
+			)}
 		</>
 	);
 }
