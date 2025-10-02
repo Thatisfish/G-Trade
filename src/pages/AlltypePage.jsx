@@ -304,18 +304,6 @@ export default function AlltypePage() {
 					>
 						日期 舊→新
 					</button>
-					<button
-						className={sortKey === "score-desc" ? "is-active" : ""}
-						onClick={() => setSortKey(sortKey === "score-desc" ? "default" : "score-desc")}
-					>
-						評分 高→低
-					</button>
-					<button
-						className={sortKey === "score-asc" ? "is-active" : ""}
-						onClick={() => setSortKey(sortKey === "score-asc" ? "default" : "score-asc")}
-					>
-						評分 低→高
-					</button>
 				</div>
 
 				{/* 卡片清單（加上 id，供 #B_item 精準滾動） */}
