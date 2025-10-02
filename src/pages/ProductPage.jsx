@@ -114,7 +114,8 @@ const ProductPage = () => {
 					id: product.id,
 					title: product.productTitle,
 					price: product.salePrice ?? product.originalPrice ?? 0,
-					img: firstImg
+					img: firstImg,
+					sellerName: product.sellerName
 				},
 				Number(qty) || 1
 			);

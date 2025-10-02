@@ -129,11 +129,13 @@ export function addItem(item, addQty = 1) {
 			title: item.title ?? "",
 			price: Number(item.price) || 0,
 			img: item.img || "",
-			qty: inc
+			qty: inc,
+			storeName: item.storeName || item.sellerName || item.seller__name || "未知店家"
 		});
 	}
 
 	writeRaw({ items });
+	console.log("新增商品進購物車", item);
 	return items;
 }
 

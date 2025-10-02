@@ -220,21 +220,45 @@
 	/* ===== 商品清單（items） ===== */
 	.J_cartItem {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
 		gap: 8px;
-		margin: 12px 0;
 		padding: 8px 0;
 		border-bottom: 1px solid #eee;
 
-		.J_product {
+		input {
+			margin: 0;
+			width: 16px;
+			height: 16px;
+		}
+
+		.ctn {
 			display: flex;
 			align-items: center;
 			gap: 12px;
+		}
 
-			img {
-				width: 80px;
-				height: 80px;
-				object-fit: cover;
+		.ct {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+
+			.J_product {
+				display: flex;
+				gap: 12px;
+				align-items: center;
+
+				.pif {
+					display: flex;
+					width: auto;
+					align-items: center;
+					gap: 12px;
+				}
+
+				img {
+					width: 80px;
+					height: 80px;
+					object-fit: cover;
+				}
 			}
 		}
 
@@ -488,7 +512,7 @@
 		/* row（橫向） */
 		align-items: center !important;
 		flex-wrap: nowrap !important;
-		gap: 10px !important;
+		gap: 12px !important;
 		flex: 1 1 0 !important;
 		min-width: 0 !important;
 	}
