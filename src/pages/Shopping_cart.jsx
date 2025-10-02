@@ -20,6 +20,7 @@ function Shopping_cart() {
 	// 狀態（state 狀態）：這裡的 items 一律是「陣列」
 	const [items, setItems] = useState([]);
 	const [selectedIds, setSelectedIds] = useState(new Set());
+	const [selectedShippingPrice, setSelectedShippingPrice] = useState(0);
 
 	// 讀取購物車（封裝成函式，方便重用）
 	const loadCart = useCallback(() => {
@@ -117,6 +118,23 @@ function Shopping_cart() {
 		})
 	}
 
+	// 計算被選取之商品小計（只包含已勾選的品項）
+	const productPrice = useMemo(() => {
+		if (!items || items.length === 0) return 0;
+		let sum = 0;
+		items.forEach(it => {
+			if (selectedIds.has(it.id)) {
+				const price = Number(it.price) || 0;
+				const qty = Number(it.qty) || 0;
+				sum += price * qty;
+			}
+		});
+		return sum;
+	}, [items, selectedIds]);
+
+	const shippingPrice = Number(selectedShippingPrice) || 0;
+	const totalPrice = productPrice + shippingPrice;
+
 	// 清空（clear 清空）
 	const handleClear = () => {
 		if (confirm("確定要清空購物車嗎？（This will remove all items 全部刪除）")) {
@@ -206,7 +224,7 @@ function Shopping_cart() {
 								<img src={cart} alt="購物車（Cart 購物車）" />
 								運送方式
 							</h2>
-							<ShippingOptions />
+							<ShippingOptions onSelect={(p) => setSelectedShippingPrice(p)} />
 						</section>
 
 						{/* 付款方式（Payment 付款） */}
@@ -229,6 +247,9 @@ function Shopping_cart() {
 						<CartSummary
 							subtotal={subtotal}
 							itemCount={itemCount}
+							productPrice={productPrice}
+							shippingPrice={shippingPrice}
+							totalPrice={totalPrice}
 						// onCheckout={() => alert("尚未串接結帳流程（Checkout flow 待串接）")}
 						/>
 					</div>
