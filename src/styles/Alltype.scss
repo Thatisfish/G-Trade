@@ -41,6 +41,7 @@
 			/* 前後一頁按鈕（navigation 導覽按鈕）在手機隱藏 */
 			.swiper-button-next::after,
 			.swiper-button-prev::after {
+				color: #ffffff;
 				@media (max-width: 640px) {
 					display: none;
 				}
