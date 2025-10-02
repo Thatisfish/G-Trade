@@ -19,6 +19,7 @@ import { getCart, updateQty, removeItem, clearCart } from "../js/cart";
 function Shopping_cart() {
 	// 狀態（state 狀態）：這裡的 items 一律是「陣列」
 	const [items, setItems] = useState([]);
+	const [selectedIds, setSelectedIds] = useState(new Set());
 
 	// 讀取購物車（封裝成函式，方便重用）
 	const loadCart = useCallback(() => {
@@ -32,6 +33,16 @@ function Shopping_cart() {
 	useEffect(() => {
 		loadCart();
 	}, [loadCart]);
+
+	// 當 items 更新時，清理 selectedIds（只保留存在的 id）
+	useEffect(() => {
+		setSelectedIds(prev => {
+			const next = new Set();
+			const ids = new Set(items.map(it => String(it.id)));
+			prev.forEach(id => { if (ids.has(String(id))) next.add(id) });
+			return next;
+		})
+	}, [items]);
 
 	// ✅ 跨分頁同步（storage 事件）— 不會在同分頁觸發，但保留給多分頁使用
 	useEffect(() => {
@@ -86,6 +97,26 @@ function Shopping_cart() {
 		loadCart();
 	};
 
+	// 選取狀態處理
+	const allChecked = items.length > 0 && selectedIds.size === items.length;
+
+	const toggleAll = () => {
+		if (allChecked) {
+			setSelectedIds(new Set());
+		} else {
+			setSelectedIds(new Set(items.map(it => it.id)));
+		}
+	};
+
+	const toggleItem = (id) => {
+		setSelectedIds(prev => {
+			const next = new Set(prev);
+			if (next.has(id)) next.delete(id);
+			else next.add(id);
+			return next;
+		})
+	}
+
 	// 清空（clear 清空）
 	const handleClear = () => {
 		if (confirm("確定要清空購物車嗎？（This will remove all items 全部刪除）")) {
@@ -122,7 +153,7 @@ function Shopping_cart() {
 							<div className="J_cartSectionA">
 								<div className="J_cartSectionA__left">
 									<label className="J_storeCheck" aria-label="全選（Select all 全選）">
-										<input type="checkbox" />
+										<input className="J_allCheck" type="checkbox" checked={allChecked} onChange={toggleAll} />
 									</label>
 									{/* <img src={home} alt="商店（Store 商店）" /> */}
 									<h2 className="J_sectionTitle">商品</h2>
@@ -148,10 +179,11 @@ function Shopping_cart() {
 										繼續逛逛
 									</a>
 								</div>
-							) : (
+								) : (
 								items.map((item) => (
 									<CartItem
 										key={item.id}
+										id={item.id}
 										img={item.img}
 										title={item.title}
 										price={item.price}
@@ -161,6 +193,8 @@ function Shopping_cart() {
 										onInc={() => handleInc(item.id)}
 										onDec={() => handleDec(item.id)}
 										onRemove={() => handleRemove(item.id)}
+										selected={selectedIds.has(item.id)}
+										onToggle={() => toggleItem(item.id)}
 									/>
 								))
 							)}
