@@ -28,8 +28,12 @@ function Shopping_cart() {
 	const [isClearOpen, setIsClearOpen] = useState(false);
 	const [errorMsg, setErrorMsg] = useState("");
 
-	// ✅ 新增：載入中（假 loading 載入）狀態
+	// 載入中（假 loading）
 	const [isLoading, setIsLoading] = useState(false);
+
+	// ✅ 新增：刪除確認彈窗（不再用 window.confirm）
+	const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+	const [pendingRemove, setPendingRemove] = useState(null); // { id, title }
 
 	const closeBtnRef = useRef(null);
 	const lastFocusedRef = useRef(null);
@@ -91,7 +95,33 @@ function Shopping_cart() {
 		updateQty(id, Math.max(1, cur - 1));
 		loadCart();
 	};
-	const handleRemove = (id) => { removeItem(id); loadCart(); };
+
+	// ⛳ 改成彈窗流程
+	const requestRemove = ({ id, title }) => {
+		setPendingRemove({ id, title });
+		lastFocusedRef.current = document.activeElement;
+		setIsDeleteOpen(true);
+	};
+	const cancelRemove = () => {
+		setIsDeleteOpen(false);
+		setPendingRemove(null);
+		if (lastFocusedRef.current && typeof lastFocusedRef.current.focus === "function") {
+			lastFocusedRef.current.focus();
+		}
+	};
+	const confirmRemove = () => {
+		if (pendingRemove?.id) {
+			removeItem(pendingRemove.id);
+			// 若該商品在勾選名單，移除它
+			setSelectedIds(prev => {
+				const next = new Set(prev);
+				next.delete(pendingRemove.id);
+				return next;
+			});
+			loadCart();
+		}
+		cancelRemove();
+	};
 
 	// ===== 勾選 =====
 	const allChecked = items.length > 0 && selectedIds.size === items.length;
@@ -119,7 +149,7 @@ function Shopping_cart() {
 	// ===== 結帳 =====
 	const canCheckout = selectedIds.size > 0 && selectedShippingId && selectedPaymentId;
 
-	// 小工具：延遲（delay 延遲）
+	// 小工具：延遲
 	const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
 	const handleCheckout = async () => {
@@ -133,12 +163,12 @@ function Shopping_cart() {
 		}
 
 		setErrorMsg("");
-		setIsLoading(true); // 顯示載入 overlay（覆蓋層）
+		setIsLoading(true); // 顯示載入 overlay
 
-		// 模擬請求 1.5 秒（可自行調整）
+		// 模擬請求
 		await delay(1500);
 
-		// 實際處理：移除已勾選
+		// 移除已勾選
 		selectedIds.forEach(id => removeItem(id));
 		loadCart();
 
@@ -213,7 +243,9 @@ function Shopping_cart() {
 										onQtyChange={(q) => !isLoading && handleQtyChange(item.id, q)}
 										onInc={() => !isLoading && handleInc(item.id)}
 										onDec={() => !isLoading && handleDec(item.id)}
-										onRemove={() => !isLoading && handleRemove(item.id)}
+										// 移除直接刪除 → 交由彈窗確認
+										onRemove={() => { }}
+										onRequestRemove={({ id, title }) => !isLoading && requestRemove({ id, title })}
 										selected={selectedIds.has(item.id)}
 										onToggle={() => !isLoading && toggleItem(item.id)}
 									/>
@@ -262,7 +294,7 @@ function Shopping_cart() {
 				</div>
 			</div>
 
-			{/* ✅ 載入 Overlay（轉圈 + 文字） */}
+			{/* 載入 Overlay */}
 			{isLoading && (
 				<div className="J_loader" role="status" aria-live="polite" aria-label="正在處理訂單，請稍候">
 					<div className="J_loader__panel">
@@ -272,7 +304,7 @@ function Shopping_cart() {
 				</div>
 			)}
 
-			{/* 成功彈窗 */}
+			{/* 結帳成功彈窗 */}
 			{isSuccessOpen && (
 				<div className="J_modal" role="dialog" aria-modal="true">
 					<div className="J_modal__panel">
@@ -295,6 +327,20 @@ function Shopping_cart() {
 						<div className="J_modal__actions">
 							<button className="J_modal__link" onClick={confirmClear}>清空</button>
 							<button className="J_modal__btn" onClick={() => setIsClearOpen(false)}>取消</button>
+						</div>
+					</div>
+				</div>
+			)}
+
+			{/* ✅ 刪除商品確認彈窗（取代 window.confirm） */}
+			{isDeleteOpen && (
+				<div className="J_modal" role="dialog" aria-modal="true" aria-labelledby="rm-title">
+					<div className="J_modal__panel" role="document">
+						<h3 id="rm-title" className="J_modal__title">刪除商品</h3>
+						<p className="J_modal__text">確定要刪除「{pendingRemove?.title}」嗎？</p>
+						<div className="J_modal__actions">
+							<button className="J_modal__link" onClick={confirmRemove}>刪除</button>
+							<button className="J_modal__btn" onClick={cancelRemove}>取消</button>
 						</div>
 					</div>
 				</div>

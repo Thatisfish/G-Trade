@@ -913,3 +913,50 @@ $bp-640: 640px;
 		opacity: .25;
 	}
 }
+
+.J_confirmModal {
+	// 容器
+	min-width: 280px;
+	max-width: 90vw;
+	padding: 20px;
+	border-radius: 16px;
+	background: #fff;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+	pointer-events: auto;
+
+	&__title {
+		margin: 0 0 10px;
+		font-size: 18px;
+		line-height: 1.4;
+		font-weight: 700;
+	}
+
+	&__text {
+		margin: 0 0 16px;
+		font-size: 14px;
+		color: #333;
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: flex-end;
+		gap: 10px;
+
+		.J_btn {
+			padding: 8px 14px;
+			border-radius: 10px;
+			border: 1px solid transparent;
+			cursor: pointer;
+
+			&--ghost {
+				background: #f3f4f6;
+				border-color: #e5e7eb;
+			}
+
+			&--danger {
+				background: #de1a10;
+				color: #fff;
+			}
+		}
+	}
+}

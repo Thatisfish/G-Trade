@@ -1,11 +1,19 @@
 // src/components/CartItem.jsx
-import React, { useState } from "react";
-import ashcan from '../images/ShoppingCard_icon/ashcan.svg'
+import React from "react";
+import ashcan from '../images/ShoppingCard_icon/ashcan.svg';
 
-export default function CartItem({ id, img, title, price, qty, storeName, selected = false, onToggle, onQtyChange, onInc, onDec, onRemove }) {
+export default function CartItem({
+	id, img, title, price, qty, storeName,
+	selected = false,
+	onToggle, onInc, onDec,
+	onRemove,               // ✅ 真正執行刪除
+	onRequestRemove         // ✅ 新增：請求父層顯示確認彈窗
+}) {
 	const handleDelete = () => {
-		const confirmed = window.confirm(`確定要刪除「${title}」嗎？`);
-		if (confirmed && typeof onRemove === 'function') {
+		if (typeof onRequestRemove === 'function') {
+			onRequestRemove({ id, title }); // 交給父層決定要不要刪
+		} else if (typeof onRemove === 'function') {
+			// fallback（English: fallback 後備機制），沒有提供彈窗就直接刪
 			onRemove(id);
 		}
 	};
@@ -24,9 +32,16 @@ export default function CartItem({ id, img, title, price, qty, storeName, select
 					<span className="J_storeName">{storeName || "未知店家"}</span>
 				</label>
 			</div>
+
 			<div className="ct">
 				<div className="J_product">
-					<input className="J_ctCheck" type="checkbox" aria-label={`選取 ${title}`} checked={selected} onChange={onToggle} />
+					<input
+						className="J_ctCheck"
+						type="checkbox"
+						aria-label={`選取 ${title}`}
+						checked={selected}
+						onChange={onToggle}
+					/>
 					<div className="pif">
 						<img src={img} alt={title} />
 						<div className="J_itemInfo">
@@ -35,7 +50,9 @@ export default function CartItem({ id, img, title, price, qty, storeName, select
 						</div>
 					</div>
 				</div>
+
 				<span className="J_itemQty">x {qty}</span>
+
 				<button
 					type="button"
 					className="J_deleteBtn"

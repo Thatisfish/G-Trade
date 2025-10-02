@@ -130,7 +130,9 @@ export function addItem(item, addQty = 1) {
 			price: Number(item.price) || 0,
 			img: item.img || "",
 			qty: inc,
-			storeName: item.storeName || item.sellerName || item.seller__name || "未知店家"
+			// 把賣家名稱存進去
+			storeName: item.sellerName ?? item.storeName ?? "未知店家",
+			sellerName: item.sellerName ?? item.storeName ?? "未知店家" // ← 雙保險
 		});
 	}
 

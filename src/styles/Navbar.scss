@@ -90,6 +90,34 @@
 
 		li {
 			display: flex;
+			position: relative;
+
+			.icon-Shopping_cart {
+				position: relative;
+				display: inline-flex;
+
+				&.has-badge {
+					.badge {
+						position: absolute;
+						top: 25px;
+						right: 8px;
+						min-width: 15px;
+						height: 15px;
+						width: 15px;
+						// padding: 0 2px;
+						border-radius: 999px;
+						background: #de1a10;
+						box-shadow: 0 0 0 2px #fff;
+						color: #fff;
+						font-size: 10px;
+						line-height: 18px;
+						text-align: center;
+						font-weight: 700;
+						pointer-events: none;
+						transform: translate(25%, -25%);
+					}
+				}
+			}
 
 			a {
 				width: 40px;

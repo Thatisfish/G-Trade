@@ -11,6 +11,21 @@ import Home from '../images/icon/icon-home_gray.svg';
 import Member from '../images/icon/icon-member_gray.svg';
 import HamburgerMenu from './HamburgerMenu';
 
+function getCartCount() {
+	try {
+		const raw = window.localStorage.getItem('gtrade:cart');
+		if (!raw) return 0;
+		const data = JSON.parse(raw);
+		const items = Array.isArray(data) ? data : (data?.items ?? []);
+		return items.reduce((sum, it) => {
+			const q = Number(it.qty ?? it.quantity ?? 0);
+			return sum + (Number.isFinite(q) ? q : 0);
+		}, 0);
+	} catch {
+		return 0;
+	}
+}
+
 export default function Navbar({ theme, onOpenLogin }) {
 	/* ───────────────────────────
 	   既有狀態（state 狀態）
@@ -21,6 +36,7 @@ export default function Navbar({ theme, onOpenLogin }) {
 	const navigate = useNavigate();
 	const isDetailRoute = location.pathname.startsWith('/ProductPage');
 	const [isFavorite, setIsFavorite] = useState(false);
+	const [cartCount, setCartCount] = useState(() => getCartCount());
 
 	/* RWD：640 以下顯示細節底部列（bottom bar 底列） */
 	const [lte640, setLte640] = useState(() => window.matchMedia('(max-width: 640px)').matches);
@@ -46,6 +62,31 @@ export default function Navbar({ theme, onOpenLogin }) {
 			window.removeEventListener('resize', handleScroll);
 		};
 	}, []);
+
+	// ── 監聽購物車變化（跨分頁用 storage，同分頁用自訂事件） ───────────
+	useEffect(() => {
+		const sync = () => setCartCount(getCartCount());
+
+		// 初始同步
+		sync();
+
+		// 其他分頁對 localStorage 的變更
+		const onStorage = (e) => {
+			if (e.key === 'gtrade:cart') sync();
+		};
+
+		// 本分頁內部動作（手動派發 'cart:changed'）
+		const onCartChanged = () => sync();
+
+		window.addEventListener('storage', onStorage);
+		window.addEventListener('cart:changed', onCartChanged);
+
+		return () => {
+			window.removeEventListener('storage', onStorage);
+			window.removeEventListener('cart:changed', onCartChanged);
+		};
+	}, []);
+
 
 	const handleHamburgerToggle = () => setIsHamburgerOpen(!isHamburgerOpen);
 	const handleHamburgerClose = () => {
@@ -215,7 +256,11 @@ export default function Navbar({ theme, onOpenLogin }) {
 							</form>
 						</li>
 
-						<li className="shadow-img"><Link className="icon-Shopping_cart" to="/Shopping_cart" /></li>
+						<li className="shadow-img">
+							<Link className="icon-Shopping_cart has-badge" to="/Shopping_cart" aria-label="購物車">
+								{cartCount > 0 && <span className="badge" aria-live="polite">{cartCount}</span>}
+							</Link>
+						</li>
 						<li className="shadow-img">
 							<button
 								type="button"
@@ -303,7 +348,11 @@ export default function Navbar({ theme, onOpenLogin }) {
 						</button>
 						<Link to="/Shopping_cart" className='btn-cart'><img src={Cart} alt="" />購物車</Link>
 						<div className='mbnd'>
-							<button className="btn-add-cart">加入購物車</button>
+							<Link to="/Shopping_cart" className="btn-cart">
+								<img src={Cart} alt="" />
+								購物車
+								{cartCount > 0 && <span className="badge">{cartCount}</span>}
+							</Link>
 							<button className="btn-buy-now">立即購買</button>
 						</div>
 					</>
