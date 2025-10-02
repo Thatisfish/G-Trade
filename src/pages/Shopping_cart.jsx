@@ -13,6 +13,7 @@ import money from "../images/ShoppingCard_icon/money.svg";
 import { Helmet } from "@dr.pogodin/react-helmet";
 
 import { getCart, updateQty, removeItem, clearCart } from "../js/cart";
+import { Link } from "react-router-dom";
 
 function Shopping_cart() {
 	// ===== 狀態 =====
@@ -122,7 +123,6 @@ function Shopping_cart() {
 	const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
 	const handleCheckout = async () => {
-		// 缺項提示（不使用 alert）
 		const missing = [];
 		if (selectedIds.size === 0) missing.push("要購買的商品");
 		if (!selectedShippingId) missing.push("運送方式");
@@ -279,7 +279,7 @@ function Shopping_cart() {
 						<h3 className="J_modal__title">結帳成功</h3>
 						<p className="J_modal__text">已完成結帳！感謝你的購買～</p>
 						<div className="J_modal__actions">
-							<a className="J_modal__link" href="/alltype/Switch/all">繼續逛逛</a>
+							<Link className="J_modal__link" to="/alltype/Switch/all">繼續逛逛</Link>
 							<button className="J_modal__btn" onClick={() => setIsSuccessOpen(false)}>關閉</button>
 						</div>
 					</div>
@@ -293,8 +293,8 @@ function Shopping_cart() {
 						<h3 className="J_modal__title">確認清空購物車？</h3>
 						<p className="J_modal__text">此操作會移除所有商品。</p>
 						<div className="J_modal__actions">
-							<button className="J_modal__btn" onClick={() => setIsClearOpen(false)}>取消</button>
 							<button className="J_modal__link" onClick={confirmClear}>清空</button>
+							<button className="J_modal__btn" onClick={() => setIsClearOpen(false)}>取消</button>
 						</div>
 					</div>
 				</div>

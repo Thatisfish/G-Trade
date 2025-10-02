@@ -13,8 +13,16 @@ export default function CartItem({ id, img, title, price, qty, storeName, select
 	return (
 		<div className="J_cartItem">
 			<div className="ctn">
-				<input className="J_ctnCheck" type="checkbox" aria-label={`選取 ${title}`} checked={selected} onChange={onToggle} />
-				{storeName && <p className="J_storeName">{storeName}</p>}
+				<label className="J_ctnCheckWrap">
+					<input
+						className="J_ctnCheck"
+						type="checkbox"
+						aria-label={`選取 ${storeName || "未知店家"}`}
+						checked={selected}
+						onChange={onToggle}
+					/>
+					<span className="J_storeName">{storeName || "未知店家"}</span>
+				</label>
 			</div>
 			<div className="ct">
 				<div className="J_product">

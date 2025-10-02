@@ -1,20 +1,167 @@
+/* =========================================
+   Shopping Cart（購物車）— SCSS（巢狀式）
+   規則：
+   - 兩個 tab 縮排
+   - 無 !important
+   - 合併重複規則（.J_modal / .J_error）
+   - placeholder 與變數統一
+========================================= */
+
+/* ---------- Breakpoints（斷點） ---------- */
+$bp-1024: 1024px;
+$bp-900: 900px;
+$bp-640: 640px;
+
+/* ---------- 共用佔位（placeholders） ---------- */
+%cart-sectionA {
+	/* header row（標頭列）*/
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	width: 100%;
+	min-height: 36px;
+	flex-wrap: nowrap;
+
+	&__left {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		flex: 1 1 0;
+		min-width: 0;
+
+		.J_storeCheck {
+			display: flex;
+			align-items: center;
+
+			input {
+				margin: 0;
+				vertical-align: middle;
+			}
+		}
+
+		img {
+			width: 24px;
+			height: 24px;
+			object-fit: contain;
+			flex: 0 0 auto;
+			display: block;
+		}
+
+		.J_storeName {
+			font-size: 16px;
+			font-weight: 700;
+			color: #D5140B;
+			line-height: 1.2;
+			white-space: nowrap;
+		}
+	}
+
+	&__right {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		flex: 0 0 auto;
+
+		.J_clearBtn {
+			border: 1px solid #cfcfcf;
+			background: #f7f7f7;
+			border-radius: 8px;
+			padding: 6px 10px;
+			font-size: 14px;
+			cursor: pointer;
+
+			&:hover {
+				background: #fff;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+			}
+
+			&:active {
+				transform: translateY(1px);
+			}
+		}
+	}
+
+	@media (max-width: $bp-640) {
+		gap: 8px;
+		flex-wrap: wrap;
+
+		&__left {
+			flex: 1 1 60%;
+		}
+
+		&__right {
+			flex: 1 1 40%;
+			justify-content: flex-end;
+		}
+	}
+}
+
+%cart-sectionTitle {
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 10px;
+	color: #D5140B;
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+
+	img {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+/* ---------- Page（頁面） ---------- */
 .J_cartPage {
-	/* ===== Page padding（頁面內距） ===== */
+	/* Page padding（頁面內距） */
 	padding: 140px 0 120px;
 
-	@media (max-width: 1024px) {
+	@media (max-width: $bp-1024) {
 		padding: 140px 45px 50px;
 	}
 
-	@media (max-width: 900px) {
+	@media (max-width: $bp-900) {
 		padding: 100px clamp(15px, 5vw, 45px) 50px;
 	}
 
-	@media (max-width: 640px) {
+	@media (max-width: $bp-640) {
 		padding: 80px 8px 30px;
 	}
 
-	/* ===== Title（標題） ===== */
+	.J_clearBtn,
+	.J_btnClearCart {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 6px;
+
+		border: 1px solid #cfcfcf;
+		background: #f7f7f7;
+		border-radius: 8px;
+		padding: 6px 10px;
+		font-size: 14px;
+		line-height: 1;
+		cursor: pointer;
+		user-select: none;
+
+		&:hover {
+			background: #fff;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+		}
+
+		&:active {
+			transform: translateY(1px);
+		}
+
+		&:disabled {
+			opacity: .6;
+			cursor: not-allowed;
+			box-shadow: none;
+		}
+	}
+
+	/* Title（標題） */
 	.J_cartTitle {
 		color: #de1a10;
 		font-size: 25px;
@@ -22,19 +169,19 @@
 		text-align: center;
 		margin-bottom: 20px;
 
-		@media (max-width: 640px) {
+		@media (max-width: $bp-640) {
 			margin-bottom: 10px;
 		}
 	}
 
-	/* ===== Container（容器） ===== */
+	/* Container（容器） */
 	.J_cartContainer {
 		display: flex;
 		gap: 5%;
 		max-width: 80%;
 		margin: 0 auto;
 
-		@media (max-width: 1024px) {
+		@media (max-width: $bp-1024) {
 			flex-direction: column;
 			gap: 4px;
 			max-width: 100%;
@@ -51,14 +198,19 @@
 
 			.J_cartRight {
 				display: flex;
-				justify-content: center;
+				flex-direction: column;
+				align-items: center;
 				margin-top: 12px;
 				width: 100%;
+
+				.J_error {
+					width: 60%;
+				}
 			}
 		}
 	}
 
-	/* 左側 / 右側欄位 */
+	/* Left / Right（左右欄） */
 	.J_cartLeft {
 		flex: 2;
 		display: flex;
@@ -70,160 +222,69 @@
 		flex: 1;
 	}
 
-	/* === 共用佔位（placeholder）=== */
-	%cart-sectionA {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 16px;
-		width: 100%;
-		min-height: 36px;
-		flex-wrap: nowrap;
-		/* ← 預設單行，不輕易換行 */
-
-		&__left {
-			display: inline-flex;
-			align-items: center;
-			gap: 10px;
-			flex: 1 1 0;
-			/* ← 可縮 */
-			min-width: 0;
-			/* ← 允許被擠，避免提前換行 */
-
-			.J_storeCheck {
-				display: flex;
-				align-items: center;
-
-				input {
-					margin: 0;
-					/* 去掉預設外距 */
-					vertical-align: middle;
-					/* 與文字、icon 對齊 */
-				}
-			}
-
-			img {
-				width: 24px;
-				height: 24px;
-				object-fit: contain;
-				flex: 0 0 auto;
-				display: block;
-			}
-
-			.J_storeName {
-				font-size: 16px;
-				font-weight: 700;
-				color: #D5140B;
-				line-height: 1.2;
-				white-space: nowrap;
-				/* 店名不拆行 */
-			}
-		}
-
-		&__right {
-			display: inline-flex;
-			align-items: center;
-			gap: 10px;
-			flex: 0 0 auto;
-
-			.J_clearBtn {
-				border: 1px solid #cfcfcf;
-				background: #f7f7f7;
-				border-radius: 8px;
-				padding: 6px 10px;
-				font-size: 14px;
-				cursor: pointer;
-
-				&:hover {
-					background: #fff;
-					box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
-				}
-
-				&:active {
-					transform: translateY(1px);
-				}
-			}
-		}
-
-		@media (max-width: 640px) {
-			gap: 8px;
-			flex-wrap: wrap;
-			/* ← 手機才允許換行 */
-
-			&__left {
-				flex: 1 1 60%;
-			}
-
-			&__right {
-				flex: 1 1 40%;
-				justify-content: flex-end;
-			}
-		}
-	}
-
-	%cart-sectionTitle {
-		font-size: 16px;
-		font-weight: bold;
-		margin-bottom: 10px;
-		border: none;
-		color: #D5140B;
-		display: inline-flex;
-		align-items: center;
-		gap: 12px;
-
-		img {
-			width: 20px;
-			height: 20px;
-		}
-	}
-
-	/* ===== 共用區塊 ===== */
-	.J_cartSection {
-		background: #fff;
-		padding: 30px;
-		border-radius: 20px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
-
-		@media (max-width: 640px) {
-			padding: 24px;
-		}
-
-		.J_cartSectionA {
-			@extend %cart-sectionA;
-		}
-
-		.J_sectionTitle {
-			@extend %cart-sectionTitle;
-		}
-	}
-
-	/* 另一種內距版本 */
+	/* 共用區塊（白底卡片） */
+	.J_cartSection,
 	.J_cartSection2 {
 		background: #fff;
-		padding: 30px 50px 30px 70px;
 		border-radius: 20px;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
 
-		@media (max-width: 640px) {
+		/* 兩種內距（padding 內距） */
+		&.J_cartSection {
+			padding: 30px;
+		}
+
+		&.J_cartSection2 {
+			padding: 30px 50px 30px 70px;
+		}
+
+		@media (max-width: $bp-640) {
 			padding: 24px;
 		}
 
+		/* 區塊標頭（左店名＋右清空） */
 		.J_cartSectionA {
 			@extend %cart-sectionA;
+
+			.J_cartSectionA__left {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+
+				.J_sectionTitle {
+					margin: 0;
+				}
+
+				.J_storeCheck {
+					display: flex;
+					align-items: center;
+
+					input {
+						margin: 0;
+						width: 16px;
+						height: 16px;
+					}
+				}
+			}
 		}
 
+		/* 小標（含 icon 圖示） */
 		.J_sectionTitle {
 			@extend %cart-sectionTitle;
 		}
 	}
 
-	/* ===== 商品清單（items） ===== */
+	/* 商品清單（items） */
 	.J_cartItem {
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
 		padding: 8px 0;
 		border-bottom: 1px solid #eee;
+
+		&:last-child {
+			border-bottom: none;
+		}
 
 		input {
 			margin: 0;
@@ -235,6 +296,12 @@
 			display: flex;
 			align-items: center;
 			gap: 12px;
+
+			.J_ctnCheckWrap {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
 		}
 
 		.ct {
@@ -246,11 +313,8 @@
 				display: flex;
 				gap: 12px;
 				align-items: center;
-
-				/* 讓產品區塊撐滿剩餘空間，將數量與刪除按鈕推到右側並保持對齊 */
 				flex: 1 1 0;
 				min-width: 0;
-				/* 允許內部文字收縮，避免換行 */
 
 				.pif {
 					display: flex;
@@ -267,12 +331,11 @@
 			}
 		}
 
-		@media (max-width: 640px) {
+		@media (max-width: $bp-640) {
 			.ct {
 				gap: 12px;
 
 				.J_product {
-					// flex-direction: column;
 					gap: 8px;
 
 					img {
@@ -315,13 +378,9 @@
 				height: 20px;
 			}
 		}
-
-		&:last-child {
-			border-bottom: none;
-		}
 	}
 
-	/* ===== 運送（shipping） & 付款（payment） ===== */
+	/* 運送 / 付款 */
 	.J_shippingOptions,
 	.J_paymentOptions {
 		display: flex;
@@ -401,7 +460,7 @@
 		}
 	}
 
-	/* ===== 備註（notes） ===== */
+	/* 備註 */
 	.J_notes {
 		display: flex;
 		gap: 25px;
@@ -431,11 +490,11 @@
 		}
 	}
 
-	/* ===== 結帳摘要（summary） ===== */
+	/* 結帳摘要 */
 	.J_cartSummary {
 		width: 250px;
 		background: #fff;
-		padding: 12px 20px 20px 20px;
+		padding: 12px 20px 20px;
 		border-radius: 20px;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
@@ -463,7 +522,6 @@
 			cursor: pointer;
 			display: block;
 			margin: 12px auto 0;
-			/* 置中 */
 
 			.J_checkoutContent {
 				display: flex;
@@ -485,7 +543,7 @@
 			}
 		}
 
-		@media (max-width: 1024px) {
+		@media (max-width: $bp-1024) {
 			width: 60%;
 			padding: 8px 20px 20px;
 
@@ -501,34 +559,29 @@
 
 			.J_checkoutBtn {
 				font-size: 14px;
-				display: block;
-				margin: 12px auto 0;
 			}
 		}
 
-		@media (max-width:640px) {
+		@media (max-width: $bp-640) {
 			width: 75%;
 			padding: 8px 10px 16px;
 		}
 	}
 
-	/* Loading overlay (used during checkout) */
-	.J_cartPage.is-loading {
+	/* Loading state（頁面載入遮罩狀態） */
+	&.is-loading {
 		position: relative;
+
+		&::before {
+			content: '';
+			position: fixed;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.25);
+			z-index: 2000;
+		}
 	}
 
-	.J_cartPage.is-loading::before {
-		content: '';
-		position: fixed;
-		left: 0;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		background: rgba(0, 0, 0, 0.25);
-		z-index: 2000;
-	}
-
-	/* loader: three dots moving along circular path */
+	/* Checkout loader（三點繞圈） */
 	.J_checkoutLoader {
 		position: fixed;
 		left: 50%;
@@ -540,363 +593,67 @@
 		display: grid;
 		place-items: center;
 		z-index: 2001;
-	}
 
-	.J_checkoutLoader .dot {
-		position: absolute;
-		width: 12px;
-		height: 12px;
-		background: #bdbdbd;
-		border-radius: 50%;
-	}
+		.dot {
+			position: absolute;
+			width: 12px;
+			height: 12px;
+			background: #bdbdbd;
+			border-radius: 50%;
 
-	.J_checkoutLoader .dot:nth-child(1) {
-		animation: orbit 1.5s linear infinite;
-		animation-delay: 0s;
-	}
+			&:nth-child(1) {
+				animation: orbit 1.5s linear infinite 0s;
+			}
 
-	.J_checkoutLoader .dot:nth-child(2) {
-		animation: orbit 1.5s linear infinite;
-		animation-delay: 0.15s;
-	}
+			&:nth-child(2) {
+				animation: orbit 1.5s linear infinite .15s;
+			}
 
-	.J_checkoutLoader .dot:nth-child(3) {
-		animation: orbit 1.5s linear infinite;
-		animation-delay: 0.3s;
-	}
-
-	@keyframes orbit {
-		0% {
-			transform: rotate(0deg) translateX(28px) rotate(0deg);
-		}
-
-		25% {
-			transform: rotate(90deg) translateX(28px) rotate(-90deg);
-		}
-
-		50% {
-			transform: rotate(180deg) translateX(28px) rotate(-180deg);
-		}
-
-		75% {
-			transform: rotate(270deg) translateX(28px) rotate(-270deg);
-		}
-
-		100% {
-			transform: rotate(360deg) translateX(28px) rotate(-360deg);
+			&:nth-child(3) {
+				animation: orbit 1.5s linear infinite .3s;
+			}
 		}
 	}
 
-	/* floatingBarsG animation converted from provided CSS */
-	.floatingBarsG {
-		position: relative;
-		width: 60px;
-		height: 75px;
-		margin: auto;
-	}
-
-	.blockG {
-		position: absolute !important;
-		background-color: #de1a10 !important;
-		/* site red for visibility on white modal */
-		width: 14px !important;
-		height: 30px !important;
-		border-radius: 8px 8px 0 0 !important;
-		transform: scale(0.7) !important;
-		transform-origin: center bottom !important;
-		animation-name: fadeG !important;
-		animation-duration: 1.04s !important;
-		animation-iteration-count: infinite !important;
-		animation-direction: normal !important;
-		opacity: 1 !important;
-	}
-
-	.rotateG_01 {
-		left: 0;
-		top: 27px;
-		animation-delay: 0.39s;
-		transform: rotate(-90deg);
-	}
-
-	.rotateG_02 {
-		left: 8px;
-		top: 10px;
-		animation-delay: 0.52s;
-		transform: rotate(-45deg);
-	}
-
-	.rotateG_03 {
-		left: 25px;
-		top: 3px;
-		animation-delay: 0.65s;
-		transform: rotate(0deg);
-	}
-
-	.rotateG_04 {
-		right: 8px;
-		top: 10px;
-		animation-delay: 0.78s;
-		transform: rotate(45deg);
-	}
-
-	.rotateG_05 {
-		right: 0;
-		top: 27px;
-		animation-delay: 0.9099999999999999s;
-		transform: rotate(90deg);
-	}
-
-	.rotateG_06 {
-		right: 8px;
-		bottom: 7px;
-		animation-delay: 1.04s;
-		transform: rotate(135deg);
-	}
-
-	.rotateG_07 {
-		bottom: 0;
-		left: 25px;
-		animation-delay: 1.1700000000000002s;
-		transform: rotate(180deg);
-	}
-
-	.rotateG_08 {
-		left: 8px;
-		bottom: 7px;
-		animation-delay: 1.3s;
-		transform: rotate(-135deg);
-	}
-
-
-	@keyframes fadeG {
-		0% {
-			opacity: 0.25;
-		}
-
-		50% {
-			opacity: 1;
-		}
-
-		100% {
-			opacity: 0.25;
-		}
-	}
-
-	/* validation modal */
+	/* validation overlay（表單驗證彈窗） */
 	.J_validationOverlay {
 		position: fixed;
-		left: 0;
-		top: 0;
-		right: 0;
-		bottom: 0;
+		inset: 0;
 		background: rgba(0, 0, 0, 0.35);
 		display: grid;
 		place-items: center;
 		z-index: 3000;
-	}
 
-	.J_validationBox {
-		background: #fff;
-		padding: 20px 24px;
-		border-radius: 12px;
-		width: 320px;
-		max-width: calc(100% - 40px);
-		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-	}
-
-	.J_validationBox h3 {
-		margin: 0 0 8px 0;
-		color: #333;
-	}
-
-	.J_validationBox ul {
-		margin: 8px 0 16px 16px;
-	}
-
-	.J_validationClose {
-		background: #de1a10;
-		color: #fff;
-		padding: 8px 12px;
-		border-radius: 8px;
-		border: none;
-		cursor: pointer;
-	}
-}
-
-.J_cartPage {
-	.J_cartSectionA {
-		display: flex !important;
-		flex-direction: row !important;
-		/* row（橫向） */
-		align-items: center !important;
-		/* center（置中） */
-		justify-content: space-between !important;
-		flex-wrap: nowrap !important;
-		/* nowrap（不換行） */
-		gap: 16px !important;
-	}
-
-	.J_cartSectionA__left {
-		display: flex !important;
-		flex-direction: row !important;
-		/* row（橫向） */
-		align-items: center !important;
-		flex-wrap: nowrap !important;
-		gap: 12px !important;
-		flex: 1 1 0 !important;
-		min-width: 0 !important;
-	}
-
-	/* 把 checkbox（核取方塊）釘住，避免占滿一行 */
-	.J_cartSectionA__left>input[type="checkbox"],
-	.J_cartSectionA__left .J_storeCheck>input[type="checkbox"] {
-		display: inline-block !important;
-		width: 16px !important;
-		height: 16px !important;
-		margin: 0 !important;
-		padding: 0 !important;
-		flex: 0 0 auto !important;
-		vertical-align: middle !important;
-		/* middle（中線） */
-	}
-
-	/* icon（圖示）固定尺寸 */
-	.J_cartSectionA__left>img {
-		display: inline-block !important;
-		width: 24px !important;
-		height: 24px !important;
-		object-fit: contain !important;
-		flex: 0 0 auto !important;
-	}
-
-	/* 店家名稱取消 h2 預設外距，改成行內區塊 */
-	.J_cartSectionA__left .J_sectionTitle {
-		display: inline-block !important;
-		margin: 0 !important;
-		padding: 0 !important;
-		line-height: 1.2 !important;
-		white-space: nowrap !important;
-		/* nowrap（不拆行） */
-	}
-
-	/* 右側清空按鈕維持靠右 */
-	.J_cartSectionA__right {
-		display: flex !important;
-		align-items: center !important;
-		justify-content: flex-end !important;
-		flex: 0 0 auto !important;
-	}
-
-	.J_clearBtn,
-	.J_btnClearCart {
-		border: 1px solid #cfcfcf;
-		background: #f7f7f7;
-		border-radius: 8px;
-		padding: 6px 10px;
-		font-size: 14px;
-		cursor: pointer;
-
-		&:hover {
+		.J_validationBox {
 			background: #fff;
-			box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+			padding: 20px 24px;
+			border-radius: 12px;
+			width: 320px;
+			max-width: calc(100% - 40px);
+			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+
+			h3 {
+				margin: 0 0 8px 0;
+				color: #333;
+			}
+
+			ul {
+				margin: 8px 0 16px 16px;
+			}
+
+			.J_validationClose {
+				background: #de1a10;
+				color: #fff;
+				padding: 8px 12px;
+				border-radius: 8px;
+				border: none;
+				cursor: pointer;
+			}
 		}
 	}
 }
 
-/* === Checkout Success Modal（結帳成功彈窗） === */
-.J_modal {
-	position: fixed;
-	inset: 0;
-	z-index: 1000;
-	display: grid;
-	place-items: center;
-	background: rgba(0, 0, 0, 0.4);
-
-	&__panel {
-		width: min(520px, 92vw);
-		border-radius: 16px;
-		background: #fff;
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-		padding: clamp(20px, 3.5vw, 28px);
-		display: grid;
-		gap: 14px;
-	}
-
-	&__title {
-		margin: 0 0 4px;
-		font-size: clamp(18px, 2.4vw, 22px);
-		font-weight: 700;
-		color: #222;
-	}
-
-	&__text {
-		margin: 0 0 8px;
-		font-size: clamp(14px, 2vw, 16px);
-		color: #555;
-		line-height: 1.6;
-	}
-
-	&__actions {
-		margin-top: 8px;
-		display: flex;
-		gap: 10px;
-		justify-content: flex-end;
-
-		@media (max-width: 640px) {
-			flex-direction: column-reverse;
-			align-items: stretch;
-		}
-	}
-
-	&__btn,
-	&__link {
-		appearance: none;
-		border: 0;
-		border-radius: 10px;
-		padding: 10px 16px;
-		font-size: 14px;
-		line-height: 1;
-		cursor: pointer;
-		text-decoration: none;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		transition: transform .06s ease, box-shadow .2s ease, background-color .2s ease;
-
-		&:active {
-			transform: translateY(1px);
-		}
-	}
-
-	&__btn {
-		background: #efefef;
-		color: #222;
-
-		&:hover {
-			background: #e7e7e7;
-		}
-
-		&:focus-visible {
-			outline: 2px solid #222;
-			outline-offset: 2px;
-		}
-	}
-
-	&__link {
-		background: #de1a10;
-		color: #fff;
-
-		&:hover {
-			background: #c7180f;
-		}
-
-		&:focus-visible {
-			outline: 2px solid #de1a10;
-			outline-offset: 2px;
-		}
-	}
-}
-
+/* ---------- 共用：Error（錯誤條） ---------- */
 .J_error {
 	margin-bottom: 12px;
 	padding: 10px 14px;
@@ -907,61 +664,7 @@
 	width: 250px;
 }
 
-/* === 假 Loading（載入）Overlay === */
-.J_loader {
-	position: fixed;
-	inset: 0;
-	z-index: 1200;
-	display: grid;
-	place-items: center;
-	background: rgba(0, 0, 0, 0.35);
-	backdrop-filter: blur(1.5px);
-
-	&__panel {
-		display: grid;
-		justify-items: center;
-		gap: 12px;
-		padding: clamp(18px, 3.2vw, 24px);
-		width: min(420px, 88vw);
-		border-radius: 16px;
-		background: #fff;
-		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
-	}
-
-	&__spinner {
-		width: 44px;
-		height: 44px;
-		border-radius: 50%;
-		border: 3px solid #e6e6e6;
-		border-top-color: #de1a10;
-		/* 主色（primary 主色） */
-		animation: J_spin 0.9s linear infinite;
-	}
-
-	&__text {
-		margin: 4px 0 0;
-		font-size: 15px;
-		color: #333;
-	}
-}
-
-@keyframes J_spin {
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-/* === 缺項錯誤提示（沿用） === */
-.J_error {
-	margin-bottom: 12px;
-	padding: 10px 14px;
-	background: #ffecec;
-	color: #d60000;
-	border-radius: 8px;
-	font-size: 14px;
-}
-
-/* === 成功 / 確認共用彈窗（沿用） === */
+/* ---------- 共用：Modal（彈窗） ---------- */
 .J_modal {
 	position: fixed;
 	inset: 0;
@@ -1000,7 +703,7 @@
 		gap: 10px;
 		justify-content: flex-end;
 
-		@media (max-width: 640px) {
+		@media (max-width: $bp-640) {
 			flex-direction: column-reverse;
 			align-items: stretch;
 		}
@@ -1052,5 +755,161 @@
 			outline: 2px solid #de1a10;
 			outline-offset: 2px;
 		}
+	}
+}
+
+/* ---------- 共用：假 Loading（載入） ---------- */
+.J_loader {
+	position: fixed;
+	inset: 0;
+	z-index: 1200;
+	display: grid;
+	place-items: center;
+	background: rgba(0, 0, 0, 0.35);
+	backdrop-filter: blur(1.5px);
+
+	&__panel {
+		display: grid;
+		justify-items: center;
+		gap: 12px;
+		padding: clamp(18px, 3.2vw, 24px);
+		width: min(420px, 88vw);
+		border-radius: 16px;
+		background: #fff;
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+	}
+
+	&__spinner {
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		border: 3px solid #e6e6e6;
+		border-top-color: #de1a10;
+		animation: J_spin .9s linear infinite;
+	}
+
+	&__text {
+		margin: 4px 0 0;
+		font-size: 15px;
+		color: #333;
+	}
+}
+
+/* ---------- Animations（動畫） ---------- */
+@keyframes J_spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes orbit {
+	0% {
+		transform: rotate(0deg) translateX(28px) rotate(0deg);
+	}
+
+	25% {
+		transform: rotate(90deg) translateX(28px) rotate(-90deg);
+	}
+
+	50% {
+		transform: rotate(180deg) translateX(28px) rotate(-180deg);
+	}
+
+	75% {
+		transform: rotate(270deg) translateX(28px) rotate(-270deg);
+	}
+
+	100% {
+		transform: rotate(360deg) translateX(28px) rotate(-360deg);
+	}
+}
+
+/* ---------- 補：floatingBars（條形載入） ---------- */
+.floatingBarsG {
+	position: relative;
+	width: 60px;
+	height: 75px;
+	margin: auto;
+
+	.blockG {
+		position: absolute;
+		background-color: #de1a10;
+		width: 14px;
+		height: 30px;
+		border-radius: 8px 8px 0 0;
+		transform: scale(.7);
+		transform-origin: center bottom;
+		animation: fadeG 1.04s infinite normal;
+		opacity: 1;
+	}
+
+	.rotateG_01 {
+		left: 0;
+		top: 27px;
+		animation-delay: .39s;
+		transform: rotate(-90deg);
+	}
+
+	.rotateG_02 {
+		left: 8px;
+		top: 10px;
+		animation-delay: .52s;
+		transform: rotate(-45deg);
+	}
+
+	.rotateG_03 {
+		left: 25px;
+		top: 3px;
+		animation-delay: .65s;
+		transform: rotate(0deg);
+	}
+
+	.rotateG_04 {
+		right: 8px;
+		top: 10px;
+		animation-delay: .78s;
+		transform: rotate(45deg);
+	}
+
+	.rotateG_05 {
+		right: 0;
+		top: 27px;
+		animation-delay: .91s;
+		transform: rotate(90deg);
+	}
+
+	.rotateG_06 {
+		right: 8px;
+		bottom: 7px;
+		animation-delay: 1.04s;
+		transform: rotate(135deg);
+	}
+
+	.rotateG_07 {
+		bottom: 0;
+		left: 25px;
+		animation-delay: 1.17s;
+		transform: rotate(180deg);
+	}
+
+	.rotateG_08 {
+		left: 8px;
+		bottom: 7px;
+		animation-delay: 1.3s;
+		transform: rotate(-135deg);
+	}
+}
+
+@keyframes fadeG {
+	0% {
+		opacity: .25;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: .25;
 	}
 }
