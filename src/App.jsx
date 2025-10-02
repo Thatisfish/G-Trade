@@ -149,7 +149,7 @@ export default function App() {
 						</Suspense>
 
 						<Footer theme={theme} onOpenLogin={openLogin} />
-						<FloatChat />
+						<FloatChat theme={theme} />
 					</div>
 				</HelmetProvider>
 			</ChatProvider>

@@ -19,6 +19,11 @@ import { getCart, updateQty, removeItem, clearCart } from "../js/cart";
 function Shopping_cart() {
 	// 狀態（state 狀態）：這裡的 items 一律是「陣列」
 	const [items, setItems] = useState([]);
+	const [selectedIds, setSelectedIds] = useState(new Set());
+	const [selectedShippingPrice, setSelectedShippingPrice] = useState(0);
+	const [selectedShippingId, setSelectedShippingId] = useState(null);
+	const [selectedPaymentId, setSelectedPaymentId] = useState(null);
+	const [isCheckingOut, setIsCheckingOut] = useState(false);
 
 	// 讀取購物車（封裝成函式，方便重用）
 	const loadCart = useCallback(() => {
@@ -32,6 +37,16 @@ function Shopping_cart() {
 	useEffect(() => {
 		loadCart();
 	}, [loadCart]);
+
+	// 當 items 更新時，清理 selectedIds（只保留存在的 id）
+	useEffect(() => {
+		setSelectedIds(prev => {
+			const next = new Set();
+			const ids = new Set(items.map(it => String(it.id)));
+			prev.forEach(id => { if (ids.has(String(id))) next.add(id) });
+			return next;
+		})
+	}, [items]);
 
 	// ✅ 跨分頁同步（storage 事件）— 不會在同分頁觸發，但保留給多分頁使用
 	useEffect(() => {
@@ -86,6 +101,67 @@ function Shopping_cart() {
 		loadCart();
 	};
 
+	// 選取狀態處理
+	const allChecked = items.length > 0 && selectedIds.size === items.length;
+
+	const toggleAll = () => {
+		if (allChecked) {
+			setSelectedIds(new Set());
+		} else {
+			setSelectedIds(new Set(items.map(it => it.id)));
+		}
+	};
+
+	const toggleItem = (id) => {
+		setSelectedIds(prev => {
+			const next = new Set(prev);
+			if (next.has(id)) next.delete(id);
+			else next.add(id);
+			return next;
+		})
+	}
+
+	// 計算被選取之商品小計（只包含已勾選的品項）
+	const productPrice = useMemo(() => {
+		if (!items || items.length === 0) return 0;
+		let sum = 0;
+		items.forEach(it => {
+			if (selectedIds.has(it.id)) {
+				const price = Number(it.price) || 0;
+				const qty = Number(it.qty) || 0;
+				sum += price * qty;
+			}
+		});
+		return sum;
+	}, [items, selectedIds]);
+
+	const shippingPrice = Number(selectedShippingPrice) || 0;
+	const totalPrice = productPrice + shippingPrice;
+
+	// Checkout handler
+	const canCheckout = selectedIds.size > 0 && selectedShippingId && selectedPaymentId;
+
+	const handleCheckout = async () => {
+		if (!canCheckout) return;
+		setIsCheckingOut(true);
+		// 模擬 loading 1.5 秒
+		await new Promise(r => setTimeout(r, 1500));
+		// 結帳完成：移除已勾選的商品
+		selectedIds.forEach(id => {
+			removeItem(id);
+		});
+		// 重新載入購物車
+		loadCart();
+		// 重設勾選、運送、付款
+		setSelectedIds(new Set());
+		setSelectedShippingId(null);
+		setSelectedShippingPrice(0);
+		setSelectedPaymentId(null);
+		setIsCheckingOut(false);
+		// 顯示通知
+		alert('已完成結帳');
+	};
+
 	// 清空（clear 清空）
 	const handleClear = () => {
 		if (confirm("確定要清空購物車嗎？（This will remove all items 全部刪除）")) {
@@ -111,7 +187,7 @@ function Shopping_cart() {
 				<meta name="description" content="歡迎來到遊玩人間市集，探索各式二手遊戲商品。" />
 			</Helmet>
 
-			<div className="J_cartPage">
+			<div className={`J_cartPage ${isCheckingOut ? 'is-loading' : ''}`}>
 				<h1 className="J_cartTitle">購物車</h1>
 
 				<div className="J_cartContainer">
@@ -122,7 +198,7 @@ function Shopping_cart() {
 							<div className="J_cartSectionA">
 								<div className="J_cartSectionA__left">
 									<label className="J_storeCheck" aria-label="全選（Select all 全選）">
-										<input type="checkbox" />
+										<input className="J_allCheck" type="checkbox" checked={allChecked} onChange={toggleAll} />
 									</label>
 									{/* <img src={home} alt="商店（Store 商店）" /> */}
 									<h2 className="J_sectionTitle">商品</h2>
@@ -148,10 +224,11 @@ function Shopping_cart() {
 										繼續逛逛
 									</a>
 								</div>
-							) : (
+								) : (
 								items.map((item) => (
 									<CartItem
 										key={item.id}
+										id={item.id}
 										img={item.img}
 										title={item.title}
 										price={item.price}
@@ -161,6 +238,8 @@ function Shopping_cart() {
 										onInc={() => handleInc(item.id)}
 										onDec={() => handleDec(item.id)}
 										onRemove={() => handleRemove(item.id)}
+										selected={selectedIds.has(item.id)}
+										onToggle={() => toggleItem(item.id)}
 									/>
 								))
 							)}
@@ -172,7 +251,7 @@ function Shopping_cart() {
 								<img src={cart} alt="購物車（Cart 購物車）" />
 								運送方式
 							</h2>
-							<ShippingOptions />
+									<ShippingOptions onSelect={({ id, price }) => { setSelectedShippingId(id); setSelectedShippingPrice(price); }} selected={selectedShippingId} />
 						</section>
 
 						{/* 付款方式（Payment 付款） */}
@@ -181,7 +260,7 @@ function Shopping_cart() {
 								<img src={money} alt="金錢（Money 金錢）" />
 								付款方式
 							</h2>
-							<PaymentOptions />
+							<PaymentOptions onSelect={(id) => setSelectedPaymentId(id)} selected={selectedPaymentId} />
 						</section>
 
 						{/* 備註（Notes 備註） */}
@@ -195,11 +274,25 @@ function Shopping_cart() {
 						<CartSummary
 							subtotal={subtotal}
 							itemCount={itemCount}
+							productPrice={productPrice}
+							shippingPrice={shippingPrice}
+							totalPrice={totalPrice}
+							disabled={!canCheckout}
+							isLoading={isCheckingOut}
+							onCheckout={handleCheckout}
 						// onCheckout={() => alert("尚未串接結帳流程（Checkout flow 待串接）")}
 						/>
 					</div>
 				</div>
 			</div>
+
+			{isCheckingOut && (
+				<div className="J_checkoutLoader" role="status" aria-live="polite">
+					<div className="dot"></div>
+					<div className="dot"></div>
+					<div className="dot"></div>
+				</div>
+			)}
 		</>
 	);
 }

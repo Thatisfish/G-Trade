@@ -247,6 +247,10 @@
 				gap: 12px;
 				align-items: center;
 
+					/* 讓產品區塊撐滿剩餘空間，將數量與刪除按鈕推到右側並保持對齊 */
+					flex: 1 1 0;
+					min-width: 0; /* 允許內部文字收縮，避免換行 */
+
 				.pif {
 					display: flex;
 					width: auto;
@@ -263,12 +267,16 @@
 		}
 
 		@media (max-width: 640px) {
-			.J_product {
-				flex-direction: column;
-				gap: 8px;
+			.ct{
+				gap: 12px;
 
-				img {
-					margin: 0 auto;
+				.J_product {
+					// flex-direction: column;
+					gap: 8px;
+					
+					img {
+						margin: 0 auto;
+					}
 				}
 			}
 		}
@@ -288,15 +296,18 @@
 		}
 
 		.J_itemQty {
-			font-size: 14px;
-			max-width: 40px;
-			width: 100%;
+					font-size: 14px;
+					max-width: 48px;
+					width: 28px;
+					text-align: right;
 		}
 
 		.J_deleteBtn {
 			background: none;
 			border: none;
 			cursor: pointer;
+					flex: 0 0 auto;
+					margin-left: 12px;
 
 			img {
 				width: 15px;
@@ -421,7 +432,7 @@
 
 	/* ===== 結帳摘要（summary） ===== */
 	.J_cartSummary {
-		width: 200px;
+		width: 250px;
 		background: #fff;
 		padding: 12px 20px 20px 20px;
 		border-radius: 20px;
@@ -449,6 +460,8 @@
 			border-radius: 999px;
 			padding: 8px 8px;
 			cursor: pointer;
+			display: block;
+			margin: 12px auto 0; /* 置中 */
 
 			.J_checkoutContent {
 				display: flex;
@@ -490,7 +503,62 @@
 				margin: 12px auto 0;
 			}
 		}
+
+		@media (max-width:640px) {
+					width: 75%;
+			padding: 8px 10px 16px;	
+		}
 	}
+
+/* Loading overlay (used during checkout) */
+.J_cartPage.is-loading {
+	position: relative;
+}
+
+.J_cartPage.is-loading::before {
+	content: '';
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.25);
+	z-index: 2000;
+}
+
+/* loader: three dots moving along circular path */
+.J_checkoutLoader {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	z-index: 2001;
+}
+
+.J_checkoutLoader .dot {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	background: #bdbdbd;
+	border-radius: 50%;
+}
+
+.J_checkoutLoader .dot:nth-child(1) { animation: orbit 1.5s linear infinite; animation-delay: 0s; }
+.J_checkoutLoader .dot:nth-child(2) { animation: orbit 1.5s linear infinite; animation-delay: 0.15s; }
+.J_checkoutLoader .dot:nth-child(3) { animation: orbit 1.5s linear infinite; animation-delay: 0.3s; }
+
+@keyframes orbit {
+	0% { transform: rotate(0deg) translateX(28px) rotate(0deg); }
+	25% { transform: rotate(90deg) translateX(28px) rotate(-90deg); }
+	50% { transform: rotate(180deg) translateX(28px) rotate(-180deg); }
+	75% { transform: rotate(270deg) translateX(28px) rotate(-270deg); }
+	100% { transform: rotate(360deg) translateX(28px) rotate(-360deg); }
+}
 }
 
 .J_cartPage {
