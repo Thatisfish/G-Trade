@@ -247,6 +247,10 @@
 				gap: 12px;
 				align-items: center;
 
+					/* 讓產品區塊撐滿剩餘空間，將數量與刪除按鈕推到右側並保持對齊 */
+					flex: 1 1 0;
+					min-width: 0; /* 允許內部文字收縮，避免換行 */
+
 				.pif {
 					display: flex;
 					width: auto;
@@ -263,12 +267,16 @@
 		}
 
 		@media (max-width: 640px) {
-			.J_product {
-				flex-direction: column;
-				gap: 8px;
+			.ct{
+				gap: 12px;
 
-				img {
-					margin: 0 auto;
+				.J_product {
+					// flex-direction: column;
+					gap: 8px;
+					
+					img {
+						margin: 0 auto;
+					}
 				}
 			}
 		}
@@ -288,15 +296,18 @@
 		}
 
 		.J_itemQty {
-			font-size: 14px;
-			max-width: 40px;
-			width: 100%;
+					font-size: 14px;
+					max-width: 48px;
+					width: 28px;
+					text-align: right;
 		}
 
 		.J_deleteBtn {
 			background: none;
 			border: none;
 			cursor: pointer;
+					flex: 0 0 auto;
+					margin-left: 12px;
 
 			img {
 				width: 15px;
