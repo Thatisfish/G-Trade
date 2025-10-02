@@ -14,8 +14,10 @@ import B_Img11 from '../images/RealName/realN_img11.webp'
 import B_Img12 from '../images/RealName/realN_img12.avif'
 import B_Img13 from '../images/RealName/realN_img13.avif'
 import { Helmet } from '@dr.pogodin/react-helmet'
+import { useNavigate } from 'react-router-dom'
 
 const RealN_Info = () => {
+	const navigate = useNavigate();
 	return (
 		<>
 			<Helmet>
@@ -98,7 +100,7 @@ const RealN_Info = () => {
 							<img className='B_img7' src={B_Img12} alt="" />
 							<img className='B_img7' src={B_Img13} alt="" />
 						</div>
-						<button className='RNbtn'>立即認證 </button>
+						<button className='RNbtn' onClick={() => navigate('/Real_name')}>立即認證 </button>
 					</div>
 				</section>
 			</main>
