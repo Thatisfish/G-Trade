@@ -116,13 +116,13 @@ const HamburgerMenu = ({ isOpen, onClose, onOpenLogin }) => {
 
 					<ul className="menu">
 						<li className="menuItem2">
-							<Link to="/Alltype" className='menuLink' onClick={handleLinkClick}>Switch</Link>
+							<Link to="/alltype/Switch" className='menuLink' onClick={handleLinkClick}>Switch</Link>
 						</li>
 						<li className="menuItem2">
-							<Link to="/Alltype_PS" className="menuLink" onClick={handleLinkClick}>PS系列</Link>
+							<Link to="/alltype/PS" className="menuLink" onClick={handleLinkClick}>PS系列</Link>
 						</li>
 						<li className="menuItem2">
-							<Link to="/Alltype_Xbox" className="menuLink" onClick={handleLinkClick}>Xbox系列</Link>
+							<Link to="/alltype/Xbox" className="menuLink" onClick={handleLinkClick}>Xbox系列</Link>
 						</li>
 					</ul >
 				</div >

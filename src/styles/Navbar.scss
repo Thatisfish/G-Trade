@@ -144,6 +144,42 @@
 		gap: clamp(10px, 6vw, 100px);
 		list-style: none;
 		margin-bottom: 15px;
+
+		/* === 底線滑動效果 === */
+		li {
+			a {
+				position: relative;
+				display: inline-block;
+				padding: 6px 0;
+				/* 預留底線空間 */
+				text-decoration: none;
+
+				&::after {
+					content: "";
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					width: 0;
+					height: 2px;
+					background: currentColor;
+					/* 跟隨字色 */
+					transition: width 0.28s ease;
+					transform-origin: left center;
+				}
+
+				/* hover / 鍵盤聚焦 → 展開底線 */
+				&:hover::after,
+				&:focus-visible::after {
+					width: 100%;
+				}
+			}
+
+			/* 目前頁面高亮（NavLink 的 .active 或自行加 .is-active）→ 常駐底線 */
+			a.active::after,
+			a.is-active::after {
+				width: 100%;
+			}
+		}
 	}
 
 	&.light {
@@ -268,7 +304,15 @@
 			color: #111;
 		}
 	}
+
+	/* 使用者偏好減少動效（reduced motion 減少動畫） */
+	@media (prefers-reduced-motion: reduce) {
+		.menu li a::after {
+			transition: none;
+		}
+	}
 }
+
 
 /* =========================
    Bell（通知面板）
@@ -639,6 +683,7 @@
 	}
 
 	&__search {
+		position: relative; // 讓叉叉能絕對定位
 		flex: 1 1 auto;
 		min-width: 0;
 		display: flex;
@@ -659,6 +704,46 @@
 			&::placeholder {
 				color: #999;
 			}
+		}
+
+		/* 🔴 自訂紅色叉叉 */
+		.mobile-nav__clear {
+			all: unset;
+			cursor: pointer;
+			position: absolute;
+			right: 45px; // 搜尋 icon 前一格
+			width: 20px;
+			height: 20px;
+
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 12px;
+				height: 2px;
+				background: #de1a10; // 紅色
+				border-radius: 1px;
+			}
+
+			&::before {
+				transform: translate(-50%, -50%) rotate(45deg);
+			}
+
+			&::after {
+				transform: translate(-50%, -50%) rotate(-45deg);
+			}
+		}
+
+		.mobile-icon {
+			all: unset; // 移除 button 預設背景與邊框
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
 		}
 	}
 
