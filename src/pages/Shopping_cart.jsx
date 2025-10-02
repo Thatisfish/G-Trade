@@ -124,8 +124,8 @@ function Shopping_cart() {
 									<label className="J_storeCheck" aria-label="全選（Select all 全選）">
 										<input type="checkbox" />
 									</label>
-									<img src={home} alt="商店（Store 商店）" />
-									<h2 className="J_sectionTitle">店家名稱</h2>
+									{/* <img src={home} alt="商店（Store 商店）" /> */}
+									<h2 className="J_sectionTitle">商品</h2>
 								</div>
 
 								<div className="J_cartSectionA__right">
@@ -156,6 +156,7 @@ function Shopping_cart() {
 										title={item.title}
 										price={item.price}
 										qty={item.qty}
+										storeName={item.storeName || item.sellerName || item.seller__name}
 										onQtyChange={(q) => handleQtyChange(item.id, q)}
 										onInc={() => handleInc(item.id)}
 										onDec={() => handleDec(item.id)}
