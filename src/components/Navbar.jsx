@@ -243,7 +243,7 @@ export default function Navbar({ theme, onOpenLogin }) {
 			<header className={`mobile-nav ${theme}`}>
 				<div className="mobile-nav__container">
 					<div className="icon-logo mobile-icon">
-						<Link to="/#">
+						<Link to="/">
 							<img src={theme === 'light' ? Logo_r : Logo_w} alt="logo" />
 						</Link>
 					</div>

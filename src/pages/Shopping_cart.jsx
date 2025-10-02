@@ -1,5 +1,5 @@
 // src/pages/Shopping_cart.jsx
-import React, { useEffect, useMemo, useState, useCallback } from "react";
+import React, { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import "../styles/_Shopping_cart.scss";
 
 import CartItem from "../components/CartItem";
@@ -7,132 +7,107 @@ import ShippingOptions from "../components/ShippingOptions";
 import PaymentOptions from "../components/PaymentOptions";
 import Notes from "../components/Notes";
 import CartSummary from "../components/CartSummary";
-// CheckoutLoader previously used here. Commented out so we render a simple "請稍後" modal inline.
-// import CheckoutLoader from "../components/CheckoutLoader";
 
-import home from "../images/ShoppingCard_icon/home.svg";
 import cart from "../images/ShoppingCard_icon/cart.svg";
 import money from "../images/ShoppingCard_icon/money.svg";
 import { Helmet } from "@dr.pogodin/react-helmet";
 
-// 購物車工具（cart utility 工具）
 import { getCart, updateQty, removeItem, clearCart } from "../js/cart";
 
 function Shopping_cart() {
-	// 狀態（state 狀態）：這裡的 items 一律是「陣列」
+	// ===== 狀態 =====
 	const [items, setItems] = useState([]);
 	const [selectedIds, setSelectedIds] = useState(new Set());
 	const [selectedShippingPrice, setSelectedShippingPrice] = useState(0);
 	const [selectedShippingId, setSelectedShippingId] = useState(null);
 	const [selectedPaymentId, setSelectedPaymentId] = useState(null);
-	const [isCheckingOut, setIsCheckingOut] = useState(false);
 
-	// 讀取購物車（封裝成函式，方便重用）
+	// 成功彈窗 / 清空確認
+	const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+	const [isClearOpen, setIsClearOpen] = useState(false);
+	const [errorMsg, setErrorMsg] = useState("");
+
+	// ✅ 新增：載入中（假 loading 載入）狀態
+	const [isLoading, setIsLoading] = useState(false);
+
+	const closeBtnRef = useRef(null);
+	const lastFocusedRef = useRef(null);
+
+	// ===== 讀取購物車 =====
 	const loadCart = useCallback(() => {
-		// ✅ 正確：getCart() 可能是 { items: [...] } 或直接回傳陣列 — 做雙保險
 		const data = getCart();
 		const arr = Array.isArray(data) ? data : (Array.isArray(data?.items) ? data.items : []);
 		setItems(arr);
 	}, []);
 
-	// 首次掛載（mount 掛載）→ 抓資料
-	useEffect(() => {
-		loadCart();
-	}, [loadCart]);
+	useEffect(() => { loadCart(); }, [loadCart]);
 
-	// 當 items 更新時，清理 selectedIds（只保留存在的 id）
 	useEffect(() => {
 		setSelectedIds(prev => {
 			const next = new Set();
 			const ids = new Set(items.map(it => String(it.id)));
 			prev.forEach(id => { if (ids.has(String(id))) next.add(id) });
 			return next;
-		})
+		});
 	}, [items]);
 
-	// ✅ 跨分頁同步（storage 事件）— 不會在同分頁觸發，但保留給多分頁使用
+	// 同步
 	useEffect(() => {
 		const onStorage = (e) => {
-			if (e.key === "gtrade:cart" || e.key === "cart" || e.key === "shopping_cart" || e.key === "cartItems") {
-				loadCart();
-			}
+			if (["gtrade:cart", "cart", "shopping_cart", "cartItems"].includes(e.key)) loadCart();
 		};
 		window.addEventListener("storage", onStorage);
 		return () => window.removeEventListener("storage", onStorage);
 	}, [loadCart]);
 
-	// ✅ 同分頁即時同步：監聽自訂事件（cart.js 會 dispatchEvent）
 	useEffect(() => {
 		const onCartUpdated = () => loadCart();
 		window.addEventListener("gtrade:cart:update", onCartUpdated);
 		return () => window.removeEventListener("gtrade:cart:update", onCartUpdated);
 	}, [loadCart]);
 
-	// ✅ 切回分頁時也同步一次（例如從商品頁返回）
 	useEffect(() => {
 		const onFocus = () => loadCart();
 		window.addEventListener("focus", onFocus);
 		return () => window.removeEventListener("focus", onFocus);
 	}, [loadCart]);
 
-	// 數量改變（qty change 數量變更）
+	// ===== 數量 / 刪除 =====
 	const handleQtyChange = (id, nextQty) => {
 		const n = Math.max(1, Number(nextQty) || 1);
 		updateQty(id, n);
 		loadCart();
 	};
-
-	// 增加 / 減少（++ / -- 快捷）
 	const handleInc = (id) => {
-		const item = items.find((it) => String(it.id) === String(id));
+		const item = items.find(it => String(it.id) === String(id));
 		const cur = Number(item?.qty || 1);
 		updateQty(id, cur + 1);
 		loadCart();
 	};
-
 	const handleDec = (id) => {
-		const item = items.find((it) => String(it.id) === String(id));
+		const item = items.find(it => String(it.id) === String(id));
 		const cur = Number(item?.qty || 1);
 		updateQty(id, Math.max(1, cur - 1));
 		loadCart();
 	};
+	const handleRemove = (id) => { removeItem(id); loadCart(); };
 
-	// 刪除（remove 刪除）
-	const handleRemove = (id) => {
-		removeItem(id);
-		loadCart();
-	};
-
-	// 選取狀態處理
+	// ===== 勾選 =====
 	const allChecked = items.length > 0 && selectedIds.size === items.length;
-
-	const toggleAll = () => {
-		if (allChecked) {
-			setSelectedIds(new Set());
-		} else {
-			setSelectedIds(new Set(items.map(it => it.id)));
-		}
-	};
-
+	const toggleAll = () => setSelectedIds(allChecked ? new Set() : new Set(items.map(it => it.id)));
 	const toggleItem = (id) => {
 		setSelectedIds(prev => {
 			const next = new Set(prev);
-			if (next.has(id)) next.delete(id);
-			else next.add(id);
+			if (next.has(id)) next.delete(id); else next.add(id);
 			return next;
-		})
-	}
+		});
+	};
 
-	// 計算被選取之商品小計（只包含已勾選的品項）
+	// ===== 金額 =====
 	const productPrice = useMemo(() => {
-		if (!items || items.length === 0) return 0;
 		let sum = 0;
 		items.forEach(it => {
-			if (selectedIds.has(it.id)) {
-				const price = Number(it.price) || 0;
-				const qty = Number(it.qty) || 0;
-				sum += price * qty;
-			}
+			if (selectedIds.has(it.id)) sum += (Number(it.price) || 0) * (Number(it.qty) || 0);
 		});
 		return sum;
 	}, [items, selectedIds]);
@@ -140,52 +115,51 @@ function Shopping_cart() {
 	const shippingPrice = Number(selectedShippingPrice) || 0;
 	const totalPrice = productPrice + shippingPrice;
 
-	// Checkout handler
+	// ===== 結帳 =====
 	const canCheckout = selectedIds.size > 0 && selectedShippingId && selectedPaymentId;
 
-	const handleCheckout = async () => {
-		// 檢查缺項
-		const missing = [];
-		if (selectedIds.size === 0) missing.push('要購買的商品');
-		if (!selectedShippingId) missing.push('運送方式');
-		if (!selectedPaymentId) missing.push('付款方式');
+	// 小工具：延遲（delay 延遲）
+	const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
+	const handleCheckout = async () => {
+		// 缺項提示（不使用 alert）
+		const missing = [];
+		if (selectedIds.size === 0) missing.push("要購買的商品");
+		if (!selectedShippingId) missing.push("運送方式");
+		if (!selectedPaymentId) missing.push("付款方式");
 		if (missing.length > 0) {
-			// 使用原生 alert 顯示，項目以中文頓號分隔
-			const message = '請選擇' + missing.join('、');
-			alert(message);
+			setErrorMsg("請選擇 " + missing.join("、"));
 			return;
 		}
 
-		// 若通過檢查，繼續結帳流程
-		setIsCheckingOut(true);
-		// 模擬 loading 1.5 秒
-		await new Promise(r => setTimeout(r, 1500));
-		// 結帳完成：移除已勾選的商品
-		selectedIds.forEach(id => {
-			removeItem(id);
-		});
-		// 重新載入購物車
+		setErrorMsg("");
+		setIsLoading(true); // 顯示載入 overlay（覆蓋層）
+
+		// 模擬請求 1.5 秒（可自行調整）
+		await delay(1500);
+
+		// 實際處理：移除已勾選
+		selectedIds.forEach(id => removeItem(id));
 		loadCart();
-		// 重設勾選、運送、付款
+
+		// 重設選項
 		setSelectedIds(new Set());
 		setSelectedShippingId(null);
 		setSelectedShippingPrice(0);
 		setSelectedPaymentId(null);
-		setIsCheckingOut(false);
-		// 顯示通知
-		alert('已完成結帳');
+
+		setIsLoading(false);
+
+		// 開啟成功彈窗
+		lastFocusedRef.current = document.activeElement;
+		setIsSuccessOpen(true);
 	};
 
-	// 清空（clear 清空）
-	const handleClear = () => {
-		if (confirm("確定要清空購物車嗎？（This will remove all items 全部刪除）")) {
-			clearCart();
-			loadCart();
-		}
-	};
+	// ===== 清空 =====
+	const handleClear = () => { setIsClearOpen(true); };
+	const confirmClear = () => { clearCart(); loadCart(); setIsClearOpen(false); };
 
-	// 小計（subtotal 小計）與品項數
+	// ===== 小計 / 數量 =====
 	const subtotal = useMemo(
 		() => items.reduce((sum, it) => sum + Number(it.price || 0) * Number(it.qty || 0), 0),
 		[items]
@@ -199,48 +173,35 @@ function Shopping_cart() {
 		<>
 			<Helmet>
 				<title>遊玩人間市集 ｜ 購物車</title>
-				<meta name="description" content="歡迎來到遊玩人間市集，探索各式二手遊戲商品。" />
 			</Helmet>
 
-			<div className={`J_cartPage ${isCheckingOut ? 'is-loading' : ''}`}>
+			<div className="J_cartPage" aria-busy={isLoading ? "true" : "false"}>
 				<h1 className="J_cartTitle">購物車</h1>
 
-				<div className="J_cartContainer">
-					{/* 左側：商品清單 + 選項 */}
+				<div className="J_cartContainer" aria-disabled={isLoading ? "true" : "false"}>
 					<div className="J_cartLeft">
 						<section className="J_cartSection">
-							{/* 店家列（header 表頭） */}
 							<div className="J_cartSectionA">
 								<div className="J_cartSectionA__left">
-									<label className="J_storeCheck" aria-label="全選（Select all 全選）">
-										<input className="J_allCheck" type="checkbox" checked={allChecked} onChange={toggleAll} />
+									<label className="J_storeCheck">
+										<input type="checkbox" checked={allChecked} onChange={toggleAll} disabled={isLoading} />
 									</label>
-									{/* <img src={home} alt="商店（Store 商店）" /> */}
 									<h2 className="J_sectionTitle">商品</h2>
 								</div>
-
 								<div className="J_cartSectionA__right">
-									<button
-										type="button"
-										className="J_clearBtn"
-										onClick={handleClear}
-										aria-label="清空購物車（Clear cart 清空）"
-									>
+									<button type="button" className="J_clearBtn" onClick={handleClear} disabled={isLoading}>
 										清空
 									</button>
 								</div>
 							</div>
 
-							{/* 購物車內容 */}
 							{items.length === 0 ? (
 								<div className="J_cartEmpty">
 									<p>你的購物車目前是空的。</p>
-									<a className="J_btnBack" href="/alltype/Switch/all">
-										繼續逛逛
-									</a>
+									<a className="J_btnBack" href="/alltype/Switch/all">繼續逛逛</a>
 								</div>
-								) : (
-								items.map((item) => (
+							) : (
+								items.map(item => (
 									<CartItem
 										key={item.id}
 										id={item.id}
@@ -248,64 +209,92 @@ function Shopping_cart() {
 										title={item.title}
 										price={item.price}
 										qty={item.qty}
-										storeName={item.storeName || item.sellerName || item.seller__name}
-										onQtyChange={(q) => handleQtyChange(item.id, q)}
-										onInc={() => handleInc(item.id)}
-										onDec={() => handleDec(item.id)}
-										onRemove={() => handleRemove(item.id)}
+										storeName={item.sellerName}
+										onQtyChange={(q) => !isLoading && handleQtyChange(item.id, q)}
+										onInc={() => !isLoading && handleInc(item.id)}
+										onDec={() => !isLoading && handleDec(item.id)}
+										onRemove={() => !isLoading && handleRemove(item.id)}
 										selected={selectedIds.has(item.id)}
-										onToggle={() => toggleItem(item.id)}
+										onToggle={() => !isLoading && toggleItem(item.id)}
 									/>
 								))
 							)}
 						</section>
 
-						{/* 運送方式（Shipping 運送） */}
 						<section className="J_cartSection2">
 							<h2 className="J_sectionTitle">
 								<img src={cart} alt="購物車（Cart 購物車）" />
 								運送方式
 							</h2>
-									<ShippingOptions onSelect={({ id, price }) => { setSelectedShippingId(id); setSelectedShippingPrice(price); }} selected={selectedShippingId} />
+							<ShippingOptions
+								onSelect={({ id, price }) => { if (!isLoading) { setSelectedShippingId(id); setSelectedShippingPrice(price); } }}
+								selected={selectedShippingId}
+							/>
 						</section>
 
-						{/* 付款方式（Payment 付款） */}
 						<section className="J_cartSection2">
 							<h2 className="J_sectionTitle">
 								<img src={money} alt="金錢（Money 金錢）" />
 								付款方式
 							</h2>
-							<PaymentOptions onSelect={(id) => setSelectedPaymentId(id)} selected={selectedPaymentId} />
+							<PaymentOptions onSelect={(id) => !isLoading && setSelectedPaymentId(id)} selected={selectedPaymentId} />
 						</section>
 
-						{/* 備註（Notes 備註） */}
 						<section className="J_cartSection2">
 							<Notes />
 						</section>
 					</div>
 
-					{/* 右側：結帳摘要（Summary 摘要） */}
 					<div className="J_cartRight">
+						{errorMsg && <div className="J_error" role="alert">{errorMsg}</div>}
+
 						<CartSummary
 							subtotal={subtotal}
 							itemCount={itemCount}
 							productPrice={productPrice}
 							shippingPrice={shippingPrice}
 							totalPrice={totalPrice}
-							disabled={!canCheckout}
-							isLoading={isCheckingOut}
+							disabled={!canCheckout || isLoading}
+							isLoading={isLoading}
 							onCheckout={handleCheckout}
-						// onCheckout={() => alert("尚未串接結帳流程（Checkout flow 待串接）")}
 						/>
 					</div>
 				</div>
 			</div>
 
-			{isCheckingOut && (
-				<div className="J_modal-overlay is-open" aria-hidden={!isCheckingOut} role="dialog">
-					<div className="J_modal-content" onClick={(e) => e.stopPropagation()}>
-						<div className="J_checkoutModal" aria-live="polite" aria-busy="true">
-							<p style={{margin:0, fontSize:18, color:'#333'}}>請稍後</p>
+			{/* ✅ 載入 Overlay（轉圈 + 文字） */}
+			{isLoading && (
+				<div className="J_loader" role="status" aria-live="polite" aria-label="正在處理訂單，請稍候">
+					<div className="J_loader__panel">
+						<div className="J_loader__spinner" aria-hidden="true" />
+						<p className="J_loader__text">正在處理訂單，請稍候…</p>
+					</div>
+				</div>
+			)}
+
+			{/* 成功彈窗 */}
+			{isSuccessOpen && (
+				<div className="J_modal" role="dialog" aria-modal="true">
+					<div className="J_modal__panel">
+						<h3 className="J_modal__title">結帳成功</h3>
+						<p className="J_modal__text">已完成結帳！感謝你的購買～</p>
+						<div className="J_modal__actions">
+							<a className="J_modal__link" href="/alltype/Switch/all">繼續逛逛</a>
+							<button className="J_modal__btn" onClick={() => setIsSuccessOpen(false)}>關閉</button>
+						</div>
+					</div>
+				</div>
+			)}
+
+			{/* 清空確認彈窗 */}
+			{isClearOpen && (
+				<div className="J_modal" role="dialog" aria-modal="true">
+					<div className="J_modal__panel">
+						<h3 className="J_modal__title">確認清空購物車？</h3>
+						<p className="J_modal__text">此操作會移除所有商品。</p>
+						<div className="J_modal__actions">
+							<button className="J_modal__btn" onClick={() => setIsClearOpen(false)}>取消</button>
+							<button className="J_modal__link" onClick={confirmClear}>清空</button>
 						</div>
 					</div>
 				</div>

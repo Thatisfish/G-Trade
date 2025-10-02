@@ -247,9 +247,10 @@
 				gap: 12px;
 				align-items: center;
 
-					/* 讓產品區塊撐滿剩餘空間，將數量與刪除按鈕推到右側並保持對齊 */
-					flex: 1 1 0;
-					min-width: 0; /* 允許內部文字收縮，避免換行 */
+				/* 讓產品區塊撐滿剩餘空間，將數量與刪除按鈕推到右側並保持對齊 */
+				flex: 1 1 0;
+				min-width: 0;
+				/* 允許內部文字收縮，避免換行 */
 
 				.pif {
 					display: flex;
@@ -267,13 +268,13 @@
 		}
 
 		@media (max-width: 640px) {
-			.ct{
+			.ct {
 				gap: 12px;
 
 				.J_product {
 					// flex-direction: column;
 					gap: 8px;
-					
+
 					img {
 						margin: 0 auto;
 					}
@@ -296,18 +297,18 @@
 		}
 
 		.J_itemQty {
-					font-size: 14px;
-					max-width: 48px;
-					width: 28px;
-					text-align: right;
+			font-size: 14px;
+			max-width: 48px;
+			width: 28px;
+			text-align: right;
 		}
 
 		.J_deleteBtn {
 			background: none;
 			border: none;
 			cursor: pointer;
-					flex: 0 0 auto;
-					margin-left: 12px;
+			flex: 0 0 auto;
+			margin-left: 12px;
 
 			img {
 				width: 15px;
@@ -461,7 +462,8 @@
 			padding: 8px 8px;
 			cursor: pointer;
 			display: block;
-			margin: 12px auto 0; /* 置中 */
+			margin: 12px auto 0;
+			/* 置中 */
 
 			.J_checkoutContent {
 				display: flex;
@@ -505,189 +507,220 @@
 		}
 
 		@media (max-width:640px) {
-					width: 75%;
-			padding: 8px 10px 16px;	
+			width: 75%;
+			padding: 8px 10px 16px;
 		}
 	}
 
-/* Loading overlay (used during checkout) */
-.J_cartPage.is-loading {
-	position: relative;
-}
-
-.J_cartPage.is-loading::before {
-	content: '';
-	position: fixed;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0,0,0,0.25);
-	z-index: 2000;
-}
-
-/* loader: three dots moving along circular path */
-.J_checkoutLoader {
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
-	display: grid;
-	place-items: center;
-	z-index: 2001;
-}
-
-.J_checkoutLoader .dot {
-	position: absolute;
-	width: 12px;
-	height: 12px;
-	background: #bdbdbd;
-	border-radius: 50%;
-}
-
-.J_checkoutLoader .dot:nth-child(1) { animation: orbit 1.5s linear infinite; animation-delay: 0s; }
-.J_checkoutLoader .dot:nth-child(2) { animation: orbit 1.5s linear infinite; animation-delay: 0.15s; }
-.J_checkoutLoader .dot:nth-child(3) { animation: orbit 1.5s linear infinite; animation-delay: 0.3s; }
-
-@keyframes orbit {
-	0% { transform: rotate(0deg) translateX(28px) rotate(0deg); }
-	25% { transform: rotate(90deg) translateX(28px) rotate(-90deg); }
-	50% { transform: rotate(180deg) translateX(28px) rotate(-180deg); }
-	75% { transform: rotate(270deg) translateX(28px) rotate(-270deg); }
-	100% { transform: rotate(360deg) translateX(28px) rotate(-360deg); }
-}
-
-/* Checkout modal (reuse modal overlay/content pattern similar to OrderCard) */
-.J_modal-overlay.is-open {
-	position: fixed !important;
-	top: 0 !important;
-	left: 0 !important;
-	right: 0 !important;
-	bottom: 0 !important;
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	z-index: 2147483646 !important; /* very high to ensure topmost */
-}
-
-.J_modal-overlay.is-open::before {
-	content: '' !important;
-	position: absolute !important;
-	inset: 0 !important;
-	background: rgba(0,0,0,0.45) !important;
-	z-index: 2147483646 !important; /* below modal-content */
-}
-
-.J_modal-content {
-	position: fixed !important;
-	inset: 0 !important;
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	z-index: 2147483647 !important; /* ensure content sits above overlay pseudo */
-	pointer-events: none !important; /* avoid blocking underlying UI; modal itself can enable pointer-events */
-}
-
-.J_checkoutModal {
-	background: rgba(255,255,255,0.98) !important; /* nearly opaque to ensure visibility */
-	padding: 24px !important;
-	border-radius: 12px !important;
-	min-width: 160px !important;
-	min-height: 120px !important;
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	text-align: center !important;
-	box-shadow: 0 8px 24px rgba(0,0,0,0.2) !important;
-	pointer-events: auto !important;
-
-	p {
-		margin: 0 !important;
-		text-align: center !important;
+	/* Loading overlay (used during checkout) */
+	.J_cartPage.is-loading {
+		position: relative;
 	}
-}
 
-/* floatingBarsG animation converted from provided CSS */
-.floatingBarsG{
-  position:relative;
-  width:60px;
-  height:75px;
-  margin:auto;
-}
+	.J_cartPage.is-loading::before {
+		content: '';
+		position: fixed;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.25);
+		z-index: 2000;
+	}
 
-.blockG{
-	position:absolute !important;
-	background-color:#de1a10 !important; /* site red for visibility on white modal */
-	width:14px !important;
-	height:30px !important;
-	border-radius:8px 8px 0 0 !important;
-	transform:scale(0.7) !important;
-	transform-origin: center bottom !important;
-	animation-name:fadeG !important;
-	animation-duration:1.04s !important;
-	animation-iteration-count:infinite !important;
-	animation-direction:normal !important;
-	opacity: 1 !important;
-}
+	/* loader: three dots moving along circular path */
+	.J_checkoutLoader {
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		display: grid;
+		place-items: center;
+		z-index: 2001;
+	}
 
-.rotateG_01{ left:0; top:27px; animation-delay:0.39s; transform:rotate(-90deg); }
-.rotateG_02{ left:8px; top:10px; animation-delay:0.52s; transform:rotate(-45deg); }
-.rotateG_03{ left:25px; top:3px; animation-delay:0.65s; transform:rotate(0deg); }
-.rotateG_04{ right:8px; top:10px; animation-delay:0.78s; transform:rotate(45deg); }
-.rotateG_05{ right:0; top:27px; animation-delay:0.9099999999999999s; transform:rotate(90deg); }
-.rotateG_06{ right:8px; bottom:7px; animation-delay:1.04s; transform:rotate(135deg); }
-.rotateG_07{ bottom:0; left:25px; animation-delay:1.1700000000000002s; transform:rotate(180deg); }
-.rotateG_08{ left:8px; bottom:7px; animation-delay:1.3s; transform:rotate(-135deg); }
+	.J_checkoutLoader .dot {
+		position: absolute;
+		width: 12px;
+		height: 12px;
+		background: #bdbdbd;
+		border-radius: 50%;
+	}
+
+	.J_checkoutLoader .dot:nth-child(1) {
+		animation: orbit 1.5s linear infinite;
+		animation-delay: 0s;
+	}
+
+	.J_checkoutLoader .dot:nth-child(2) {
+		animation: orbit 1.5s linear infinite;
+		animation-delay: 0.15s;
+	}
+
+	.J_checkoutLoader .dot:nth-child(3) {
+		animation: orbit 1.5s linear infinite;
+		animation-delay: 0.3s;
+	}
+
+	@keyframes orbit {
+		0% {
+			transform: rotate(0deg) translateX(28px) rotate(0deg);
+		}
+
+		25% {
+			transform: rotate(90deg) translateX(28px) rotate(-90deg);
+		}
+
+		50% {
+			transform: rotate(180deg) translateX(28px) rotate(-180deg);
+		}
+
+		75% {
+			transform: rotate(270deg) translateX(28px) rotate(-270deg);
+		}
+
+		100% {
+			transform: rotate(360deg) translateX(28px) rotate(-360deg);
+		}
+	}
+
+	/* floatingBarsG animation converted from provided CSS */
+	.floatingBarsG {
+		position: relative;
+		width: 60px;
+		height: 75px;
+		margin: auto;
+	}
+
+	.blockG {
+		position: absolute !important;
+		background-color: #de1a10 !important;
+		/* site red for visibility on white modal */
+		width: 14px !important;
+		height: 30px !important;
+		border-radius: 8px 8px 0 0 !important;
+		transform: scale(0.7) !important;
+		transform-origin: center bottom !important;
+		animation-name: fadeG !important;
+		animation-duration: 1.04s !important;
+		animation-iteration-count: infinite !important;
+		animation-direction: normal !important;
+		opacity: 1 !important;
+	}
+
+	.rotateG_01 {
+		left: 0;
+		top: 27px;
+		animation-delay: 0.39s;
+		transform: rotate(-90deg);
+	}
+
+	.rotateG_02 {
+		left: 8px;
+		top: 10px;
+		animation-delay: 0.52s;
+		transform: rotate(-45deg);
+	}
+
+	.rotateG_03 {
+		left: 25px;
+		top: 3px;
+		animation-delay: 0.65s;
+		transform: rotate(0deg);
+	}
+
+	.rotateG_04 {
+		right: 8px;
+		top: 10px;
+		animation-delay: 0.78s;
+		transform: rotate(45deg);
+	}
+
+	.rotateG_05 {
+		right: 0;
+		top: 27px;
+		animation-delay: 0.9099999999999999s;
+		transform: rotate(90deg);
+	}
+
+	.rotateG_06 {
+		right: 8px;
+		bottom: 7px;
+		animation-delay: 1.04s;
+		transform: rotate(135deg);
+	}
+
+	.rotateG_07 {
+		bottom: 0;
+		left: 25px;
+		animation-delay: 1.1700000000000002s;
+		transform: rotate(180deg);
+	}
+
+	.rotateG_08 {
+		left: 8px;
+		bottom: 7px;
+		animation-delay: 1.3s;
+		transform: rotate(-135deg);
+	}
 
 
-@keyframes fadeG{
-	0% { opacity: 0.25; }
-	50% { opacity: 1; }
-	100% { opacity: 0.25; }
-}
+	@keyframes fadeG {
+		0% {
+			opacity: 0.25;
+		}
 
-/* validation modal */
-.J_validationOverlay {
-	position: fixed;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0,0,0,0.35);
-	display: grid;
-	place-items: center;
-	z-index: 3000;
-}
+		50% {
+			opacity: 1;
+		}
 
-.J_validationBox {
-	background: #fff;
-	padding: 20px 24px;
-	border-radius: 12px;
-	width: 320px;
-	max-width: calc(100% - 40px);
-	box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-}
+		100% {
+			opacity: 0.25;
+		}
+	}
 
-.J_validationBox h3 {
-	margin: 0 0 8px 0;
-	color: #333;
-}
+	/* validation modal */
+	.J_validationOverlay {
+		position: fixed;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.35);
+		display: grid;
+		place-items: center;
+		z-index: 3000;
+	}
 
-.J_validationBox ul {
-	margin: 8px 0 16px 16px;
-}
+	.J_validationBox {
+		background: #fff;
+		padding: 20px 24px;
+		border-radius: 12px;
+		width: 320px;
+		max-width: calc(100% - 40px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+	}
 
-.J_validationClose {
-	background: #de1a10;
-	color: #fff;
-	padding: 8px 12px;
-	border-radius: 8px;
-	border: none;
-	cursor: pointer;
-}
+	.J_validationBox h3 {
+		margin: 0 0 8px 0;
+		color: #333;
+	}
+
+	.J_validationBox ul {
+		margin: 8px 0 16px 16px;
+	}
+
+	.J_validationClose {
+		background: #de1a10;
+		color: #fff;
+		padding: 8px 12px;
+		border-radius: 8px;
+		border: none;
+		cursor: pointer;
+	}
 }
 
 .J_cartPage {
@@ -766,6 +799,258 @@
 		&:hover {
 			background: #fff;
 			box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+		}
+	}
+}
+
+/* === Checkout Success Modal（結帳成功彈窗） === */
+.J_modal {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: grid;
+	place-items: center;
+	background: rgba(0, 0, 0, 0.4);
+
+	&__panel {
+		width: min(520px, 92vw);
+		border-radius: 16px;
+		background: #fff;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+		padding: clamp(20px, 3.5vw, 28px);
+		display: grid;
+		gap: 14px;
+	}
+
+	&__title {
+		margin: 0 0 4px;
+		font-size: clamp(18px, 2.4vw, 22px);
+		font-weight: 700;
+		color: #222;
+	}
+
+	&__text {
+		margin: 0 0 8px;
+		font-size: clamp(14px, 2vw, 16px);
+		color: #555;
+		line-height: 1.6;
+	}
+
+	&__actions {
+		margin-top: 8px;
+		display: flex;
+		gap: 10px;
+		justify-content: flex-end;
+
+		@media (max-width: 640px) {
+			flex-direction: column-reverse;
+			align-items: stretch;
+		}
+	}
+
+	&__btn,
+	&__link {
+		appearance: none;
+		border: 0;
+		border-radius: 10px;
+		padding: 10px 16px;
+		font-size: 14px;
+		line-height: 1;
+		cursor: pointer;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform .06s ease, box-shadow .2s ease, background-color .2s ease;
+
+		&:active {
+			transform: translateY(1px);
+		}
+	}
+
+	&__btn {
+		background: #efefef;
+		color: #222;
+
+		&:hover {
+			background: #e7e7e7;
+		}
+
+		&:focus-visible {
+			outline: 2px solid #222;
+			outline-offset: 2px;
+		}
+	}
+
+	&__link {
+		background: #de1a10;
+		color: #fff;
+
+		&:hover {
+			background: #c7180f;
+		}
+
+		&:focus-visible {
+			outline: 2px solid #de1a10;
+			outline-offset: 2px;
+		}
+	}
+}
+
+.J_error {
+	margin-bottom: 12px;
+	padding: 10px 14px;
+	background: #ffecec;
+	color: #d60000;
+	border-radius: 8px;
+	font-size: 14px;
+	width: 250px;
+}
+
+/* === 假 Loading（載入）Overlay === */
+.J_loader {
+	position: fixed;
+	inset: 0;
+	z-index: 1200;
+	display: grid;
+	place-items: center;
+	background: rgba(0, 0, 0, 0.35);
+	backdrop-filter: blur(1.5px);
+
+	&__panel {
+		display: grid;
+		justify-items: center;
+		gap: 12px;
+		padding: clamp(18px, 3.2vw, 24px);
+		width: min(420px, 88vw);
+		border-radius: 16px;
+		background: #fff;
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+	}
+
+	&__spinner {
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		border: 3px solid #e6e6e6;
+		border-top-color: #de1a10;
+		/* 主色（primary 主色） */
+		animation: J_spin 0.9s linear infinite;
+	}
+
+	&__text {
+		margin: 4px 0 0;
+		font-size: 15px;
+		color: #333;
+	}
+}
+
+@keyframes J_spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* === 缺項錯誤提示（沿用） === */
+.J_error {
+	margin-bottom: 12px;
+	padding: 10px 14px;
+	background: #ffecec;
+	color: #d60000;
+	border-radius: 8px;
+	font-size: 14px;
+}
+
+/* === 成功 / 確認共用彈窗（沿用） === */
+.J_modal {
+	position: fixed;
+	inset: 0;
+	z-index: 1100;
+	display: grid;
+	place-items: center;
+	background: rgba(0, 0, 0, 0.4);
+
+	&__panel {
+		width: min(520px, 92vw);
+		border-radius: 16px;
+		background: #fff;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+		padding: clamp(20px, 3.5vw, 28px);
+		display: grid;
+		gap: 14px;
+	}
+
+	&__title {
+		margin: 0 0 4px;
+		font-size: clamp(18px, 2.4vw, 22px);
+		font-weight: 700;
+		color: #222;
+	}
+
+	&__text {
+		margin: 0 0 8px;
+		font-size: clamp(14px, 2vw, 16px);
+		color: #555;
+		line-height: 1.6;
+	}
+
+	&__actions {
+		margin-top: 8px;
+		display: flex;
+		gap: 10px;
+		justify-content: flex-end;
+
+		@media (max-width: 640px) {
+			flex-direction: column-reverse;
+			align-items: stretch;
+		}
+	}
+
+	&__btn,
+	&__link {
+		appearance: none;
+		border: 0;
+		border-radius: 10px;
+		padding: 10px 16px;
+		font-size: 14px;
+		line-height: 1;
+		cursor: pointer;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform .06s ease, box-shadow .2s ease, background-color .2s ease;
+
+		&:active {
+			transform: translateY(1px);
+		}
+	}
+
+	&__btn {
+		background: #efefef;
+		color: #222;
+
+		&:hover {
+			background: #e7e7e7;
+		}
+
+		&:focus-visible {
+			outline: 2px solid #222;
+			outline-offset: 2px;
+		}
+	}
+
+	&__link {
+		background: #de1a10;
+		color: #fff;
+
+		&:hover {
+			background: #c7180f;
+		}
+
+		&:focus-visible {
+			outline: 2px solid #de1a10;
+			outline-offset: 2px;
 		}
 	}
 }
