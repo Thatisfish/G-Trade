@@ -62,9 +62,9 @@
 	border: none;
 	cursor: pointer;
 	font-weight: 600;
-	background-color: #fff;
+	background-color: #DE1A10;
 	border: solid 2px #A12424;
-	color: #DE1A10;
+	color: #FCFAFF;
 	border-radius: 999px;
 	width: 85px;
 
@@ -73,9 +73,10 @@
 	}
 
 	&:active {
-		background-color: #DE1A10;
+
+		background-color: #fff;
 		border: solid 2px #A12424;
-		color: #FCFAFF;
+		color: #DE1A10;
 	}
 }
 

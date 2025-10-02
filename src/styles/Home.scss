@@ -533,7 +533,7 @@ body,
 		font-weight: 400;
 		letter-spacing: 1px;
 		background-color: #fff;
-		border: solid 2px #A12424;
+		border: solid 2px #000;
 		color: #DE1A10;
 		border-radius: 999px;
 		width: 220px;
@@ -543,9 +543,7 @@ body,
 		}
 
 		&:active {
-			background-color: #DE1A10;
-			border: solid 2px #A12424;
-			color: #FCFAFF;
+			box-shadow: inset 2px 4px 5px rgba(0, 0, 0, .25);
 		}
 	}
 
