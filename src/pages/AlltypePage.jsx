@@ -13,7 +13,7 @@ import { PRODUCTS } from "../data/products.js";
 import AllTypeCards from "../components/AllTypeCards.jsx";
 import Paginations from "../components/Pagination.jsx";
 
-// === 橫幅設定 ===
+// === 橫幅（banner 橫幅） ===
 import SwBanner1 from "../images/banner_pokemon.avif";
 import SwBanner2 from "../images/Alltype_SW/Alltype_banner02.avif";
 import SwBanner3 from "../images/Alltype_SW/Alltype_banner03.avif";
@@ -35,7 +35,7 @@ const PLATFORM_LABEL = {
 	Xbox: "Xbox",
 };
 
-// 分類：UI 顯示 ↔ URL slug
+// 分類（tabs 分頁籤）：UI 顯示 ↔ URL slug
 const TABS = ["全部", "主機", "遊戲", "配件"];
 const CAT_TO_SLUG = { 全部: "all", 主機: "console", 遊戲: "game", 配件: "accessory" };
 const SLUG_TO_CAT = { all: "全部", console: "主機", game: "遊戲", accessory: "配件" };
@@ -43,24 +43,29 @@ const SLUG_TO_CAT = { all: "全部", console: "主機", game: "遊戲", accessor
 const VALID_PLATFORMS = ["Switch", "PS", "Xbox"];
 const VALID_CATEGORY_SLUGS = ["all", "console", "game", "accessory"];
 
-// 取卡片需要的欄位
+// 取卡片需要的欄位（normalize 正規化）
 const pickId = (p) => p?.id ?? p?.slug ?? p?.productId ?? p?.pid ?? null;
 const toCardItem = (p) => {
 	const id = pickId(p);
 	return {
 		id,
 		image: Array.isArray(p.mainImage) ? p.mainImage[0] : p.mainImage,
-		category: p.category,
+		category: p.category, // 主機 / 遊戲 / 配件
 		title: p.productTitle,
 		seller: p.sellerName || "",
 		priceNow: (p.salePrice ?? p.originalPrice)?.toString?.() ?? "",
 		priceOld: p.salePrice != null ? (p.originalPrice?.toString?.() ?? "") : undefined,
 		size: "medium",
+
+		// ▼ 供排序使用（priceNum：數字價格、meta：日期、sellerScore：賣家評分）
+		meta: p.productMeta, // YYYY-MM-DD
+		priceNum: Number(p.salePrice ?? p.originalPrice) || 0,
+		sellerScore: Number(p.sellerScore ?? 0)
 	};
 };
 
 export default function AlltypePage() {
-	// 路由參數
+	// ── 路由參數 ─────────────────────────────────────────────
 	const { platform, category } = useParams();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -79,7 +84,7 @@ export default function AlltypePage() {
 	const currentCategorySlug = VALID_CATEGORY_SLUGS.includes(category || "") ? category : "all";
 	const currentCategoryName = SLUG_TO_CAT[currentCategorySlug] || "全部";
 
-	// 該平台清單
+	// ── 平台資料（先過濾，再轉卡片物件） ─────────────────────
 	const list = useMemo(() => {
 		const arr = PRODUCTS.filter((p) => p.platform === PLATFORM).map(toCardItem);
 		const bad = arr.filter((x) => !x.id);
@@ -87,7 +92,7 @@ export default function AlltypePage() {
 		return arr.filter((x) => !!x.id);
 	}, [PLATFORM]);
 
-	// 統計分類數
+	// 分類數量統計（counts 統計）
 	const counts = useMemo(() => {
 		return list.reduce(
 			(acc, p) => {
@@ -104,34 +109,72 @@ export default function AlltypePage() {
 		return currentCategoryName === "全部" ? list : list.filter((p) => p.category === currentCategoryName);
 	}, [list, currentCategoryName]);
 
-	// 分頁
+	// ── 排序（select 下拉） ──────────────────────────────────
+	// sortKey：default / price-asc / price-desc / date-new / date-old / score-desc / score-asc
+	const [sortKey, setSortKey] = useState("default");
+
+	const sortedFiltered = useMemo(() => {
+		const out = [...filtered];
+		switch (sortKey) {
+			case "price-asc":
+				out.sort((a, b) => a.priceNum - b.priceNum);
+				break;
+			case "price-desc":
+				out.sort((a, b) => b.priceNum - a.priceNum);
+				break;
+			case "date-new":
+				out.sort((a, b) => new Date(b.meta) - new Date(a.meta));
+				break;
+			case "date-old":
+				out.sort((a, b) => new Date(a.meta) - new Date(b.meta));
+				break;
+			case "score-desc":
+				out.sort((a, b) => b.sellerScore - a.sellerScore);
+				break;
+			case "score-asc":
+				out.sort((a, b) => a.sellerScore - b.sellerScore);
+				break;
+			default:
+				// 預設不變
+				break;
+		}
+		return out;
+	}, [filtered, sortKey]);
+
+	// ── 分頁（pagination 分頁） ─────────────────────────────
 	const [currentPage, setCurrentPage] = useState(1);
+
+	// 切換分類或平台 → 回到第 1 頁
 	useEffect(() => {
 		setCurrentPage(1);
-		// 移除舊版自動捲動，改由精準滾動控制
 	}, [currentCategorySlug, PLATFORM]);
 
+	// 切換排序 → 回到第 1 頁
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [sortKey]);
+
 	const ITEMS_PER_PAGE = 12;
-	const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+	const totalPages = Math.ceil(sortedFiltered.length / ITEMS_PER_PAGE);
 	const currentItems = useMemo(() => {
 		const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 		const endIndex = startIndex + ITEMS_PER_PAGE;
-		return filtered.slice(startIndex, endIndex);
-	}, [filtered, currentPage]);
+		return sortedFiltered.slice(startIndex, endIndex);
+	}, [sortedFiltered, currentPage]);
 
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
-		// 分頁時如需捲動可自行開啟（或保持不動）
+		// 需要分頁時自動滾動可開啟：
 		// document.getElementById("B_item")?.scrollIntoView({ behavior: "smooth", block: "start" });
 	};
 
-	// 切換分類
+	// ── 分類切換 ────────────────────────────────────────────
 	const goCategory = (tabName) => {
 		const slug = CAT_TO_SLUG[tabName] || "all";
 		navigate(`/alltype/${PLATFORM}/${slug}`, { state: { noScroll: true } });
 	};
 
-	// 平台切換
+	// 平台切換用的連結
 	const platformLink = (p) => ({
 		pathname: `/alltype/${p}/${currentCategorySlug}`,
 		state: { noScroll: true }
@@ -140,7 +183,7 @@ export default function AlltypePage() {
 	const banners = BANNERS[PLATFORM] || [];
 	const otherPlatforms = VALID_PLATFORMS.filter((p) => p !== PLATFORM);
 
-	// ===== 精準滾動（支援 #hash，含 offset 與重試）=====
+	// ── 精準滾動（支援 #hash，含 offset 與重試） ───────────────
 	const SCROLL_OFFSET = (() => {
 		const navH = document.querySelector(".navbar, .site-header")?.offsetHeight || 0;
 		return Math.max(80, navH + 12);
@@ -182,7 +225,7 @@ export default function AlltypePage() {
 			</Helmet>
 
 			<div className="B_content">
-				{/* 橫幅 */}
+				{/* 橫幅（banner） */}
 				<div className="B_banner">
 					<Swiper
 						spaceBetween={30}
@@ -233,6 +276,34 @@ export default function AlltypePage() {
 							</button>
 						);
 					})}
+				</div>
+
+				{/* 排序工具列（toolbar） */}
+				<div className="B_sortButtons" aria-label="排序控制（sorting）">
+					<button
+						className={sortKey === "price-asc" ? "is-active" : ""}
+						onClick={() => setSortKey("price-asc")}
+					>
+						價格 ↑
+					</button>
+					<button
+						className={sortKey === "price-desc" ? "is-active" : ""}
+						onClick={() => setSortKey("price-desc")}
+					>
+						價格 ↓
+					</button>
+					<button
+						className={sortKey === "date-new" ? "is-active" : ""}
+						onClick={() => setSortKey("date-new")}
+					>
+						日期 新→舊
+					</button>
+					<button
+						className={sortKey === "date-old" ? "is-active" : ""}
+						onClick={() => setSortKey("date-old")}
+					>
+						日期 舊→新
+					</button>
 				</div>
 
 				{/* 卡片清單（加上 id，供 #B_item 精準滾動） */}
