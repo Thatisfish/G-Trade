@@ -14,11 +14,11 @@ export function addNoticeFollow(sellerName) {
 
 	const newNotice = {
 		id: `seller-${product.id}-${Date.now()}`,
-		text: `您追蹤的賣場「${sellerName}」有新商品上架！`,
+		text: `您追蹤了「${sellerName}」！`,
 		date: new Date().toISOString().split("T")[0],
 		unread: true,
 		disabled: false,
-		linkTo: `/product/${encodeURIComponent(product.id)}`
+		linkTo: `/Reviewpage`
 	};
 	// 加新通知
 	const update = [newNotice, ...full].slice(0, 30);

@@ -144,16 +144,26 @@
 
                 .btn {
 
-                    padding: 10px 18px;
+                    padding: 10px 16px;
                     border-radius: 20px;
                     border: none;
                     cursor: pointer;
                     font-weight: 600;
-                    color: #fff;
-                    border: 3px solid #4C4C4C;
+                    background-color: #DE1A10;
+                    border: solid 2px #A12424;
+                    color: #FCFAFF;
                     border-radius: 999px;
-                    background: linear-gradient(#B7B7B7, #858585, #595959, #4C4C4C);
                     width: 85px;
+
+                    &:hover {
+                        box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+                    }
+
+                    &:active {
+                        background-color: #fff;
+                        border: solid 2px #A12424;
+                        color: #DE1A10;
+                    }
                 }
             }
 
@@ -229,9 +239,9 @@
                 &>.B_info-card {
                     width: 100%;
                     max-width: none;
-                    min-width: none ;
-                    height: auto ;
-                    margin: 0 ;
+                    min-width: none;
+                    height: auto;
+                    margin: 0;
                 }
 
             }
@@ -472,5 +482,3 @@
         }
     }
 }
-
-

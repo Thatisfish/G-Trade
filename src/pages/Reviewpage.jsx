@@ -18,10 +18,17 @@ import AM from '../images/Card_Image/Animal_Crossing_New_Horizons.webp'
 import GB from '../images/Card_Image/photo-1649341566042-8b3f5103c3f3.avif'
 import NES from '../images/Card_Image/Nintendo-Famicom-Console-Set-FL.avif'
 import { Helmet } from '@dr.pogodin/react-helmet';
+import { useChat } from "../components/FloatChat.jsx";
+import { addNoticeFollow } from "../components/Navbar/BellPopover";
 
 export default function Reviewpage() {
 	const [filterCategory, setFilterCategory] = useState("遊戲");
-
+	const sellerName = "fun31**56";
+	const productId = "reviewpage-profile";
+	const [follow, setFollow] = useState(() => {
+		const stored = sessionStorage.getItem(`follow-${sellerName}`);
+		return stored === 'true';
+	});
 	const y_newproducts = [
 		{
 			id: 1,
@@ -137,7 +144,7 @@ export default function Reviewpage() {
 	]
 	// 依照選擇的分類過濾
 	const filteredProducts = y_newproducts.filter(item => item.category === filterCategory);
-
+	const { openChat } = useChat();
 	return (
 		<>
 			<Helmet>
@@ -175,8 +182,16 @@ export default function Reviewpage() {
 									</div>
 								</div>
 								<div className="y_seller__actions">
-									<button className="btn">追蹤+</button>
-									<button className="btn">聊聊</button>
+									<button className="btn" onClick={(e) => {
+										e.stopPropagation();
+										e.preventDefault();
+										const next = !follow;
+										setFollow(next);
+										sessionStorage.setItem(`follow-${sellerName}`, next);
+									}}
+									>
+										{follow ? '追蹤+' : '追蹤中'}</button>
+									<button className="btn" onClick={() => openChat(sellerName, productId)}>聊聊</button>
 								</div>
 							</div>
 							{/* 按鈕區塊 */}
@@ -234,7 +249,7 @@ export default function Reviewpage() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div >
 		</>
 	);
 
