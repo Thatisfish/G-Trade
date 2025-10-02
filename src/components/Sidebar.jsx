@@ -9,8 +9,8 @@ import { AiFillCustomerService } from "react-icons/ai";
 import { HiSpeakerphone } from "react-icons/hi";
 
 const MENU = [
-	{ path: '/AllNotify', label: "所有通知", icon: <HiSpeakerphone /> },
 	{ path: '/Collect', label: "收藏清單", icon: <FaHeart /> },
+	{ path: '/AllNotify', label: "所有通知", icon: <HiSpeakerphone /> },
 	{ path: '/Orders', label: "我的訂單", icon: <FaCartShopping /> },
 	{ path: '/Coupon', label: "優惠券匣", icon: <FaTicketAlt /> },
 	{ path: '/Real_name', label: "實名認證", icon: <FaCheckCircle /> },
