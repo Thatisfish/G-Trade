@@ -42,7 +42,7 @@ export default function ShippingOptions() {
         </label>
         <label>
           <input type="radio" name="shipping" value="face" />
-          面交
+          面交<span className="J_price">$0</span>
         </label>
       </div>
     </div>
