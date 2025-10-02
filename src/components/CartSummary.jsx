@@ -21,7 +21,11 @@ export default function CartSummary({ subtotal, itemCount, productPrice, shippin
       <p className="J_total">
         應付金額 <span>$<span className="J_totalPrice">{fmt(total)}</span></span>
       </p>
-       <button className="J_checkoutBtn" disabled={disabled || isLoading} onClick={() => { if (!disabled && !isLoading && typeof onCheckout === 'function') onCheckout(); }}>
+       <button
+         className={`J_checkoutBtn ${disabled || isLoading ? 'is-disabled' : ''}`}
+         aria-disabled={disabled || isLoading}
+         onClick={() => { if (typeof onCheckout === 'function') onCheckout(); }}
+       >
         <span className="J_checkoutContent">
         <span className="J_Checkout">{isLoading ? '結帳中...' : '結帳'}</span>
         <svg className="J_triangle" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 8 8" fill="none">
