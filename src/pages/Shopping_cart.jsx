@@ -7,7 +7,8 @@ import ShippingOptions from "../components/ShippingOptions";
 import PaymentOptions from "../components/PaymentOptions";
 import Notes from "../components/Notes";
 import CartSummary from "../components/CartSummary";
-import CheckoutLoader from "../components/CheckoutLoader";
+// CheckoutLoader previously used here. Commented out so we render a simple "請稍後" modal inline.
+// import CheckoutLoader from "../components/CheckoutLoader";
 
 import home from "../images/ShoppingCard_icon/home.svg";
 import cart from "../images/ShoppingCard_icon/cart.svg";
@@ -300,7 +301,15 @@ function Shopping_cart() {
 				</div>
 			</div>
 
-			{isCheckingOut && <CheckoutLoader />}
+			{isCheckingOut && (
+				<div className="J_modal-overlay is-open" aria-hidden={!isCheckingOut} role="dialog">
+					<div className="J_modal-content" onClick={(e) => e.stopPropagation()}>
+						<div className="J_checkoutModal" aria-live="polite" aria-busy="true">
+							<p style={{margin:0, fontSize:18, color:'#333'}}>請稍後</p>
+						</div>
+					</div>
+				</div>
+			)}
 		</>
 	);
 }
