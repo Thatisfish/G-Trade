@@ -7,6 +7,7 @@ import ShippingOptions from "../components/ShippingOptions";
 import PaymentOptions from "../components/PaymentOptions";
 import Notes from "../components/Notes";
 import CartSummary from "../components/CartSummary";
+import CheckoutLoader from "../components/CheckoutLoader";
 
 import home from "../images/ShoppingCard_icon/home.svg";
 import cart from "../images/ShoppingCard_icon/cart.svg";
@@ -142,7 +143,20 @@ function Shopping_cart() {
 	const canCheckout = selectedIds.size > 0 && selectedShippingId && selectedPaymentId;
 
 	const handleCheckout = async () => {
-		if (!canCheckout) return;
+		// 檢查缺項
+		const missing = [];
+		if (selectedIds.size === 0) missing.push('要購買的商品');
+		if (!selectedShippingId) missing.push('運送方式');
+		if (!selectedPaymentId) missing.push('付款方式');
+
+		if (missing.length > 0) {
+			// 使用原生 alert 顯示，項目以中文頓號分隔
+			const message = '請選擇' + missing.join('、');
+			alert(message);
+			return;
+		}
+
+		// 若通過檢查，繼續結帳流程
 		setIsCheckingOut(true);
 		// 模擬 loading 1.5 秒
 		await new Promise(r => setTimeout(r, 1500));
@@ -286,13 +300,7 @@ function Shopping_cart() {
 				</div>
 			</div>
 
-			{isCheckingOut && (
-				<div className="J_checkoutLoader" role="status" aria-live="polite">
-					<div className="dot"></div>
-					<div className="dot"></div>
-					<div className="dot"></div>
-				</div>
-			)}
+			{isCheckingOut && <CheckoutLoader />}
 		</>
 	);
 }
