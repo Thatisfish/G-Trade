@@ -7,9 +7,11 @@ const Login = ({ onClose }) => {
 	const [showForget, setShowForget] = useState(false);
 	const [pwErr, setPwErr] = useState(false);
 	const [phone, setPhone] = useState("");  // 控制電話欄位值
-	const [userName, setUserName] = useState("") // 控制使用者名稱欄位值
+	const [userName, setUserName] = useState("12345678"); // ✅ 預填帳號
+	const [password, setPassword] = useState("12345678"); // ✅ 預填密碼（改為受控）
+
 	const handleSubmit = (e) => {
-		e.preventDefault();      // 阻止表單刷新
+		e.preventDefault();      // 阻止表單刷新（refresh 重新整理）
 
 		if (showForget) {
 			const form = e.target;
@@ -23,14 +25,15 @@ const Login = ({ onClose }) => {
 			setPwErr(false);
 			alert('密碼已更新，請重新登入')
 			setPhone('');
-			setUserName('');
+			setUserName(''); // demo 若想保留帳號可改成 setUserName("12345678")
 			setShowForget(false);
 			return;
 		}
-		// 登入
+
+		// 登入（login 登入）
 		setPwErr(false); // 清除錯誤訊息
-		onClose();               // 關閉彈窗
-		navigate("/Collect");    // 跳轉到 /Collect
+		onClose();               // 關閉彈窗（modal 模態窗）
+		navigate("/Collect");    // 跳轉（navigate 導向）到 /Collect
 	};
 
 	return (
@@ -60,13 +63,13 @@ const Login = ({ onClose }) => {
 										onChange={(e) => setPhone(e.target.value)}
 										required autoFocus />
 									<button type="button" className='c_suffixIn'>獲取驗證碼</button>
-									<input 
-									type="text" 
-									className="c_username" 
-									title="驗證碼" 
-									placeholder="請輸入驗證碼" 
-									maxLength={6}
-									required autoFocus />
+									<input
+										type="text"
+										className="c_username"
+										title="驗證碼"
+										placeholder="請輸入驗證碼"
+										maxLength={6}
+										required />
 									<button type="button" className='c_suffixIn2'>重發驗證碼</button>
 									<input
 										type="password"
@@ -108,7 +111,7 @@ const Login = ({ onClose }) => {
 										placeholder="請輸入使用者名稱"
 										minLength={8}
 										maxLength={16}
-										value={userName}
+										value={userName}                 // ✅ 帶入帳號
 										onChange={(e) => setUserName(e.target.value)}
 										required autoFocus />
 									<input
@@ -118,6 +121,8 @@ const Login = ({ onClose }) => {
 										placeholder="請輸入密碼"
 										minLength={8}
 										maxLength={16}
+										value={password}                 // ✅ 帶入密碼
+										onChange={(e) => setPassword(e.target.value)}
 										required />
 
 									<div className='c_rule'>
@@ -125,7 +130,6 @@ const Login = ({ onClose }) => {
 										並確認你已了解<a href="#">《隱私權政策》</a>
 									</div>
 
-									{/* ✅ 保留 button 並在 handleSubmit 裡跳轉 */}
 									<button className="c_btn-login" type="submit">登入</button>
 
 									<div className='c_try'>
@@ -140,8 +144,6 @@ const Login = ({ onClose }) => {
 							</>
 						)
 					}
-
-
 				</div>
 			</div>
 		</>

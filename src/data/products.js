@@ -421,6 +421,70 @@ export const PRODUCTS = [
 		qa: []
 	},
 	{
+		id: "pokemon-za",
+		category: "遊戲",
+		platform: "Switch",
+		thumb: "./Card_Image/za.avif",
+		mainImage: [
+			"./Card_Image/za.avif",
+			"./Card_Image/za.avif",
+			"./Card_Image/za.avif"
+		],
+		productTitle: "寶可夢傳說 Z-A（繁體中文）",
+		productMeta: "2025-09-10",
+		originalPrice: 1890,
+		salePrice: 1790,
+		productStatus: "brand_new", // 全新 (Brand New 全新)
+		st: {
+			status: "全新",
+			note: "未拆封，繁體中文版，內含特典下載序號",
+			location: "台中市 西屯區",
+			shipping: "宅配 / 超商取貨",
+			payment: "信用卡 / ATM 轉帳 / 超商付款"
+		},
+		sellerAvatar: G1,
+		sellerName: "poke_master99",
+		sellerScore: 4.8,
+		sellerCount: 2390,
+		sellerLocation: "台中市 / 西屯區",
+		sellerTags: ["fastShip", "bundle"],
+		sellerDesc: "專賣寶可夢系列遊戲與周邊，均為正版公司貨。",
+		detailContent: "全新未拆封，保證原廠正版，支援繁體中文，附贈特典服裝下載碼（數量有限）。",
+		qa: []
+	},
+	{
+		id: "nsw-2",
+		category: "主機",
+		platform: "Switch",
+		thumb: "./Card_Image/sww2.avif",
+		mainImage: [
+			"./Card_Image/sww2.avif",
+			"./Card_Image/sww2.avif",
+			"./Card_Image/sww2.avif"
+		],
+		productTitle: "任天堂 Switch 2 主機（新世代）",
+		productMeta: "2025-09-15",
+		originalPrice: 14990,
+		salePrice: 14500,
+		productStatus: "brand_new", // 全新 (Brand New 全新)
+		st: {
+			status: "全新",
+			note: "最新一代 Switch 2 主機，性能升級，支援 4K 輸出",
+			location: "高雄市 左營區",
+			shipping: "宅配 / 面交",
+			payment: "信用卡 / Apple Pay / 面交付款"
+		},
+		sellerAvatar: S8,
+		sellerName: "nextgen_game",
+		sellerScore: 5.0,
+		sellerCount: 312,
+		sellerLocation: "高雄市 / 左營區",
+		sellerTags: ["check", "fastShip"],
+		sellerDesc: "專營新世代遊戲主機，保證原廠公司貨，支援面交驗貨。",
+		detailContent: "全新公司貨，內含主機、底座、Joy-Con Pro 控制器、HDMI 2.1 線，享有一年保固。",
+		qa: []
+	},
+	{
 		id: "sw-1",
 		thumb: "./Card_Image/DKB.webp",
 		category: "遊戲",

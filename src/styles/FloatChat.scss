@@ -5,8 +5,6 @@
     z-index: 999;
 
     .chat-toggle {
-        background: #DE1A10;
-        color: #fff;
         border: none;
         border-radius: 50%;
         width: 56px;
@@ -15,17 +13,25 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         cursor: pointer;
         transition: transform 0.3s ease;
-    }
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    .chat-toggle:hover {
-        transform: scale(1.1);
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        img {
+            width: 70%;
+        }
     }
 
     .chat-window {
         position: absolute;
         bottom: 70px;
         right: 0;
-        width: 300px;
+        width: 350px;
+        min-height: 300px;
         background: #fff;
         border-radius: 12px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -39,23 +45,186 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            .close-btn {
+                border: none;
+                background-color: transparent;
+                width: 40px;
+                height: auto;
+                font-size: 18px;
+            }
         }
 
-        .chat-body {
-            padding: 12px;
-            max-height: 300px;
-            overflow-y: auto;
+        .chat-out {
+            display: flex;
+            flex-direction: column;
 
-            .chat-msg {
-                margin-bottom: 8px;
-                padding: 8px 12px;
-                border-radius: 8px;
-                max-width: 80%;
+            .chat-box {
+                display: flex;
+                min-height: 300px;
+                width: 100%;
+
+                .chat-menu {
+                    display: flex;
+                    flex-direction: column;
+                    border-right: 1px solid #ccc;
+                    margin: 5px 2px;
+                    padding-right: 2px;
+                    width: 125px;
+                    max-height: 300px;
+                    height: auto;
+                    overflow-x: hidden;
+                    gap: 2px;
+
+                    &::-webkit-scrollbar {
+                        width: 6px;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: rgba(222, 26, 16, 0.5);
+                        border-radius: 3px;
+                    }
+
+                    .chat-tab {
+                        border: none;
+                        background-color: transparent;
+                        font-size: 14px;
+                        white-space: nowrap;
+                        border-bottom: 1px solid #DE1A10;
+
+
+                        &.active {
+                            background-color: #DE1A10;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .chat-body {
+                    flex: 1;
+                    padding: 12px;
+                    max-height: 300px;
+                    height: 100%;
+                    overflow-y: auto;
+                    display: flex;
+                    flex-direction: column;
+
+                    &::-webkit-scrollbar {
+                        width: 6px;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: rgba(222, 26, 16, 0.5);
+                        border-radius: 3px;
+                    }
+
+                    .chat-msg {
+                        margin-bottom: 8px;
+                        padding: 8px 12px;
+                        border-radius: 8px;
+                        max-width: 95%;
+                        word-wrap: break-word;
+                        word-break: break-word;
+                        white-space: normal;
+                    }
+
+                    .bot {
+                        background: #f0f0f0;
+                        align-self: flex-start;
+                        white-space: normal;
+                    }
+
+                    .user {
+                        background: #ffecec;
+                        align-self: flex-end;
+
+                    }
+                }
             }
 
-            .bot {
+            .chat-input {
+                white-space: nowrap;
+                padding: 0 5px 5px 5px;
+                display: flex;
+                justify-content: center;
+                gap: 3px;
+                margin-top: 5px;
+
+                input {
+                    width: 100%;
+                    min-width: 280px;
+                    font-size: 14px;
+                    padding: 0 5px;
+                    border-radius: 4px;
+                    outline: none;
+                    border: 1px solid rgba(222, 26, 16, .3);
+
+                    &:focus {
+                        border-color: rgba(222, 26, 16, .8);
+                    }
+                }
+
+                button {
+                    background-color: #DE1A10;
+                    border: solid 2px #A12424;
+                    color: #FCFAFF;
+                    border-radius: 999px;
+                    font-size: 14px;
+
+                    &:hover {
+                        box-shadow: 2px 4px 5px rgba(0, 0, 0, .25);
+                    }
+
+                    &:active {
+                        background-color: #fff;
+                        border: solid 2px #A12424;
+                        color: #DE1A10;
+                    }
+                }
+            }
+        }
+    }
+
+    // ── 主題樣式 ─────────────────────────────
+    &.light {
+
+        .chat-toggle {
+            background: #fff;
+            border: 2px solid #000;
+        }
+
+        .chat-window {
+            background: #fff;
+            border: 1px solid #000;
+
+            .chat-header {
+                background: #fff;
+                color: #DE1A10;
+                border-bottom: 1px solid#000;
+            }
+
+            .chat-body .bot {
+                background: #ffecec;
+            }
+        }
+    }
+
+    &.red {
+        .chat-toggle {
+            background: #DE1A10;
+            color: #fff;
+        }
+
+        .chat-window {
+            background: #fff;
+
+            .chat-header {
+                background: #DE1A10;
+                color: #fff;
+            }
+
+            .chat-body .bot {
                 background: #f0f0f0;
-                align-self: flex-start;
             }
         }
     }

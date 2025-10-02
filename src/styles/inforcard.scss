@@ -3,7 +3,7 @@
 	width: 100%;
 
 	.marquee {
-		/* 版心：大約 1200px，不吃滿螢幕 */
+		/* 版心：大約 1500px，不吃滿螢幕 */
 		max-width: 1500px;
 		margin: 0 auto; // 置中
 		padding: 0 40px; // 左右留白（像 gutter）
@@ -11,24 +11,16 @@
 		position: relative;
 		cursor: ew-resize; // 提示可以左右滑動
 
-		/* CSS 遮罩，Chrome/Edge/Safari OK */
+		/* CSS 遮罩（mask 遮罩） */
 		-webkit-mask-image: linear-gradient(to right,
 				rgba(0, 0, 0, 0) 0%,
-				/* 最左邊完全透明 */
 				rgba(0, 0, 0, 0.5) 0.5%,
-				/* 2% 開始半透明 */
 				rgba(0, 0, 0, 1) 1%,
-				/* 5% 完全不透明 */
 				rgba(0, 0, 0, 1) 99%,
-				/* 95% 之前保持完全不透明 */
 				rgba(0, 0, 0, 0.5) 99.5%,
-				/* 98% 開始半透明 */
-				rgba(0, 0, 0, 0) 100%
-				/* 最右邊完全透明 */
-			);
+				rgba(0, 0, 0, 0) 100%);
 		-webkit-mask-repeat: no-repeat;
 		-webkit-mask-size: 100% 100%;
-
 		mask-image: linear-gradient(to right,
 				rgba(0, 0, 0, 0) 0%,
 				rgba(0, 0, 0, 0.5) 0.5%,
@@ -42,6 +34,14 @@
 		/* 小螢幕自動縮：留點左右空間 */
 		@media (max-width: 1280px) {
 			padding: 0 24px;
+		}
+
+		@media (max-width: 900px) {
+			padding: 0 16px;
+		}
+
+		@media (max-width: 640px) {
+			padding: 0 10px;
 		}
 
 		&__track {
@@ -62,13 +62,76 @@
 
 			--card-scale: .94;
 
-			.info-card {
+			/* 讓滑動容器可偵測到 hover，又不擋到內層 link（連結） */
+			pointer-events: auto;
+
+			/* RWD（responsive 響應式）微調 */
+			@media (max-width: 1024px) {
+				flex-basis: 250px;
+				width: 250px;
+				margin-right: 32px;
+			}
+
+			@media (max-width: 900px) {
+				flex-basis: 230px;
+				width: 230px;
+				margin-right: 28px;
+			}
+
+			@media (max-width: 640px) {
+				flex-basis: 210px;
+				width: 210px;
+				margin-right: 22px;
+			}
+
+			/* 最後一張不要多出的間距 */
+			&:last-child {
+				margin-right: 0;
+			}
+
+			/* 你的卡片元件 class 名稱若是 .info-card 或 .B_info-card 都能吃到 */
+			.info-card,
+			.B_info-card {
 				width: 100%;
 				transform: scale(var(--card-scale));
 				transform-origin: center;
+				transition: transform .25s ease; // hover/置中縮放更順
+			}
+
+			/* 讓整張卡片可點（Link 連結鋪滿卡片） */
+			.marquee__link {
+				display: block;
+				width: 100%;
+				height: 100%;
+				text-decoration: none;
+
+				/* 避免內部圖片（image 圖片）阻擋點擊 */
+				img {
+					user-select: none; // 禁選
+					-webkit-user-drag: none; // 禁拖曳影像
+					pointer-events: none; // 點擊落到 Link 上
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+
+		/* 使用 prefers-reduced-motion（偏好減少動態）時降低強度 */
+		@media (prefers-reduced-motion: reduce) {
+			&__track {
+				will-change: auto;
+			}
+
+			&__slide {
+
+				.info-card,
+				.B_info-card {
+					transition: none;
+				}
 			}
 		}
 	}
+
 }
 
 /* 卡片本身維持你原本設定 */
